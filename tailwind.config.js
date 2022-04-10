@@ -1,13 +1,13 @@
 module.exports = {
-  content: ["./*.html", "./*.js"],
+  content: ["./*.html", "./js/*.js"],
   theme: {
     extend: {},
     fontFamily: {
-      display: ['IBM Plex Mono', 'Menlo', 'monospace'],
-      body: ['IBM Plex Mono', 'Menlo', 'monospace'],
+      display: ['aglet-mono', 'monospace'],
+      body: ['aglet-mono', 'monospace'],
     },
     colors: {
-      black: {
+      navy: {
         50: '#f9fafb',
         100: '#f3f4f6',
         200: '#e5e7eb',
@@ -31,14 +31,10 @@ module.exports = {
         800: '#115e59',
         900: '#134e4a',
       },
-      'white': '#ffffff',
-      'purple': '#3f3cbb',
-      'midnight': '#121063',
-      'metal': '#565584',
-      'tahiti': '#3ab7bf',
-      'silver': '#ecebff',
-      'bubble-gum': '#ff77e9',
-      'bermuda': '#78dcca',
+      beige: '#fffdf0',
+      yellow: '#ffff00',
+      grey: '#c7c7c7',
+      black: '#1a1a1a',
     },
   },
   plugins: [],

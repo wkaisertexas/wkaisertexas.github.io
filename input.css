@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* This is for the about headers and the like*/
+.page-component > h2 {
+    @apply m-1 p-1 w-fit h-fit shadow-black shadow-md border;
+}
+
+.page-component > div > h2 {
+    @apply m-1 p-1 w-fit h-fit shadow-black shadow-md border;
+}
+
+/* This is for the sides of the resume sections */
+.resume-component > h3 {
+    @apply text-right m-1 p-1 text-lg;
+}
+
+#hobbies > ul > li > h3{
+    @apply text-lg;
+}
+
+/* This adds a bit of margin */
+
+
+/* This does the styling for projects */
+#project_list > li {
+    @apply flex flex-col;
+}
