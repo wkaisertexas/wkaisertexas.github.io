@@ -33,6 +33,7 @@ module.exports = {
       },
       beige: '#fffdf0',
       yellow: '#ffff00',
+      red: '#ff3030',
       grey: '#c7c7c7',
       black: '#1a1a1a',
     },

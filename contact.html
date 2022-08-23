@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>William Kaiser | Contact Card</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="William Kaiser's contact information and notes">
+    <meta name="image/x-icon" src="static/favicon.ico">
+
+    <link rel="stylesheet" href="output.css">
+    <!-- <script src="/js/main.js"></script>
+
+    <script async onload="on3JSLoaded();" src="/js/three.js"></script> -->
+
+
+</head>
+<body class="bg-beige flex flex-col justify-between min-h-screen items-center">
+    <div class="flex grow flex-col justify-center space-y-2 m-2 max-w-md items-center">
+        <div class="md:flex md:space-x-2 items-center justify-between">
+            <header>
+                <h1 class="font-bold text-3xl md:w-min">william kaiser</h1>
+                <p class="">metcalf 2️⃣3️⃣0️⃣</p> 
+                <p class="">🥇 year</p>
+            </header>
+            
+            <div class="scroll-auto flex flex-row space-x-4 md:scroll-smooth snap-x">
+                <img class="snap-center scroll-ml-2 w-24 h-24 rounded-md border-black border-2 shadow-lg" alt="" src="static/imgs/img2.jpeg"/>
+                <img class="snap-center scroll-ml-2 w-24 h-24 rounded-md border-black border-2 shadow-lg" alt="" src="static/imgs/img1.jpeg"/>
+                <!-- <img class="snap-center scroll-ml-2 w-24 h-24 rounded-md border-black border-2 shadow-md" alt="" src="static/imgs/img3.jpeg"/> -->
+            </div>
+        </div>
+
+        <div id="socials" class="flex flex-row flex-wrap space-x-2">
+            <a id="phone" class="border-2 p-2 text-md font-bold text-teal-400 hover:border-teal-100" href="tel:832-925-6037"># 📞</a>
+            <a id="insta" class="border-2 p-2 text-md font-bold text-teal-500 hover:border-teal-100" href="https://www.instagram.com/wdkaiser/?r=nametag">insta</a>
+            <a id="snap" class="border-2 p-2 text-md font-bold text-teal-600 hover:border-teal-100" href="https://t.snapchat.com/KQhVWMe7">snap</a>
+            <a id="github" class="border-2 p-2 text-md font-bold text-teal-700 hover:border-teal-100" href="https://github.com/wkaisertexas">github</a>
+            <a id="contact" class="border-2 p-2 text-md font-bold text-teal-800 hover:border-teal-100" href="static/contact.vcf">⬇️ contact</a>
+       </div>
+        
+        <p class="">p(cs | me) > 0.8</p>
+    </div>
+
+    <p class="p-2">@ kaiser</p>
+
+    <script src="js/three.js"></script> <!--This is not ideal bc if the user does not want this it has to load the js too, sad.-->
+    <script>        
+            const canvas = document.getElementById('3js')
+            const render = new THREE.WebGLRenderer({canvas})
+            
+            const fov = 75;
+            const aspect = 2;  // the canvas default
+            const near = 0.1;
+            const far = 5;
+            
+            const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+            camera.position.z = 2;
+            
+            const scene = new THREE.Scene();
+
+            const boxWidth = 1;
+            const boxHeight = 1;
+            const boxDepth = 1;
+            const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+        
+            const material = new THREE.MeshBasicMaterial({color: 0x44aa88});
+
+            const cube = new THREE.Mesh(geometry, material);
+
+            scene.add(cube);
+
+        render.render(scene, camera);
+
+        function animate() {
+	        requestAnimationFrame( animate );
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+	        render.render( scene, camera );
+        }
+        animate();
+    </script>
+</body>
+
+</html>

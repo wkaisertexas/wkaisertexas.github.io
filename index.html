@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>William Kaiser's Portfolio Site</title>
-    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 
     <link href="output.css" rel="stylesheet">
     <script src="js/main.js"></script>
-    <!---->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKDGVM797T"></script>
@@ -25,7 +24,7 @@
         gtag('config', 'G-XKDGVM797T');
     </script>
 </head>
-<body class="bg-beige text-black m-8 mr-64">
+<body class="bg-beige text-black m-4 md:m-8 lg:mr-64">
 <!--<script async onload="on3JSLoaded();" src="js/three.js"></script>-->
 
 <header class="shadow-black border shadow-lg">
@@ -55,11 +54,11 @@
     <div class="page-component flex-col" id="about">
         <h2>About</h2>
 
-        <div class="m-4 p-1 flex flex-row flex-start"> <!--Outer Div containing both row and more...-->
+        <div class="m-4 p-1 flex flex-wrap flex-start"> <!--Outer Div containing both row and more...-->
             <div class="p-2 flex-grow flex-col">
                 <h3 class="whitespace-nowrap text-lg">Who is Will(iam) Kaiser?</h3>
 
-                <p class="">
+                <p class="max-w-md">
                     A high school senior who was recently very bummed out about college applications. I am interested in
                     programming, data science and recently web development. Oh, and I make bread. I have made 62 loaves
                     in the past 90 days.
@@ -73,6 +72,9 @@
                     </li>
                 </ul>
             </div>
+
+            <!--Some notes here: I think it may have been better if I contained the image within a div according to the documentation -->
+
             <img class="flex-none w-1/5 h-auto shadow-black shadow-lg" src="static/portrait.jpg"
                  alt="A photo of me looking out introspectively">
 

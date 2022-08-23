@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+
+      <loc>https://wkaisertexas.github.io/</loc>
+
+      <lastmod>2022-7-24</lastmod>
+
+      <changefreq>monthly</changefreq>
+
+      <priority>0.8</priority>
+
+   </url>
+   
+   <url>
+      <loc>https://wkaisertexas.github.io/contact</loc>
+
+      <lastmod>2022-8-26</lastmod>
+
+      <changefreq>monthly</changefreq>
+
+      <priority>0.8</priority>
+   </url>
+
+</urlset> 

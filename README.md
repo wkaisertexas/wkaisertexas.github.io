@@ -52,4 +52,4 @@ This site has a main page containing:
 - ***Data Science Projects?***
   Where are they? Not here yet, I am still trying to wrangle the styles to make them look good.
 > ### Contact
-> Hey, if you have any questions about the site, feel free to email me @ [wkaisertexas@gmail.com](mailto:wkaisertexas@gmail.com).
+> Questions about the site? Feel free to email me @ [wkaisertexas@gmail.com](mailto:wkaisertexas@gmail.com).
