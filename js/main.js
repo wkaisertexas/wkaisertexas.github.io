@@ -74,7 +74,7 @@ function on3JSLoaded() {
 
 
 function load(path) { // Loads the GLB file at a particular path
-    const loader = new GLTFLoader()
+    const loader = new GLTFLoader();
 
     loader.load(path, (gltf) => {
 
