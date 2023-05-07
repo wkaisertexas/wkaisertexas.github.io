@@ -26,7 +26,10 @@ function renderArticle(article) {
 
     li.className = 'flex flex-row justify-between border shadow-black shadow-lg my-5 mx-4 p-2';
 
-    li.innerHTML = `<div class="flex flex-col">
+    li.innerHTML = `
+                    <a href="${article.link}">
+
+    <div class="flex flex-col">
                         <h3 class="text-lg">${article.title}</h3>
                         <p class="text-md">By: ${article.author}</p>
                         <ul class="flex flex-row">
@@ -34,7 +37,7 @@ function renderArticle(article) {
                         </ul>
                     </div>
                     
-                    <a class="flex-none w-2/5 flex justify-end" href="${article.link}"><img class="h-auto w-2/5" src="${article.thumbnail}" alt="${article.title}"></a>`
+      <img class="h-auto w-2/5" src="${article.thumbnail}" alt="${article.title}"></a>`
 
     ul.appendChild(li)
 }
