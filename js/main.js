@@ -2,7 +2,7 @@ let ul
 let scans = ['badleaf.glb', 'breadwithleaf.glb', 'flatbread.glb']
 
 document.addEventListener('DOMContentLoaded', evt => {
-    getArticles('samedaycyborg')
+    getArticles('wdkaiser')
 })
 
 function getArticles(username) {
@@ -41,7 +41,7 @@ function renderArticle(article) {
 
 function on3JSLoaded() {
     console.log("3JSLoaded")
-
+    return;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
