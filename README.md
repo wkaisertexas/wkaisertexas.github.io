@@ -1,55 +1,69 @@
-# Portfolio Site
+# Astro Starter Kit: Blog
 
-<a href="https://wkaisertexas.github.io/"><img align="right" src="static/favicon.ico" /></a>
+```
+npm create astro@latest -- --template blog
+```
 
-This README is a background behind how / why I designed this site. If you are interested in the site itself, check it
-out at [wkaisertexas.github.io](https://wkaisertexas.github.io/)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
 
-## Purpose
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-This is my personal portfolio site. I am a student who is looking to study Computer Science and is interested in Machine
-Learning, Web Development, and more.
 
-## Brutalist Design
+![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
 
-![Brutalist Architecture](static/example_of_brutalist_architecture.jpg)
-Brutalism completely rejects that human-centric aspects of architecture. In many ways, it is architecture to make you
-feel small. Though there are **countless** examples of bad brutalism (IE: just ugly buildings), when done well,
-Brutalism is a style that I quite enjoy.
+Features:
 
-This Brutalist movement has transitioned into the field of webpage. The major inspiration for this project
-was [brutalistthemes.com](https://brutalistthemes.com) and their homepage's color scheme.
+- ✅ Minimal styling (make it your own!)
+- ✅ 100/100 Lighthouse performance
+- ✅ SEO-friendly with canonical URLs and OpenGraph data
+- ✅ Sitemap support
+- ✅ RSS Feed support
+- ✅ Markdown & MDX support
 
-![Brutalist Theme's Website](static/brualism_in_website_design.png)
+## 🚀 Project Structure
 
-> If actually interested in Brutalism, the [Wikipedia page](https://en.wikipedia.org/wiki/Brutalist_architecture) does a better job than I at explaining it.
+Inside of your Astro project, you'll see the following folders and files:
 
-The **spark** to use Brutalism was TailwindCSS's default brutalism template. With its harsh boarders and mid-90's low
-CSS aesthetic, what is not to like?
+```
+├── public/
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── README.md
+├── package.json
+└── tsconfig.json
+```
 
-![Tailwind Brutalism](static/tailwind_brutalism_example.png)
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Layout
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-This site has a main page containing:
+The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
 
-- Info about me
-- Resume
-- Projects
-- Articles I have written
-- A [Google Data Studio report](https://datastudio.google.com/reporting/e1bb6678-b8fa-4918-ab84-ddc35097590e)
-  summarizing my projects
+Any static assets, like images, can be placed in the `public/` directory.
 
-## FAQs
+## 🧞 Commands
 
-- ***Why the Bread?***
-  I make a ton of bread. Recently, I gave into bread being a central tenet to my personality. So now bread has become my
-  personal brand and will stay that way for the foreseeable future.
-- ***Why not a framework?***
-  When starting this project, I thought that I could be sneaky and avoid using a framework. I just ran into spaghetti code, though. Pain.
-- ***I see Three.js stuff in the code, are you adding this?***
-  Yes, I will be adding Three.js, I just wanted to render the breadiverse (tm) in the background because I thought it coud be fun.
-- ***Data Science Projects?***
-  Where are they? Not here yet, I am still trying to wrangle the styles to make them look good.
-> ### Contact
-> Questions about the site? Feel free to email me @ [wkaisertexas@gmail.com](mailto:wkaisertexas@gmail.com).
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:3000`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Credit
+
+This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

@@ -1,9 +1,18 @@
 {
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "tailwind-watch": "npx tailwindcss -i input.css -o output.css --watch",
-    "tailwind-minify": "npx tailwindcss -i input.css -o output.css --minify"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "devDependencies": {
-    "tailwindcss": "^3.1.8"
+  "dependencies": {
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/rss": "^2.4.3",
+    "@astrojs/sitemap": "^1.3.3",
+    "astro": "^2.7.0"
   }
 }
