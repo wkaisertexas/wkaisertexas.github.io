@@ -5,33 +5,25 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
+import '../styles/global.css'
+
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, next, prev } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+		<GoogleAnalytics />
 	</head>
 
-	<body>
-		<Header />
-		<main>
-			<article>
+  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
+    <main class="col-span-3 lg:col-start-2">
+      <Header />
+			<article class="prose prose-xl">
 				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
 				<h1 class="title">{title}</h1>
 				<FormattedDate date={pubDate} />
@@ -45,7 +37,31 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<hr />
 				<slot />
 			</article>
-		</main>
-		<Footer />
+
+      <hr />
+
+      <section class="grid grid-cols-2">
+        <!-- Read next -->
+        <div>
+          <header>Previous article</header>
+
+          {next && (<a href={`/blog/${next.slug}`}>{next.data.title}</a>)}
+        </div>
+        <div>
+          <header>Next article</header>
+          {prev && (<a href={`/blog/${prev.slug}`}>{prev.data.title}</a>)}
+        </div>
+      </section>
+
+      <section>
+        <!-- Double section between subscribing to RSS -->
+        <div>
+          Subscribe to rss
+
+          <a class="text-white bg-black p-2" href="/feed.rss">RSS</a>
+        </div>
+      </section>
+		<Footer/>
+    </main>
 	</body>
 </html>

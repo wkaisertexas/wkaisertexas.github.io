@@ -6,8 +6,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
+import { Image } from '@astrojs/image/components';
+
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
@@ -15,40 +17,38 @@ const posts = (await getCollection('blog')).sort(
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
-				display: flex;
-			}
-			ul li :global(time) {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-		</style>
 	</head>
-	<body>
-		<Header />
-		<main>
+	<body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
+		<main class="col-span-3 lg:col-start-2">
+      <Header />
+
 			<section>
-				<ul>
+				<ul class="space-y-6 p-4">
 					{
 						posts.map((post) => (
-							<li>
-								<FormattedDate date={post.data.pubDate} />
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+							<li class="p-4 border-black border-2 rounded-md shadow-md hover:shadow-lg hover:border-3 hover:translate-x-4">
+                <a class="flex justify-between" href={`blog/${post.slug}/`}>
+                  <div>
+                    <h2 class="font-bold text-lg" href={`/blog/${post.slug}/`}>{post.data.title}</h2>
+                    <p>{post.data.description}</p>
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+
+                  {
+                    <Image
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      height={100}
+                      width={150}
+                    />
+                  }
+                </a>
 							</li>
 						))
 					}
 				</ul>
 			</section>
-		</main>
-		<Footer />
+      <Footer />
+    </main>
 	</body>
 </html>

@@ -4,14 +4,19 @@ export interface Props {
 }
 
 const { date } = Astro.props;
----
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
+const today = new Date();
+let dateString = date.toLocaleDateString('en-us', {
 			year: 'numeric',
 			month: 'short',
 			day: 'numeric',
-		})
-	}
+})
+
+if(today.getFullYear() === date.getFullYear()){
+  dateString = dateString.split(",")[0]
+}
+---
+
+<time class="font-sm" datetime={date.toISOString()}>
+	{ dateString }  
 </time>

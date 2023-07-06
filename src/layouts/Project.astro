@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+
+type Props = CollectionEntry<'project'>['data'];
+
+const { title, description} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<GoogleAnalytics />
+	</head>
+
+  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
+		<main class="col-span-3 lg:col-start-2">
+      <Header />
+			<article>
+				<hr />
+				<slot />
+			</article>
+      <Footer /> 
+		</main>
+  </body>
+</html>

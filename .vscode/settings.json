@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+      "redirectior",
+      "strikethrough"
+    ],
+    "editor.insertSpaces": true,
+	"editor.detectIndentation": false,
+	"launch": {
+		"configurations": [],
+		"compounds": []
+    },
+    "editor.tabSize": 2
+}

@@ -23,6 +23,9 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- RSS -->
+<link rel="alternative" type="application/rss+xml" title="RSS Feed" href="feed.rss" />
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />

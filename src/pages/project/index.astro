@@ -1,0 +1,70 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+
+import { Icon } from 'astro-icon'
+
+const projects = (await getCollection('project')); // .sort()
+---
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <BaseHead title={`${SITE_TITLE} | Projects`} description="A list of projects I've worked on."/>
+  </head>
+  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
+		<main class="col-span-3 lg:col-start-2">
+    <Header/>
+
+    <h1 class="text-lg font-bold">Projects</h1>
+
+    <p>Building projects in my spare time is a long-standing hobby of mine. Education through projects is my prefered way to learn.</p>
+
+    <section>
+      <ul class="grid md:grid-cols-3 sm:grid-cols-2 space-y-4">
+      {
+        projects.map((project) => (
+          <li>
+            <div>
+              <header>
+                <div class="flex flex-row justify-between">
+                  <Icon class="w-8" pack="ion" name="folder-outline" />
+
+                  <ul class="flex flex-row space-x-2 underline">
+                  {
+                    project.data.website && ( <li>
+                      <a target="_blank" href={project.data.website}>
+                        <Icon class="w-8" pack="mdi" name="web" />
+                      </a>
+                    </li>)
+                  }
+
+                  {
+                    project.data.repository && (<li>
+                      <a target="_blank" href={project.data.repository}>
+                        <Icon class="w-8" pack="cib" name="github" />
+                      </a>
+                    </li>)
+                  }
+                </ul>
+              </div>
+            </header>
+
+              <h2 class="font-bold text-md">{project.data.title}</h2>
+              <p class="text-sm">{project.data.description}</p>
+
+              <p>{project.data.builtWith.join(", ")}</p>
+            </div>
+          </li>
+        ))
+      }
+      </ul>
+    </section>
+    <Footer/>
+    </main>
+	</body>
+</html>

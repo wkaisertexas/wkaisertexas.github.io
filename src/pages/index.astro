@@ -1,50 +1,296 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  NUM_BLOGS,
+  NUM_LANGUAGES,
+} from "../consts";
+
+import FormattedDate from "../components/FormattedDate.astro";
+
+import { getCollection } from "astro:content";
+
+import ResumeItem from "../components/Item.astro";
+
+import { Icon } from "astro-icon";
+
+import '../styles/global.css';
+
+const projects = await getCollection("project");
+const blog = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, NUM_BLOGS);
+
+// find the modal builtWith for all projects
+const builtWith = projects.reduce((acc, project) => {
+  if (!project.data.builtWith) {
+    return acc;
+  } else {
+    project.data.builtWith.forEach((language) => {
+      if (acc[language]) {
+        acc[language] += 1;
+      } else {
+        acc[language] = 1;
+      }
+    });
+    return acc;
+  }
+}, {});
+
+// sort builtWith by frequency
+builtWith.keys = Object.keys(builtWith).sort(
+  (a, b) => builtWith[b] - builtWith[a]
+);
+builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
+
+function handlePress(){
+  alert("Fuck you");
+}
+
+// https://threejs.org/docs/#manual/en/introduction/Installation
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <script>
+      import * as THREE from "three";
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+      const scene = new THREE.Scene({
+        antialias: true
+      });
+      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setClearColor(0x1111dd, 0);
+
+      // find 
+      const dddView = document.getElementById("3d-view");
+
+      dddView.appendChild( renderer.domElement );
+
+      const controls = new OrbitControls( camera, renderer.domElement );
+      const loader = new GLTFLoader();
+
+      renderer.domElement.addEventListener('click', () => {
+        controls.lock();
+      });
+
+      loader.load(
+      '/scene.glb', 
+      function ( gltf: any ) {
+        scene.add( gltf.scene );
+        if (gltf.cameras.length > 0) {
+          let newCamera = gltf.cameras[0];
+          
+          // set the fov
+          camera.fov = newCamera.fov;
+          // set the aspect ratio
+          camera.aspect = newCamera.aspect;
+
+          // set the renderer size based on aspect ratio
+
+          // get the dimensions of the canvas 
+          // const canvas = renderer.domElement;
+          // const width = canvas.clientWidth;
+          // const height = canvas.clientHeight;
+          // get the dimensions of the parent element 
+          const width = dddView.clientWidth;
+          const height = dddView.clientHeight;
+          // renderer.setSize(10900, 2000 / newCamera.aspect);
+          renderer.setSize(width, width / newCamera.aspect);
+
+          // camera setup
+          camera.position.set(newCamera.position.x, newCamera.position.y, newCamera.position.z);
+          camera.rotation.setFromQuaternion(newCamera.quaternion);
+          camera.updateProjectionMatrix();
+
+          // update the controls
+          controls.update();
+        }else{
+          alert("No cameras in the scene!")
+        }
+
+        console.log("added new cached")
+      }, 
+      function (progress : any){
+        console.log( ( progress.loaded / progress.total * 100 ) + '% loaded' );
+      },
+      function ( error : any ) {
+        console.error( error );
+      });
+
+      function animate() {
+        requestAnimationFrame( animate );
+        controls.update();
+        renderer.render( scene, camera );
+      }
+      animate();
+    </script>
+  </head>
+  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
+    <!-- Center the website -->
+    <main class="col-span-3 lg:col-start-2 lg:p-0 px-4">
+      <Header title={SITE_TITLE} />
+
+      <!-- <object type="image/svg+xml" data="handwritten_intro.svg" id="canvas" width="100%" height="auto"></object> -->
+      <section class="col-span-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div class="flex flex-col justify-center">
+          <img
+            src="handwritten_intro.svg"
+            id="intro"
+            alt="Handwritten"
+            width="100%"
+            height="auto"
+          />
+
+          <p>Computer science student insterested in Human-Computer Interfaces and Artifical Inteligence. Enjoy building projects and writing educational blogs </p>
+        </div>
+        <div id="3d-view" class="lg:col-span-2"></div>
+      </section>
+
+      <section class="col-span-5">
+        <h2 class="section">💪 Experience</h2>
+
+        <ul class="space-y-4">
+          <ResumeItem 
+            title="Valedor Partners"
+            description="Data Science Intern"
+            src="/logos/valedor.jpeg"
+          />
+          <ResumeItem 
+            title="University of Virginia, School of Data Science"
+            description="Research Assistant"
+            src="/logos/uva_datascience.svg"
+          />
+        </ul>
+      </section>
+      <section class="col-span-5">
+        <h2 class="section">📚 Education</h2>
+
+        <ul class="space-y-4">
+          <ResumeItem 
+            title="University of Virginia"
+            description="School of Engineering and Applied Science"
+            src="/logos/uva.svg"
+          />
+          <ResumeItem
+            title="The Academy of Science and Technology @ The Woodlands College Park High School"
+            description="More stuff about this"
+            src="/logos/ast.jpeg"
+          />
+        </ul>
+      </section>
+      <section>
+        <header>
+          <h2 class="font-medium text-3xl py-6">✅ Projects</h2>
+        </header>
+
+        <div class="grid grid-cols-3">
+          <!--Allow project filtering by languages, compute the mode of each languages-->
+      
+          <div>
+            <script id="new">
+              function handlePress(event) {
+                let languages = document.getElementById("languages");
+                let projects = document.getElementById("projects");
+
+                if(languages.childNodes.length === 0){
+                 alert("stuff is not showing up");
+                  return;
+                }
+                // if the button is alreday highlighted and nothing else is, highlight all buttons
+                if(event.target.getAttribute("data-highlighted") === "true"){
+                 let sum = 0;
+                 
+                 for(let i = 0; i < languages.childNodes.length; i++){
+                  if(languages.childNodes[i].getAttribute("data-highlighted") === "true"){
+                    if(languages.childNodes[i].id !== event.target.id){
+                      sum += 1;
+                    }  
+                  }
+                 } 
+
+                  if(sum === 0){
+                    languages.childNodes.forEach((child) => {
+                      child.setAttribute("data-highlighted", "true");
+                    });
+
+                    projects.childNodes.forEach((child) => {
+                      child.setAttribute("data-highlighted", "true")
+                    });
+                    return;
+                  }
+                }
+
+                // unhightlight all buttons + highlight the right button
+                languages.childNodes.forEach((child) => {
+                  child.setAttribute("data-highlighted", "false");
+                });
+
+                const pressed = event.target;
+                pressed.setAttribute("data-highlighted", "true");
+
+                projects.childNodes.forEach((child) => {
+                  child.getAttribute("data-technologies").includes(pressed.id)
+                    ? child.setAttribute("data-highlighted", "true")
+                    : child.setAttribute("data-highlighted", "false")
+                })
+              }
+            </script>
+            <div id="languages" class="grid grid-cols-2 text-lg">
+            {
+              builtWith.keys.map(
+                (language) => <button id={language} onclick="handlePress(event)" data-highlighted="true">{language}</button>
+              )
+            }
+            </div>
+          </div>
+          <ul id="projects" class="grid grid-cols-2 col-span-2">
+            {
+              projects.map((project) => (
+                <li 
+                  class="group p-2 hover:border-2 hover:shadow-sm rounded-md m-1"
+                  onclick={`/projects/${project.slug}`}
+                  data-technologies={project.data.builtWith && project.data.builtWith.join(',')}
+                  data-highlighted="true"
+                  >
+                  <h3 class="text-lg">{project.data.title}</h3>
+                  <p class="hidden group-hover:block">{project.data.description}</p>
+                </li>
+              ))
+            }
+          </ul>
+      </div>
+      </section>
+
+      <section>
+        <header class="flex justify-between items-center">
+          <h2 class="section">📝 Blog</h2>      
+          <a class="flex hover:underline hover:translate-y-1" href="/blog">More articles<Icon class="w-6" pack="ion" name="arrow-forward-sharp" /></a>
+        </header>
+        <div class="grid grid-cols-3">
+          <div class="self-center">I write sometimes. Mostly about technology</div>
+          <ul class="col-span-2 grid grid-cols-2">
+            {
+              blog.map((post) => (
+                <li>
+                  <h3 class="text-lg">{post.data.title}</h3>
+                  <FormattedDate date={post.data.pubDate} />
+                </li>
+              ))
+            }
+          </ul>
+      </div>
+      </section>
+      <Footer />
+    </main>
+    
+  </body>
 </html>
