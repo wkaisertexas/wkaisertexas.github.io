@@ -19,26 +19,36 @@ Writing good documentation is one way to make a communicable impact. Creating go
 
 The most common tag you will run across is the header tag (`#`). Functionally, this is identical to a header in a word document. For nested headings, multiple `#` s can be used in series for subheadings. For those familiar with HTML, the number of tags is equivalent to the number of `#` s
 
-```
-| Markdown | HTML   ||   :---:  | :---:  ||     `#`  | `<h1>` ||    `##`  | `<h2>` ||   `###`  | `<h3>` ||  `####`  | `<h4>` | | `#####`  | `<h5>` | |`######`  | `<h6>` |
-```
+| Markdown | HTML   |
+|   :---:  | :---:  |
+|     `#`  | `<h1>` |
+|    `##`  | `<h2>` |
+|   `###`  | `<h3>` |
+|  `####`  | `<h4>` | 
+| `#####`  | `<h5>` |
+|`######`  | `<h6>` |
 
 Bolding, italics and strike through are handled using the `*` and `~` keys.
 
-```
-| Markdown Code | Rendered Text | |   :---:       |   :---:       | | `*italics*`   | *italtics*    || `**bold**`    | **bold**      || `***bold+italic***`  | ***bold + italic*** || `~~strikethrough~~ ` | ~~strikethrough~~   || `x<sup>2</sup>`      | x<sup>2</sup>       | | `x<sub>2</sub>`      | x<sub>2</sub>       |
-```
+
+| Markdown Code | Rendered Text |
+|   :---:       |   :---:       |
+| `*italics*`   | *italtics*    |
+| `**bold**`    | **bold**      |
+| `***bold+italic***`  | ***bold + italic*** |
+| `~~strikethrough~~ ` | ~~strikethrough~~   |
+| `x<sup>2</sup>`      | x<sup>2</sup>       | 
+| `x<sub>2</sub>`      | x<sub>2</sub>       |
+
 
 ## Code blocks
 
 Code is fundamentally different from other forms of text because it often uses the same syntax as other languages. For this, markdown separates inline code with \` (the tilde key). To place code inline, surround your code with a tilde \``my code` \` and place a separate chunk of code with:
 
-```
 ```python
 from random import choice
 choices = [1, 2, 3, 4]
 print(choice(choices))
-```
 ```
 
 > Putting the language next to the code signals is what makes syntax highlighting (colors) work properly. Missing this is one of the most common mistakes I have seen in GitHub documentation.
@@ -46,7 +56,11 @@ print(choice(choices))
 Lists in markdown can either use `-` , `*` or `+` . Adding `[ ]` and `[*]` creates a completed and uncompleted task in markdown, respectively. Number with a trailing dot, `1.` create an ordered, numbered list
 
 ```
-- this is a bullet* this is also a bullet+ this is also a bullet1. [ ] this is the first thing I have to do2. [x] this is the second this that I have to do.
+- this is a bullet
+* this is also a bullet
++ this is also a bullet
+1. [ ] this is the first thing I have to do
+2. [x] this is the second this that I have to do.
 ```
 
 ## Images
@@ -63,7 +77,7 @@ Creating links uses a similar syntax to images, but omits the `!` . `[Google](ht
 
 Section links to specific `#..` tags are very similar. Use `[my section](#my-section` to create the think, replacing non-alphanumeric characters with a dash. However, two dashes can not be in a row.
 
-> There is a bug in Visual Studio code’s most popular markdown extension as of writing where relative links to a heading with an emoji present will not work. The syntax with a leading `#-food` with a leading `—` when the section starts with an emoji is correct and what works as intended on Github.
+> There is a bug in Visual Studio code’s most popular markdown extension as of writing where relative links to a heading with an emoji present will not work. The syntax with a leading `#-food` with a leading `—` when the section starts with an emoji is correct and what works on Github.
 > 
 > \# 🍎 food
 
@@ -71,8 +85,8 @@ Section links to specific `#..` tags are very similar. Use `[my section](#my-sec
 
 Adding more context through footnotes is done by starting a footnote with `[^1]` and then later defining the footnote using:
 
-```
-```markdown[^1]: The definition of "with" is a preposition which has one meaning of to contain```
+```markdown
+[^1]: The definition of "with" is a preposition which has one meaning of to contain
 ```
 
 ## Math
@@ -80,7 +94,9 @@ Adding more context through footnotes is done by starting a footnote with `[^1]`
 Most markdown specifications support MathJax which renders [LaTex-Style Math](https://www.overleaf.com/learn/latex/Mathematical_fonts). Using a single `$` will produce an inline mathematic expression, whereas `$$` will produce a separate mathematical block.
 
 ```
-$\sum{x}$$$\sum{x}$$
+$\sum{x}$
+
+$$\sum{x}$$
 ```
 
 If you have any formatting that you do not like, you can always escape it with the `\` character.
@@ -95,22 +111,36 @@ In this section, we will cover adding custom code to increase interactivity.
 
 The [Markdown Guide](https://www.markdownguide.org/) supports adding basically any custom HTML element with the standard tax syntax (`<></>`). However, unrestricted extensions present major cross site scripting and privacy vulnerabilities for sites like GitHub, so custom Javascript or CSS is not allowed. However, basic functionality is still permitted:
 
-```
-<div align="center">  ![Project Logo](./logo.svg)</div>
+```markdown
+<div align="center">
+  ![Project Logo](./logo.svg)
+</div>
 ```
 
 If displaying all the information about your project could potentially be overwhelming to your user, consider creating a expandable section.
 
 ```
-<details>  <summary>Shown when closed</summary>  # This is the title of what is shown when opened  This is the body of what is shown when opened</details>
+<details>  
+  <summary>Shown when closed</summary>
+  <h3>This is the title of what is shown when opened</h3>
+  
+  This is the body of what is shown when opened
+</details>
 ```
 
-## God-tier Markdown
+<details>  
+  <summary>Shown when closed</summary>
+  <h3>This is the title of what is shown when opened</h3>
+  
+  This is the body of what is shown when opened
+</details>
+
+## Top-tier Markdown
 
 So far, we have converged the basic and intermediate use of Markdown. Going past this, however, requires introduction to Markdown variants. Because when writing documentation, more functionality can be required than the standard syntax.
 
--   **Extension frameworks** like Stripe’s, [MarkDoc](https://markdoc.dev/) allows documentation to have code examples in multiple languages.
--   **Custom Plugins** allow new types of elements within the Markdown format.
+- **Extension frameworks** like Stripe’s, [MarkDoc](https://markdoc.dev/) allows documentation to have code examples in multiple languages.
+- **Custom Plugins** allow new types of elements within the Markdown format.
 
 ## Mermaid JS
 
@@ -118,17 +148,29 @@ Mermaid JS allows for diagrams to be created in Markdown. From UML to pie charts
 
 Here is a basic UML class diagram described in Markdown:
 
-```
-```mermaid---title: Animal Example ---classDiagram    note "From Duck till Zebra"    Animal <|-- Duck    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"    Animal <|-- Fish    Animal <|-- Zebra    Animal : +int age    Animal : +String gender    Animal: +isMammal()    Animal: +mate()    class Duck{        +String beakColor        +swim()        +quack()    }    class Fish{        -int sizeInFeet        -canEat()    }    class Zebra{        +bool is_wild        +run()    }```
+```mermaid
+---
+title: Animal Example
+---
+classDiagram
+note "From Duck till Zebra"
+Animal <|-- Duck
+note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
+Animal <|-- Fish
+Animal <|-- Zebra
+Animal : +int age
+Animal : +String gender
+Animal: +isMammal()    Animal: +mate()    class Duck{        +String beakColor        +swim()        +quack()    }    class Fish{        -int sizeInFeet        -canEat()    }    class Zebra{        +bool is_wild        +run()    }
 ```
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*tdyb3bIQ-D1tHJopx_PDgw.png)
 
-Mermaid JS Rendered in Browser
+<figure>
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*tdyb3bIQ-D1tHJopx_PDgw.png" alt="image rendered in browser" />
+<figcaption>Mermaid JS Rendered in Browser</figcaption>
+</figure>
 
 GitHub also supports [GeoJSON](https://geojson.io/) and it’s topology extension [TopoJSON](https://github.com/topojson/topojson). Creating interactive maps could not have been simpler.
 
-```
 ```geojson
 {
     "type": "Polygon", 
@@ -143,11 +185,8 @@ GitHub also supports [GeoJSON](https://geojson.io/) and it’s topology extensio
     ]
 }
 ```
-```
 
 Finally, STL. If you can believe it, GitHub supports embedding STL files directly into your screen.
-
-> **Note:** If WebGL is not enabled in their browser, this can lead to issues.
 
 Because manually writing this data, using a script tag can auto-detect the correct formatting method to use for the underlying data, saving you time.
 

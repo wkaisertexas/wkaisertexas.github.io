@@ -3,6 +3,7 @@ title: "📍 Textual and Impact-based Coronavirus Open Research Dataset (CORD-19
 description: "Creating an t-Distributed Stochastic Neighbor-Embedding (t-SNE) plot to visualize papers written about the Coronavirus pandemic"
 repository: "https://github.com/wkaisertexas/COVID-Paper-Clustering"
 builtWith: ['python', 'pandas', 'spacy', 'matplotlib']
+display: true
 ---
 
 # Context and scope

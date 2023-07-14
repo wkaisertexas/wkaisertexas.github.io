@@ -3,6 +3,7 @@ title: "🎨 Advanced Placement Art History (APAH) Inception"
 description: "Making the AP Art History 250 works which are required to be memorized out of themselves, ie. inception."
 repository: "https://github.com/wkaisertexas/APAH250Inception"
 builtWith: ['nodejs', 'javascript']
+display: false
 ---
 
 <!--Image carousel-->

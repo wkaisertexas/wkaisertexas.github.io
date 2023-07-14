@@ -3,6 +3,7 @@ title: "RandomURL -- A URL Shortener with Quirks"
 description: "A way to have simple, customizable URLs"
 pubDate: "Feb 1 2022"
 heroImage: "/blog/random-url/hero.png"
+display: false
 ---
 
 URL shorteners are the obvious plumbing on the internet. These are mostly necessary to make QR codes look nice, but the idea of creating a redirect can be incredibly powerful.

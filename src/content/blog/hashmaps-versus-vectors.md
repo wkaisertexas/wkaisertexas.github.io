@@ -5,7 +5,7 @@ pubDate: "April 19 2023"
 heroImage: "/blog/hashmaps-versus-vectors/hero.png"
 ---
 
-The inspiration for this piece was ThePrimeagen’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
+The inspiration for this piece was *ThePrimeagen*’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
 
 ## Problem
 
@@ -14,11 +14,11 @@ The inspiration for this piece was ThePrimeagen’s YouTube Video _This Algorith
 > A start-of-message marker is just like a start-of-packet marker, except it  
 > consists of 14 distinct characters rather than 4.
 
-This program is simple: find 14 distinct characters in a row from an input string. ThePrimeagen’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
+This program is simple: find 14 distinct characters in a row from an input string. *ThePrimeagen*’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
 
 ## Solution
 
-The initial solution ThePrimeagen presents uses a HashSet, a data structure which only holds unique values. The algorithm is simple: add 14 characters in a row and check the length of the set. If the set is smaller than 14, you must have added a duplicate.
+The initial solution *ThePrimeagen* presents uses a HashSet, a data structure which only holds unique values. The algorithm is simple: add 14 characters in a row and check the length of the set. If the set is smaller than 14, you must have added a duplicate.
 
 ```rust
 fn simple(i: &[u8]) -> usize {
@@ -224,7 +224,7 @@ Input size versus performance (measured in milliseconds per 1M searches)
 
 These tests are not perfect: far from it. For instance, I omitted insertions and resizes of vectors, some of the most intensive operations of each data structure.
 
-However, these tests do disprove the hope that I had after watching thePrimeagen\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
+However, these tests do disprove the hope that I had after watching *thePrimeagen*\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
 
 Though, through considerable oversimplification, you could come up with a number of roughly 20 for _Rust_ and _Javascript_, assuming this is a dangerous in the context of a high-stakes interview question. Put simply, stick to HashSets and HashMaps being magical O(1) data structures — it is harder to mess up this way.
 
