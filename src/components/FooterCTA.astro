@@ -1,0 +1,22 @@
+---
+type Props = {
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+};
+
+const { title, description, cta, href } = Astro.props;
+---
+
+<div class="flex flex-col justify-between">
+  <header>
+    <h3 class="text-xl font-bold py-4">{title}</h3>
+    <p class="text-lg pb-8 pr-4">{description}</p>
+  </header>
+
+  <a
+    class="font-bold w-min h-min text-white text-lg bg-emerald-600 hover:bg-black px-4 py-1 rounded-2xl shadow-sm shadow-orange-500"
+    href={href}>{cta}</a
+  >
+</div>

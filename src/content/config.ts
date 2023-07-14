@@ -14,6 +14,9 @@ const blog = defineCollection({
 			.string()
 			.optional()
 			.transform((str) => (str ? new Date(str) : undefined)),
+    display: z
+      .boolean()
+      .optional(),
 		heroImage: z.string().optional(),
 	}),
 });
@@ -36,6 +39,9 @@ const project = defineCollection({
 		builtWith: z
 			.array(z.string())
 			.optional(),
+    display: z
+      .boolean()
+      .optional(),
 	}),
 });
 

@@ -2,9 +2,75 @@
 <html lang="en">
   <head>
     <title>Looks like you did not find what you are looking for?</title>
+
+    <script>
+      import * as THREE from "three";
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true
+      });
+      renderer.setClearColor(0x1111dd, 0);
+
+      // find 
+      const dddView = document.getElementById("3d-view");
+
+      dddView.appendChild( renderer.domElement );
+
+      const controls = new OrbitControls( camera, renderer.domElement );
+      const loader = new GLTFLoader();
+
+      renderer.domElement.addEventListener('click', () => {
+        controls.lock();
+      });
+
+      loader.load(
+      '/scene.glb', 
+      function ( gltf: any ) {
+        scene.add( gltf.scene );
+        if (gltf.cameras.length > 0) {
+          let newCamera = gltf.cameras[0];
+          camera.fov = newCamera.fov;
+          camera.aspect = newCamera.aspect;
+
+          const width = dddView.clientWidth;
+          const height = dddView.clientHeight;
+          // renderer.setSize(10900, 2000 / newCamera.aspect);
+          renderer.setSize(width, width / newCamera.aspect);
+
+          // camera setup
+          camera.position.set(newCamera.position.x, newCamera.position.y, newCamera.position.z);
+          camera.rotation.setFromQuaternion(newCamera.quaternion);
+          camera.updateProjectionMatrix();
+          controls.update();
+        }else{
+          alert("No cameras in the scene!")
+        }
+
+        console.log("added new cached")
+      }, 
+      function (progress : any){
+        console.log( ( progress.loaded / progress.total * 100 ) + '% loaded' );
+      },
+      function ( error : any ) {
+        console.error( error );
+      });
+
+      function animate() {
+        requestAnimationFrame( animate );
+        controls.update();
+        renderer.render( scene, camera );
+      }
+      animate();
+    </script>
   </head>
   <body class="flex flex-col h-screen w-screen justify-center items-center">
-    <h1>Looks like you did not find what you are looking for?</h1>
-    <a class="underline" href="/">Want to go home?</a>
+    <div id="3d-view"></div>
+    <h1 class="text-lg font-bold">Did you find what you wanted?</h1>
+    <a class="underline py-4" href="/">Want to go home?</a>
   </body>
 </html>

@@ -15,3 +15,19 @@
 [data-highlighted="false"] {
   @apply opacity-50;
 }
+
+.std-main {
+  @apply col-span-3 lg:col-start-2 lg:p-0 px-4;
+}
+
+.std-body {
+ @apply grid w-screen lg:grid-cols-5 md:grid-cols-3; 
+}
+
+@tailwind base;
+
+@layer base {
+  html {
+    @apply text-gray-900;
+  }
+}

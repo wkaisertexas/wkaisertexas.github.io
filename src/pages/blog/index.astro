@@ -2,13 +2,20 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
+import { SITE_TITLE, BLOGS_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
+import '../../styles/global.css';
+import { EMAIL } from '../../consts';
+import FooterCTA from '../../components/FooterCTA.astro';
 
-import { Image } from '@astrojs/image/components';
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog'))
+.filter(
+  (post) => post.data.display !== false
+)
+.sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
@@ -16,39 +23,69 @@ const posts = (await getCollection('blog')).sort(
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`${SITE_TITLE}: blog`} description={BLOGS_DESCRIPTION} />
 	</head>
-	<body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
-		<main class="col-span-3 lg:col-start-2">
+	<body class="std-body">
+		<main class="std-main">
       <Header />
+      <div class="grid md:grid-cols-4">
+        <h1 class="text-4xl py-4 font-bold">Blog</h1>
+        <p class="text-lg pb-4 pr-4 row-start-2 col-span-2">A collection of my thoughts and ramblings. More ramblings than I would like to admit.</p>
+      </div>
+
+      <hr class="my-8 mb-16" />
 
 			<section>
-				<ul class="space-y-6 p-4">
-					{
-						posts.map((post) => (
-							<li class="p-4 border-black border-2 rounded-md shadow-md hover:shadow-lg hover:border-3 hover:translate-x-4">
-                <a class="flex justify-between" href={`blog/${post.slug}/`}>
-                  <div>
-                    <h2 class="font-bold text-lg" href={`/blog/${post.slug}/`}>{post.data.title}</h2>
-                    <p>{post.data.description}</p>
+				<ul class="space-y-16">
+          {
+            posts.map((post) => (
+              <li class="w-full">
+                <div class="grid md:grid-cols-4 pb-6">
+                  <a class="col-span-3 text-4xl font-medium pr-8" href={`blog/${post.slug}/`}>{post.data.title}</a>  
+                  <div class="text-xl pt-2 opacity-80">
                     <FormattedDate date={post.data.pubDate} />
                   </div>
+                </div>
+                <div class="grid md:grid-cols-4">
+                  <div class="pr-3 col-span-2">
+                    <p class="text-xl opacity-70 pb-4">{post.data.description}</p>
+                    <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
+                  </div>
 
-                  {
-                    <Image
-                      src={post.data.heroImage}
-                      alt={post.data.title}
-                      height={100}
-                      width={150}
-                    />
-                  }
-                </a>
-							</li>
-						))
-					}
+                  <div class="col-span-2 shadow-2xl">
+                    <img class="object-fill rounded-md" src={post.data.heroImage} alt={post.data.title}/>
+                  </div>
+                </div>
+              </li>
+            ))
+
+          }
 				</ul>
 			</section>
+
+      <hr class="my-8" />
+
+      <section class="mb-8 grid md:grid-cols-2">
+        <FooterCTA
+          title="Stay in touch"
+          description="Subscribe to my RSS feed to stay updated"
+          href="/feed.rss"
+          cta="RSS"
+        />
+        <FooterCTA
+          title="Have any questions"
+          description="Feel free to contact me! I will answer any and all inquires"
+          href={`mailto:${EMAIL}`}
+          cta="Email"
+        />
+      </section>
+
+      <hr class="my-8" />
+
       <Footer />
     </main>
 	</body>
 </html>
+
+
+<!-- <Image class="object-fill" src={post.data.heroImage} alt={post.data.title} width={400} aspectRatio="-1" /> -->

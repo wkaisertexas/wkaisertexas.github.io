@@ -1,67 +1,90 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import FooterCTA from "../components/FooterCTA.astro";
+import { EMAIL } from "../consts";
+import "../styles/global.css";
 
-import '../styles/global.css'
+import type { CollectionEntry } from "astro:content";
+import { Image } from '@astrojs/image/components';
 
-import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+type Props = CollectionEntry<"blog">["data"];
 
-type Props = CollectionEntry<'blog'>['data'];
-
-const { title, description, pubDate, updatedDate, heroImage, next, prev } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, next, prev } =
+  Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<GoogleAnalytics />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <GoogleAnalytics />
+  </head>
 
-  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
-    <main class="col-span-3 lg:col-start-2">
+  <body class="std-body">
+    <main class="std-main">
       <Header />
-			<article class="prose prose-xl">
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				<FormattedDate date={pubDate} />
-				{
-					updatedDate && (
-						<div class="last-updated-on">
-							Last updated on <FormattedDate date={updatedDate} />
-						</div>
-					)
-				}
-				<hr />
-				<slot />
-			</article>
+      <article class="prose lg:prose-xl 2xl:prose-2xl">
+        {heroImage && <Image class="rounded-md shadow-xl" width={1020} aspectRatio={16/9} src={heroImage} alt="header image" format="avif" />}
+        <h1 class="title">{title}</h1>
+        <FormattedDate date={pubDate} />
+        {
+          updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
+        <hr />
+        <slot />
+      </article>
+
+      <hr class="mt-4" />
+
+      <section class="grid md:grid-cols-2 my-4">
+        {
+          prev && (
+            <a
+              href={`/blog/${prev.slug}`}
+              class="rounded-md border-black border-2 p-2 m-2 hover:left-1"
+            >
+              <header class="text-gray-500">Previous post</header>
+              <h1 class="font-bold">{prev.data.title}</h1>
+            </a>
+          )
+        }
+
+        {
+          next && (
+            <a
+              href={`/blog/${next.slug}`}
+              class="text-right md:col-start-2 rounded-md border-black border-2 p-2 m-2 hover:right-1"
+            >
+              <header class="text-gray-500">Next post</header>
+              <h1 class="font-bold">{next.data.title}</h1>
+            </a>
+          )
+        }
+      </section>
 
       <hr />
-
-      <section class="grid grid-cols-2">
-        <!-- Read next -->
-        <div>
-          <header>Previous article</header>
-
-          {next && (<a href={`/blog/${next.slug}`}>{next.data.title}</a>)}
-        </div>
-        <div>
-          <header>Next article</header>
-          {prev && (<a href={`/blog/${prev.slug}`}>{prev.data.title}</a>)}
-        </div>
+      <section class="mb-8 grid md:grid-cols-3">
+        <FooterCTA
+          title="Stay in touch"
+          description="Subscribe to my RSS feed to stay updated"
+          href="/feed.rss"
+          cta="RSS"
+        />
+        <FooterCTA
+          title="Have any questions"
+          description="Feel free to contact me! I will answer any and all inquires"
+          href={`mailto:${EMAIL}`}
+          cta="Email"
+        />
       </section>
-
-      <section>
-        <!-- Double section between subscribing to RSS -->
-        <div>
-          Subscribe to rss
-
-          <a class="text-white bg-black p-2" href="/feed.rss">RSS</a>
-        </div>
-      </section>
-		<Footer/>
+      <Footer />
     </main>
-	</body>
+  </body>
 </html>

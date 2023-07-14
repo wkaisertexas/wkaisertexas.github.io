@@ -17,9 +17,10 @@ import ResumeItem from "../components/Item.astro";
 
 import { Icon } from "astro-icon";
 
-import '../styles/global.css';
+import "../styles/global.css";
 
-const projects = await getCollection("project");
+const projects = (await getCollection("project"))
+  .filter((project) => project.data.display !== false);
 const blog = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, NUM_BLOGS);
@@ -46,10 +47,6 @@ builtWith.keys = Object.keys(builtWith).sort(
 );
 builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
 
-function handlePress(){
-  alert("Fuck you");
-}
-
 // https://threejs.org/docs/#manual/en/introduction/Installation
 ---
 
@@ -59,98 +56,99 @@ function handlePress(){
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <script>
       import * as THREE from "three";
-      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-      const scene = new THREE.Scene({
-        antialias: true
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
       });
-      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-      const renderer = new THREE.WebGLRenderer();
       renderer.setClearColor(0x1111dd, 0);
 
-      // find 
       const dddView = document.getElementById("3d-view");
+      dddView.appendChild(renderer.domElement);
 
-      dddView.appendChild( renderer.domElement );
-
-      const controls = new OrbitControls( camera, renderer.domElement );
+      const controls = new OrbitControls(camera, renderer.domElement);
       const loader = new GLTFLoader();
 
-      renderer.domElement.addEventListener('click', () => {
+      renderer.domElement.addEventListener("click", () => {
         controls.lock();
       });
 
       loader.load(
-      '/scene.glb', 
-      function ( gltf: any ) {
-        scene.add( gltf.scene );
-        if (gltf.cameras.length > 0) {
-          let newCamera = gltf.cameras[0];
-          
-          // set the fov
-          camera.fov = newCamera.fov;
-          // set the aspect ratio
-          camera.aspect = newCamera.aspect;
+        "/scene.glb",
+        function (gltf: any) {
+          scene.add(gltf.scene);
+          if (gltf.cameras.length > 0) {
+            let newCamera = gltf.cameras[0];
 
-          // set the renderer size based on aspect ratio
+            camera.fov = newCamera.fov;
+            camera.aspect = newCamera.aspect;
 
-          // get the dimensions of the canvas 
-          // const canvas = renderer.domElement;
-          // const width = canvas.clientWidth;
-          // const height = canvas.clientHeight;
-          // get the dimensions of the parent element 
-          const width = dddView.clientWidth;
-          const height = dddView.clientHeight;
-          // renderer.setSize(10900, 2000 / newCamera.aspect);
-          renderer.setSize(width, width / newCamera.aspect);
+            const width = dddView.clientWidth;
+            const height = dddView.clientHeight;
+            renderer.setSize(width, width / newCamera.aspect);
 
-          // camera setup
-          camera.position.set(newCamera.position.x, newCamera.position.y, newCamera.position.z);
-          camera.rotation.setFromQuaternion(newCamera.quaternion);
-          camera.updateProjectionMatrix();
+            camera.position.set(
+              newCamera.position.x,
+              newCamera.position.y,
+              newCamera.position.z
+            );
+            camera.rotation.setFromQuaternion(newCamera.quaternion);
+            camera.updateProjectionMatrix();
 
-          // update the controls
-          controls.update();
-        }else{
-          alert("No cameras in the scene!")
+            controls.update();
+          } else {
+            alert("No cameras in the scene!");
+          }
+
+          console.log("added new cached");
+        },
+        function (progress: any) {
+          console.log((progress.loaded / progress.total) * 100 + "% loaded");
+        },
+        function (error: any) {
+          console.error(error);
         }
-
-        console.log("added new cached")
-      }, 
-      function (progress : any){
-        console.log( ( progress.loaded / progress.total * 100 ) + '% loaded' );
-      },
-      function ( error : any ) {
-        console.error( error );
-      });
+      );
 
       function animate() {
-        requestAnimationFrame( animate );
+        requestAnimationFrame(animate);
         controls.update();
-        renderer.render( scene, camera );
+        renderer.render(scene, camera);
       }
       animate();
     </script>
   </head>
-  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
-    <!-- Center the website -->
-    <main class="col-span-3 lg:col-start-2 lg:p-0 px-4">
+  <body class="std-body">
+    <main class="std-main">
       <Header title={SITE_TITLE} />
 
-      <!-- <object type="image/svg+xml" data="handwritten_intro.svg" id="canvas" width="100%" height="auto"></object> -->
-      <section class="col-span-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div class="flex flex-col justify-center">
+      <section
+        class="col-span-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <div class="flex flex-col justify-center py-5">
           <img
             src="handwritten_intro.svg"
             id="intro"
+            class="py-4"
             alt="Handwritten"
             width="100%"
             height="auto"
           />
 
-          <p>Computer science student insterested in Human-Computer Interfaces and Artifical Inteligence. Enjoy building projects and writing educational blogs </p>
+          <p>
+            Computer science student insterested in Human-Computer Interfaces
+            and Artifical Inteligence. Enjoy building projects and writing
+            educational blogs
+          </p>
         </div>
         <div id="3d-view" class="lg:col-span-2"></div>
       </section>
@@ -159,14 +157,16 @@ function handlePress(){
         <h2 class="section">💪 Experience</h2>
 
         <ul class="space-y-4">
-          <ResumeItem 
+          <ResumeItem
             title="Valedor Partners"
             description="Data Science Intern"
+            href="https://valedorpartners.com/"
             src="/logos/valedor.jpeg"
           />
-          <ResumeItem 
+          <ResumeItem
             title="University of Virginia, School of Data Science"
             description="Research Assistant"
+            href="https://datascience.virginia.edu/"
             src="/logos/uva_datascience.svg"
           />
         </ul>
@@ -175,55 +175,56 @@ function handlePress(){
         <h2 class="section">📚 Education</h2>
 
         <ul class="space-y-4">
-          <ResumeItem 
-            title="University of Virginia"
-            description="School of Engineering and Applied Science"
+          <ResumeItem
+            title="University of Virginia, School of Engineering and Applied Science"
+            description="Bachelor of Science in Computer Science, Minor in Data Science — 3.9 GPA"
+            href="https://engineering.virginia.edu/"
             src="/logos/uva.svg"
           />
           <ResumeItem
             title="The Academy of Science and Technology @ The Woodlands College Park High School"
-            description="More stuff about this"
+            description="STEM Magnet Program — 5.29 W GPA, Summa Cum Laude"
+            href="https://cpast.conroeisd.net"
             src="/logos/ast.jpeg"
           />
         </ul>
       </section>
       <section>
         <header>
-          <h2 class="font-medium text-3xl py-6">✅ Projects</h2>
+          <h2 class="section">✅ Projects</h2>
         </header>
 
-        <div class="grid grid-cols-3">
+        <div class="grid md:grid-cols-3">
           <!--Allow project filtering by languages, compute the mode of each languages-->
-      
+
           <div>
             <script id="new">
               function handlePress(event) {
                 let languages = document.getElementById("languages");
                 let projects = document.getElementById("projects");
+ 
+                if (event.target.getAttribute("data-highlighted") === "true") {
+                  let sum = 0;
 
-                if(languages.childNodes.length === 0){
-                 alert("stuff is not showing up");
-                  return;
-                }
-                // if the button is alreday highlighted and nothing else is, highlight all buttons
-                if(event.target.getAttribute("data-highlighted") === "true"){
-                 let sum = 0;
-                 
-                 for(let i = 0; i < languages.childNodes.length; i++){
-                  if(languages.childNodes[i].getAttribute("data-highlighted") === "true"){
-                    if(languages.childNodes[i].id !== event.target.id){
-                      sum += 1;
-                    }  
+                  for (let i = 0; i < languages.childNodes.length; i++) {
+                    if (
+                      languages.childNodes[i].getAttribute(
+                        "data-highlighted"
+                      ) === "true"
+                    ) {
+                      if (languages.childNodes[i].id !== event.target.id) {
+                        sum += 1;
+                      }
+                    }
                   }
-                 } 
 
-                  if(sum === 0){
+                  if (sum === 0) {
                     languages.childNodes.forEach((child) => {
                       child.setAttribute("data-highlighted", "true");
                     });
 
                     projects.childNodes.forEach((child) => {
-                      child.setAttribute("data-highlighted", "true")
+                      child.setAttribute("data-highlighted", "true");
                     });
                     return;
                   }
@@ -240,57 +241,86 @@ function handlePress(){
                 projects.childNodes.forEach((child) => {
                   child.getAttribute("data-technologies").includes(pressed.id)
                     ? child.setAttribute("data-highlighted", "true")
-                    : child.setAttribute("data-highlighted", "false")
-                })
+                    : child.setAttribute("data-highlighted", "false");
+                });
               }
             </script>
-            <div id="languages" class="grid grid-cols-2 text-lg">
-            {
-              builtWith.keys.map(
-                (language) => <button id={language} onclick="handlePress(event)" data-highlighted="true">{language}</button>
-              )
-            }
+            <p class="text-lg pt-4 pr-4">
+              Filter my projects by langauge, library or framework used to build
+              them
+            </p>
+            <div id="languages" class="flex flex-row md:flex-col justify-between text-lg">
+              {
+                builtWith.keys.map((language) => (
+                  <button
+                    class="underline"
+                    id={language}
+                    onclick="handlePress(event)"
+                    data-highlighted="true"
+                  >
+                    {language}
+                  </button>
+                ))
+              }
             </div>
           </div>
-          <ul id="projects" class="grid grid-cols-2 col-span-2">
+          <ul id="projects" class="grid md:grid-cols-2 col-span-2">
             {
               projects.map((project) => (
-                <li 
-                  class="group p-2 hover:border-2 hover:shadow-sm rounded-md m-1"
-                  onclick={`/projects/${project.slug}`}
-                  data-technologies={project.data.builtWith && project.data.builtWith.join(',')}
+                <li
+                  class="group pr-4 p-2 hover:border-2 hover:shadow-sm rounded-md m-1"
+                  data-technologies={
+                    project.data.builtWith && project.data.builtWith.join(",")
+                  }
                   data-highlighted="true"
-                  >
-                  <h3 class="text-lg">{project.data.title}</h3>
-                  <p class="hidden group-hover:block">{project.data.description}</p>
+                >
+                  <a href={`/project/${project.slug}`}>
+                    <h3 class="text-lg font-bold">
+                      {project.data.title}
+                    </h3>
+                    <p class="">
+                      {project.data.description}
+                    </p>
+                  </a>
                 </li>
               ))
             }
           </ul>
-      </div>
+        </div>
       </section>
 
       <section>
         <header class="flex justify-between items-center">
-          <h2 class="section">📝 Blog</h2>      
-          <a class="flex hover:underline hover:translate-y-1" href="/blog">More articles<Icon class="w-6" pack="ion" name="arrow-forward-sharp" /></a>
+          <h2 class="section">📝 Blog</h2>
+          <a class="flex group" href="/blog"
+            >More articles<Icon
+              class="w-6 group-hover:translate-x-1"
+              pack="ion"
+              name="arrow-forward-sharp"
+            /></a
+          >
         </header>
-        <div class="grid grid-cols-3">
-          <div class="self-center">I write sometimes. Mostly about technology</div>
-          <ul class="col-span-2 grid grid-cols-2">
+        <div class="grid md:grid-cols-3">
+          <div class="self-center pr-4 text-lg mb-8">
+            I occasionally like to write blog articles. Check them out!
+          </div>
+          <ul class="md:col-span-2 grid md:grid-cols-2">
             {
               blog.map((post) => (
                 <li>
-                  <h3 class="text-lg">{post.data.title}</h3>
-                  <FormattedDate date={post.data.pubDate} />
+                  <a href={`/blog/${post.slug}`}>
+                    <h3 class="pr-4 text-lg font-bold">{post.data.title}</h3>
+                    <div class="opacity-80">
+                      <FormattedDate date={post.data.pubDate} />
+                    </div>
+                  </a>
                 </li>
               ))
             }
           </ul>
-      </div>
+        </div>
       </section>
       <Footer />
     </main>
-    
   </body>
 </html>

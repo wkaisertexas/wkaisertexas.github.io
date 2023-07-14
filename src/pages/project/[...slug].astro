@@ -3,7 +3,10 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import Project from '../../layouts/Project.astro';
 
 export async function getStaticPaths() {
-	const projects = await getCollection('project');
+	let projects = await getCollection('project');
+
+  projects = projects.filter((project) => project.data.display !== false);
+
 	return projects.map((project) => ({
 		params: { slug: project.slug },
 		props: project,
@@ -16,6 +19,5 @@ const { Content } = await project.render();
 ---
 
 <Project {...project.data}>
-	<h1>{project.data.title}</h1>
 	<Content />
 </Project>

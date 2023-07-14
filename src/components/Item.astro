@@ -5,15 +5,25 @@ type Props = {
   title: string;
   description: string;
   src: string;
+  href?: string;
 };
 
-const { title, description, src } = Astro.props;
+const { title, description, src, href } = Astro.props;
 ---
-
+{ href ?
+<a href={href} class="flex flex-row space-x-6">
+  <Image src={src} alt={title} width={108} height={108} format="avif" />
+  <div>
+    <h3 class="font-bold text-xl">{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>
+:
 <li class="flex flex-row space-x-6">
-  <Image src={src} alt={title} width={72} aspectRatio={1} />
+  <Image src={src} alt={title} width={108} height={108} format="avif" />
   <div>
     <h3 class="font-bold text-xl">{title}</h3>
     <p>{description}</p>
   </div>
 </li>
+}

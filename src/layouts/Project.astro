@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Icon } from 'astro-icon';
 
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import FooterCTA from '../components/FooterCTA.astro';
 
 type Props = CollectionEntry<'project'>['data'];
 
-const { title, description} = Astro.props;
+const { title, description, repository, website, builtWith} = Astro.props;
 ---
 
 <html lang="en">
@@ -17,13 +19,41 @@ const { title, description} = Astro.props;
 		<GoogleAnalytics />
 	</head>
 
-  <body class="grid w-screen lg:grid-cols-5 md:grid-cols-3">
-		<main class="col-span-3 lg:col-start-2">
+  <body class="std-body">
+		<main class="std-main">
       <Header />
-			<article>
+			<article class="prose lg:prose-xl">
+        <h1>{title}</h1>
+        <div class="flex justify-between items-center">
+          <p>{description}</p>
+          {builtWith && (<p>{builtWith.join(", ")}</p>)}
+          <div class="flex justify-end space-x-2">
+
+            {website && (<a href={website}><Icon class="w-8" pack="mdi" name="web" /></a>)}
+            {repository && (<a href={repository}><Icon class="w-8" pack="cib" name="github" /></a>)}
+          </div>
+        </div>
 				<hr />
 				<slot />
 			</article>
+
+      <section class="mb-8 grid md:grid-cols-3">
+        {repository && (<FooterCTA
+          title="Show me the repo"
+          description="This project is fully open-source, check out the repository"
+          href={repository}
+          cta="GitHub"
+        />)}
+
+        {website && (<FooterCTA
+          title="Show me it working"
+          description="The website is live, check it out"
+          href={website}
+          cta="Website"
+        />)}
+        
+      </section>
+
       <Footer /> 
 		</main>
   </body>

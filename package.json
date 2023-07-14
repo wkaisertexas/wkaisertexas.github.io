@@ -25,6 +25,7 @@
   "devDependencies": {
     "@astrojs/partytown": "^1.2.3",
     "@astrolib/analytics": "^0.3.0",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "astro-compress": "1.1.49"
   }
 }
