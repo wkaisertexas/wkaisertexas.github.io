@@ -26,16 +26,21 @@ const { title, description, repository, website, builtWith} = Astro.props;
         <h1>{title}</h1>
         <div class="flex justify-between items-center">
           <p>{description}</p>
-          {builtWith && (<p>{builtWith.join(", ")}</p>)}
+ 
           <div class="flex justify-end space-x-2">
 
             {website && (<a href={website}><Icon class="w-8" pack="mdi" name="web" /></a>)}
             {repository && (<a href={repository}><Icon class="w-8" pack="cib" name="github" /></a>)}
           </div>
         </div>
-				<hr />
+
+        {builtWith && (<p>{builtWith.join(", ")}</p>)}
+				
+        <hr />
 				<slot />
 			</article>
+
+      <hr class="my-4"/>
 
       <section class="mb-8 grid md:grid-cols-3">
         {repository && (<FooterCTA
@@ -53,6 +58,8 @@ const { title, description, repository, website, builtWith} = Astro.props;
         />)}
         
       </section>
+
+      <hr class="my-4" />
 
       <Footer /> 
 		</main>
