@@ -5,20 +5,20 @@ import { SITE_TITLE, LINKEDIN, GITHUB } from '../consts';
 import { Icon } from 'astro-icon';
 ---
 
-<header class="sm:flex justify-between items-center py-4">
-  <div class="md:flex md:space-x-2 items-center">
+<header class="flex justify-between items-end py-4">
+  <div class="md:flex items-center space-x-2">
     <h2 class="text-lg font-bold">
       <a href="/">{SITE_TITLE}</a>
     </h2>
-    <nav class="text-md md:space-x-2">
+    <nav class="text-md space-x-2 pt-1">
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/project">Projects</HeaderLink>
     </nav>
   </div>
   <div class="space-x-2 flex flex-row">
-    <HeaderLink href="mailto:wkaisertexas@gmail.com">Contact</HeaderLink>
-    <HeaderLink href="/feed.rss"><Icon class="w-6 md:w-8" pack="ph" name="rss"/></HeaderLink>
-    <HeaderLink href={LINKEDIN} target="_blank"><Icon class="w-6 md:w-8" pack="cib" name="linkedin"/></HeaderLink>
-    <HeaderLink href={GITHUB} target="_blank"><Icon class="w-6 md:w-8" pack="cib" name="github"/></HeaderLink>
+    <!-- <HeaderLink href="mailto:wkaisertexas@gmail.com">Contact</HeaderLink> -->
+    <!-- <HeaderLink href="/feed.rss"><Icon class="w-6 md:w-8" pack="ph" name="rss"/></HeaderLink> -->
+    <!-- <HeaderLink href={LINKEDIN} target="_blank"><Icon class="w-6 md:w-8" pack="cib" name="linkedin"/></HeaderLink> -->
+    <HeaderLink href={GITHUB} aria-label="Go to GitHub Profile" target="_blank"><Icon class="w-6 md:w-8" pack="cib" name="github"/></HeaderLink>
   </div>
 </header>
