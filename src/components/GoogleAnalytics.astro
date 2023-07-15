@@ -1,7 +1,5 @@
 ---
 import { GOOGLE_ANALYTICS_ID } from "../consts";
-
-const isProduction = process.env.NODE_ENV === "production";
 ---
 
 <script
@@ -9,12 +7,10 @@ const isProduction = process.env.NODE_ENV === "production";
   src=`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`
 ></script>
 <script type="text/partytown">
-  if (!isProduction) {
 	window.dataLayer = window.dataLayer || [];
 	function gtag() {
 		dataLayer.push(arguments);
 	}
 	gtag("js", new Date());
 	gtag("config", GOOGLE_ANALYTICS_ID);
-  }
 </script>
