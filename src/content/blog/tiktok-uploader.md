@@ -1,11 +1,9 @@
 ---
 title: "Automate TikTok posting with a single Command"
-description: "Selenium + cookie hacking"
+description: "TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command."
 pubDate: "Feb 24 2023"
 heroImage: "/blog/tiktok-uploader/hero.png"
 ---
-
-## Introduction
 
 TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command.
 

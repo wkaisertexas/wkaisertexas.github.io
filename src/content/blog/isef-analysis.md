@@ -1,6 +1,6 @@
 ---
 title: "Behind The Innovation: Insights from the International Science and Engineering Fair"
-description: "Top-Science Fair competitors win hundreds of thousands each. Using data to demystify strategies behind these projects"
+description: "Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data."
 pubDate: "May 23 2023"
 heroImage: "/blog/isef-analysis/hero.png"
 ---

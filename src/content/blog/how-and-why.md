@@ -52,7 +52,7 @@ The Markdown file format (`.md`) and the older brother, `.mdx` are perhaps the m
 
 Perhaps a niche concern for some, centralized analytics is a large concern for me. Multi-platform publishing on the internet is chaotic and figuring out what projects are doing well is incredibly hard to figure out and keep track.
 
-Personally, I use Google's [Looker Studio](https://lookerstudio.google.com) to have a weekly scheduled report to about anything published. Though integrations to YouTube analytics and more exist, most blogging sites do not have easy analytics connections. Going all-in on Google Analytics on the site to have a centralized map of where things are published is a great way to learn more about what you creating and the impact it has (my intention is to write a seperate post about how I have setup looker studio and how to make custom integrations).
+Personally, I use Google's [Looker Studio](https://lookerstudio.google.com) to have a weekly scheduled report to about anything published. Though integrations to YouTube analytics and more exist, most blogging sites do not have easy analytics connections. Going all-in on Google Analytics on the site to have a centralized map of where things are published is a great way to learn more about what you creating and the impact it has (my intention is to write a separate post about how I have setup looker studio and how to make custom integrations).
 
 ![Looker studio setup monitoring personal report](/blog/how-and-why/looker-studio.png)
 
@@ -66,12 +66,12 @@ A million static site generators exist. Hugo, Jekyll, Gatsby and more all serve 
 
 Markdown alone is insufficient to display a website. Each article needs some structured data (title, hero image, published date, etc.). As a result, static site generators have developed prop-scripting languages for defining custom templates. [Hugo](https://gohugo.io) uses a `{{}}` double curly brace syntax for variables. 
 
-```hugo
+```
 {{ .Title }}
 {{ add 1 2 }}
 ```
 
-Astro uses a React-like syntax to define templates makes learning Astro incredibly transferable as a skill. Custom functions and loops are very familar in a react-like paradigm. If a custom function is required, writing is incredibly easy. 
+Astro uses a React-like syntax to define templates makes learning Astro incredibly transferable as a skill. Custom functions and loops are very familiar in a react-like paradigm. If a custom function is required, writing is incredibly easy. 
 
 ```javascript
 ---

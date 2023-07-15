@@ -1,8 +1,8 @@
 ---
 title: "Take 15 minutes to become a Markdown great"
-description: "Use markdown to become a better communicator"
+description: "On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials."
 pubDate: "May 7 2023"
-heroImage: "/great-markdown/hero.png"
+heroImage: "/blog/great-markdown/hero.png"
 ---
 
 On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials.

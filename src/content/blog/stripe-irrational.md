@@ -1,6 +1,6 @@
 ---
 title: "Stripe's design is irrationally good"
-description: "Developer obsession is irrational, yet brilliant for an API company"
+description: "Stripe is unworthy of its design. However, Stripe’s excellence reveals a lesson about the keys to power in software sales."
 pubDate: "May 1 2023"
 heroImage: "/blog/stripe-irrational/hero.png"
 ---
