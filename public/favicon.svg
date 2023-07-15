@@ -1,13 +1,8 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_319_5)">
-<rect width="128" height="128" fill="white"/>
+<rect width="128" height="128"/>
 <ellipse cx="35" cy="71.5" rx="11" ry="52.5" fill="#CC1A3B"/>
 <ellipse cx="78.0588" cy="96.0429" rx="11" ry="36.7073" transform="rotate(-37.2087 78.0588 96.0429)" fill="#969D96"/>
 <ellipse cx="64.0655" cy="52.3858" rx="11" ry="42.3584" transform="rotate(45.8782 64.0655 52.3858)" fill="#4D5572"/>
 </g>
-<defs>
-<clipPath id="clip0_319_5">
-<rect width="128" height="128" fill="white"/>
-</clipPath>
-</defs>
 </svg>
