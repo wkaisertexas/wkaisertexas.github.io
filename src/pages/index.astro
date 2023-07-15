@@ -96,12 +96,19 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
             const height = dddView.clientHeight;
             renderer.setSize(width, width / newCamera.aspect);
 
-            camera.position.set(
-              newCamera.position.x,
-              newCamera.position.y,
-              newCamera.position.z
-            );
+            // camera.position.set(
+            //   newCamera.position.x,
+            //   newCamera.position.y,
+            //   newCamera.position.z
+            // );
             camera.rotation.setFromQuaternion(newCamera.quaternion);
+
+
+            camera.position.set(
+              newCamera.position.x * 1.15, // todo: be more sketch of this line of code
+              newCamera.position.y * 1.15,
+              newCamera.position.z* 1.15
+            );            
             camera.updateProjectionMatrix();
 
             controls.update();
@@ -147,7 +154,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
           <p>
             Computer science student insterested in Human-Computer Interfaces
             and Artifical Inteligence. Enjoy building projects and writing
-            educational blogs
+            informational blogs
           </p>
         </div>
         <div id="3d-view" class="lg:col-span-2"></div>
@@ -247,9 +254,9 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
             </script>
             <p class="text-lg pt-4 pr-4">
               Filter my projects by langauge, library or framework used to build
-              them
+              them.
             </p>
-            <div id="languages" class="flex flex-row md:flex-col justify-between text-lg">
+            <div id="languages" class="flex flex-wrap md:flex-col justify-between space-x-2 space-y-2 text-lg">
               {
                 builtWith.keys.map((language) => (
                   <button
@@ -268,7 +275,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
             {
               projects.map((project) => (
                 <li
-                  class="group pr-4 p-2 hover:border-2 hover:shadow-sm rounded-md m-1"
+                  class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1"
                   data-technologies={
                     project.data.builtWith && project.data.builtWith.join(",")
                   }
