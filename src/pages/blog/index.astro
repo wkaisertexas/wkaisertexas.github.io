@@ -43,7 +43,7 @@ const posts = (await getCollection('blog'))
             posts.map((post) => (
               <li class="w-full">
                 <div class="grid md:grid-cols-4 pb-6">
-                  <a class="col-span-3 text-4xl font-medium pr-8" href={`blog/${post.slug}/`}>{post.data.title}</a>  
+                  <a class="col-span-3 text-4xl font-medium pr-8" href={`/blog/${post.slug}/`}>{post.data.title}</a>  
                   <div class="text-xl pt-2 opacity-80">
                     <FormattedDate date={post.data.pubDate} />
                   </div>
@@ -51,7 +51,7 @@ const posts = (await getCollection('blog'))
                 <div class="grid md:grid-cols-4">
                   <div class="pr-6 col-span-2">
                     <p class="text-xl opacity-70 pb-4">{post.data.description}</p>
-                    <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
+                    <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`/blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
                   </div>
 
                   <div class="col-span-2 shadow-2xl">
