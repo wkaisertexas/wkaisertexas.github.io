@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, PROJECTS_DESCRIPTION } from "../../consts";
 import "../../styles/global.css";
+import GoogleAnalytics from "../../components/GoogleAnalytics.astro";
 
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
@@ -20,6 +21,7 @@ const projects = (await getCollection("project")).filter(
       title={`${SITE_TITLE} | Projects`}
       description={PROJECTS_DESCRIPTION}
     />
+    <GoogleAnalytics />
   </head>
   <body class="std-body">
     <main class="std-main">

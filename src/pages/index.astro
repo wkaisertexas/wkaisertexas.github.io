@@ -10,6 +10,7 @@ import {
 } from "../consts";
 
 import FormattedDate from "../components/FormattedDate.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 
 import { getCollection } from "astro:content";
 
@@ -54,6 +55,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <GoogleAnalytics />
     <script>
       import * as THREE from "three";
       import { OrbitControls } from "three/addons/controls/OrbitControls.js";

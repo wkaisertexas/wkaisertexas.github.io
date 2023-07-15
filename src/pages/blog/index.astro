@@ -7,6 +7,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import '../../styles/global.css';
 import { EMAIL } from '../../consts';
 import FooterCTA from '../../components/FooterCTA.astro';
+import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
 
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon';
@@ -24,6 +25,7 @@ const posts = (await getCollection('blog'))
 <html lang="en">
 	<head>
 		<BaseHead title={`${SITE_TITLE}: blog`} description={BLOGS_DESCRIPTION} />
+    <GoogleAnalytics />
 	</head>
 	<body class="std-body">
 		<main class="std-main">
