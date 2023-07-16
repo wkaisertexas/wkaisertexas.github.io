@@ -118,3 +118,4 @@ When looking at alternatives like [Vercel](https://vercel.com) and [Netlify](htt
 
 # Conclusion 
 
+**Astro JS** is a great choice for a personal blog. Though making your blog is not necessary, greater flexibility and control in terms of code, images, deployment solutions and analytics made this decision right. Unlike React, NextJS or other frameworks, **Astro**'s static-site generation, the most atomic form of deployment providing greater security and durability to platform changes. People who like to tinker and write would do well to try Astro.
