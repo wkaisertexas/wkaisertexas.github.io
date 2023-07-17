@@ -98,11 +98,6 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
             const height = dddView.clientHeight;
             renderer.setSize(width, width / newCamera.aspect);
 
-            // camera.position.set(
-            //   newCamera.position.x,
-            //   newCamera.position.y,
-            //   newCamera.position.z
-            // );
             camera.rotation.setFromQuaternion(newCamera.quaternion);
 
 
@@ -316,9 +311,9 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
           <ul class="md:col-span-2 grid md:grid-cols-2">
             {
               blog.map((post) => (
-                <li>
+                <li class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1">
                   <a href={`/blog/${post.slug}`}>
-                    <h3 class="pr-4 text-lg font-bold">{post.data.title}</h3>
+                    <h3 class="text-lg font-bold">{post.data.title}</h3>
                     <div class="opacity-80">
                       <FormattedDate date={post.data.pubDate} />
                     </div>
