@@ -30,11 +30,11 @@ const { title, description, repository, website, builtWith} = Astro.props;
           <div class="flex justify-end space-x-2">
 
             {website && (<a href={website}><Icon class="w-8" pack="mdi" name="web" /></a>)}
-            {repository && (<a href={repository}><Icon class="w-8" pack="cib" name="github" /></a>)}
+            {repository && (<a href={repository}><Icon class="w-8" pack="cib" name="git" /></a>)}
           </div>
         </div>
 
-        {builtWith && (<p>{builtWith.join(", ")}</p>)}
+        {builtWith && (<p class="text-emerald-600">{builtWith.join(", ")}</p>)}
 				
         <hr />
 				<slot />

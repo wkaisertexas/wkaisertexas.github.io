@@ -41,7 +41,7 @@ const projects = (await getCollection("project")).filter(
         <ul class="grid md:grid-cols-2 sm:grid-cols-2 space-y-4">
           {
             projects.map((project) => (
-              <li class="m-2 p-2 border-2 border-black hover:shadow-xl hover:border-emerald-600 rounded-md shadow-md hover:translate-x-1 ">
+              <li class="p-2 hover:border-2 mr-4 -ml-2 m-2 border-2 border-black hover:shadow-xl hover:border-emerald-600 rounded-md shadow-md hover:translate-x-1 ">
                 <a href={`/project/${project.slug}`}>
                   <div>
                     <header>
@@ -60,7 +60,7 @@ const projects = (await getCollection("project")).filter(
                           {project.data.repository && (
                             <li>
                               <a target="_blank" href={project.data.repository}>
-                                <Icon class="w-8" pack="cib" name="github" />
+                                <Icon class="w-8" pack="cib" name="git" />
                               </a>
                             </li>
                           )}
