@@ -106,11 +106,11 @@ npm install left-pad
 
 ## 9. Direct Links to Images
 
-I recently wrote [Behind the Innovation: Insights Between The International Science and Engineering Fair (ISEF)](/blog/isef-analysis) which uses programmatically created graphs. On no other platform, can I have a like to an external image not get reuploaded to the native CDN and recompiled to whatever format the platform finds preferable. Instead, a direct link exists to each graph created and when there is a new year, the article can be programatically updated. 
+I recently wrote [Behind the Innovation: Insights Between The International Science and Engineering Fair (ISEF)](/blog/isef-analysis) which uses programmatically created graphs. On no other platform, can I have a like to an external image not get reuploaded to the native CDN and recompiled to whatever format the platform finds preferable. Instead, a direct link exists to each graph created and when there is a new year, the article can be programmatically updated. 
 
 Though minor in nature, tools like this make fighting information decay significantly easier as an individual. 
 
-## 10. Don't get fucked by vendors
+## 10. Don't get f**ked by vendors
 
 Platform changes have a tendency to screw over members, the cycle of venture capitalists burning money trying to get everyone on board at the party until someone does the math and decides that companies sort of have to make money is all too common. Rip. Heroku. 
 
