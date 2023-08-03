@@ -14,7 +14,7 @@ Writing is a deceptively egalitarian pursuit. Anyone can do it. Few do it well, 
 
 There is an extent to which school has failed writers. When grading the immense amounts of papers, the heuristic that longer tends to be better generally holds. The SAT Essay section found this when [MIT's Dr. Les Perelman found shorter essay evaluations predictive of longer scores](https://www.nytimes.com/2005/05/04/education/sat-essay-test-rewards-length-and-ignores-errors.html). As a result, brevity is not emphasized. Formal education has little alternative, so rather than being a critique, becoming a better writer is something we should be cognizant.
 
-> "If I had more time, I would have written a shorter letter" 
+> If I had more time, I would have written a shorter letter
 > - Lincoln
 
 # Why not use a prebuilt solution?
@@ -97,7 +97,7 @@ Building this blog, two tools in particular:
 
 ## 8. Good Enough Build Speeds
 
-Hugo's advertizement of "millisecond build speeds" is incredibly stupid. Astro is fast enough, building my entire blog, including reenconding images to web-optimized formats. 
+Hugo's advertizement of "millisecond build speeds" is incredibly stupid. Astro is fast enough, building my entire blog, including re-encoding images to web-optimized formats. 
 
 
 ```console
