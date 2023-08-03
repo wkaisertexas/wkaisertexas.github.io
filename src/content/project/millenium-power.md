@@ -2,7 +2,6 @@
 title: "⚡️ Millennium Power"
 description: "HooHacks 2023 Submission -- Environmentally focused game designed to explain power complexity management"
 repository: "https://github.com/wkaisertexas/HooHacks2023"
-website: "https://milleniumpower.firebase.com" 
 builtWith: ['nextjs', 'react', 'firebase']
 display: true
 ---

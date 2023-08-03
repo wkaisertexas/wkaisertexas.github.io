@@ -22,7 +22,9 @@ import "../styles/global.css";
 
 const projects = (await getCollection("project"))
   .filter((project) => project.data.display !== false);
+
 const blog = (await getCollection("blog"))
+  .filter((blog) => blog.data.display !== false)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, NUM_BLOGS);
 
