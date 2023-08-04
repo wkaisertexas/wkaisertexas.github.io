@@ -19,15 +19,15 @@ const { title, description, pubDate, updatedDate, heroImage, next, prev } =
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={heroImage} />
     <GoogleAnalytics />
   </head>
 
   <body class="std-body">
     <main class="std-main">
-      <Header />
-      <article class="prose lg:prose-xl 2xl:prose-2xl">
-        {heroImage && <Image class="rounded-md shadow-xl" width={1320} aspectRatio={16 / 9} src={heroImage} alt="header image" format="avif" />}
+      <Header /> 
+     <article class="prose lg:prose-xl 2xl:prose-2xl">
+        {heroImage && <Image class="object-cover rounded-md shadow-xl" width={1320} aspectRatio={16 / 9} src={heroImage} alt="header image" format="avif" />}
         <h1 class="title">{title}</h1>
         <FormattedDate date={pubDate} />
         {
