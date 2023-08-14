@@ -26,8 +26,8 @@ const { title, description, pubDate, updatedDate, heroImage, next, prev } =
   <body class="std-body">
     <main class="std-main">
       <Header /> 
-     <article class="prose lg:prose-xl 2xl:prose-2xl">
-        {heroImage && <Image class="object-cover rounded-md shadow-xl" width={1320} aspectRatio={16 / 9} src={heroImage} alt="header image" format="avif" />}
+     <article class="prose lg:prose-xl">
+        {heroImage && <Image class="object-cover rounded-md shadow-xl" width={16 * 9} aspectRatio={16 / 9} src={heroImage} alt="header image" format="avif" />}
         <h1 class="title">{title}</h1>
         <FormattedDate date={pubDate} />
         {
