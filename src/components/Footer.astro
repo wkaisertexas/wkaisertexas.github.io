@@ -5,10 +5,10 @@ import { EMAIL, LINKEDIN, INSTAGRAM } from "../consts";
 const today = new Date();
 ---
 
-<footer class="md:flex justify-between py-4">
+<footer class="md:flex justify-between py-4 space-y-2">
   <p>&copy; {today.getFullYear()} William Kaiser. All rights reserved.</p>
   
-  <ul class="flex md:flex-row space-x-2">
+  <ul class="flex md:flex-row space-x-4 md:space-x-2">
     <li><a aria-label="Subscribe to my RSS feed" href="/feed.rss" target="_blank"><Icon class="w-6" pack="ph" name="rss"/></a></li>
     <li><a aria-label="Send me an email" href={`mailto:${EMAIL}`} target="_blank"><Icon class="w-6" pack="charm" name="mail"/></a></li>
     <li><a aria-label="Personal Instagram" href={INSTAGRAM} target="_blank"><Icon class="w-6" pack="cib" name="instagram"/></a></li>
