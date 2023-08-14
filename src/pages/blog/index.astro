@@ -54,9 +54,9 @@ const posts = (await getCollection('blog'))
                     <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`/blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
                   </div>
 
-                  <div class="col-span-2">
+                  <a href={`/blog/${post.slug}/`} class="col-span-2" >
                     <img class="object-fill rounded-md shadow-2xl" src={post.data.heroImage} alt={post.data.title}/>
-                  </div>
+                  </a>
                 </div>
               </li>
             ))
