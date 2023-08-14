@@ -50,12 +50,12 @@ const posts = (await getCollection('blog'))
                 </div>
                 <div class="grid md:grid-cols-4">
                   <div class="pr-6 col-span-2">
-                    <p class="text-md opacity-70 pb-4">{post.data.description}</p>
+                    <p class="text-md lg:text-lg opacity-70 pb-4">{post.data.description}</p>
                     <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`/blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
                   </div>
 
                   <a href={`/blog/${post.slug}/`} class="col-span-2" >
-                    <img class="object-fill rounded-md shadow-2xl" src={post.data.heroImage} alt={post.data.title}/>
+                    <img class="object-scale-down rounded-md shadow-2xl" src={post.data.heroImage} alt={post.data.title}/>
                   </a>
                 </div>
               </li>
