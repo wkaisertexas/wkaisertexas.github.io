@@ -8,11 +8,9 @@ display: true
 
 # Context and scope
 
-
+Timelapse is a iOS and MacOS application for creating screen and camera time-lapsed videos built off a slower-than-realtime ScreenCaptureKit Recording Engine.
 
 # Goals and non-goals
-
-Timelapse is a iOS and MacOS application for creating screen adn camera timelapsed applications built off a slower-than-realtime recording engine.
 
 Color accurate, slower-than realtime recording without any editing, post-processing or composition tool.
 
@@ -22,6 +20,7 @@ Both the Menu-bar MacOS app and iOS app are simple which only allows screen and 
 
 # APIs
 
+Standard Model, View, View-Model setup.
 
 # Data Storage
 

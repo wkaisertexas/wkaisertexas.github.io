@@ -7,7 +7,7 @@ builtWith: ['python', 'django']
 
 # Context and scope
 
-While running *College Park High School*'s Science Bowl team. I wanted to A / B test either a Remind or website for the most effective poster landing page. There already existed a great article by *Teaching Statistics is Awesome* on creating a [Random Redirector](https://teaching.statistics-is-awesome.org/tools/random-redirector/) using Google Apps Script. However, redirects faced issues on mobile devices. 
+While running *College Park High School*'s Science Bowl team. I wanted to A / B test a Remind and website to determine the most effective club landing page. A great article by *Teaching Statistics is Awesome* on creating a [Random Redirector](https://teaching.statistics-is-awesome.org/tools/random-redirector/) using Google Apps Script already existed. However, Apps Script redirects would not work on most mobile devices. 
 
 Open-source link-shorteners like [Polr](https://polrproject.org) exist. I was learning Django when I created this project and was looking for a project to tinker with and be my own customer.
 
@@ -36,7 +36,7 @@ The number of people sent to each destination will be recorded.
 
 # Data Storage
 
-Data is stored on a *Postgress* instance which the python dyno interfaces with through Django's ORM.
+Data is stored on a *Postgress* instance which the Python server interfaces with through Django's ORM.
 
 # Code / Pseudo Code
 
@@ -58,7 +58,7 @@ def get_destination(self):
 
 # Degree of Constraints
 
-Use of a *Postgress* database and a dyno can create cold starts which can lead to 5 + second load times.
+Use of a *Postgress* database and a python Heroku dyno can create cold starts which can lead to 5 + second initial load times.
 
 # Alternatives Considered
 
@@ -66,4 +66,4 @@ A system where urls could be programmatically created through an API was conside
 
 # Cross-cutting concerns
 
-Google analytic's ability to identify prior destinations reduces the need for a "smart" redirectior.
+Google Analytics' ability to track prior destinations reduces the need for a "smart" redirectior with analytics built-in.

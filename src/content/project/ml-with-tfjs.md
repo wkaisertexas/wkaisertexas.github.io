@@ -8,25 +8,27 @@ display: true
 
 # Context and scope
 
-Machine Learning with TensorFlow JS is a beginner-friendly course. The course is designed to give students exposure to recent ai developments and a fundamental understanding of machine learning paradigms. Unlike traditional courses taught, a deep-dive on the underlying mathematics will not take place and the final projects will bea  communicable, portable project.
+TensorFlow, an open-source machine learning framework developed by the Google Brain team, was initially released in 2015, quickly gaining widespread adoption. TensorFlow provides a comprehensive ecosystem for building and training machine learning models across various domains, from computer vision and natural language processing to reinforcement learning and more.
 
 # Goals and non-goals
+
+Machine Learning with TensorFlow JS is a beginner-friendly course. The course is designed to give students exposure to recent ai developments and a fundamental understanding of machine learning paradigms. Unlike traditional courses taught, a deep-dive on the underlying mathematics will not take place and the final projects will bea  communicable, portable project.
 
 # Design
 
 A inverted class format will take place from most to least recent. Simpler models with greater user control will be used as the course progresses.
 
-# APIs
+<!-- # APIs
 
-na 
+n/a  -->
 
 # Data Storage
 
 A single, monolithic git repository will store both instructional material and demonstration projects. 
 
-# Code / Pseudo Code
+<!-- # Code / Pseudo Code
 
-na
+n/a -->
 
 # Degree of Constraints
 

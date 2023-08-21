@@ -13,26 +13,11 @@ The International Science and Engineering Fair (ISEF) is the top science fair in
 
 During the sumer of 2018, I first scraped the science fair abstracts database, [abstracts.societyforscience.org](https://abstracts.societyforscience.org) out of curiosity. A simple class-based file parser was built. Each project's title, awards won, school and more were exported as a CSV file to Excel. This represented my first Python project after converting from a Java-only prior (and C#, but that is basically Java if we are being honest)./ From the initial dataset, only a plot showing a rise in machine learning projects over time was created.
 
-In 2019, the scraper was quickly rebuilt using `beautifulsoup` and `pandas`. Both the [parsing code and the data set were made openly available on Kaggle](https://www.kaggle.com/datasets/wkaisertexas/all-international-science-fair-projects). One of my high school friends was going to do an analysis on this dataset as a science fair project. However, due to extra-curricurlar conflicts the prospect of doing a science fair-based science fair project was dead.
+In 2019, the scraper was quickly rebuilt using `beautifulsoup` and `pandas`. Both the [parsing code and the data set were made openly available on Kaggle](https://www.kaggle.com/datasets/wkaisertexas/all-international-science-fair-projects). One of my high school friends was going to do an analysis on this dataset as a science fair project. However, due to extra-curricular conflicts the prospect of doing a science fair-based science fair project was dead.
 
 The dataset was forgotten about until 2023 when during my first-year of college I became reinvested and decieded to do a proper analysis and article on the dataset.
 
 # Goals and non-goals
 
-Demystifying ISEF is the primary goal of the project. Both through a tangeable exploration of common advice passed around and creating a visual exploratio of projects.
+Demystifying ISEF is the primary goal of the project. Both through a tangible exploration of common advice passed around and creating a visual exploration of projects.
 
-Creating a 
-
-# Design
-
-# APIs
-
-# Data Storage
-
-# Code / Pseudo Code
-
-# Degree of Constraints
-
-# Alternatives Considered
-
-# Cross-cutting concerns
