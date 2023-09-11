@@ -20,8 +20,9 @@ import { Icon } from "astro-icon";
 
 import "../styles/global.css";
 
-const projects = (await getCollection("project"))
-  .filter((project) => project.data.display !== false);
+const projects = (await getCollection("project")).filter(
+  (project) => project.data.display !== false
+);
 
 const blog = (await getCollection("blog"))
   .filter((blog) => blog.data.display !== false)
@@ -80,6 +81,13 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
       dddView.appendChild(renderer.domElement);
 
       const controls = new OrbitControls(camera, renderer.domElement);
+
+      controls.minDistance = 1;
+      controls.maxDistance = 15;
+      controls.enablePan = false;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.075;
+
       const loader = new GLTFLoader();
 
       renderer.domElement.addEventListener("click", () => {
@@ -102,12 +110,11 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
 
             camera.rotation.setFromQuaternion(newCamera.quaternion);
 
-
             camera.position.set(
               newCamera.position.x * 1.15, // todo: be more sketch of this line of code
               newCamera.position.y * 1.15,
-              newCamera.position.z* 1.15
-            );            
+              newCamera.position.z * 1.15
+            );
             camera.updateProjectionMatrix();
 
             controls.update();
@@ -208,7 +215,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
               function handlePress(event) {
                 let languages = document.getElementById("languages");
                 let projects = document.getElementById("projects");
- 
+
                 if (event.target.getAttribute("data-highlighted") === "true") {
                   let sum = 0;
 
@@ -255,7 +262,10 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
               Filter my projects by langauge, library or framework used to build
               them.
             </p>
-            <div id="languages" class="flex flex-wrap md:flex-col justify-between space-x-2 space-y-2 text-lg">
+            <div
+              id="languages"
+              class="flex flex-wrap md:flex-col justify-between space-x-2 space-y-2 text-lg"
+            >
               {
                 builtWith.keys.map((language) => (
                   <button
@@ -281,12 +291,8 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
                   data-highlighted="true"
                 >
                   <a href={`/project/${project.slug}`}>
-                    <h3 class="text-lg font-bold">
-                      {project.data.title}
-                    </h3>
-                    <p class="">
-                      {project.data.description}
-                    </p>
+                    <h3 class="text-lg font-bold">{project.data.title}</h3>
+                    <p class="">{project.data.description}</p>
                   </a>
                 </li>
               ))
