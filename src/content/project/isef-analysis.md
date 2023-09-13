@@ -9,7 +9,7 @@ display: true
 
 # Context and scope
 
-The International Science and Engineering Fair (ISEF) is the top science fair in the world. Competing at ISEF required a multi-step qualification process through either: district or state. After winning your project's category, a grand-award competition advances a subset or winning projects. *College Park High School*, a public high school in NOrthern Houston (and my alma matter), has sent more finalists to ISEF than any school in the world since 2014.
+The International Science and Engineering Fair (ISEF) is the top science fair in the world. Competing at ISEF required a multi-step qualification process through either: district or state. After winning your project's category, a grand-award competition advances a subset or winning projects. *College Park High School*, a public high school in Northern Houston (and my alma matter), has sent more finalists to ISEF than any school in the world since 2014.
 
 During the sumer of 2018, I first scraped the science fair abstracts database, [abstracts.societyforscience.org](https://abstracts.societyforscience.org) out of curiosity. A simple class-based file parser was built. Each project's title, awards won, school and more were exported as a CSV file to Excel. This represented my first Python project after converting from a Java-only prior (and C#, but that is basically Java if we are being honest)./ From the initial dataset, only a plot showing a rise in machine learning projects over time was created.
 

@@ -12,7 +12,7 @@ TensorFlow, an open-source machine learning framework developed by the Google Br
 
 # Goals and non-goals
 
-Machine Learning with TensorFlow JS is a beginner-friendly course. The course is designed to give students exposure to recent ai developments and a fundamental understanding of machine learning paradigms. Unlike traditional courses taught, a deep-dive on the underlying mathematics will not take place and the final projects will bea  communicable, portable project.
+Machine Learning with TensorFlow JS is a beginner-friendly course. This course is designed to give students exposure to recent ai developments and a fundamental understanding of machine learning paradigms. Unlike traditional courses taught, a deep-dive on the underlying mathematics will not take place and the final projects will be a communicable, portable project.
 
 # Design
 
