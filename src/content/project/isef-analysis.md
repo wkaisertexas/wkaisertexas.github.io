@@ -15,7 +15,7 @@ During the sumer of 2018, I first scraped the science fair abstracts database, [
 
 In 2019, the scraper was quickly rebuilt using `beautifulsoup` and `pandas`. Both the [parsing code and the data set were made openly available on Kaggle](https://www.kaggle.com/datasets/wkaisertexas/all-international-science-fair-projects). One of my high school friends was going to do an analysis on this dataset as a science fair project. However, due to extra-curricular conflicts the prospect of doing a science fair-based science fair project was dead.
 
-The dataset was forgotten about until 2023 when during my first-year of college I became reinvested and decieded to do a proper analysis and article on the dataset.
+The dataset was forgotten about until 2023 when during my first-year of college I became reinvested and decided to do a proper analysis and article on the dataset.
 
 # Goals and non-goals
 
