@@ -1,6 +1,6 @@
 ---
 title: "Insight about Vectors over Hashsets is Dangerous for Interviews"
-description: "thePrimagean's made an 0(n) algorithm 16,000x faster by ignoring common knowledge of performance. From removing redundant checks to recycling valid data, many little cuts caused this performance gain. However, avoiding Hashsets-the mythical O(1) structure-to nearly double performance using a linear search."
+description: "thePrimeagean's made an 0(n) algorithm 16,000x faster by ignoring common knowledge of performance. From removing redundant checks to recycling valid data, many little cuts caused this performance gain. However, avoiding Hashsets-the mythical O(1) structure-to nearly double performance using a linear search."
 pubDate: "April 19 2023"
 heroImage: "/blog/hashmaps-versus-vectors/hero.png"
 ---

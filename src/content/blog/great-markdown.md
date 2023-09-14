@@ -33,10 +33,10 @@ Bolding, italics and strike through are handled using the `*` and `~` keys.
 
 | Markdown Code | Rendered Text |
 |   :---:       |   :---:       |
-| `*italics*`   | *italtics*    |
+| `*italics*`   | *italics*    |
 | `**bold**`    | **bold**      |
 | `***bold+italic***`  | ***bold + italic*** |
-| `~~strikethrough~~ ` | ~~strikethrough~~   |
+| `~~strike through~~ ` | ~~strike through~~   |
 | `x<sup>2</sup>`      | x<sup>2</sup>       | 
 | `x<sub>2</sub>`      | x<sub>2</sub>       |
 

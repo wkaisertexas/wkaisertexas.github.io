@@ -12,7 +12,7 @@ Desktop and graphical user interfaces (GUIs) are often wrapper to command-line t
 
 In December 2022, I began gaining interest in the video encoding and editing tool `ffmpeg`. At the same time, algorithmic content (split-screen subway surfers, am i the asshole (AITA), etc.) was taking over TikTok.
 
-I create a basic script to turn C-Span testimony into a many split-screen subway surfers-style content (I am a big C-Span fan). After rendering hundreds of videos, uploading videos everyday was the most painstaking. To circumvent this, I built a proof-of-concept command line application. Taking *Rich Ngyuen*'s [Software Development Essentials](https://uva-cs3140-sp23.github.io) at the time. I decided to take the opportunity to try and develop the script into a higher-quality module.
+I create a basic script to turn C-Span testimony into a many split-screen subway surfers-style content (I am a big C-Span fan). After rendering hundreds of videos, uploading videos everyday was the most painstaking. To circumvent this, I built a proof-of-concept command line application. Taking *Rich Nguyen*'s [Software Development Essentials](https://uva-cs3140-sp23.github.io) at the time. I decided to take the opportunity to try and develop the script into a higher-quality module.
 
 No real public modules existed for this purpose, so I decided to build one. Most of all, I think publishing this and going through three iterations was mostly an exercise of the challenges to writing good documentation.
 

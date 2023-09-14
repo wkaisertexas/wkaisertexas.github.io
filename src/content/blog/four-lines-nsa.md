@@ -9,7 +9,7 @@ heroImage: "/blog/four-lines-nsa/hero.png"
 
 In 2013, Edward Snowden leaked classified documents about the National Security Agency’s surveillance activities. These documents contained sensitive information about the US government’s spying programs, and their disclosure created a media frenzy. As a result, many people wanted to download and read the documents for themselves. However, upon downloading the files from [Archive.org](https://archive.org/details/nsadocssnowden), they realized that they were a bunch of PDFs. This blog post will discuss how I used a simple bash script with ImageMagick’s software to convert the PDFs into images, which then became my screensaver.
 
-![A screenshot of the leaked NSA files on Achive.org](/blog/four-lines-nsa/download.png)
+![A screenshot of the leaked NSA files on Archive.org](/blog/four-lines-nsa/download.png)
 
 ## Converting PDFs into Images
 

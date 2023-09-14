@@ -45,7 +45,7 @@ First, the name International Science and Engineering Fair is misleading as the 
 
 ![Tree plot of countries participating in the International Science and Engineering Fair](https://media.licdn.com/dms/image/D5612AQEw7RMcv82C4g/article-inline_image-shrink_1500_2232/0/1684604190570?e=1692835200&v=beta&t=6xSS6EQh99SB7EEbPR_GMPC9B1Q9aUUHXolk3JyVmxY)
 
-Depite being an International Fair, the USA is significantly overrepresented.
+Despite being an International Fair, the USA is significantly overrepresented.
 
 Of the states represented, Florida sends the greatest number of projects at 10%. However, states send a representative distribution to ISEF.
 
@@ -118,7 +118,7 @@ Examine "artificial intelligence" or "machine learning" mentions show a consider
 
 ![No alt text provided for this image](https://media.licdn.com/dms/image/D5612AQGb0YvYVarrZg/article-inline_image-shrink_1500_2232/0/1684725226671?e=1692835200&v=beta&t=o4c1zwS54xsszxSrLE2IbXFgZ4hXrrrOkM7lN05Wy34)
 
-Since 2014, considerable growth in machine learning porjects occured with diminished statistical benefit as time goes on.
+Since 2014, considerable growth in machine learning projects occurred with diminished statistical benefit as time goes on.
 
 In addition, a recent trend has been the use of machine-learning in non-traditional categories for ML such as Animal Science or Behavioral and Social Science. To compare this trend, the average number of awards of machine learning projects was plotted against percentage of projects mentioning machine leaning. A clear inverse correlation exists between the average number of awards won and density of machine learning projects. 
 
