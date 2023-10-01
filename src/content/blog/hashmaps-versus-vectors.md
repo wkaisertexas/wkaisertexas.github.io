@@ -3,9 +3,10 @@ title: "Insight about Vectors over Hashsets is Dangerous for Interviews"
 description: "thePrimeagean's made an 0(n) algorithm 16,000x faster by ignoring common knowledge of performance. From removing redundant checks to recycling valid data, many little cuts caused this performance gain. However, avoiding Hashsets-the mythical O(1) structure-to nearly double performance using a linear search."
 pubDate: "April 19 2023"
 heroImage: "/blog/hashmaps-versus-vectors/hero.png"
+display: false
 ---
 
-The inspiration for this piece was *ThePrimeagen*’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
+The inspiration for this piece was _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
 
 ## Problem
 
@@ -14,11 +15,11 @@ The inspiration for this piece was *ThePrimeagen*’s YouTube Video _This Algori
 > A start-of-message marker is just like a start-of-packet marker, except it  
 > consists of 14 distinct characters rather than 4.
 
-This program is simple: find 14 distinct characters in a row from an input string. *ThePrimeagen*’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
+This program is simple: find 14 distinct characters in a row from an input string. _ThePrimeagen_’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
 
 ## Solution
 
-The initial solution *ThePrimeagen* presents uses a HashSet, a data structure which only holds unique values. The algorithm is simple: add 14 characters in a row and check the length of the set. If the set is smaller than 14, you must have added a duplicate.
+The initial solution _ThePrimeagen_ presents uses a HashSet, a data structure which only holds unique values. The algorithm is simple: add 14 characters in a row and check the length of the set. If the set is smaller than 14, you must have added a duplicate.
 
 ```rust
 fn simple(i: &[u8]) -> usize {
@@ -113,42 +114,42 @@ fn main() {
 ```javascript
 // Function to measure the time it takes to find an element in an array
 function measureArrayTime(n) {
-    const array = Array.from({ length: n }, (_, i) => i);
+  const array = Array.from({ length: n }, (_, i) => i);
 
-    const res = Array.from({length: 100_000}, (_, i) => false);
-    const start = performance.now();
-    for (let i = 0; i < 1_000_000; i++) {
-        res[i] = array.includes(n);
-    }
-    return performance.now() - start;
+  const res = Array.from({ length: 100_000 }, (_, i) => false);
+  const start = performance.now();
+  for (let i = 0; i < 1_000_000; i++) {
+    res[i] = array.includes(n);
+  }
+  return performance.now() - start;
 }
 
 // Function to measure the time it takes to find an element in a map
 function measureMapTime(n) {
-    const map = new Set();
-    for (let i = 0; i < n; i++) {
-        map.add(i);
-    }
-   const res = Array.from({length: 100_000}, (_, i) => false)
-    const start = performance.now();
-    for (let i = 0; i < 1_000_000; i++) {
-        res[i] = map.has(Math.floor(n / 2));
-    }
-    return performance.now() - start;
+  const map = new Set();
+  for (let i = 0; i < n; i++) {
+    map.add(i);
+  }
+  const res = Array.from({ length: 100_000 }, (_, i) => false);
+  const start = performance.now();
+  for (let i = 0; i < 1_000_000; i++) {
+    res[i] = map.has(Math.floor(n / 2));
+  }
+  return performance.now() - start;
 }
 
-for(let i = 90; i < 100; i++){ // Cold Start Prevention
+for (let i = 90; i < 100; i++) {
+  // Cold Start Prevention
   measureArrayTime(i * 10);
-  measureMapTime(i*10);
+  measureMapTime(i * 10);
 }
-
 
 console.log("Input Size,Array Time (ms),Map Time (ms)");
 for (let x = 1; x < 100; x++) {
-    const n = x * 10;
-    const arrayTime = measureArrayTime(n);
-    const mapTime = measureMapTime(n);
-    console.log(`${n},${arrayTime.toFixed(2)},${mapTime.toFixed(2)}`);
+  const n = x * 10;
+  const arrayTime = measureArrayTime(n);
+  const mapTime = measureMapTime(n);
+  console.log(`${n},${arrayTime.toFixed(2)},${mapTime.toFixed(2)}`);
 }
 ```
 
@@ -224,7 +225,7 @@ Input size versus performance (measured in milliseconds per 1M searches)
 
 These tests are not perfect: far from it. For instance, I omitted insertions and resizes of vectors, some of the most intensive operations of each data structure.
 
-However, these tests do disprove the hope that I had after watching *thePrimeagen*\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
+However, these tests do disprove the hope that I had after watching _thePrimeagen_\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
 
 Though, through considerable oversimplification, you could come up with a number of roughly 20 for _Rust_ and _Javascript_, assuming this is a dangerous in the context of a high-stakes interview question. Put simply, stick to HashSets and HashMaps being magical O(1) data structures — it is harder to mess up this way.
 
