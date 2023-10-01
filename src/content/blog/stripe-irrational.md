@@ -3,7 +3,9 @@ title: "Stripe's design is irrationally good"
 description: "Stripe is unworthy of its design. However, Stripe’s excellence reveals a lesson about the keys to power in software sales."
 pubDate: "May 1 2023"
 heroImage: "/blog/stripe-irrational/hero.png"
+display: false
 ---
+
 Stripe is unworthy of its design. However, Stripe’s excellence reveals a lesson about the keys to power in software sales.
 
 Stripe has been the darling of Silicon Valley for quite some time (aside from a minor hiccup recently). Payments processing is the core business of Stripe. To oversimplify, an Stripe is a box which give your customer’s credit card information and it deposits money in your bank account.

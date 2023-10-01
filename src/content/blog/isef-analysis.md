@@ -3,13 +3,14 @@ title: "Behind The Innovation: Insights from the International Science and Engin
 description: "Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data."
 pubDate: "May 23 2023"
 heroImage: "/blog/isef-analysis/hero.png"
+display: false
 ---
 
 Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data.
 
 Science Fair has an Olympics, though. The International Science and Engineering Fair (ISEF) sees students compete from over 40 different countries to win millions of dollars in prize money every year.  The drama and suspense of ISEF was even turned into a [National Geographic Documentary Film](https://www.youtube.com/watch?v=bkzPBm-WznU)
 
-The top three winners won a total of $575,000 in 2023, a sum more than eight times the median American salary. In addition to money and scholarships, ISEF is also a recruiting pool for top universities like Stanford, Harvard, and MIT. 
+The top three winners won a total of $575,000 in 2023, a sum more than eight times the median American salary. In addition to money and scholarships, ISEF is also a recruiting pool for top universities like Stanford, Harvard, and MIT.
 
 ![Grand Awards Ceremony at the International Science and Engineering Fair](/blog/isef-analysis/grand.jpeg)
 
@@ -19,13 +20,13 @@ Given the impact ISEF can have, student competition is intense with projects tak
 
 ## Qualifying
 
-Like other extracurriculars, four tiers of competition exist: district, regional, state and international. Two main ISEF qualification routes exist: regional and state competition. 
+Like other extracurriculars, four tiers of competition exist: district, regional, state and international. Two main ISEF qualification routes exist: regional and state competition.
 
 Winning your regional category places allows you to advance to grand award judging. The Science and Engineering Fair of Houston (SEFH) advances fourteen of eighteen projects who won their category to ISEF. Texas State Science and Engineering Fair (TXSEF) is similar advancing projects to ISEF. Because regional fairs advance a larger portion, regional qualification is preferred.
 
 Competition before ISEF is an important caveat for data later presented. Personally, I believe the trends presented to still be significant at earlier levels of competition. However, earlier stages of competitions tend to be more variable from my personal experience.
 
-___
+---
 
 ## Dissecting Science Fair
 
@@ -35,11 +36,11 @@ Analysis had two parts: exploration and visualization. Exploration analyzed spec
 
 ## Data Analyzed
 
-_Society for Science,_ ISEF's organizing body, keeps public science fair project records. [abstracts.societyforscience.org](https://abstracts.societyforscience.org/) contains 12,221 project titles, categories, countries, provinces, schools, contestants and abstracts from 2014 through 2022.
+*Society for Science,* ISEF's organizing body, keeps public science fair project records. [abstracts.societyforscience.org](https://abstracts.societyforscience.org/) contains 12,221 project titles, categories, countries, provinces, schools, contestants and abstracts from 2014 through 2022.
 
 ## Dataset Primers
 
-To gain a broader foundation to contextualize findings, exploratory data analysis is a crucial, but often overlooked step towards understanding. 
+To gain a broader foundation to contextualize findings, exploratory data analysis is a crucial, but often overlooked step towards understanding.
 
 First, the name International Science and Engineering Fair is misleading as the United States comprises 59% of projects despite being 4% of global population.
 
@@ -53,7 +54,7 @@ Of the states represented, Florida sends the greatest number of projects at 10%.
 
 Representation of States at ISEF
 
-Second, structural ISEF changes have taken place. Significant category changes took place from 2014 to 2023. Far fewer project categories were present in 2014 when compared with 2023. _Engineering: Physical_ and _Engineering: Chemical_ were removed entirely. New categories introduced include _Energy: Sustainable Materials and Design, Animal Sciences, Engineering Technology: Statics & Dynamics, Biochemistry_ and _Translational Medical Science_. Newer categories represent a significant portion of projects. Consequently, existing categories such as _Mathematics_ and _Plant Sciences_ represent a historically smaller fraction of projects.
+Second, structural ISEF changes have taken place. Significant category changes took place from 2014 to 2023. Far fewer project categories were present in 2014 when compared with 2023. *Engineering: Physical* and *Engineering: Chemical* were removed entirely. New categories introduced include *Energy: Sustainable Materials and Design, Animal Sciences, Engineering Technology: Statics & Dynamics, Biochemistry* and *Translational Medical Science*. Newer categories represent a significant portion of projects. Consequently, existing categories such as *Mathematics* and *Plant Sciences* represent a historically smaller fraction of projects.
 
 ![Category Distribution at the International Science and Engineering Fair in 2014](https://media.licdn.com/dms/image/D5612AQGlNThGXiG0JA/article-inline_image-shrink_1500_2232/0/1684723371039?e=1692835200&v=beta&t=RBANd9OFFZnUhvyUg1c9gA1XOmIFUnG1gA-axNNbgxM)
 
@@ -79,18 +80,18 @@ Winning awards at ISEF is difficult. Merely 29% of projects win any award. On av
 
 Drawing upon both my own experience as well as consultation with others familiar with science fair, the following ideas rumored to improve performance were investigated:
 
--   Two-Pronged Titles (non-technical title + colon + technical title) and the impact on performance
--   Machine Learning Projects
--   Novel Bias
--   Curing Cancer
--   Platform Proposals
--   Watered-down Category Fraud
+- Two-Pronged Titles (non-technical title + colon + technical title) and the impact on performance
+- Machine Learning Projects
+- Novel Bias
+- Curing Cancer
+- Platform Proposals
+- Watered-down Category Fraud
 
 ### Two-Pronged Titles: A Statistical Advantage for Projects at The International Science and Engineering Fair
 
 The non-technical title plus technical title was suggested by multiple people asked. Most commonly, the format uses a colon to distinguish between the two title types.
 
-In most academic research, the non-technical project portion would be omitted. However, a dual title format allows contestants to create a humanizing, memorable moment through their title. 
+In most academic research, the non-technical project portion would be omitted. However, a dual title format allows contestants to create a humanizing, memorable moment through their title.
 
 Anecdotally, many in consider a two-format title to be a source on the science fair community. Non-technical titles have a tendency to devolve, leading to some interesting titles. To avoid calling specific projects out, here are some illustrative examples:
 
@@ -112,7 +113,7 @@ ISEF projects using artificial intelligence (AI) or machine learning (ML) benefi
 
 While AI's movement into the zeitgeist was relatively recent, a sustained interest in artificial intelligence and machine learning has been taking place at ISEF since 2014. AI is seen by many contestants to differentiate from competitors in categories which may not be traditionally dominated by AI / ML.
 
-Machine learning projects also tend to be logistically easier than physical experiments. Machine learning projects typically consist of data selection, exploration, model construction and model evaluation. While data set sourcing can be difficult, especially with proprietary medical data, many resources exist for dataset selection including: [Google Dataset Search](https://datasetsearch.research.google.com/) and [Kaggle](https://kaggle.com/). 
+Machine learning projects also tend to be logistically easier than physical experiments. Machine learning projects typically consist of data selection, exploration, model construction and model evaluation. While data set sourcing can be difficult, especially with proprietary medical data, many resources exist for dataset selection including: [Google Dataset Search](https://datasetsearch.research.google.com/) and [Kaggle](https://kaggle.com/).
 
 Examine "artificial intelligence" or "machine learning" mentions show a considerable rise is observed from 1% to 8% of projects from 2014 through 2022. A growth in machine-learning mentioning projects is logical given that projects mentioning machine learning win between 38% and 274% more awards. However, the benefit of mentioning AI / ML has decreased over time.
 
@@ -120,7 +121,7 @@ Examine "artificial intelligence" or "machine learning" mentions show a consider
 
 Since 2014, considerable growth in machine learning projects occurred with diminished statistical benefit as time goes on.
 
-In addition, a recent trend has been the use of machine-learning in non-traditional categories for ML such as Animal Science or Behavioral and Social Science. To compare this trend, the average number of awards of machine learning projects was plotted against percentage of projects mentioning machine leaning. A clear inverse correlation exists between the average number of awards won and density of machine learning projects. 
+In addition, a recent trend has been the use of machine-learning in non-traditional categories for ML such as Animal Science or Behavioral and Social Science. To compare this trend, the average number of awards of machine learning projects was plotted against percentage of projects mentioning machine leaning. A clear inverse correlation exists between the average number of awards won and density of machine learning projects.
 
 ![Machine learning benefit by Category](https://media.licdn.com/dms/image/D5612AQG7gN--rPIlFQ/article-inline_image-shrink_1500_2232/0/1684725167923?e=1692835200&v=beta&t=nR2kEbw6rxVOOPqTtF2iP85ou0aLrSgSX6-0cFFBFJ8)
 
@@ -152,9 +153,9 @@ Seeking novel project topics represent a significant advantage both to place awa
 
 ### Curing Cancer
 
->  "If you are not going to cure cancer, you are going to prevent cancer" -National Geographic ISEF Trailer
+> "If you are not going to cure cancer, you are going to prevent cancer" -National Geographic ISEF Trailer
 
-A longstanding joke within the science fair community was that "to win ISEF you need to cure cancer". The likely origin of this jokes comes from Jack Andraka winning the ISEF's top_Gordon E Moore Award_ as a freshman in 2012.
+A longstanding joke within the science fair community was that "to win ISEF you need to cure cancer". The likely origin of this jokes comes from Jack Andraka winning the ISEF's top*Gordon E Moore Award* as a freshman in 2012.
 
 Jack Andraka claimed to have produced a "novel paper sensor for the detection of pancreatic, ovarian and lung cancer" which was "168 times faster", "over 26,000 times less expensive" and "over 400 times more sensitive" than existing methods. Jack Andraka's win was later mired in controversy with a lack of reproducibility with claims made as well as multiple instances of unmentioned prior research in the field.
 
@@ -182,7 +183,7 @@ Broad-stokes platform proposals are ways to sell the vision for project implemen
 
 ### Category Fraud
 
-Category fraud is the act of obviously and intentionally entering into the wrong category. Often, category fraud happens either through human error or a deliberate attempt of differentiation. 
+Category fraud is the act of obviously and intentionally entering into the wrong category. Often, category fraud happens either through human error or a deliberate attempt of differentiation.
 
 Given how similar categories can be, entering into a non-obvious category as a point of differentiation is often cited as a "dirty trick". Proving category fraud is difficult in all by the most obvious of cases. Picking your category to choose competitors is seen as appealing to many.
 
@@ -204,7 +205,7 @@ Interactive browser-based visualization created to explore ISEF projects with fi
 
 Embeddings are conceptually important to understanding how the visualization is produced. Embeddings are a fixed-low dimensional representational of higher-dimensional data, forming a simplified input representation.
 
-In this instance, embeddings were creating using both a project's _title_ and _abstract_ using OpenAI's GPT-3 Ada model. 
+In this instance, embeddings were creating using both a project's _title_ and _abstract_ using OpenAI's GPT-3 Ada model.
 
 Alone, embeddings produce little value to both human or machines. However, by comparing embeddings through either using cosine similarity or Euclidean distance similarity between projects can be determined.
 
@@ -250,7 +251,7 @@ Categories win dramatically different number of awards.
 
 ### Category Topics: What is in each category?
 
-To examine what is talked about in each category, Latent Derelict Allocation (LDA) is performed. LDA is a Bayesian model which seeks to explain why parts are similar. 
+To examine what is talked about in each category, Latent Derelict Allocation (LDA) is performed. LDA is a Bayesian model which seeks to explain why parts are similar.
 
 LDA was used to extract category keywords. The common factor for each category were:
 
@@ -262,22 +263,22 @@ Keywords for each category at ISEF
 
 Using Bokeh, a [website](https://wkaisertexas.github.io/all-isef-projects/) was created which allows for the visualization and exploration of ISEF projects in a more natural manner than direct searches.
 
-The visualization created allows projects to be filtered and explored through the plot. Clicking any project will lead to the corresponding page on [abstracts.societyforscience.org.](https://abstracts.societyforscience.org/) 
+The visualization created allows projects to be filtered and explored through the plot. Clicking any project will lead to the corresponding page on [abstracts.societyforscience.org.](https://abstracts.societyforscience.org/)
 
-The goal for this visualization is to make the dataset presented more approachable and visual for those confused as where to start. 
+The goal for this visualization is to make the dataset presented more approachable and visual for those confused as where to start.
 
 ## Summary
 
-Science fair is a competitive environment - likely something characteristically different that what most people imagined as children. Given the stakes, including cash, scholarships and admissions to top universities, science fair has cultivated a tremendous amount of lore. 
+Science fair is a competitive environment - likely something characteristically different that what most people imagined as children. Given the stakes, including cash, scholarships and admissions to top universities, science fair has cultivated a tremendous amount of lore.
 
 Some strategies such as:
 
--   use of machine learning
--   two pronged title format
--   platform projects
--   novel projects 
+- use of machine learning
+- two pronged title format
+- platform projects
+- novel projects
 
-However, lore surrounding cancer projects as well as projects trying to be unique was largely disproven. 
+However, lore surrounding cancer projects as well as projects trying to be unique was largely disproven.
 
 After manual investigation, the dataset used OpenAI's _text-embedding-ada-002_ model to generate embeddings which were plotted on a 2D scatter plot using t-SNE dimensionality reduction. Through computation of category centroids, inter-category relationships were determined. LDA was then used to extract keywords for each category. Finally, this data was exported to a Bokeh interactive plot available [here](https://wkaisertexas.github.io/all-isef-projects/).
 
@@ -285,7 +286,7 @@ After manual investigation, the dataset used OpenAI's _text-embedding-ada-002_ m
 
 While changing how titles are written, topics and categories are selected keywords are used, are likely to improve the success of your project. Alone this is insufficient. ISEF projects represent the top 2-5% of projects. Reliably advancing requires a competitive advantage than fickle trend in projects could provide.
 
-Far more important thank seeking statistical advantages is the project's significance to the presenter. Are passionate about your project's topic and can present it well? Does your project's topic appeal to judges in the area? Do you have the resources at your disposal to complete your project? These are all pertinent questions which are far more difficult to measure from a database of top abstracts. 
+Far more important thank seeking statistical advantages is the project's significance to the presenter. Are passionate about your project's topic and can present it well? Does your project's topic appeal to judges in the area? Do you have the resources at your disposal to complete your project? These are all pertinent questions which are far more difficult to measure from a database of top abstracts.
 
 However, I believe the advice to _[Adjust your packaging](https://www.youtube.com/watch?v=R5tkpqW-1BY)_ by Jack Conte, the CEO of Patreon, to be a worthwhile framework. Do not compromise on your core project. However, be flexible to change how the project is packaged to be effective. However, too much of an emphasis before a project that is selected which is a good fit for you and your learning and exploration. Generally speaking, maximizing the number of awards won is a terrible personal goal. Be cautious in implementation.
 

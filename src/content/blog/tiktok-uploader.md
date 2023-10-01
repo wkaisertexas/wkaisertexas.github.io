@@ -3,6 +3,7 @@ title: "Automate TikTok posting with a single Command"
 description: "TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command."
 pubDate: "Feb 24 2023"
 heroImage: "/blog/tiktok-uploader/hero.png"
+display: false
 ---
 
 TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command.
@@ -36,7 +37,7 @@ from tiktok_uploader.upload import upload_video
 
 # single video
 upload_video(
-  path="path/to/your/video.mp4", 
+  path="path/to/your/video.mp4",
   description="my video description",
   cookies="cookies.txt", # directly passing cookies
   backend=auth
@@ -92,5 +93,5 @@ TikTok-Uploader is a useful tool for anyone looking to automate their TikTok vid
 
 ## Get it!
 
--   ⬆️ [TikTok-Uploader on PyPI](https://pypi.org/project/tiktok-uploader/)
--   ⬆️ [TikTok-Uploader on GitHub](http://github.com/wkaisertexas/tiktok-uploader)
+- ⬆️ [TikTok-Uploader on PyPI](https://pypi.org/project/tiktok-uploader/)
+- ⬆️ [TikTok-Uploader on GitHub](http://github.com/wkaisertexas/tiktok-uploader)

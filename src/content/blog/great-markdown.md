@@ -3,6 +3,7 @@ title: "Take 15 minutes to become a Markdown great"
 description: "On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials."
 pubDate: "May 7 2023"
 heroImage: "/blog/great-markdown/hero.png"
+display: false
 ---
 
 On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials.
@@ -19,27 +20,25 @@ Writing good documentation is one way to make a communicable impact. Creating go
 
 The most common tag you will run across is the header tag (`#`). Functionally, this is identical to a header in a word document. For nested headings, multiple `#` s can be used in series for subheadings. For those familiar with HTML, the number of tags is equivalent to the number of `#` s
 
-| Markdown | HTML   |
-|   :---:  | :---:  |
-|     `#`  | `<h1>` |
-|    `##`  | `<h2>` |
-|   `###`  | `<h3>` |
-|  `####`  | `<h4>` | 
+| Markdown |  HTML  |
+| :------: | :----: |
+|   `#`    | `<h1>` |
+|   `##`   | `<h2>` |
+|  `###`   | `<h3>` |
+|  `####`  | `<h4>` |
 | `#####`  | `<h5>` |
-|`######`  | `<h6>` |
+| `######` | `<h6>` |
 
 Bolding, italics and strike through are handled using the `*` and `~` keys.
 
-
-| Markdown Code | Rendered Text |
-|   :---:       |   :---:       |
-| `*italics*`   | *italics*    |
-| `**bold**`    | **bold**      |
-| `***bold+italic***`  | ***bold + italic*** |
-| `~~strike through~~ ` | ~~strike through~~   |
-| `x<sup>2</sup>`      | x<sup>2</sup>       | 
-| `x<sub>2</sub>`      | x<sub>2</sub>       |
-
+|     Markdown Code     |    Rendered Text    |
+| :-------------------: | :-----------------: |
+|      `*italics*`      |      _italics_      |
+|      `**bold**`       |      **bold**       |
+|  `***bold+italic***`  | **_bold + italic_** |
+| `~~strike through~~ ` | ~~strike through~~  |
+|    `x<sup>2</sup>`    |    x<sup>2</sup>    |
+|    `x<sub>2</sub>`    |    x<sub>2</sub>    |
 
 ## Code blocks
 
@@ -78,7 +77,7 @@ Creating links uses a similar syntax to images, but omits the `!` . `[Google](ht
 Section links to specific `#..` tags are very similar. Use `[my section](#my-section` to create the think, replacing non-alphanumeric characters with a dash. However, two dashes can not be in a row.
 
 > There is a bug in Visual Studio code’s most popular markdown extension as of writing where relative links to a heading with an emoji present will not work. The syntax with a leading `#-food` with a leading `—` when the section starts with an emoji is correct and what works on Github.
-> 
+>
 > \# 🍎 food
 
 ## Footnotes
@@ -120,10 +119,10 @@ The [Markdown Guide](https://www.markdownguide.org/) supports adding basically a
 If displaying all the information about your project could potentially be overwhelming to your user, consider creating a expandable section.
 
 ```
-<details>  
+<details>
   <summary>Shown when closed</summary>
   <h3>This is the title of what is shown when opened</h3>
-  
+
   This is the body of what is shown when opened
 </details>
 ```
@@ -163,7 +162,6 @@ Animal : +String gender
 Animal: +isMammal()    Animal: +mate()    class Duck{        +String beakColor        +swim()        +quack()    }    class Fish{        -int sizeInFeet        -canEat()    }    class Zebra{        +bool is_wild        +run()    }
 ```
 
-
 <figure>
 <img src="https://miro.medium.com/v2/resize:fit:1400/1*tdyb3bIQ-D1tHJopx_PDgw.png" alt="image rendered in browser" />
 <figcaption>Mermaid JS Rendered in Browser</figcaption>
@@ -173,16 +171,31 @@ GitHub also supports [GeoJSON](https://geojson.io/) and it’s topology extensio
 
 ```geojson
 {
-    "type": "Polygon", 
-    "coordinates": [
-        [
-            [30.0, 10.0],
-            [40.0, 40.0],
-            [20.0, 40.0],
-            [10.0, 20.0],
-            [30.0, 10.0]
-        ]
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [
+        30,
+        10
+      ],
+      [
+        40,
+        40
+      ],
+      [
+        20,
+        40
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        30,
+        10
+      ]
     ]
+  ]
 }
 ```
 
@@ -198,9 +211,9 @@ Because manually writing this data, using a script tag can auto-detect the corre
 
 One may argue that _Google Earth_ is better for creating custom maps and _Figma_ or _Draw.io_ is better suited to creating custom diagrams. These are most certainly fair points, but a few considerations need to be taken into account:
 
--   _Mermaid JS_ and _GeoJSON_ in particular are really powerful and provide for lots of customizability.
--   Writing text is just faster somethings
--   Integration with version control. The convince of having documentation, GeoGraphic data and more all be integrated within a single repository is a lifesaver for teams. No more, the _Figma_ file is not shared or where did I store that drawing in my Google Drive.
+- _Mermaid JS_ and _GeoJSON_ in particular are really powerful and provide for lots of customizability.
+- Writing text is just faster somethings
+- Integration with version control. The convince of having documentation, GeoGraphic data and more all be integrated within a single repository is a lifesaver for teams. No more, the _Figma_ file is not shared or where did I store that drawing in my Google Drive.
 
 ## Summary
 

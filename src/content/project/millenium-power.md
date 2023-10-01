@@ -2,7 +2,7 @@
 title: "⚡️ Millennium Power"
 description: "HooHacks 2023 Submission -- Environmentally focused game designed to explain power complexity management"
 repository: "https://github.com/wkaisertexas/HooHacks2023"
-builtWith: ['nextjs', 'react', 'firebase']
+builtWith: ["nextjs", "react", "firebase"]
 display: false
 ---
 
@@ -28,7 +28,7 @@ You are the grid manager of tinyville, a small town challenged with managing the
 
 This town wants many things: cheap, reliable power and a high quality of life through low pollution.
 
-You are given a vast array of technologies at your disposal: solar, wind, nuclear, coal, natural gas, hydro-eletric and geothermal.What you decide to use is up to you.
+You are given a vast array of technologies at your disposal: solar, wind, nuclear, coal, natural gas, hydro-electric and geothermal.What you decide to use is up to you.
 
 In total, the game is expected to take 15 minutes for a complete play through. This could be significantly shorter depending on whether or not you are able to effectively manage power usage.
 
@@ -38,7 +38,7 @@ This hopefulness is integration to both American Mall and Millennium Power. Upon
 
 # APIs
 
-The game is built using **React** with a **NextJS** framework hosted on **Firebase**. *Styling is done through **TailwindCSS** and the game is rendered in a CSS grid.
+The game is built using **React** with a **NextJS** framework hosted on **Firebase**. \*Styling is done through **TailwindCSS** and the game is rendered in a CSS grid.
 
 # Data Storage
 
