@@ -2,8 +2,8 @@
 title: "Stripe's design is irrationally good"
 description: "Stripe is unworthy of its design. However, Stripe’s excellence reveals a lesson about the keys to power in software sales."
 pubDate: "May 1 2023"
-heroImage: "/blog/stripe-irrational/hero.png"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 Stripe is unworthy of its design. However, Stripe’s excellence reveals a lesson about the keys to power in software sales.
@@ -14,13 +14,13 @@ Because of Stripe’s simplicity, Y-Combinator has made it the poster-child of d
 
 Stripe is without a doubt beautiful. Aside from art purists would would seek to disqualify Stripe on the groups that it is a corporate art style. From undescribably perfect gradients to main page micro-interactions. API documentation which forms the gold standard for the industry — something to which other companies aspire. From my personal opinion, Stripe ranks higher than YouTube, Google, Instagram and most every other major website when it comes to visual appeal.
 
-![stripe documentation](/blog/stripe-irrational/docs.png)
+![stripe documentation](../../blog/stripe-irrational/docs.png)
 
 Stripe's developer documentation
 
 Stripe’s design excellence is strange because: it is a payments processor, an API. Stripe working well is set it and forget it functionality. Compare this to YouTube which sees a billion hours of video content a day (the full working lives of 12.5 K people). On the logical access of design quality versus use, Stripe is a massive outlier.
 
-![stripe documentation](/blog/stripe-irrational/sessions.png)
+![stripe documentation](../../blog/stripe-irrational/sessions.png)
 
 Stripe sessions page with animated background
 
@@ -32,7 +32,7 @@ A common error when people become confused by product’s poor quality is a fund
 
 While design is only a part of Stripe’s success and other, larger sites are often far more optimized than their design would initial suggest, Stripe does make a midwit out of all of us, showing the value of the naive design path. On that note, I am going to start a company which makes school lunches which are actually good.
 
-![midwit meme comparing design philosophies](/blog/stripe-irrational/midwit.png)
+![midwit meme comparing design philosophies](../../blog/stripe-irrational/midwit.png)
 
 Stripe makes us the midwit — Making good products is most often the best path
 

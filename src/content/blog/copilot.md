@@ -2,8 +2,8 @@
 title: "GitHub Copilot: our best weapon against library hell?"
 description: "Allowing programmers to become language agnostic is perhaps the lowest-hanging use case to Large Language models"
 pubDate: "Oct 10 2022"
-heroImage: "/blog/copilot/hero.png"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 GitHub Copilot currently is a wonderful educational tools to help make programmers language agnostic.

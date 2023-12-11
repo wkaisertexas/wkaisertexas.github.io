@@ -1,9 +1,9 @@
 ---
-title: "RandomURL -- A URL Shortener with Quirks"
+title: "RandomURL — A URL Shortener with Quirks"
 description: "A way to have simple, customizable URLs"
 pubDate: "Feb 1 2022"
-heroImage: "/blog/random-url/hero.png"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 URL shorteners are the obvious plumbing on the internet. These are mostly necessary to make QR codes look nice, but the idea of creating a redirect can be incredibly powerful.
@@ -19,7 +19,7 @@ The schema for the link could be:
 -   50 % — Remind join code
 -   50 % — Club website
 
-![Random URL definition](/blog/random-url/destinations.png)
+![Random URL definition](../../blog/random-url/destinations.png)
 
 Creating a URL that takes the user to one of four tech websites.
 

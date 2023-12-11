@@ -2,8 +2,8 @@
 title: "Insight about Vectors over Hashsets is Dangerous for Interviews"
 description: "thePrimeagean's made an 0(n) algorithm 16,000x faster by ignoring common knowledge of performance. From removing redundant checks to recycling valid data, many little cuts caused this performance gain. However, avoiding Hashsets-the mythical O(1) structure-to nearly double performance using a linear search."
 pubDate: "April 19 2023"
-heroImage: "/blog/hashmaps-versus-vectors/hero.png"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 The inspiration for this piece was _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
@@ -205,19 +205,19 @@ This experiment was far less clear-cut as I would have hoped. Upon plotting, ide
 
 _Rust_ was not only the fastest, but the most regular of the tested languages. This looks like the classic O(1) versus O(n) charts taught.
 
-![Rust comparison](/blog/hashmaps-versus-vectors/rust.png)
+![Rust comparison](../../blog/hashmaps-versus-vectors/rust.png)
 
 Input size versus performance (measured in milliseconds per 1M searches)
 
 _JavaScript_ was significantly more varied in it’s performance. Furthermore, arrays never technically performed better than sets, despite coming close. Furthermore, likely due to the non-random nature of each search, the Set performance was variable likely due to the indexing required.
 
-![Javascript comparison](/blog/hashmaps-versus-vectors/javascript.png)
+![Javascript comparison](../../blog/hashmaps-versus-vectors/javascript.png)
 
 Input size versus performance (measured in milliseconds per 1M searches)
 
 Finally, _Java_’s performance clearly showed that Lists were never more performant than HashSets. Perhaps even stranger, HashSets got more performant after initially struggling. Java does have it’s own JIT compiler to translate Java bytecode to JVM instructions (Java is weird). However, I had not expected Java to have such a significant cold start when compared with Javascript.
 
-![Java comparison](/blog/hashmaps-versus-vectors/java.png)
+![Java comparison](../../blog/hashmaps-versus-vectors/java.png)
 
 Input size versus performance (measured in milliseconds per 1M searches)
 

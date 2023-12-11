@@ -2,7 +2,7 @@
 title: "Track Everything. A minimalist data warehouse"
 description: "Looker Studio as a personal tracking solution"
 pubDate: "Aug 28 2023"
-# heroImage: "/blog/chaos/hero.png"
+heroImage: "hero.png"
 display: false
 ---
 

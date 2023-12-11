@@ -31,6 +31,6 @@ const prevPost = posts[index - 1] || null;
 const nextPost = posts[index + 1] || null;
 ---
 
-<BlogPost {...post.data} prev={prevPost} next={nextPost}>
+<BlogPost {...post} prev={prevPost} next={nextPost}>
 	<Content />
 </BlogPost>

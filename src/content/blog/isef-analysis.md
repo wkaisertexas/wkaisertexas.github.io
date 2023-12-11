@@ -2,8 +2,8 @@
 title: "Behind The Innovation: Insights from the International Science and Engineering Fair"
 description: "Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data."
 pubDate: "May 23 2023"
-heroImage: "/blog/isef-analysis/hero.png"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data.
@@ -12,7 +12,7 @@ Science Fair has an Olympics, though. The International Science and Engineering 
 
 The top three winners won a total of $575,000 in 2023, a sum more than eight times the median American salary. In addition to money and scholarships, ISEF is also a recruiting pool for top universities like Stanford, Harvard, and MIT.
 
-![Grand Awards Ceremony at the International Science and Engineering Fair](/blog/isef-analysis/grand.jpeg)
+![Grand Awards Ceremony at the International Science and Engineering Fair](../../blog/isef-analysis/grand.jpeg)
 
 ISEF's grand awards ceremony where more than 9 million dollars was given out.
 

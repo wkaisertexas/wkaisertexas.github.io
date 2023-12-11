@@ -12,6 +12,8 @@ import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon';
 
+import { Image } from 'astro:assets';
+
 const posts = (await getCollection('blog'))
 .filter(
   (post) => post.data.display !== false
@@ -19,6 +21,13 @@ const posts = (await getCollection('blog'))
 .sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const images = import.meta.glob('../../blog/**/*.{jpeg,jpg,png,svg}');
+
+const getImage = (post: any) : any => {
+  return images[`../../blog/${post.slug}/${post.data.heroImage}`]()
+}
+
 ---
 
 <!DOCTYPE html>
@@ -35,7 +44,7 @@ const posts = (await getCollection('blog'))
         <p class="text-lg pb-4 pr-4 row-start-2 col-span-2">A collection of my thoughts and ramblings</p>
       </section>
 
-      <hr class="my-8 mb-16" />
+      <hr class="my-2 mb-8" />
 
 			<section>
 				<ul class="space-y-16">
@@ -45,7 +54,9 @@ const posts = (await getCollection('blog'))
                 <div class="grid md:grid-cols-4 pb-6">
                   <a class="col-span-3 text-3xl font-medium pr-8" href={`/blog/${post.slug}/`}>{post.data.title}</a>  
                   <div class="text-xl pt-2 opacity-80">
+                    <p class="border-sky-600 border-l-4 pl-2">
                     <FormattedDate date={post.data.pubDate} />
+                  </p>
                   </div>
                 </div>
                 <div class="grid md:grid-cols-4">
@@ -54,13 +65,12 @@ const posts = (await getCollection('blog'))
                     <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`/blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
                   </div>
 
-                  <a href={`/blog/${post.slug}/`} class="col-span-2" >
-                    <img class="object-scale-down rounded-md shadow-2xl" src={post.data.heroImage} alt={post.data.title}/>
+                  <a href={`/blog/${post.slug}/`} class="col-span-2">
+                    <Image class="object-scale-down rounded-md shadow-2xl" src={getImage(post)} width="1080" alt={post.data.title}/>
                   </a>
                 </div>
               </li>
             ))
-
           }
 				</ul>
 			</section>

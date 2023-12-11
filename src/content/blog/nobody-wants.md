@@ -2,8 +2,8 @@
 title: "Why I am still building a product nobody wants"
 description: "How I am using RandomURL Generator as a learning experience"
 pubDate: "Mar 24 2022"
-heroImage: "/blog/nobody-wants/hero.jpeg"
-display: false
+heroImage: "hero.png"
+display: true
 ---
 
 A Visual Representation for What RandomURL.tech is for the Internet, a Spinner Taking You to Random Website When You Click on the Link.
@@ -24,7 +24,7 @@ It all boils down to narratives. Like everyone else, I hated college essays. The
 
 **Changes I Have Made in the Past Week**
 
-![Google Analytics](/blog/nobody-wants/events.png)
+![Google Analytics](../../blog/nobody-wants/events.png)
 
 Some users, but no appreciable trend.
 
