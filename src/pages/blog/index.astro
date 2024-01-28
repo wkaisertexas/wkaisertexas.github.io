@@ -37,14 +37,22 @@ const getImage = (post: any) : any => {
     <GoogleAnalytics />
 	</head>
 	<body class="std-body">
-		<main class="std-main">
+		<main class="std-main relative">
       <Header />
+
+      <div id="gridlines" class="absolute max-h-full inset-0 z-[-1] grid md:grid-cols-4">
+        <div class="border-x-2 border-dashed border-grey-800"></div>
+        <div class="border-r-2 border-dashed border-grey-800"></div>
+        <div class="border-r-2 border-dashed border-grey-800"></div>
+        <div class="border-r-2 border-dashed border-grey-800"></div>
+      </div>
+
       <section class="grid md:grid-cols-4">
         <h1 class="text-4xl py-4 font-bold">Blog</h1>
         <p class="text-lg pb-4 pr-4 row-start-2 col-span-2">A collection of my thoughts and ramblings</p>
       </section>
 
-      <hr class="my-2 mb-8" />
+      <div class="border-t border-dashed border-black-400"></div>
 
 			<section>
 				<ul class="space-y-16">
@@ -52,7 +60,7 @@ const getImage = (post: any) : any => {
             posts.map((post) => (
               <li class="w-full">
                 <div class="grid md:grid-cols-4 pb-6">
-                  <a class="col-span-3 text-3xl font-medium pr-8" href={`/blog/${post.slug}/`}>{post.data.title}</a>  
+                  <a class="col-span-3 text-3xl font-medium pr-8 tracking-tight" href={`/blog/${post.slug}/`}>{post.data.title}</a>  
                   <div class="text-xl pt-2 opacity-80">
                     <p class="border-sky-600 border-l-4 pl-2">
                     <FormattedDate date={post.data.pubDate} />
@@ -61,7 +69,7 @@ const getImage = (post: any) : any => {
                 </div>
                 <div class="grid md:grid-cols-4">
                   <div class="pr-6 col-span-2">
-                    <p class="text-md lg:text-lg opacity-70 pb-4">{post.data.description}</p>
+                    <p class="text-md lg:text-lg text-gray-500 pb-4 tracking-wide">{post.data.description}</p>
                     <a class="text-lg group font-bold text-cyan-800 flex mb-8" href={`/blog/${post.slug}/`}>Read more <Icon class="w-5 group-hover:translate-x-1" pack="ion" name="arrow-forward-sharp"/></a>
                   </div>
 

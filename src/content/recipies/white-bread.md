@@ -4,7 +4,7 @@ description: "Wonder bread on steroids"
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "2 hours"
-ingredients: 
+ingredients:
   - "3/4 cup (174 g) warm water"
   - "1/2 cup (125 g) whole milk"
   - "1 tsp yeast"
@@ -21,5 +21,5 @@ instructions:
   - "Roll out to width of a pan and 1/2 inch thick"
   - "Place in loaf pan and let rise for 1 hour (until doubled)"
   - "Bake at 350 F for 35 - 40 minutes"
-tags: ['staple']
+tags: ["staple"]
 ---

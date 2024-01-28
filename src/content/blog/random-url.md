@@ -3,7 +3,7 @@ title: "RandomURL — A URL Shortener with Quirks"
 description: "A way to have simple, customizable URLs"
 pubDate: "Feb 1 2022"
 heroImage: "hero.png"
-display: true
+display: false
 ---
 
 URL shorteners are the obvious plumbing on the internet. These are mostly necessary to make QR codes look nice, but the idea of creating a redirect can be incredibly powerful.
@@ -16,8 +16,8 @@ This is best explained in the context of an example: a high school club. If you 
 
 The schema for the link could be:
 
--   50 % — Remind join code
--   50 % — Club website
+- 50 % — Remind join code
+- 50 % — Club website
 
 ![Random URL definition](../../blog/random-url/destinations.png)
 
@@ -31,7 +31,7 @@ Finally, the destinations of these shortened links are mutable. Posters can be p
 
 More finally, you could theoretically print out business cards with a QR code, give a bunch of them out any time you want to announce them.
 
-![Weird business card](/blog/random-url/card.png  )
+![Weird business card](/blog/random-url/card.png)
 
 An **_accurate_** depiction of someone else receiving this card (Sigma male defeated).
 

@@ -3,7 +3,7 @@ title: "Why I am still building a product nobody wants"
 description: "How I am using RandomURL Generator as a learning experience"
 pubDate: "Mar 24 2022"
 heroImage: "hero.png"
-display: true
+display: false
 ---
 
 A Visual Representation for What RandomURL.tech is for the Internet, a Spinner Taking You to Random Website When You Click on the Link.
@@ -32,8 +32,8 @@ Despite low engagement, learning to get people to care about a simple utility sc
 
 Increasing engagement will take part in two places:
 
--   Improving Search Engine Optimization (SEO)
--   Increased Social Features
+- Improving Search Engine Optimization (SEO)
+- Increased Social Features
 
 ## SEO
 
@@ -63,8 +63,8 @@ I would like to take more time to “build in public.” Development is often a 
 
 If you are interested in this project, check out the following:
 
--   [GitHub](https://github.com/wkaisertexas/RandomURL)
--   [Random URL Shortener](https://randomurl.tech/)
--   Medium [article](https://medium.com/@samedaycyborg/random-url-generator-a-url-shortener-with-quirks-43a7cc1a2906) written specifically about this site
+- [GitHub](https://github.com/wkaisertexas/RandomURL)
+- [Random URL Shortener](https://randomurl.tech/)
+- Medium [article](https://medium.com/@samedaycyborg/random-url-generator-a-url-shortener-with-quirks-43a7cc1a2906) written specifically about this site
 
 Thank you for reading.

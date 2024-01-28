@@ -1,16 +1,16 @@
 ---
 title: "Automate TikTok posting with a single Command"
-description: "TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command."
+description: "TikTok is one of the most popular social media platforms, with millions of users. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming. Use tiktok-uploader's simple API to upload videos automatically."
 pubDate: "Feb 24 2023"
 heroImage: "hero.png"
 display: true
 ---
 
-TikTok is one of the most popular social media platforms today, with millions of users sharing short videos daily. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming and tedious. That’s where **TikTok-Uploader** comes in handy. It’s a Python package that uses Selenium browser automation to post TikTok videos automatically using either a simple API or a CLI command.
+TikTok is one of the most popular social media platforms, with millions of users sharing short videos daily. Regularly posted content is key to growing your following and engagement. However, remembering to upload videos can be time-consuming. Using `tiktok-uploader`, the manual process of uploading videos can be automated with a single command.
 
 ## Using the TikTok-Uploader
 
-TikTok-Uploader API is easy to use, even for beginners. To use the API, you first need to install the package using **pip**:
+To use the API, you first need to install the package using **pip**:
 
 ```bash
 $ pip install tiktok-uploader
@@ -24,13 +24,13 @@ from tiktok_uploader.auth import AuthBackend
 backend = AuthBackend(cookies="cookies.txt")
 ```
 
-Login cookies can easily be downloaded using [Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid?hl=en), a simple extension available on Chrome, Firefox and Edge. After logging into the account you want to use use the extension to save the cookies.
+Login cookies can be downloaded using [Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid?hl=en), an extension available on Chrome, Firefox and Edge. Use the extension to save TikTok's cookies on a singed-in account where you want to post.
 
-> While the user is “logged in” every time when a Selenium browser instance is created, logging out will invalidate the existing cookies, breaking the automation
+> While the user is “logged in” every time when a Selenium browser instance is created, logging out of your browser will invalidate the existing cookies, breaking the automation
 
 ## Uploading a single video
 
-Uploading a single video requires passing the path and description using the **upload** function.
+Uploading a single video requires passing the `path` and `description` using the **upload** function.
 
 ```python
 from tiktok_uploader.upload import upload_video
@@ -44,11 +44,11 @@ upload_video(
 )
 ```
 
-That’s it! TikTok-Uploader will automatically open a Chrome browser instance, log in to your TikTok account and upload your video.
+That’s it! `tiktok-uploader` will automatically open a Chrome browser instance, log in to your TikTok and upload `video.mp4`
 
 ## Uploading multiple videos sequentially
 
-Sequential uploads avoid redundant sign ins. Consequently, uploading multiple videos sequentially is also much faster.
+Sequential video uploads avoids redundant sign ins and is much faster. To upload multiple videos, pass a list of dictionaries to the **upload_videos** function. Each dictionary should contain the `path` and `description` of the video.
 
 ```python
 from tiktok_uploader.auth import AuthBackend
@@ -71,13 +71,11 @@ upload_videos(videos=videos, auth=auth)
 
 ## Using the CLI Command
 
-If you prefer using the command line interface, **TikTok-Uploader** also provides a simple CLI command that you can use to upload your videos. First, install the package using pip, as described above. Then, open your terminal or command prompt and enter the following command:
+If you prefer using the command line interface (CLI), `tiktok-uploader` also provides a simple CLI command that you can use to upload your videos. First, install the package using `pip``, as described above. Then, open your terminal and enter the following command:
 
 ```bash
-tiktok-uploader \--video path/to/your/video.mp4 \--description "this is my video description" \--cookies cookies.txt
+tiktok-uploader -video path/to/your/video.mp4 -description "this is my video description" -cookies cookies.txt
 ```
-
-This will upload your video to your TikTok account using the same browser automation process as the API method.
 
 ## TikTok’s Share Video API
 
@@ -89,7 +87,7 @@ TikTok clearly intended the Share Video API to be more for apps such as [CapCut]
 
 ## Conclusion
 
-TikTok-Uploader is a useful tool for anyone looking to automate their TikTok video uploads. Whether you prefer using the simple API or the CLI command, this package makes the process easy and straightforward. So why waste time manually uploading videos when you can let TikTok-Uploader handle it for you? Give it a try and see how it can simplify your TikTok content creation process!
+`tiktok-uploader` uses a browser automation to upload videos automatically to TikTok. The package is simple to use and can be integrated into python scripts or used from the command line. Sequential uploads are also supported and are much faster for large batches of videos.
 
 ## Get it!
 

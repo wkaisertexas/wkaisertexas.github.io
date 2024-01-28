@@ -3,7 +3,7 @@ title: ZettelNote - Bringing backlinks and the magic of ZettleKasten to Notion"
 description: "Using graph-visualizations to help organize your digital life"
 pubDate: "Mar 24 2022"
 heroImage: "hero.png"
-display: true
+display: false
 ---
 
 For the uninitiated, ZettelKasten means card box. Knowledge is distributed throughout these cards and then linked by a reference number. Eventually, this forms a knowledge graph where knowledge is closely interlinked to one another.

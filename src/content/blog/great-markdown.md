@@ -6,19 +6,24 @@ heroImage: "hero.png"
 display: true
 ---
 
-On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials.
+I decided to read through the entire GitHub-flavored Markdown specification and here are the essentials plus some tips and tricks you should know. Markdown is important because on a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as an aspiring developer.
 
-Markdown (`.md`) is a language for describing the **structure** of documents. Markdown bears some similarity to HTML but is far less verbose. Markdown is intended to be rendered into HTML. Markdown’s basic syntax has made it a favorite of GitHub for documentation. Even large companies like Stripe use variants of markdown for their documentation.
-
-> Markdown was invented in part the legendary Aaron Swartz who also created RSS and the creative commons license.
+Markdown, `.md` is a language for describing the **structure** of documents which bears some similarity to Hyper Text Markup Language (HTML) but is far less verbose. Often, Markdown is an intermediary and eventually rendered down into HTML for display on the web. Markdown’s basic syntax has made it a favorite for documentation of developers and platforms alike. GitHub's adoption of Markdown has made it the de facto standard for documentation.
 
 ## Why is markdown important?
 
-Writing good documentation is one way to make a communicable impact. Creating good work artifacts can help better convey your impact within an organization.
+Writing documentation is a great way to communicate your impact on development teams. Ideally, each piece of documentation is a lay-parsable guide to what you did and why you did it. This is important because:
+
+- **Documentation is a force multiplier**. The more people who can understand your work, the more people can build on top of it. This is especially important for open source projects.
+- **Documentation is a great way to learn**. Writing documentation forces you to think about what you are doing and why you are doing it. While time-consuming, spending the time developing proper documentation is a great way to learn.
+- **Documentation is a great way to get hired**. If you are looking for a job, having side projects with good documentation and not just code conveys impact to those who may not necessarily be technical.
+- **Documentation is a great way to get promoted**. If you are looking to get promoted, having a portfolio of documentation is a great way to show off your skills in a way that is easy to understand.
+
+Given the importance of documentation, mastering Markdown is a simple way to give yourself the toolbox to write great documentation. Compared to everything else required to be a great developer, Markdown is a low-effort, high-reward investment.
 
 ## Markdown Basics
 
-The most common tag you will run across is the header tag (`#`). Functionally, this is identical to a header in a word document. For nested headings, multiple `#` s can be used in series for subheadings. For those familiar with HTML, the number of tags is equivalent to the number of `#` s
+The most common tag you will run across is the header tag (`#`). Functionally, this is identical to a header in a word document. For nested subheadings, multiple `#` s can be used. For those familiar with HTML, the number of tags is equivalent to the number of `#` s
 
 | Markdown |  HTML  |
 | :------: | :----: |
@@ -29,7 +34,7 @@ The most common tag you will run across is the header tag (`#`). Functionally, t
 | `#####`  | `<h5>` |
 | `######` | `<h6>` |
 
-Bolding, italics and strike through are handled using the `*` and `~` keys.
+Bolding, italics and strike through are handled using the `*` and `~` keys. Depending on the number of `*`, the text is rendered differently.
 
 |     Markdown Code     |    Rendered Text    |
 | :-------------------: | :-----------------: |
@@ -42,17 +47,19 @@ Bolding, italics and strike through are handled using the `*` and `~` keys.
 
 ## Code blocks
 
-Code is fundamentally different from other forms of text because it often uses the same syntax as other languages. For this, markdown separates inline code with \` (the tilde key). To place code inline, surround your code with a tilde \``my code` \` and place a separate chunk of code with:
+Code blocks are created using the triple backtick syntax. The language of the code block _can_ be specified after the first set of backticks. This is useful for syntax highlighting. For this, markdown separates inline code with \` (the tilde key). To place code inline, surround your code with a tilde \``my code` \` and place a separate chunk of code with:
 
-```python
+```markdown
+\`\`\`python
 from random import choice
 choices = [1, 2, 3, 4]
 print(choice(choices))
+\`\`\`
 ```
 
-> Putting the language next to the code signals is what makes syntax highlighting (colors) work properly. Missing this is one of the most common mistakes I have seen in GitHub documentation.
+> Putting the language next to the code signals dramatically improves the quality of syntax highlighting. Though the language is optional, it is highly recommended (and often missed).
 
-Lists in markdown can either use `-` , `*` or `+` . Adding `[ ]` and `[*]` creates a completed and uncompleted task in markdown, respectively. Number with a trailing dot, `1.` create an ordered, numbered list
+Lists in markdown can either use `-` , `*` or `+` . Adding `[ ]` and `[*]` creates a completed and uncompleted task in markdown, respectively. Numbers with a trailing period such as `1.` create an ordered, numbered list.
 
 ```
 - this is a bullet
@@ -64,19 +71,19 @@ Lists in markdown can either use `-` , `*` or `+` . Adding `[ ]` and `[*]` creat
 
 ## Images
 
-Images can be created using the `![Alt(ernative) text of the image](./path/to/image.png)` syntax. Images are right-aligned by default. Changing this behavior requires a bit of custom code which will be mentioned later.
+Images can be created using the syntax of `![Alt(ernative) text of the image](./path/to/image.png)`. By default, images are right-aligned. Unfortunately, chaining the alignment is not easy and requires a bit of custom code.
 
 ## Links
 
-Creating links uses a similar syntax to images, but omits the `!` . `[Google](https://google.com)` is rendered as [Google](https://google.com/). The text inside the `[]` is displayed to the user and the link is inside the `()` . Of course, you can always have a link which displays and goes to the same place (eg. `[https://google.com](https://google.com)`
+Creating links uses a similar syntax to images, but omits the `!` . `[Google](https://google.com)` is rendered as [Google](https://google.com/). The text inside the `[]` is displayed to the user and the link is inside the `()` . Of course, you can always have a link display as itself (eg. `[https://google.com](https://google.com)`)
 
 > For external links, the `http` or `https` syntax is required.
 
-**Relative links** use the relative path such as `[documents](./docs/my_document.md)`
+**Relative links** are made with the relative path such as `[documents](./docs/my_document.md)`
 
 Section links to specific `#..` tags are very similar. Use `[my section](#my-section` to create the think, replacing non-alphanumeric characters with a dash. However, two dashes can not be in a row.
 
-> There is a bug in Visual Studio code’s most popular markdown extension as of writing where relative links to a heading with an emoji present will not work. The syntax with a leading `#-food` with a leading `—` when the section starts with an emoji is correct and what works on Github.
+> There is a bug in Visual Studio code’s most popular markdown extension as of writing. Relative links to a heading with an emoji will not work. The syntax with a leading `#-food` with a leading `—` when the section starts with an emoji is correct and what works on Github.
 >
 > \# 🍎 food
 
@@ -93,10 +100,10 @@ Adding more context through footnotes is done by starting a footnote with `[^1]`
 Most markdown specifications support MathJax which renders [LaTex-Style Math](https://www.overleaf.com/learn/latex/Mathematical_fonts). Using a single `$` will produce an inline mathematic expression, whereas `$$` will produce a separate mathematical block.
 
 ```
-$\sum{x}$
-
 $$\sum{x}$$
 ```
+
+$$\sum{x}$$
 
 If you have any formatting that you do not like, you can always escape it with the `\` character.
 
@@ -112,7 +119,7 @@ The [Markdown Guide](https://www.markdownguide.org/) supports adding basically a
 
 ```markdown
 <div align="center">
-  ![Project Logo](./logo.svg)
+  <img alt="Project Logo" src="./logo.svg" />
 </div>
 ```
 
@@ -169,43 +176,31 @@ Animal: +isMammal()    Animal: +mate()    class Duck{        +String beakColor  
 
 GitHub also supports [GeoJSON](https://geojson.io/) and it’s topology extension [TopoJSON](https://github.com/topojson/topojson). Creating interactive maps could not have been simpler.
 
+<!-- prettier-ignore -->
 ```geojson
 {
   "type": "Polygon",
   "coordinates": [
     [
-      [
-        30,
-        10
-      ],
-      [
-        40,
-        40
-      ],
-      [
-        20,
-        40
-      ],
-      [
-        10,
-        20
-      ],
-      [
-        30,
-        10
-      ]
+      [30, 10],
+      [40, 40],
+      [20, 40],
+      [10, 20],
+      [30, 10]
     ]
   ]
 }
 ```
 
-Finally, STL. If you can believe it, GitHub supports embedding STL files directly into your screen.
+Finally, STL. If you can believe it, GitHub supports embedding **STL FILES directly into your screen!?!**
 
-Because manually writing this data, using a script tag can auto-detect the correct formatting method to use for the underlying data, saving you time.
+Adding an STL does not event require a specific code block, add a script tag with the source of STL file and GitHub will automatically render it.
 
 ```
 <script src="https://embed.github.com/view/3d/skalnik/secret-bear-clip/master/stl/clip.stl"></script>
 ```
+
+<iframe height='420' width='620' frameborder='0' src='https://viewscreen.githubusercontent.com/view/solid?url=https%3a%2f%2fraw.githubusercontent.com%2fskalnik%2fsecret-bear-clip%2fmaster%2fstl%2fclip.stl' title='clip.stl'></iframe>
 
 ## Why not just use external software?
 
@@ -219,6 +214,7 @@ One may argue that _Google Earth_ is better for creating custom maps and _Figma_
 
 Consistently learning and applying these rules likely places you within the top 1% of markdown writers. In the technology world, compared to nearly any other investment on your time, you will not get a gain so great as learning to use markdown effectively.
 
-Aside for communication in repositories, Markdown has now become a popular format for note taking apps like [_Obsidian_](https://obsidian.md/) and a LaTex replacement called [Typist](https://typist.app/).
+Aside for communication in repositories, Markdown has now become a popular format for note taking apps like [_Obsidian_](https://obsidian.md/) and a LaTeX replacement, [Typist](https://typist.app/).
 
-> A word of caution. When all you have is a hammer, everything becomes a nail. This adage is also relevant here. Use newer markdown features like salt (ie. too much is bad).
+> A word of caution. When all you have is a hammer, everything becomes a nail.
+> Remember this adage. Use newer markdown features like salt. A bit is good. Too much is disgusting.

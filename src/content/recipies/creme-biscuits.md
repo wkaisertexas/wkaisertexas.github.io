@@ -5,7 +5,7 @@ pubDate: "May 24 2023"
 prep: "10 min"
 cook: "2 hours"
 yield: "3 biscuits"
-ingredients: 
+ingredients:
   - "1 cup ap flour"
   - "1.5 tsp baking powder"
   - "1/4 tsp Kosher salt"
@@ -13,5 +13,5 @@ ingredients:
 instructions:
   - "Mix"
   - "Bake at 425 F for 15 min"
-tags: ['staple']
+tags: ["staple"]
 ---

@@ -4,7 +4,7 @@ description: "Please do not get me caught up in the humus holy wars. This tastes
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "0 min"
-ingredients: 
+ingredients:
   - "1 can (15 oz) Chickpeas"
   - "1/2 cup Tahini"
   - "1/4-1/2 cup water depending on desired thickness"
@@ -15,5 +15,5 @@ ingredients:
   - "1 tsp Ground Cumin"
 instructions:
   - "Blend"
-tags: ['staple']
+tags: ["staple"]
 ---

@@ -4,7 +4,7 @@ description: "A simple pastry dough for pan au raisin among other pastries"
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "0 min"
-ingredients: 
+ingredients:
   - "130 g water at 100 F"
   - "6 g yeast"
   - "250 g bread flour"
@@ -22,5 +22,5 @@ instructions:
   - "Form croissants"
   - "Brush with egg wash, then proof for 2 hours"
   - "Bake at 400 F for 15 - 20 min"
-tags: ['staple']
+tags: ["staple"]
 ---

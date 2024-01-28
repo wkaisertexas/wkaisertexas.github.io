@@ -4,7 +4,7 @@ description: "A classic Italian dish with very few ingredients."
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "60 min"
-ingredients: 
+ingredients:
   - "8 cups low-sodium vegetable broth"
   - "1 tbsp extra virgin olive oil"
   - "1 large onion"
@@ -28,7 +28,7 @@ instructions:
   - "Continue adding broth 1 cup at a time until rice is tender"
   - "Stir in parmesan and peas"
   - "Garnish with parsley"
-tags: ['staple']
+tags: ["staple"]
 ---
 
 > Note: the instructions for this recipe were written by GitHub Copilot

@@ -2,7 +2,7 @@
 title: "🐴 The Four Horsemen"
 description: "There exist four key types of video or horsemen to automated, algorithmic TikTok videos"
 repository: "https://github.com/wkaisertexas/four_horsemen"
-builtWith: ['python', 'ffmpeg']
+builtWith: ["python", "ffmpeg"]
 display: false
 ---
 
