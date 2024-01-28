@@ -5,7 +5,7 @@ pubDate: "May 24 2023"
 prep: "10 min"
 cook: "2 hours"
 yield: "8 scones"
-ingredients: 
+ingredients:
   scones:
     - "2 cups (240 g) ap flour"
     - "2 tbs sugar"
@@ -30,5 +30,5 @@ instructions:
   - "Mix together glaze ingredients"
   - "Heat glaze in microwave or double broiler"
   - "Drizzle glaze over scones"
-tags: ['staple']
+tags: ["staple"]
 ---

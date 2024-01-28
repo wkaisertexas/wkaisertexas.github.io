@@ -3,7 +3,7 @@ title: "Automating my social life with chaos"
 description: "Chaos to cure the post-COVID shyness"
 pubDate: "Feb 28 2023"
 heroImage: "hero.png"
-display: true
+display: false
 ---
 
 Chaos Engineering — if nothing else, it is a good name. Best utilized by Netflix to ensure reliability, Chaos Monkey randomly deletes parts of Netflix’s network, introducing artificial chaos. If the network can withstand artificial chaos, it is more likely to withstand real-world chaos. Chaos describes actions so unpredictable that for all intents and purposes they are random.

@@ -4,7 +4,7 @@ description: "Like eating a tide pod, but for adults."
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "1 hour"
-ingredients: 
+ingredients:
   - "100% cocktail of choice"
   - "1% calcium carbonate"
   - "0.5-0.7% sodium alginate"
@@ -16,10 +16,9 @@ instructions:
   - "Drop spheres into bath"
   - "Rinse spheres"
   - "Place into unspherified cocktail to serve"
-tags: ['modernist']
+tags: ["modernist"]
 ---
 
 [TikTok video](https://www.tiktok.com/@samedaycyborg/video/7196118425406852398)
 
 <!--Story about making this in my dorm room-->
-

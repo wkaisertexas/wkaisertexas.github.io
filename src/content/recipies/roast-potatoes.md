@@ -4,7 +4,7 @@ description: "Crispy roast potatoes based on Modernist Cuisine"
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "0 min"
-ingredients: 
+ingredients:
   - "1 oz salt"
   - "2 quarts water"
   - "1/2 tsp baking soda"
@@ -16,5 +16,5 @@ instructions:
   - "Roast at 400 F with convection or 450 F without convection for 30 minutes"
   - "Flip potatoes"
   - "Roast for another 30 minutes"
-tags: ['staple']
+tags: ["staple"]
 ---

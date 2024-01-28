@@ -2,7 +2,7 @@
 title: "🤖 Machine Learning with TensorFlow JS"
 description: "A TensorFlow course focused on portable, communicable projects"
 website: "https://wkaisertexas.github.io/ml-with-tfjs"
-builtWith: ['markdown', 'javascript', 'tensorflow']
+builtWith: ["markdown", "javascript", "tensorflow"]
 display: true
 ---
 
@@ -24,7 +24,7 @@ n/a  -->
 
 # Data Storage
 
-A single, monolithic git repository will store both instructional material and demonstration projects. 
+A single, monolithic git repository will store both instructional material and demonstration projects.
 
 <!-- # Code / Pseudo Code
 

@@ -4,7 +4,7 @@ description: "Namesake rolls of the Kaiser family (we do not actually make them 
 pubDate: "May 24 2023"
 prep: "10 min"
 cook: "0 min"
-ingredients: 
+ingredients:
   - "400 g all purpose flour"
   - "10 g malted barley or whole wheat flour"
   - "190 g water"
@@ -20,5 +20,5 @@ instructions:
   - "Rest balls for 20 min, then form"
   - "Rise for 30 min"
   - "Bake 425 F for 20-25 minutes w/ steam using hot rocks"
-tags: ['staple']
+tags: ["staple"]
 ---

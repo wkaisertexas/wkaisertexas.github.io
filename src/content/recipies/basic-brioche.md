@@ -5,7 +5,7 @@ pubDate: "May 24 2023"
 prep: "10 min"
 cook: "10 min"
 yields: "1 loaf"
-ingredients: 
+ingredients:
   - "500 g All-Purpose flour"
   - "2 eggs"
   - "50 g sugar"
@@ -20,5 +20,5 @@ instructions:
   - "Form loaf (braiding gives a nice result)"
   - "Secondary rise for 20 min"
   - "Bake at 400 F w/ egg + creme wash"
-tags: ['staple']
+tags: ["staple"]
 ---

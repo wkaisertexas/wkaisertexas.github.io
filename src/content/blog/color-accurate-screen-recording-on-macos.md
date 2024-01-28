@@ -6,6 +6,6 @@ heroImage: "hero.png"
 display: false
 ---
 
-Recently, I built the MacOS menu bar app: [ScreenTimeLapse](https://github.com/wkaisertexas/ScreenTimeLapse). The concept is simple: record your screen slower than real time to create a time lapse. However, an insidious problem plagued the development process: color accuracy. A simple side project turned into a deep dive into the world of color spaces and color management. 
+Recently, I built the MacOS menu bar app: [ScreenTimeLapse](https://github.com/wkaisertexas/ScreenTimeLapse). The concept is simple: record your screen slower than real time to create a time lapse. However, an insidious problem plagued the development process: color accuracy. A simple side project turned into a deep dive into the world of color spaces and color management.
 
 ## The Problem

@@ -2,7 +2,7 @@
 title: "⌛️ Time-Lapse"
 description: "Create time-lapses on MacOS without exuberant memory use"
 repository: "https://github.com/wkaisertexas/timelapse"
-builtWith: ['python', 'opencv']
+builtWith: ["python", "opencv"]
 display: true
 ---
 
@@ -34,7 +34,7 @@ func handleFrame(frame){
     return
   }
 
-  saveFrame(frame);  
+  saveFrame(frame);
 }
 ```
 
@@ -44,7 +44,7 @@ Both system specifications and software limit the use of applications. [ScreenCa
 
 # Alternatives Considered
 
-Recording alternate frames using Python and OpenCV was initially built as a proof of concept. Limitations to recordings granularity and large bundle sizes lead to a native application built in Swift. 
+Recording alternate frames using Python and OpenCV was initially built as a proof of concept. Limitations to recordings granularity and large bundle sizes lead to a native application built in Swift.
 
 # Cross-cutting concerns
 

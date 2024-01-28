@@ -2,7 +2,7 @@
 title: "📍 Textual and Impact-based Coronavirus Open Research Dataset (CORD-19) Clustering"
 description: "Creating an t-Distributed Stochastic Neighbor-Embedding (t-SNE) plot to visualize papers written about the Coronavirus pandemic"
 repository: "https://github.com/wkaisertexas/COVID-Paper-Clustering"
-builtWith: ['python', 'pandas', 'spacy', 'matplotlib']
+builtWith: ["python", "pandas", "spacy", "matplotlib"]
 display: true
 ---
 
@@ -21,6 +21,7 @@ The one unique thing that this clustering incorporates is each paper's popularit
 # Goals and non-goals
 
 Creating a visualization which considers a paper's:
+
 - subject matter
 - impact as measured by citation counts
 
@@ -34,7 +35,7 @@ The [COVID-19 Open Research Dataset](https://allenai.org/data/cord-19) hosted on
 
 # Degree of Constraints
 
-Ram size was a significant consideration when creating paper clusters. A subset of papers was used due to ram limitations, despite taking several hours. 
+Ram size was a significant consideration when creating paper clusters. A subset of papers was used due to ram limitations, despite taking several hours.
 
 > OpenAI's GPT-4 Embeddings model would likely provide a far better set of embeddings, creating potentially a far more representative plot.
 

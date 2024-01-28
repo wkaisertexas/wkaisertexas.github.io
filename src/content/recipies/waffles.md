@@ -4,7 +4,7 @@ description: "Highly expandable, solid waffles"
 pubDate: "May 24 2023"
 prep: "5 min"
 cook: "15 min"
-ingredients: 
+ingredients:
   - "2 cups (240 g) All-Purpose Flour"
   - "3 tsp Baking Powder"
   - "1 tsp Salt"
@@ -20,5 +20,5 @@ instructions:
   - "Spoon the required measure into your waffle maker"
   - "Cook until the steam stops"
   - "Cool on a wire rack in a low oven"
-tags: ['staple']
+tags: ["staple"]
 ---

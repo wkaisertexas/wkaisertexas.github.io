@@ -5,7 +5,7 @@ pubDate: "May 24 2023"
 prep: "10 min"
 cook: "2 hours"
 yield: "8 scones"
-ingredients: 
+ingredients:
   - "1/4 cup warm water"
   - "1 tbs yeast"
   - "1 cup milk, scalded"
@@ -23,5 +23,5 @@ instructions:
   - "Form rolls"
   - "Rise for 30 min"
   - "Bake at 400 F for 15-22 min"
-tags: ['staple']
+tags: ["staple"]
 ---

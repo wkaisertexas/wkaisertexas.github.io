@@ -4,7 +4,7 @@ description: "Stolen from Adam Raguesa"
 pubDate: "May 23 2023"
 prep: "5 min"
 cook: "15 min"
-ingredients: 
+ingredients:
   - "1 1/2 (200 g) All-Purpose flour"
   - "2 1/2 tsp Baking Powder"
   - "3/4 tsp Salt"
@@ -17,5 +17,5 @@ instructions:
   - "Preheat a non-stick pan to medium heat. Temperature will be right when butter only starts to fizz"
   - "Cook on the first side until bubbles have popped (2-3 minutes). Then, flip and cook on the other side adding a knob of butter on top"
   - "Transfer pancakes to a baking sheet with a wire rack set to warm (prevents from getting soggy)"
-tags: ['staple']
+tags: ["staple"]
 ---
