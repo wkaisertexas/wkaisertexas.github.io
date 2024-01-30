@@ -17,7 +17,7 @@
 }
 
 .std-main {
-  @apply col-span-3 w-screen lg:col-start-2 lg:p-0 px-4;
+  @apply col-span-3 lg:col-start-2 lg:p-0 px-4;
 }
 
 .std-body {
