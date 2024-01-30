@@ -17,11 +17,11 @@
 }
 
 .std-main {
-  @apply col-span-3 lg:col-start-2 lg:p-0 px-4;
+  @apply col-span-3 w-screen lg:col-start-2 lg:p-0 px-4;
 }
 
 .std-body {
- @apply grid w-screen lg:grid-cols-5 md:grid-cols-3; 
+ @apply grid lg:grid-cols-5 md:grid-cols-3; 
 }
 
 @tailwind base;
