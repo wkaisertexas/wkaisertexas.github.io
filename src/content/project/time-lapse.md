@@ -1,18 +1,18 @@
 ---
 title: "⌛️ Time-Lapse"
 description: "Create time-lapses on MacOS without exuberant memory use"
-repository: "https://github.com/wkaisertexas/timelapse"
+repository: "https://github.com/wkaisertexas/ScreenTimeLapse"
 builtWith: ["python", "opencv"]
 display: true
 ---
 
 # Context and scope
 
-Timelapse is a iOS and MacOS application for creating screen and camera time-lapsed videos built off a slower-than-realtime ScreenCaptureKit Recording Engine.
+Timelapze is a iOS and MacOS application for creating screen and camera time-lapsed videos built off a slower-than-realtime ScreenCaptureKit Recording Engine.
 
 # Goals and non-goals
 
-Color accurate, slower-than realtime recording without any editing, post-processing or composition tool.
+Color accurate, slower-than realtime recording without any editing, post-processing and composition tool.
 
 # Design
 

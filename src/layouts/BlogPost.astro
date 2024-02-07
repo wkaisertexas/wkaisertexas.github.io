@@ -10,38 +10,53 @@ import { EMAIL } from "../consts";
 import "../styles/global.css";
 
 import type { CollectionEntry } from "astro:content";
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 
 type Props = CollectionEntry<"blog">["data"];
 
 const images = import.meta.glob('../blog/**/*.{jpeg,jpg,png,svg}');
 
-const getImage = (slug, heroImage) : any => {
+const fetchImg = (slug, heroImage) : any => {
   return images[`../blog/${slug}/${heroImage}`]()
 }
 
 const { data, slug, next, prev } = Astro.props;
 
-const {title, description, pubDate, updatedDate, heroImage } = data
+const {title, description, pubDate, updatedDate, heroImage, tags} = data
 
+const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'webp'});
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={heroImage} />
+    <BaseHead title={title} description={description} image={thumbnail.src} type="article" />
     <GoogleAnalytics />
     <Mathjax />
+
+    <!--
+      Article Specific Meta Tags
+     -->
+    <meta name="article:published_time" content={pubDate} />
+    {updatedDate && <meta name="article:modified_time" content={updatedDate} />}
+    <meta name="article:author" content="William Kaiser" />
+    <meta name="article:section" content="Technology" />
+    {tags && tags.map((tag) => (
+      <meta name="article:tag" content={tag} />
+    ))}
   </head>
 
-  <body class="std-body">
-    <main class="std-main">
+  <body class="flex items-center w-screen">
+    <main class="std-main w-screen">
+      <div class="mx-auto mt-5 max-w-prose p-2">
       <Header /> 
-     <article class="grid">
-        {heroImage && <div>
-            <Image class="rounded-md shadow-xl object-scale-down" width={128 * 9} src={getImage(slug, heroImage)} alt="header image" format="avif" />
+      </div>
+     <article class="mx-auto mt-5 max-w-prose p-2">
+        {heroImage && <div class="aspect-w-3 aspect-h-2">
+            <Image class="h-full w-full rounded-lg object-cover object-center rounded-md shadow-xl" width={128 * 9} src={fetchImg(slug, heroImage)} alt="header image" format="avif" />
           </div>}
-        <h1 class="title text-6xl font-bold py-4">{title}</h1>
-        <p class="pb-4">Published on <FormattedDate date={pubDate} /></p>
+
+        <h1 class="text-center text-xl lg:text-5xl tracking-tight font-bold">{title}</h1>
+        <p class="mt-2 text-center text-sm">Published on <FormattedDate date={pubDate} /></p>
         {
           updatedDate && (
             <div class="last-updated-on">
@@ -50,7 +65,7 @@ const {title, description, pubDate, updatedDate, heroImage } = data
           )
         }
         <hr />
-        <div class="prose lg:prose-lg">
+        <div class="prose prose-slate prose-md lg:prose-lg prose-img:rounded-lg p-2">
           <slot />
         </div>
       </article>

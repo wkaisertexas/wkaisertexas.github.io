@@ -20,8 +20,6 @@ No real public modules existed for this purpose, so I decided to build one. Most
 
 Learning about Selenium and how to publish and maintain open-source software is the goal. While using a Selenium-controlled browser could be argued to be overkill, experience with the technology-particularly how it applies to end-to-end integration testing -- is something with which I wanted to gain personal experience.
 
-# Design
-
 # APIs
 
 The python module is designed with two entry points:
