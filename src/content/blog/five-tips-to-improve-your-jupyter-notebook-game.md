@@ -6,6 +6,8 @@ heroImage: "hero.png"
 display: true
 ---
 
+Jupyter Notebooks have become a cornerstone of data scientists and analysts with an environment that blends code execution, visualizations, and explanatory text. However, without proper structure, the flexibility that notebooks give can become a curse. In this guide, we'll explore key practices to enhance productivity and maintain code integrity within Jupyter Notebooks.
+
 ## What is a Jupyter Notebook?
 
 JuPyter Notebooks are the most popular tool for data scientists and analysts to explore data. Notebooks are a web-based interactive environment which merges code, visualizations and markdown annotations into a single document. When compared to raw python scripts, Notebooks are more interactive and durable for creating exploratory code. Online platforms like [Kaggle](https://kaggle.com) and [Google Colab](https://colab.research.google.com) have made Notebooks easy to collaborate and share notebooks with others.
