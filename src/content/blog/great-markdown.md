@@ -49,13 +49,14 @@ Bolding, italics and strike through are handled using the `*` and `~` keys. Depe
 
 Code blocks are created using the triple backtick syntax. The language of the code block _can_ be specified after the first set of backticks. This is useful for syntax highlighting. For this, markdown separates inline code with \` (the tilde key). To place code inline, surround your code with a tilde \``my code` \` and place a separate chunk of code with:
 
-```markdown
-\`\`\`python
+
+<pre>
+```python
 from random import choice
 choices = [1, 2, 3, 4]
 print(choice(choices))
-\`\`\`
 ```
+</pre>
 
 > Putting the language next to the code signals dramatically improves the quality of syntax highlighting. Though the language is optional, it is highly recommended (and often missed).
 
