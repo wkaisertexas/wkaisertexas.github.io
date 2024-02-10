@@ -110,7 +110,7 @@ const github_api_key = process.env.GITHUBAPIKEY;
 
 ### Why not just store it in your code?
 
-Why not just put the key in your code? First, having keys in your code can made updating them kind of cumbersome (changing environment variables remotely is really difficult). Second, security. You could accidentally commit your code to a public repository. One of your team members could go rouge and post it online. You could accidentally use the production api key in testing and accidentally delete your user's data. 
+Why not just put the key in your code? First, having keys in your code can made updating them kind of cumbersome (changing environment variables remotely can be really quick). Second, security. You could accidentally commit your code to a public repository. One of your team members could go rouge and post it online. You could accidentally use the production api key in testing and accidentally delete your user's data. 
 
 > Committing your API key accidentally is such a large problem on sites like **GitHub** that automated companies will search your code for "high entropy strings" and automatically notify you if detected ( I have gotten quite a few of these emails myself).
 
