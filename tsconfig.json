@@ -1,9 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "jsx": "react",
     "strictNullChecks": true,
     "paths": {
-      "@blog/*": ["./src/blog"]
+      "@blog/*": ["./src/content/blog"]
     }
   }
 }
