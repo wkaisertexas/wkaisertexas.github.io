@@ -116,35 +116,40 @@ Why not just put the key in your code? First, having keys in your code can made 
 
 ## Creating a OpenAI account
 
-Setting up an account with a third-party service can be a bit tedious, but actually going through the motions. Got to [playground.openai.com](http://playground.openai.com) and setup an account if you have not made one already.
-
-> This **technically** costs money, but this particular API is comically cheap. My cost to use `gpt-3.5-turbo` has been less than $0.01 for about 150 requests.
+Third-party service setup can be a bit tedious, but actually going through the motions is good practice. Got to [playground.openai.com](http://playground.openai.com) and setup an account if you have not made one already.
 
 ![Cost to use chat gpt in browser](../../blog/cloning-chat-gpt-in-terminal-with-javascript-and-clack/usage.png)
 
+> This **technically** costs money, but this particular API is comically cheap. My cost to use `gpt-3.5-turbo` has been less than $0.01 for about 150 requests.
+
 ## Set a limit
 
-**DO THIS**. No one talks about the accidentally leaving a web service running to poverty pipeline. I though that $5 was reasonably fo me and adjusting this is easy in the future. If immediately losing access is a problem, setting a **soft limit** will give you an email when you are about to reach it.
+**Do this**. No one talks about the accidentally leaving a web service running to poverty pipeline. I though that $5 was reasonably fo me and adjusting this is easy in the future. If immediately losing access is a problem, setting a **soft limit** will give you an email when you are about to reach it.
 
 ![Setting a limit](../../blog/cloning-chat-gpt-in-terminal-with-javascript-and-clack/billingLimit.png)
 
-> I once left an **AWS Free Tier S3 Instance** on and it ended up costing my parents several hundred dollars as my parents got the email and did not know what to do with it.
+> I once left an **AWS Free Tier S3 Instance** on and it ended up costing me several hundred dollars.
 
 ## Create an API key
 
-Generate an API key and make sure to save this in your project in a file named `.env`.
-
-> **Fun Fact:** files or folders with a leading `.` are not shown the the user immediately on MacOS or Linux. This is why the folder `.git` stores all of the information about a repository and `.env` can store environment values. In addition, programs like **Visual Studio Code** and **NetBrains** will create configuration files for your project which are hidden.
+Go to the [OpenAI API keys page](https://platform.openai.com/api-keys) and create a new key.
 
 ![Creating an api key](../../blog/cloning-chat-gpt-in-terminal-with-javascript-and-clack/creatingAnApiKey.png)
+
+Save this key to a file called `.env` in the main directory of your project. Then, add the following line which will allow you to access the key in your code.
 
 ```bash
 export OPENAI_API_KEY=/* Your AI key */
 ```
 
+<details>
+<summary>Fun Fact:</summary>
+Files or folders with a leading `.` are not shown the the user immediately on MacOS or Linux. This is why the folder `.git` stores all of the information about a repository and `.env` can store environment values. In addition, programs like **Visual Studio Code** and **NetBrains** will create hidden `.` prefixed configuration files.
+</details>
+
 # Using your API key
 
-Set your API key to a local variable when the user runs your command
+Set your API key to a local variable when the user runs your command. This is where the special `process.env` object comes in. Process is a global object which is available by default to all `node` programs. 'env' is a **property** of `process` which is a dictionary (key-value pairs) of all of your environment variables.
 
 ```javascript
 const openai = new OpenAI({
@@ -152,7 +157,7 @@ const openai = new OpenAI({
 });
 ```
 
-One of ChatGPT's killer features is the ability to answer new questions with the context of older ones.  when we call the API, we not only provide a single question, but also a list of prior ones.
+One of ChatGPT's killer features is the ability to answer new questions with the context of older ones.  When we call the API, we not only provide a single question, but also a list of prior ones.
 
 ```javascript
 const chatHistory = []; // when the conversation starts, no history is present
@@ -187,7 +192,7 @@ Now, we have the user's prompt. Before doing anything else, a quick check to mak
   })
 ```
 
-Now we are ready to start making a request. Using a `spinner` before going any further provides a visual indication that the program is working. After this, we must add the `userPromptText` to the chat history. Then, we must make a call to OpenAI to get the response.
+Now we are ready to start making a request. Using a `spinner` before going any further provides a visual indication that the program has not hung. After this, we must add the `userPromptText` to the chat history. Then, we must make a call to OpenAI to get the response.
 
 ```javascript
 // still in prompt
@@ -206,7 +211,7 @@ const generatedText = await getResponse({
   })
 ```
 
- Because ChatGPT takes a few seconds to generate a response, the API gives a stream of data which is shown to the user incrementally (think about how [ChatGPT](https://chat.openai.com) gives you a word-by-word response). However, dealing with streams in this context is more complicated than necessary, so you are encourage this pre-provided snippet of code.
+ Because ChatGPT takes a few seconds to generate a response, the API gives a stream of data which is shown to the user incrementally (think about how [ChatGPT](https://chat.openai.com) gives you a word-by-word response). However, dealing with streams in this context is more complicated than necessary, so you are encourage this pre-provided snippet of code.[^4]
 
 ```javascript
 async function getResponse(chatHistory){
@@ -320,14 +325,14 @@ However, this is not a complete program as there are some **UI / UX** steps we c
 
 1. Using `clack` to display the results of the model
 2. Rendering code block which have `\`\`\` code \`\`\`` surrounding to be drawn separately. This behavior comes from the [Markdown Syntax Guide](https://www.markdownguide.org/basic-syntax/)
-  - Implementing all of Markdown highlighting is feasible for this project, but code highlighting can be a good first step.
+  <!-- - Implementing all of Markdown highlighting is feasible for this project, but code highlighting can be a good first step. -->
 3. Saving `chatHistory` to a file using the `JSON` file format and adding the ability to save and load previous conversations.
-  - `require('fs')` and then using `fs.writeFileSync(location, text)`
-  - `fs.readDir(folder, (err, files) => {/* Process them */})` will give you a list of files in a directory as a list
-  - `JSON.stringify(object)` will turn an `object` into a `string`
-  - `JSON.loads(object)` will turn a `string` into an `object`
-  - `clack` has a `multiselect` option which takes a list of objects with `labels` and `values` and allows you to accept an option from them. You could use multiselect to select an old conversation to load.
-  - `console.clear()` will clear the console and can help clean things up after a conversation is loaded.
+  a. `require('fs')` and then using `fs.writeFileSync(location, text)`
+  b. `fs.readDir(folder, (err, files) => {/* Process them */})` will give you a list of files in a directory as a list
+  c. `JSON.stringify(object)` will turn an `object` into a `string`
+  d. `JSON.loads(object)` will turn a `string` into an `object`
+  e. `clack` has a `multiselect` option which takes a list of objects with `labels` and `values` and allows you to accept an option from them. You could use multiselect to select an old conversation to load.
+  f. `console.clear()` will clear the console and can help clean things up after a conversation is loaded.
 
 ## References
 
@@ -339,3 +344,4 @@ However, this is not a complete program as there are some **UI / UX** steps we c
 [^1]: **OpenAI** has a **REST API** which is a series of endpoints for starting chats, creating accounts and more. However, **OpenAI** also has a `node` module which wraps the API into a nice set of functions for you and automatically handles the minor processing which you would have to otherwise implement. It is quite common for popular APIs to have wrappers in sometimes multiple languages (`python`, `javascript`, `java` are common). Reusing their pre-built wrapper code can be a great way to save time.
 [^2]: **Cleye** is a pun as is phonetically similar to the acronym for command line interface, *CLI*.
 [^3]: The hero image image presented is from [Google's Gemini (formerly Bard)](https://gemini.google.com/)
+[^4]: If you are up for the challenge, you can learn more about streaming from the guide [How To Stream Completions](https://cookbook.openai.com/examples/how_to_stream_completions)
