@@ -24,7 +24,7 @@ const { data, slug, next, prev } = Astro.props;
 
 const {title, description, pubDate, updatedDate, heroImage, tags} = data
 
-const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'webp'});
+const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'avif'});
 ---
 
 <html lang="en">
@@ -45,7 +45,7 @@ const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'webp'
     ))}
   </head>
 
-  <body class="flex items-center w-screen">
+  <body class="flex items-center w-scpen">
     <main class="std-main w-screen">
       <div class="mx-auto mt-5 max-w-prose p-2">
       <Header /> 
