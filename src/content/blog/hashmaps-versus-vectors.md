@@ -1,5 +1,5 @@
 ---
-title: "Insight about Vectors over Hashsets is Dangerous for Interviews"
+title: "Insights about using Vectors over Hashsets are not as clear as they seem"
 description: "thePrimeagean's made an 0(n) algorithm 16,000x faster by ignoring common knowledge of performance. From removing redundant checks to recycling valid data, many little cuts caused this performance gain. However, avoiding Hashsets-the mythical O(1) structure-to nearly double performance using a linear search."
 pubDate: "April 19 2023"
 heroImage: "hero.png"
@@ -10,10 +10,7 @@ The inspiration for this piece was _ThePrimeagen_’s YouTube Video _This Algori
 
 ## Problem
 
-> Your device’s communication system is correctly detecting packets, but  
-> still isn’t working. It looks like it also needs to look for messages.  
-> A start-of-message marker is just like a start-of-packet marker, except it  
-> consists of 14 distinct characters rather than 4.
+> Your device’s communication system is correctly detecting packets, but still isn’t working. It looks like it also needs to look for messages. A start-of-message marker is just like a start-of-packet marker, except it consists of 14 distinct characters rather than 4.
 
 This program is simple: find 14 distinct characters in a row from an input string. _ThePrimeagen_’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
 
@@ -32,7 +29,7 @@ fn simple(i: &[u8]) -> usize {
 }
 ```
 
-For those less familiar with Rust, this function: uses windows to look the array in 14 character overlapping increments, creates a hash set for each position (group of 14 characters). Then, adds 14 to get the end instead of the beginning unique characters.
+For those less familiar with Rust, this function uses windows to look the array in 14 character overlapping increments, creates a hash set for each position (group of 14 characters). Then, adds 14 to get the end instead of the beginning unique characters.
 
 The first, most obvious optimization made was surprisingly: using a vector. This change was so significant that it lead to an 8.9x speedup.
 
