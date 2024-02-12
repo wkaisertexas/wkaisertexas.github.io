@@ -119,11 +119,11 @@ I recently wrote [Behind the Innovation: Insights Between The International Scie
 
 Though minor in nature, tools like this make fighting information decay significantly easier. I try and stand behind everything I write. Especially, when writing about data and statistics, I want to ensure that the data is up to date. Tools like Astro make this much easier to do.
 
-### 10. Don't get f\*\*ked by vendors
+### 10. Avoid Vendor Lock-In
 
-Platform have a tendency to screw over members. The cycle of venture capitalists burning money to acquire customers with sweet deals up until someone does the math someone does the math and decides that companies _sort of have to make money_. [Rip. Heroku.](https://techcrunch.com/2022/08/25/heroku-announces-plans-to-eliminate-free-plans-blaming-fraud-and-abuse/) You can never put too much trust in a platform. However, you eventually have to trust someone. I think GitHub pages is a good bet for the foreseeable future.
+Platform have a tendency to exploit their members. The cycle of venture capitalists burning money to acquire customers with sweet deals up until someone does the math someone does the math and decides that companies _sort of have to make money_. [Rip. Heroku.](https://techcrunch.com/2022/08/25/heroku-announces-plans-to-eliminate-free-plans-blaming-fraud-and-abuse/) You can never put too much trust in a platform. However, you eventually have to trust someone, and I think GitHub pages is a good bet for the foreseeable future.
 
-When looking at alternatives like [Vercel](https://vercel.com) and [Netlify](https://www.netlify.com/), GitHub is far better capitalized to lose money on pages, largely used to host blogs and websites for open-source projects, than Vercel and Netlify which could see pressures similar to those faced by Heroku. Serving a static site (effectively a folder) is the simplest way to serve a website. Given the sheer number of open-source projects depending on pages for documentation, page's free tier will likely never go away. Even so, with a static site, switching back is dead-simple.
+When looking at alternatives like [Vercel](https://vercel.com) and [Netlify](https://www.netlify.com/), GitHub is far better capitalized to lose money on pages, largely used to host blogs and websites for open-source projects, than Vercel and Netlify which could see pressures similar to those faced by Heroku. Serving a static site (effectively a folder) is the simplest way to host a website. Given the sheer number of open-source projects depending on pages for documentation, page's free tier will likely never go away. Even so, a static site provides near-zero switching costs.
 
 ## Conclusion
 
