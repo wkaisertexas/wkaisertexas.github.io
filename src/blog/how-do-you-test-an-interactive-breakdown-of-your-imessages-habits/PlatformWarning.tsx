@@ -16,7 +16,7 @@ const PlatformWarning = () => {
   }
 
   return (<>{
-    hasPlatform() && false ? (
+    hasPlatform() ? (
       <></>
     ) : (
       <div className="platform-warning border-black border-2 rounded-lg border-dashed p-10">
