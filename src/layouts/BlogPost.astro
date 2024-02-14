@@ -10,26 +10,34 @@ import { EMAIL } from "../consts";
 import "../styles/global.css";
 
 import type { CollectionEntry } from "astro:content";
-import { Image, getImage } from 'astro:assets';
+import { Image, getImage } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const images = import.meta.glob('../blog/**/*.{jpeg,jpg,png,svg}');
+const images = import.meta.glob("../blog/**/*.{jpeg,jpg,png,svg}");
 
-const fetchImg = (slug, heroImage) : any => {
-  return images[`../blog/${slug}/${heroImage}`]()
-}
+const fetchImg = (slug, heroImage): any => {
+  return images[`../blog/${slug}/${heroImage}`]();
+};
 
-const { data, slug, next, prev } = Astro.props;
+const { data, slug, next, prev, no_hero } = Astro.props;
 
-const {title, description, pubDate, updatedDate, heroImage, tags} = data
+const { title, description, pubDate, updatedDate, heroImage, tags } = data;
 
-const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'avif'});
+const thumbnail = await getImage({
+  src: fetchImg(slug, heroImage),
+  format: "avif",
+});
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={thumbnail.src} type="article" />
+    <BaseHead
+      title={title}
+      description={description}
+      image={thumbnail.src}
+      type="article"
+    />
     <GoogleAnalytics />
     <Mathjax />
 
@@ -40,23 +48,35 @@ const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'avif'
     {updatedDate && <meta name="article:modified_time" content={updatedDate} />}
     <meta name="article:author" content="William Kaiser" />
     <meta name="article:section" content="Technology" />
-    {tags && tags.map((tag) => (
-      <meta name="article:tag" content={tag} />
-    ))}
+    {tags && tags.map((tag) => <meta name="article:tag" content={tag} />)}
   </head>
 
   <body class="flex items-center w-scpen">
-    <main class="std-main w-screen">
+    <main class={`std-main` + (no_hero !== true) ? ` w-screen` : ``}>
       <div class="mx-auto mt-5 max-w-prose p-2">
-      <Header /> 
+        <Header />
       </div>
-     <article class="mx-auto mt-5 max-w-prose p-2">
-        {heroImage && <div class="aspect-w-3 aspect-h-2">
-            <Image class="h-full w-full rounded-lg object-cover object-center rounded-md shadow-xl" width={128 * 9} src={fetchImg(slug, heroImage)} alt="header image" format="avif" />
-          </div>}
+      <article class={`mx-auto mt-5 p-2` + (no_hero !== true ? ` max-w-prose` : ``) }>
+        {
+          heroImage && (
+            <div class="aspect-w-3 aspect-h-2">
+              <Image
+                class="h-full w-full rounded-lg object-cover object-center rounded-md shadow-xl"
+                width={128 * 9}
+                src={fetchImg(slug, heroImage)}
+                alt="header image"
+                format="avif"
+              />
+            </div>
+          )
+        }
 
-        <h1 class="text-center text-xl lg:text-5xl tracking-tight font-bold">{title}</h1>
-        <p class="mt-2 text-center text-sm">Published on <FormattedDate date={pubDate} /></p>
+        <h1 class="text-center text-xl lg:text-5xl tracking-tight font-bold">
+          {title}
+        </h1>
+        <p class="mt-2 text-center text-sm">
+          Published on <FormattedDate date={pubDate} />
+        </p>
         {
           updatedDate && (
             <div class="last-updated-on">
@@ -65,7 +85,9 @@ const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'avif'
           )
         }
         <hr />
-        <div class="prose prose-slate prose-md lg:prose-lg prose-img:rounded-lg p-2">
+        <div
+          class="prose prose-slate prose-md lg:prose-lg prose-img:rounded-lg p-2"
+        >
           <slot />
         </div>
       </article>
@@ -99,21 +121,21 @@ const thumbnail = await getImage({src: fetchImg(slug, heroImage), format: 'avif'
       </section>
 
       <hr />
-      <section class="mb-8 grid md:grid-cols-2">
-        <FooterCTA
-          title="Stay in touch"
-          description="Subscribe to my RSS feed to stay updated"
-          href="/feed.rss"
-          cta="RSS"
-        />
-        <FooterCTA
-          title="Have any questions"
-          description="Feel free to contact me! I will answer any and all inquires"
-          href={`mailto:${EMAIL}`}
-          cta="Email"
-        />
-      </section>
-      <Footer />
+        <section class="mb-8 grid md:grid-cols-2">
+          <FooterCTA
+            title="Stay in touch"
+            description="Subscribe to my RSS feed to stay updated"
+            href="/feed.xml"
+            cta="RSS"
+          />
+          <FooterCTA
+            title="Have any questions"
+            description="Feel free to contact me! I will answer any and all inquires"
+            href={`mailto:${EMAIL}`}
+            cta="Email"
+          />
+        </section>
+        <Footer />
     </main>
   </body>
 </html>

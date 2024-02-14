@@ -1,27 +1,28 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import { CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-	let posts = await getCollection('blog');
+  let posts = await getCollection("blog");
 
-  posts = posts.filter((post) => post.data.display !== false);
+  posts = posts.filter((post) => post.data.unlisted || post.data.display !== false);
 
   return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+    params: { slug: post.slug },
+    props: post,
+  }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
 
-const posts = (await getCollection('blog'))
-.filter((post) => (post.data.display !== false))
-.sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const posts = (await getCollection("blog"))
+  .filter(
+    (post) =>
+      post.data.unlisted || post.data.display !== false
+  )
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
 // calculate the index of this post
 const index = posts.findIndex((p) => p.slug === post.slug);
@@ -32,5 +33,5 @@ const nextPost = posts[index + 1] || null;
 ---
 
 <BlogPost {...post} prev={prevPost} next={nextPost}>
-	<Content />
+  <Content />
 </BlogPost>

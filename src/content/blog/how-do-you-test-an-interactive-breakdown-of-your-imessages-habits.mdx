@@ -1,12 +1,64 @@
 ---
-title: imessage
+title: iMessage Visualizer
 description: imessage
 heroImage: hero.png
 pubDate: Dec 1 2024
 display: false
+no_hero: true
+unlisted: true
 ---
-
 
 import Visualizer from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/Visualizer.tsx'
 
+import { createContext } from 'react';
+
+export const DBContext = createContext();
+
+This is an interactive data visualization where you can visualize and draw insights from you iMessage data. Get insights into things like how long you spend on your imessage, who likes to text you late at night (or early in teh morning) and more.
+
+# Getting your iMessage data
+
+If you are on a Mac, all of your iMessage data is stored on a local database `chat.db` located in your `~/Library/Messages` directory. The library directory is hidden by default, so the easiest way to access it is to copy it to your desktop.
+
+The easiest way to do this is to open up your Terminal app and paste the following command:
+
+```
+cp ~/Library/Messages/chat.db ~/Desktop
+```
+
+This uses the copy, `cp`, command to copy the `chat.db` file from your `~/Library/Messages` directory to your desktop. Using copy is the command-line equivalent of dragging and dropping the file from your `~/Library/Messages` directory to your desktop.
+
+After running this command, you should see a `chat.db` file on your desktop. You can then upload this file to the visualizer below.
+
+
 <Visualizer client:load />
+
+# Frequently Asked Questions
+
+<details>
+<summary>I am confused how to get my iMessage data</summary>
+
+Here is a video I made to help you out.
+</details>
+
+<details>
+<summary>Will your data get stolen?</summary>
+Your data never leaves your device. It is stored locally in your browser. You can even validate this by **turning off your interenet connection** before submitting your data.
+</details>
+
+<details>
+<summary>Why is it taking so long to load?</summary>
+An average user has over 1,000,000 messages &mdash; that is **a lot** of data to process. Executing opperations on your data to find your most active contacts, group chats, favorite times of day to text, etc. takes a lot of searching. Depending on the speed of your computer, this could take a bit of time.
+</details>
+
+<details>
+<summary>Help! I use my phone too much</summary>
+I'm sorry, I can't help you with that. However, here are some resources to get you started: <br></br>
+
+<ul>
+<li><a target="_blank" aria-label="breaking a phone addiction" href="https://www.theatlantic.com/family/archive/2021/10/digital-addiction-smartphone/620318/">How to Break a Phone Addition (The Atlantic)</a></li>
+<li><a target="_blank" aria-label="what you need to know about cell phone addiction" href="https://www.verizon.com/articles/cell-phone-addiction/">Cell Phone Additction: What You Need to Know (Version)</a></li>
+<li><a target="_blank" aria-label="how can I cut back on my phone time" href="https://www.nytimes.com/2022/02/08/well/live/smartphone-addiction-tips.html">I'm Addicted to My Phone. How Can I Cut Back? (The New York Times)</a></li>
+</ul>
+</details>
+
