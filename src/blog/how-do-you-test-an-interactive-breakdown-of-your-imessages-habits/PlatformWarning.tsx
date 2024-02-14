@@ -2,7 +2,7 @@ import React from "react";
 
 const PlatformWarning = () => {
   const hasPlatform = () : boolean => {
-    if(!navigator) return true;
+    if(typeof navigator === 'undefined') return true;
     if(navigator.platform) return navigator.platform.includes("Mac");
     if(navigator.userAgentData){
       if (navigator.userAgentData.platform){
