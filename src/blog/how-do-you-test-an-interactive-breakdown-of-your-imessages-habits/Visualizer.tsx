@@ -112,15 +112,17 @@ const FileUpload = () => {
         )}
       </div>
 
-      <LoadingBar state={state} />
+      {/* <LoadingBar state={state} /> */}
 
-      <DatabaseContext.Provider value={db}>
-        <SMS />
-        <PopularChats />
-        <PopularGroupChats />
-        <Attachments />
-        <Timing />
-      </DatabaseContext.Provider>
+      {db && (
+        <DatabaseContext.Provider value={db}>
+          <SMS />
+          <PopularChats />
+          <PopularGroupChats />
+          <Attachments />
+          <Timing />
+        </DatabaseContext.Provider>
+      )}
     </>
   );
 };

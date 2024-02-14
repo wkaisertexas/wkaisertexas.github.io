@@ -9,16 +9,19 @@ unlisted: true
 ---
 
 import Visualizer from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/Visualizer.tsx'
+import PlatformWarning from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/PlatformWarning.tsx'
 
 import { createContext } from 'react';
 
 export const DBContext = createContext();
 
-This is an interactive data visualization where you can visualize and draw insights from you iMessage data. Get insights into things like how long you spend on your imessage, who likes to text you late at night (or early in teh morning) and more.
+This is an interactive data visualization where you can draw insights from you iMessage data. Look into how long you spend on iMessages, who likes to text you late at night, who are your best friends and more.
 
 # Getting your iMessage data
 
-If you are on a Mac, all of your iMessage data is stored on a local database `chat.db` located in your `~/Library/Messages` directory. The library directory is hidden by default, so the easiest way to access it is to copy it to your desktop.
+<PlatformWarning client:load />
+
+If you are **on a Mac**, all of your iMessage data is stored on a local database `chat.db` located in your `~/Library/Messages` directory. The library directory is hidden by default, so the easiest way to access it is to copy it to your desktop.[^1]
 
 The easiest way to do this is to open up your Terminal app and paste the following command:
 
@@ -34,12 +37,6 @@ After running this command, you should see a `chat.db` file on your desktop. You
 <Visualizer client:load />
 
 # Frequently Asked Questions
-
-<details>
-<summary>I am confused how to get my iMessage data</summary>
-
-Here is a video I made to help you out.
-</details>
 
 <details>
 <summary>Will your data get stolen?</summary>
@@ -62,3 +59,5 @@ I'm sorry, I can't help you with that. However, here are some resources to get y
 </ul>
 </details>
 
+---
+[^1]: Note: this only works if you are on a Mac
