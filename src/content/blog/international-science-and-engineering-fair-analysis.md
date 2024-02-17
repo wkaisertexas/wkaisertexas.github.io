@@ -1,5 +1,5 @@
 ---
-title: "What do top science fair projects do differently? An analysis of 13,000+ projects"
+title: "Why are top science fair projects different? An analysis of 13,000+ projects"
 description: "Science fair is likely to evoke youthful memories of creation and discovery. These formative experiences are designed to cultivate students’ interest in science, technology, engineering and mathematics (STEM). However, top-tier science fair projects are incredibly competitive. In this article, the tips and lore surrounding projects will be explored and visualized with data."
 pubDate: "May 23 2023"
 heroImage: "hero.png"
