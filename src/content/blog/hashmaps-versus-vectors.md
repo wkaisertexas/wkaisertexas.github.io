@@ -6,13 +6,13 @@ heroImage: "hero.png"
 display: true
 ---
 
-The inspiration for this piece was _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6).
+This piece was inspired by _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._  Despite **both** the initial and final solution being linear in time-complexity (`O(n)`). One is over a million percent faster. This is a fascinating example of how performance is not necessarily equal to time-complexity &mdash; seemingly contradicting commonly taught knowledge about algorithms in computer science education.
 
 ## Problem
 
-> Your device’s communication system is correctly detecting packets, but still isn’t working. It looks like it also needs to look for messages. A start-of-message marker is just like a start-of-packet marker, except it consists of 14 distinct characters rather than 4.
+This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6). Advent of Code Day 6 part 2 gives a simple problem: find 14 distinct (or non-repeating cahracters) characters in a row from an input string. 
 
-This program is simple: find 14 distinct characters in a row from an input string. _ThePrimeagen_’s video is interesting because both the initial and final solution are `O(n)`, or linear in time complexity. Such substantial improvements are rare without changing time complexity, hence why big-O notation is such as common topic on coding interviews.
+> Your device’s communication system is correctly detecting packets, but still isn’t working. It looks like it also needs to look for messages. A start-of-message marker is just like a start-of-packet marker, except it consists of 14 distinct characters rather than 4.
 
 ## Solution
 
@@ -31,7 +31,7 @@ fn simple(i: &[u8]) -> usize {
 
 For those less familiar with Rust, this function uses windows to look the array in 14 character overlapping increments, creates a hash set for each position (group of 14 characters). Then, adds 14 to get the end instead of the beginning unique characters.
 
-The first, most obvious optimization made was surprisingly: using a vector. This change was so significant that it lead to an 8.9x speedup.
+The first, most obvious optimization made was surprisingly: using a vector. This change was so significant that it lead to an **8.9x speedup**.
 
 ```rust
 fn faster_vec(i: &[u8]) -> usize {
@@ -51,9 +51,11 @@ fn faster_vec(i: &[u8]) -> usize {
 }
 ```
 
-Despite alarm bells going off in my head from my DSA professor, a linear search here is still constant time because the size of the vector does not change with the increasing search size. Therefore, O(n) is really O(c) which gets approximated to O(1) for time-complexity estimation.
+Despite alarm bells going off in my head from my first-year algorithms professor, a linear search here is still constant time because the size of the vector does not change with the increasing search size. Therefore, O(n) is really O(c) which gets approximated to O(1) for time-complexity estimation.
 
-Vector’s advantages for small sized constant input lead me to wonder about if I could create a heuristic for when HashSets and Vectors cross over when it comes to performance in popular programming languages. Key takeaway: tread lightly.
+Vector’s advantages for small sized constant input lead me to wonder if I could create a heuristic for when HashSets are better than Vectors. Key takeaway: **tread lightly**.
+
+---
 
 ## Methodology
 
@@ -61,7 +63,7 @@ _Rust_, _JavaScript_ and _Java_ were selected from the test. Vector (or vector e
 
 ## Problems
 
-JavaScript’s Just In Time (JIT) compilation was finicky during testing. Initially, like _Rust_ and _Java_, the output of search was unsaved. This lead the compiler to feel fit to omit this section of code, resulting in zero lookup times. Preallocating an array with 1,000,000 elements was sufficient to trick the JIT to stop this behavior. Furthermore, JIT compilation only takes place after several runs. Practically speaking, this means JavaScript functions can experience a “cold start” of low performance before reaching a steady-state, optimized equilibrium.
+JavaScript’s Just In Time (JIT) compilation was finicky during testing. Initially, like _Rust_ and _Java_, the output of search was unsaved. This lead the compiler to feel fit to omit this section of code, resulting in zero lookup times. Preallocating an array with 1,000,000 elements was sufficient to trick the JIT to stop this behavior. Furthermore, JIT compilation only takes place after several runs. Practically speaking, JavaScript functions can experience a “cold start” of low performance before reaching a steady-state, optimized equilibrium.
 
 ## Code
 
@@ -198,7 +200,7 @@ public class Main {
 
 ## Results
 
-This experiment was far less clear-cut as I would have hoped. Upon plotting, identifying definite points of performance crossover is difficult. Simply attempting to identify points of crossover requires plotting on a tiny x-scale.
+This experiment was far less clear-cut as I would have hoped. Upon plotting, identifying definite where vectors do better is difficult. The **only** clear trend is that _Rust_’s performance is consistently better than _Java_ and _JavaScript_.
 
 _Rust_ was not only the fastest, but the most regular of the tested languages. This looks like the classic O(1) versus O(n) charts taught.
 
@@ -220,10 +222,8 @@ Input size versus performance (measured in milliseconds per 1M searches)
 
 ## Conclusion
 
-These tests are not perfect: far from it. For instance, I omitted insertions and resizes of vectors, some of the most intensive operations of each data structure.
-
-However, these tests do disprove the hope that I had after watching _thePrimeagen_\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
+These tests are not perfect: far from it. However, these tests do disprove the hope that I had after watching _thePrimeagen_\’s video: leaving with a set of language-specific heuristics for when different data structures’ performance flip-flops.
 
 Though, through considerable oversimplification, you could come up with a number of roughly 20 for _Rust_ and _Javascript_, assuming this is a dangerous in the context of a high-stakes interview question. Put simply, stick to HashSets and HashMaps being magical O(1) data structures — it is harder to mess up this way.
 
-If this kind of optimization is fascinating to you, I would recommend checking out Stand Up Math’s video on how [_Someone Improved my Code by 40,832,277,770%_](https://www.youtube.com/watch?v=c33AZBnRHks) which is conceptually similar.
+If this kind of optimization is fascinating to you, I recommend checking out Stand Up Math’s video on how [_Someone Improved my Code by 40,832,277,770%_](https://www.youtube.com/watch?v=c33AZBnRHks) that is conceptually similar.
