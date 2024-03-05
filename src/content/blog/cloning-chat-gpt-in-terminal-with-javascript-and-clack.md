@@ -86,7 +86,7 @@ Node does not like to use `import` statements unless you tell it to. To do this,
 }
 ```
 
-## Getting API keys
+## Getting Your API Key
 
 We are going to do this a little bit backwards and explain how to get API keys into your program securely. To do this, we need to leverage **environment variables**. While scary-sounding, your environment variables look something like this:
 

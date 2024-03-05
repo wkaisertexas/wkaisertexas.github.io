@@ -3,7 +3,7 @@ title: "Making the Snowden leak into a screensaver w/ 4 lines of shell scripts"
 description: "How I micro-dosed government secrets with a little bit of shell programming"
 pubDate: "Feb 28 2023"
 heroImage: "hero.png"
-display: true
+display: false
 ---
 
 ## Introduction

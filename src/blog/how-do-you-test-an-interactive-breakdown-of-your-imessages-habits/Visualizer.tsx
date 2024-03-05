@@ -91,7 +91,7 @@ const FileUpload = () => {
   };
 
   return (
-    <>
+    <section className="not-prose">
       <div id="file-uploader">
         <h1>Visualize your iMessage Habits</h1>
         <p>Upload your iMessage database to visualize your iMessage habits</p>
@@ -123,7 +123,7 @@ const FileUpload = () => {
           <Timing />
         </DatabaseContext.Provider>
       )}
-    </>
+    </section>
   );
 };
 

@@ -22,7 +22,7 @@ const posts = (await getCollection('blog'))
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const images = import.meta.glob('../../blog/**/*.{jpeg,jpg,png,svg}');
+const images = import.meta.glob('../../blog/**/*.{jpeg,jpg,png,svg,webp,avif,gif}');
 
 const getImage = (post: any) : any => {
   return images[`../../blog/${post.slug}/${post.data.heroImage}`]()
