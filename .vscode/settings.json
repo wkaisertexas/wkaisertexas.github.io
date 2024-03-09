@@ -10,5 +10,6 @@
 		"compounds": []
     },
     "editor.tabSize": 2,
-    "svg.preview.background": "transparent"
+    "svg.preview.background": "transparent",
+    "cSpell.enabled": true
 }
