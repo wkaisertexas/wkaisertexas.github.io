@@ -1,4 +1,9 @@
 <html lang="en">
+  <style>
+    body {
+      text-rendering: optimizeSpeed;
+    }
+  </style>
   <head>
     <title>William Kaiser - Resume</title>
     <meta
@@ -16,7 +21,7 @@
         <a href="tel:832-925-6037">(832) 925-6037</a>
       </div>
 
-      <div class="my-auto text-right">
+      <div class="my-auto text-right flex flex-col">
         <a href="https://github.com/wkaisertexas">github.com/wkaisertexas</a>
         <a href="https://www.linkedin.com/in/williamdkaiser"
           >linkedin.com/in/williamdkaiser</a
@@ -51,9 +56,9 @@
               Essentials, Advanced Software Development
             </li>
             <li>
-              <strong>Clubs:</strong> Forge, Student Game Developers, Virginia Entrepreneurship
-              Organization, Phi Eta Sigma Honor Society, Student Council Treasurer,
-              Poker Club
+              <strong>Clubs:</strong> Forge (formerly HackC'Ville), Virginia Entrepreneurship
+              Organization, theCourseForum, Student Council Treasurer,
+              Poker Club, Phi Eta Sigma Honor Society
             </li>
           </ul>
         </div>
@@ -152,14 +157,70 @@
         </div>
       </section>
 
+      <section id="leadership">
+        <h2 class="text-2xl font-semibold -mb-1">Leadership Positions</h2>
+        <hr class="border-black border-t-[3px]" />
+
+        <div id="course-director">
+          <div class="flex flex-row justify-between items-end">
+            <div>
+              <h3>
+                <strong>Forge (formerly HackC'ville),</strong> University of Virginia
+              </h3>
+              <p class="italic">Course Director</p>
+            </div>
+            <div>
+              <p class="italic">August 2023 &mdash; Present</p>
+            </div>
+          </div>
+
+          <ul class="list-disc list-inside px-4">
+            <li>
+              Taught 20+ students machine learning in a 10-week course with TensorFlow.
+            </li>
+            <li>
+              Developed a 10-week curriculum and course pack from scratch which included: readings, lectures, workshops and projects.
+            </li>
+            <li>
+              Culminated in a student-directed final project showcasing an interactive machine learning model.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div id="veo">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3>
+              <strong>Virginia Entrepreneurship Organization, </strong> University
+              of Virginia
+            </h3>
+            <p class="italic">Vice President of Events</p>
+          </div>
+          <div>
+            <p class="italic">November 2023 &mdash; Present</p>
+          </div>
+        </div>
+
+        <ul class="list-disc list-inside px-4">
+          <li>
+            Organized a pitch competition with 10 teams and $1,000 in prizes.
+          </li>
+          <li>
+            Coodinated speaker events with local entreprenuers with over 50
+            attendees.
+          </li>
+        </ul>
+      </div>
+
       <section id="projects">
-        <h2 class="text-2xl font-semibold -mb-1">Relevant Projects</h2>
+        <h2 class="text-2xl font-semibold -mb-1">Projects</h2>
         <hr class="border-black border-t-[3px]" />
 
         <div id="timelapse">
           <div class="flex flex-row justify-between items-end">
             <div>
-              <h3><strong>Time Lapse</strong></h3>
+              <h3><strong>TimeLapze</strong></h3>
               <p class="italic">Screen Recorder</p>
             </div>
             <div>
@@ -169,20 +230,19 @@
 
           <ul class="list-disc list-inside px-4">
             <li>
-              Built and published a screen and camera recorder to make
+              Built and published a open-source screen and camera recorder to make
               time-lapses for MacOS.
             </li>
-            <li>
+            <!-- <li>
               Prototyped this project to reduce screen recording sizes using
               Python and OpenCV.
-            </li>
+            </li> -->
             <li>
-              Reduced build size from 500 MB to 2 MB after a rewrite in Swift,
+              Reduced build size from 500 MB to 2 MB after a native in Swift,
               SwiftUI, and ScreenCaptureKit.
             </li>
             <li>
-              Accumulated >500 GitHub Stars after launching and open sourcing the
-              project.
+              Ranked #1 on Hacker News and gained >600 Stars on GitHub after launch.
             </li>
           </ul>
         </div>
@@ -212,17 +272,17 @@
               Matplotlib.
             </li>
             <li>
-              Created an interactive in-browser dataset visualization leveraging
+              Created an interactive in-browser dashboard leveraging
               Bokeh, JavaScript and WebGL.
             </li>
             <li>
-              Published findings in a 5,000-word post that has >4,000 reads on
+              Published findings in a 5,000-word post that has >4,500 reads on
               LinkedIn.
             </li>
           </ul>
         </div>
 
-        <div id="media-impact-analysis">
+        <!-- <div id="media-impact-analysis">
           <div class="flex flex-row justify-between items-end">
             <div>
               <h3><strong>Media Impact Analysis</strong></h3>
@@ -248,7 +308,7 @@
             </li>
             <li>Wrote, presented, and defended research conducted.</li>
           </ul>
-        </div>
+        </div> -->
       </section>
 
       <section id="skills">
@@ -261,8 +321,8 @@
             R, SQL
           </li>
           <li>
-            <strong>Libraries:</strong> React (Next.js), TensorFlow, OpenCV, GGPlot2,
-            Bokeh, Matplotlib, Tailwind, BeautifulSoup
+            <strong>Libraries:</strong> Django, React (Next.js), TensorFlow, OpenCV,
+            GGPlot2, Bokeh, Matplotlib, Pandas, NumPy, SciPy
           </li>
           <li>
             <strong>Certifications:</strong> TensorFlow Developer Certified, AWS
@@ -274,11 +334,11 @@
       <section id="honors">
         <h2 class="text-2xl font-semibold -mb-1">Honors and Awards</h2>
         <hr class="border-black border-t-[3px]" />
-        <ul class="w-full grid grid-cols-2 list-inside list-disc px-4 pt-2">
+        <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
           <li>Hoo Hacks Patient Safety Challenge Award Winner</li>
           <li>Dean's List</li>
           <li>Eagle Scout Award</li>
-          <li>The Congressional Award Gold Medal</li>
+          <!-- <li>The Congressional Asward Gold Medal</li> -->
           <li>National Merit Finalist</li>
         </ul>
       </section>
