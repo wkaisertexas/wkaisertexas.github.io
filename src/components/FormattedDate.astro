@@ -11,10 +11,6 @@ let dateString = date.toLocaleDateString('en-us', {
 			month: 'short',
 			day: 'numeric',
 })
-
-if(today.getFullYear() === date.getFullYear()){
-  dateString = dateString.split(",")[0]
-}
 ---
 
 <time class="font-sm" datetime={date.toISOString()}>

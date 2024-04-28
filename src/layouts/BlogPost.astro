@@ -14,7 +14,9 @@ import { Image, getImage } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const images = import.meta.glob("../blog/**/*.{jpeg,jpg,png,svg,webp,avif,gif}");
+const images = import.meta.glob(
+  "../blog/**/*.{jpeg,jpg,png,svg,webp,avif,gif}"
+);
 
 const fetchImg = (slug, heroImage): any => {
   return images[`../blog/${slug}/${heroImage}`]();
@@ -51,56 +53,72 @@ const thumbnail = await getImage({
     {tags && tags.map((tag) => <meta name="article:tag" content={tag} />)}
   </head>
 
-  <body class="flex items-center overflow-x-hidde">
-    <main class={`std-main` + (no_hero !== true) ? ` w-screen` : ``}>
-      <div class="mx-auto mt-5 max-w-prose p-2">
-        <Header />
-      </div>
-      <article class={`mx-auto mt-5 p-2` + (no_hero !== true ? ` max-w-prose` : ``) }>
+  <body>
+    <div class="relative mx-auto mt-5 max-w-prose">
+      <Header />
+    </div>
+
+    <main
+      class={`relative overflow-hidden py-16` + (no_hero !== true)
+        ? ` w-screen`
+        : ``}
+    >
+      <div
+        class={`mx-auto max-w-prose text-lg` +
+          (no_hero !== true ? ` max-w-prose` : ``)}
+      >
+        <a
+          href="/blog"
+          class="block text-center text-lg font-semibold text-orange hover:underline text-blue-600"
+          >Engineering</a
+        >
+        <h1
+          class="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-1000 sm:text-4xl"
+        >
+          {title}
+        </h1>
+        <p class="mt-2 text-center text-lg font-medium tracing-tighter text-gray-700">
+          Published <FormattedDate date={pubDate} />
+        </p>
         {
-          heroImage && (
-            <div class="aspect-w-3 aspect-h-2">
+          updatedDate && (
+            <div class="last-updated-on">
+              Updated <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
+        <p class="mt-8 text-xl leading-8 text-gray-700">{description}</p>
+        
+      </div>
+
+      {
+        heroImage && (
+          <>
+            <div class="mt-12 -mx-6 lg:-mx-8">
               <Image
-                class="h-full w-full rounded-lg object-cover object-center rounded-md shadow-xl"
+                class="mx-auto w-[512px] aspect-video lg:rounded-lg object-cover"
                 width={128 * 9}
                 src={fetchImg(slug, heroImage)}
                 alt="header image"
                 format="avif"
               />
             </div>
-          )
-        }
+            <hr class="mt-4" />
+          </>
+        )
+      }
+      <div
+        class="prose prose-lg prose-orange mx-auto mt-12 text-gray-700 prose-a:text-orange hover:prose-a:text-orange-500 prose-figcaption:italic prose-figcaption:-mt-1 prose-figcaption:text-sm prose-figcaption:font-serif prose-img:drop-shadow-xl"
+      >
+        <slot />
+      </div>
 
-        <h1 class="text-center text-xl lg:text-5xl tracking-tight font-bold">
-          {title}
-        </h1>
-        <p class="mt-2 text-center text-sm">
-          Published on <FormattedDate date={pubDate} />
-        </p>
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
-        <hr />
-        <div
-          class="prose prose-slate prose-md lg:prose-lg prose-img:rounded-lg p-2"
-        >
-          <slot />
-        </div>
-      </article>
+      <hr class="mt-4 mx-auto max-w-prose" />
 
-      <hr class="mt-4" />
-
-      <section class="grid md:grid-cols-2 my-4">
+      <section class="grid md:grid-cols-2 my-4 max-w-prose mx-auto">
         {
           prev && (
-            <a
-              href={`/blog/${prev.slug}`}
-              class="rounded-md border-black border-2 p-2 m-2 hover:left-1"
-            >
+            <a href={`/blog/${prev.slug}`} class="p-2 hover:left-1">
               <header class="text-gray-500">Previous post</header>
               <h1 class="font-bold">{prev.data.title}</h1>
             </a>
@@ -111,7 +129,7 @@ const thumbnail = await getImage({
           next && (
             <a
               href={`/blog/${next.slug}`}
-              class="text-right md:col-start-2 rounded-md border-black border-2 p-2 m-2 hover:right-1"
+              class="text-right md:col-start-2 p-2 hover:right-1"
             >
               <header class="text-gray-500">Next post</header>
               <h1 class="font-bold">{next.data.title}</h1>
@@ -120,22 +138,25 @@ const thumbnail = await getImage({
         }
       </section>
 
-      <hr />
-        <section class="mb-8 grid md:grid-cols-2">
-          <FooterCTA
-            title="Stay in touch"
-            description="Subscribe to my RSS feed to stay updated"
-            href="/feed.xml"
-            cta="RSS"
-          />
-          <FooterCTA
-            title="Have any questions"
-            description="Feel free to contact me! I will answer any and all inquires"
-            href={`mailto:${EMAIL}`}
-            cta="Email"
-          />
-        </section>
+      <hr class="mx-auto max-w-prose" />
+
+      <section class="mb-8 grid md:grid-cols-2 max-w-prose mx-auto">
+        <FooterCTA
+          title="Stay in touch"
+          description="Subscribe to my RSS feed to stay updated"
+          href="/feed.xml"
+          cta="RSS"
+        />
+        <FooterCTA
+          title="Have any questions"
+          description="Feel free to contact me! I will answer any and all inquires"
+          href={`mailto:${EMAIL}`}
+          cta="Email"
+        />
+      </section>
+      <div class="max-w-prose mx-auto">
         <Footer />
+      </div>
     </main>
   </body>
 </html>
