@@ -5,7 +5,7 @@
  */
 
 .section {
-  @apply font-serif font-bold text-3xl py-6;
+  @apply font-serif font-bold text-3xl py-6 tracking-tight;
 }
 
 [data-highlighted="true"] {

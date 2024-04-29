@@ -54,7 +54,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
 // https://threejs.org/docs/#manual/en/introduction/Installation
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -144,7 +144,10 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
     <main class="std-main">
       <Header title={SITE_TITLE} />
 
-      <div id="gridlines" class="fixed inset-0 z-[-1] grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3">
+      <div
+        id="gridlines"
+        class="fixed inset-0 z-[-1] grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3"
+      >
         <!-- Dashed lines -->
         <div class="border-r border-dashed"></div>
         <div class="border-r border-dashed"></div>
@@ -152,7 +155,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
         <div class="border-r border-dashed"></div>
         <div><!--blank div takes up space on the side --></div>
       </div>
-      
+
       <section
         class="col-span-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
       >
@@ -167,7 +170,8 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
           />
 
           <p class="tracking-wide">
-            Computer science student interested in Data Science and Software Development. In my free time, I enjoy building projects and writing
+            Computer science student interested in Data Science and Software
+            Development. In my free time, I enjoy building projects and writing
             informational blogs
           </p>
         </div>
@@ -227,7 +231,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
           <div>
             <script id="new">
               function handlePress(event) {
-                let languages = document.getElementById("languages");
+                let languages = document.getElementById("languages")
                 let projects = document.getElementById("projects");
 
                 if (event.target.getAttribute("data-highlighted") === "true") {
@@ -257,7 +261,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
                   }
                 }
 
-                // unhightlight all buttons + highlight the right button
+                // un-highlighted all buttons + highlight the right button
                 languages.childNodes.forEach((child) => {
                   child.setAttribute("data-highlighted", "false");
                 });
@@ -273,14 +277,13 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
               }
             </script>
             <p class="text-md pt-4 pr-4 tracking-wide">
-              Filter my projects by langauge, library or framework used to build
+              Filter my projects by language, library or framework used to build
               them.
             </p>
             <div
               id="languages"
               class="flex flex-wrap md:flex-col justify-between space-x-2 space-y-2 text-lg"
-            >
-              {
+            >{
                 builtWith.keys.map((language) => (
                   <button
                     class="underline"
@@ -291,11 +294,9 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
                     {language}
                   </button>
                 ))
-              }
-            </div>
+              }</div>
           </div>
-          <ul id="projects" class="grid md:grid-cols-2 col-span-2">
-            {
+          <ul id="projects" class="grid md:grid-cols-2 col-span-2">{
               projects.map((project) => (
                 <li
                   class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1"
@@ -310,8 +311,7 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
                   </a>
                 </li>
               ))
-            }
-          </ul>
+            }</ul>
         </div>
       </section>
 
@@ -328,14 +328,16 @@ builtWith.keys = builtWith.keys.slice(0, NUM_LANGUAGES);
         </header>
         <div class="grid md:grid-cols-3">
           <div class="self-center pr-4 text-md mb-8 tracking-wide">
-            I occasionally like to write blog articles. Check them out!
+            I occasionally like to write blogs. Check them out!
           </div>
           <ul class="md:col-span-2 grid md:grid-cols-2">
             {
               blog.map((post) => (
                 <li class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1">
                   <a href={`/blog/${post.slug}`}>
-                    <h3 class="text-xl font-bold tracking-tight">{post.data.title}</h3>
+                    <h3 class="text-xl font-bold tracking-tight">
+                      {post.data.title}
+                    </h3>
                     <div class="opacity-80 pt-1 tracking-wide">
                       <FormattedDate date={post.data.pubDate} />
                     </div>
