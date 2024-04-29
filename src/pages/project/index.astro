@@ -14,7 +14,7 @@ const projects = (await getCollection("project")).filter(
 );
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead
@@ -30,54 +30,54 @@ const projects = (await getCollection("project")).filter(
       <section class="grid md:grid-cols-4">
         <h1 class="text-4xl py-4 font-bold">Projects</h1>
         <p class="text-lg pb-4 pr-4 row-start-2 col-span-2">
-          Education through project-based learning is my prefered way to learn new things. I've been lucky enough to work on some really cool projects over the years. Here are some of my favorites.
+          Education through project-based learning is my preferred way to learn
+          new things. I've been lucky enough to work on some really cool
+          projects over the years. Here are some of my favorites.
         </p>
       </section>
 
       <hr class="my-8 mb-16" />
 
-      <section>
-        <ul class="grid md:grid-cols-2 sm:grid-cols-2 space-y-4">
-          {
-            projects.map((project) => (
-              <li class="p-3 hover:border-2 mr-4 -ml-2 m-2 border-2 border-black hover:shadow-xl hover:border-emerald-600 hover:bg-white rounded-md shadow-md hover:translate-x-1 ">
-                <a href={`/project/${project.slug}`}>
-                  <div>
-                    <header>
-                      <div class="flex flex-row justify-between">
-                        <Icon class="w-8" pack="ion" name="folder-outline" />
+      <ul class="grid md:grid-cols-2 sm:grid-cols-2 grid-4 p-4">
+        {
+          projects.map((project) => (
+            <li class="p-3 hover:border-2 mr-4 -ml-2 m-2 border-2 border-black hover:shadow-xl hover:border-emerald-600 hover:bg-white rounded-md shadow-md hover:translate-x-1 ">
+              <a href={`/project/${project.slug}`}>
+                <div>
+                  <header>
+                    <div class="flex flex-row justify-between">
+                      <Icon class="w-8" pack="ion" name="folder-outline" />
 
-                        <ul class="flex flex-row space-x-2 underline">
-                          {project.data.website && (
-                            <li>
-                              <a target="_blank" href={project.data.website}>
-                                <Icon class="w-8" pack="mdi" name="web" />
-                              </a>
-                            </li>
-                          )}
+                      <ul class="flex flex-row space-x-2 underline">
+                        {project.data.website && (
+                          <li>
+                            <a target="_blank" href={project.data.website}>
+                              <Icon class="w-8" pack="mdi" name="web" />
+                            </a>
+                          </li>
+                        )}
 
-                          {project.data.repository && (
-                            <li>
-                              <a target="_blank" href={project.data.repository}>
-                                <Icon class="w-8" pack="cib" name="git" />
-                              </a>
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    </header>
+                        {project.data.repository && (
+                          <li>
+                            <a target="_blank" href={project.data.repository}>
+                              <Icon class="w-8" pack="cib" name="git" />
+                            </a>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  </header>
 
-                    <h2 class="font-bold text-lg">{project.data.title}</h2>
-                    <p class="text-md">{project.data.description}</p>
+                  <h2 class="font-bold text-lg">{project.data.title}</h2>
+                  <p class="text-md">{project.data.description}</p>
 
-                    <p class="mt-4 mb-2">{project.data.builtWith.join(", ")}</p>
-                  </div>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+                  <p class="mt-4 mb-2">{project.data.builtWith.join(", ")}</p>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
       <Footer />
     </main>
   </body>

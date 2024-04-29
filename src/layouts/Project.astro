@@ -1,67 +1,89 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { Icon } from 'astro-icon';
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon";
 
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import GoogleAnalytics from '../components/GoogleAnalytics.astro';
-import FooterCTA from '../components/FooterCTA.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import FooterCTA from "../components/FooterCTA.astro";
 
-type Props = CollectionEntry<'project'>['data'];
+type Props = CollectionEntry<"project">["data"];
 
-const { title, description, repository, website, builtWith} = Astro.props;
+const { title, description, repository, website, builtWith } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<GoogleAnalytics />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <GoogleAnalytics />
+  </head>
 
   <body class="std-body">
-		<main class="std-main">
-      <Header />
-			<article class="prose lg:prose-xl">
-        <h1>{title}</h1>
+    <main class="std-main">
+      <article class="max-w-prose mx-auto">
+        <Header />
+        <h1 class="font-bold text-3xl tracking-tighter">{title}</h1>
         <div class="flex justify-between items-center">
-          <p>{description}</p>
- 
-          <div class="flex justify-end space-x-2">
+          <p class="tracking-wide">{description}</p>
 
-            {website && (<a href={website}><Icon class="w-8" pack="mdi" name="web" /></a>)}
-            {repository && (<a href={repository}><Icon class="w-8" pack="cib" name="git" /></a>)}
+          <div class="flex justify-end space-x-2">
+            {
+              website && (
+                <a href={website}>
+                  <Icon class="w-8" pack="mdi" name="web" />
+                </a>
+              )
+            }
+            {
+              repository && (
+                <a href={repository}>
+                  <Icon class="w-8" pack="cib" name="git" />
+                </a>
+              )
+            }
           </div>
         </div>
 
-        {builtWith && (<p class="text-emerald-600">{builtWith.join(", ")}</p>)}
-				
+        {builtWith && <p class="text-emerald-600">{builtWith.join(", ")}</p>}
+
         <hr />
-				<slot />
-			</article>
+        <article class="prose xl:prose-xl">
+          <slot />
+        </article>
+      </article>
 
-      <hr class="my-4"/>
+      <hr class="my-4 max-w-prose mx-auto" />
 
-      <section class="mb-8 grid md:grid-cols-2">
-        {repository && (<FooterCTA
-          title="Show me the repo"
-          description="This project is fully open-source, check out the repository"
-          href={repository}
-          cta="GitHub"
-        />)}
+      <section class="mb-8 grid md:grid-cols-2 max-w-prose mx-auto">
+        {
+          repository && (
+            <FooterCTA
+              title="Show me the repo"
+              description="This project is fully open-source, check out the repository"
+              href={repository}
+              cta="GitHub"
+            />
+          )
+        }
 
-        {website && (<FooterCTA
-          title="Show me it working"
-          description="The website is live, check it out"
-          href={website}
-          cta="Website"
-        />)}
-        
+        {
+          website && (
+            <FooterCTA
+              title="Show me it working"
+              description="The website is live, check it out"
+              href={website}
+              cta="Website"
+            />
+          )
+        }
       </section>
 
-      <hr class="my-4" />
+      <hr class="my-4 mx-auto max-w-prose" />
 
-      <Footer /> 
-		</main>
+      <div class="mx-auto max-w-prose">
+      <Footer />
+    </div>
+    </main>
   </body>
 </html>
