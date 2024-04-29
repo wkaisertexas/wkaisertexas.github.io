@@ -1,6 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function NumberSystemConverter() {
+function NumberSystemConverter({
+  setType,
+  setSettings,
+}: {
+  setType: any;
+  setSettings: any;
+}) {
+  const [binaryToHex, setBinaryToHex] = useState(false);
+  const [hexToBinary, setHexToBinary] = useState(false);
+  const [binaryToOctal, setBinaryToOctal] = useState(false);
+  const [octalToBinary, setOctalToBinary] = useState(false);
+  const [decimalToBinary, setDecimalToBinary] = useState(false);
+  const [binaryToDecimal, setBinaryToDecimal] = useState(false);
+
+  useEffect(() => {
+    setSettings({
+      binaryToHex,
+      hexToBinary,
+      binaryToOctal,
+      octalToBinary,
+      decimalToBinary,
+      binaryToDecimal,
+    });
+  }, [
+    binaryToHex,
+    hexToBinary,
+    binaryToOctal,
+    octalToBinary,
+    decimalToBinary,
+    binaryToDecimal,
+  ]);
+
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -12,9 +43,9 @@ function NumberSystemConverter() {
       <div className="space-y-4">
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="binary-to-hex" /> */}
             <input
               id="binary-to-hex"
+              onClick={() => setBinaryToHex(!binaryToHex)}
               type="checkbox"
               className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
@@ -28,7 +59,12 @@ function NumberSystemConverter() {
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="hex-to-binary" /> */}
+            <input
+              id="hex-to-binary"
+              onClick={() => setHexToBinary(!hexToBinary)}
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
               htmlFor="hex-to-binary"
@@ -39,7 +75,12 @@ function NumberSystemConverter() {
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="binary-to-octal" /> */}
+            <input
+              id="binary-to-octal"
+              onClick={() => setBinaryToOctal(!binaryToOctal)}
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
               htmlFor="binary-to-octal"
@@ -50,7 +91,12 @@ function NumberSystemConverter() {
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="octal-to-binary" /> */}
+            <input
+              id="octal-to-binary"
+              onClick={() => setOctalToBinary(!octalToBinary)}
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
               htmlFor="octal-to-binary"
@@ -61,7 +107,12 @@ function NumberSystemConverter() {
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="decimal-to-binary" /> */}
+            <input
+              id="decimal-to-binary"
+              onClick={() => setDecimalToBinary(!decimalToBinary)}
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
               htmlFor="decimal-to-binary"
@@ -72,7 +123,12 @@ function NumberSystemConverter() {
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {/* <Checkbox id="binary-to-decimal" /> */}
+            <input
+              id="binary-to-decimal"
+              onClick={() => setBinaryToDecimal(!binaryToDecimal)}
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
               htmlFor="binary-to-decimal"
@@ -82,177 +138,269 @@ function NumberSystemConverter() {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <a
+          <button
             className="inline-flex h-10 items-center justify-center rounded-md bg-blue-500 px-4 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700"
-            href="#"
+            onClick={() => setType(2)}
           >
             Start Quiz
-          </a>
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-function MainGame() {
+function MainGame({ setType, settings }: { setType: any; settings: any }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [answer, setAnswer] = useState("");
+  const [answerFormat, setAnswerFormat] = useState("");
+  const [questionFormat, setQuestionFormat] = useState("");
+  const [guess, setGuess] = useState<null | string>(null);
+  const [question, setQuestion] = useState<null | string>(null);
+  const [answering, setAnswering] = useState(true);
+  const [currentRight, setCurrentRight] = useState(false);
+  const [number, setNumber] = useState<null | number>(null);
+
+  const {
+    binaryToHex,
+    hexToBinary,
+    binaryToOctal,
+    octalToBinary,
+    decimalToBinary,
+    binaryToDecimal,
+  } = settings;
+
+  const [numCorrect, setNumCorrect] = useState(0);
+  const [numAttempted, setNumAttempted] = useState(0);
+  const TOTAL = 10; // total number of questions
 
   const toggleDropdown = () => {
     console.log(isOpen);
     setIsOpen(!isOpen);
   };
 
+  function addSpaces(str: string, n: number) {
+    var result = "";
+    for (var i = 0; i < str.length; i += n) {
+      result += str.substring(i, i + n) + " ";
+    }
+    return result.trim(); // Remove trailing space
+  }
+
+  const generateQuestion = () => {
+    setAnswering(true);
+    // generate a random number between 0 and 255
+    const num = Math.floor(Math.random() * 256);
+
+    // decide which base format
+    const baseFormats = [];
+    if (binaryToHex) baseFormats.push("binary");
+    if (hexToBinary) baseFormats.push("hex");
+    if (binaryToOctal) baseFormats.push("binary");
+    if (octalToBinary) baseFormats.push("octal");
+    if (decimalToBinary) baseFormats.push("decimal");
+    if (binaryToDecimal) baseFormats.push("binary");
+
+    // choose a random base format
+    const baseFormat =
+      baseFormats[Math.floor(Math.random() * baseFormats.length)];
+
+    // generate the output format
+    let outputFormats = [];
+    if (binaryToHex) outputFormats.push("hex");
+    if (hexToBinary) outputFormats.push("binary");
+    if (binaryToOctal) outputFormats.push("octal");
+    if (octalToBinary) outputFormats.push("binary");
+    if (decimalToBinary) outputFormats.push("binary");
+    if (binaryToDecimal) outputFormats.push("decimal");
+
+    // remove the base format from the output formats
+    outputFormats = outputFormats.filter((format) => format !== baseFormat);
+
+    // choose a random output format
+    const outputFormat =
+      outputFormats[Math.floor(Math.random() * outputFormats.length)];
+
+    let baseNumber = formatNumber(num, baseFormat as any);
+    let outputNumber = formatNumber(num, outputFormat as any);
+
+    // adding spaces to binary numbers
+    switch (outputFormat) {
+      case "binary":
+        outputNumber = addSpaces(outputNumber, 4);
+        break;
+      case "hex":
+        outputNumber = addSpaces(outputNumber, 2);
+        break;
+      case "octal":
+        outputNumber = addSpaces(outputNumber, 3);
+        break;
+    }
+
+    switch (baseFormat) {
+      case "binary":
+        baseNumber = addSpaces(baseNumber, 4);
+        break;
+      case "hex":
+        baseNumber = addSpaces(baseNumber, 2);
+        break;
+      case "octal":
+        baseNumber = addSpaces(baseNumber, 3);
+        break;
+    }
+    console.log(baseNumber, outputNumber);
+
+    setQuestion(baseNumber);
+    setAnswer(outputNumber);
+    setNumber(num);
+    setQuestionFormat(baseFormat);
+    setAnswerFormat(outputFormat);
+  };
+  console.log("Current right", currentRight);
+
+  useEffect(generateQuestion, []);
+
+  const formatNumber = (
+    number: number,
+    base: "binary" | "hex" | "octal" | "decimal"
+  ) => {
+    switch (base) {
+      case "binary":
+        let num = number.toString(2);
+        num = num.padStart(8, "0");
+        return num;
+      case "hex":
+        let numHex = number.toString(16);
+        numHex = numHex.padStart(2, "0");
+        return numHex;
+      case "octal":
+        let numOctal = number.toString(8);
+        numOctal = numOctal.padStart(3, "0");
+        return numOctal;
+      case "decimal":
+        return number;
+    }
+  };
+
+  const checkCorrect = () => {
+    // cleaning the guess
+    let cleanedGuess = guess?.trim().toLowerCase();
+
+    // removing optional prefixes
+    if (answerFormat === "hex") {
+      cleanedGuess = cleanedGuess?.replace("0x", "");
+    }
+    if (answerFormat === "octal") {
+      cleanedGuess = cleanedGuess?.replace("0o", "");
+    }
+    if (answerFormat === "binary") {
+      cleanedGuess = cleanedGuess?.replace("0b", "");
+    }
+
+    // cleaning spaces
+    cleanedGuess = cleanedGuess?.replace(" ", "");
+    console.log(cleanedGuess);
+    console.log(parseInt(cleanedGuess as string, 8));
+    try {
+      switch (answerFormat) {
+        case "binary":
+          if (parseInt(cleanedGuess as string, 2) === number) {
+            correct();
+          }
+          break;
+        case "hex":
+          if (parseInt(cleanedGuess as string, 16) === number) {
+            correct();
+          }
+          break;
+        case "octal":
+          if (parseInt(cleanedGuess as string, 8) === number) {
+            correct();
+          }
+          break;
+        case "decimal":
+          if (parseInt(cleanedGuess as string, 10) === number) {
+            correct();
+          }
+          break;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    setAnswering(false);
+    setNumAttempted(numAttempted + 1);
+  };
+
+  const correct = () => {
+    setCurrentRight(true);
+    setNumCorrect(numCorrect + 1);
+  }
+
+  const nextQuestion = () => {
+    setGuess("");
+    setAnswering(true);
+    setCurrentRight(false);
+    generateQuestion();
+  }
+
+  const submitAnswer = (event: any) => {
+    event.preventDefault();
+    checkCorrect();
+  };
+
+  const prefix =
+    (questionFormat === "binary" && "0b") ||
+    (questionFormat === "hex" && "0x") ||
+    (questionFormat === "octal" && "0o") ||
+    "";
+
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-        Hex to Decimal Quiz
+        Hex to Binary to Decimal to Octal Quiz
       </h1>
       <p className="text-gray-600 dark:text-gray-400">
-        Test your skills in converting between hexadecimal and decimal numbers.
+        Test your skills in converting between number formats common in computer science
       </p>
       <div className="space-y-4">
-        <div className="flex items-center space-x-4">
+        <form className="flex items-center space-x-4" onSubmit={submitAnswer}>
           <input
+            id="guess"
+            onChange={(e) => setGuess(e.target.value)}
             className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
             placeholder="Enter a hex or decimal number"
             type="text"
           />
-          <details className="ui-dropdown">
-            <summary className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700">
-              Bin to Hex
-            </summary>
-            <ul className="p-2 ui-shadow ui-menu ui-dropdown-content z-[1] bg-gray-600 rounded-box w-52">
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
-            </ul>
-          </details>
-          {/* <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700"
-                    type="button"
-                  >
-                    Convert
-                    <ChevronDownIcon className="ml-2 h-4 w-4" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="absolute z-10 mt-2 w-48 rounded-md bg-white shadow-lg dark:bg-gray-800">
-                  <DropdownMenuItem>
-                    <a
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                      href="#"
-                    >
-                      Hex to Decimal
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                      href="#"
-                    >
-                      Decimal to Hex
-                    </a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu> */}
-          {/* <div className="relative inline-block text-left">
-                <button
-                  id="dropdownDefaultButton"
-                  data-dropdown-toggle="dropdown"
-                  onClick={toggleDropdown}
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                >
-                  Dropdown button{" "}
-                  <svg
-                    className="w-2.5 h-2.5 ms-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
-                </button>
-                {isOpen && (
-                  <div
-                    id="dropdown"
-                    className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                  >
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownDefaultButton"
-                    >
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Dashboard
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Settings
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Earnings
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Sign out
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </div> */}
-
-          {/* <DropdownMenu>
-                <DropdownMenuTrigger className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700">
-                  Hex to Decimal
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>Hex to Decimal</DropdownMenuItem>
-                  <DropdownMenuItem>Decimal to Hex</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu> */}
-          {/* <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700">
-                Convert
-              </button> */}
-        </div>
-        <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center">
-          <p className="text-gray-900 dark:text-gray-100">
-            Result: <span className="font-bold">42</span>
-          </p>
-        </div>
+        </form>
+        {question && (
+          <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center">
+            <p className="text-gray-900 dark:text-gray-100">
+              Convert{" "}
+              <span className="font-bold">
+                {prefix}
+                {question}
+              </span>{" "}
+              from <span className="font-bold">{questionFormat}</span> to{" "}
+              <span className="font-bold">{answerFormat}</span>
+            </p>
+          </div>
+        )}
+        {!answering && (
+          <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center">
+            <p className="text-gray-900 dark:text-gray-100">
+              Answer: <span className={`font-bold ` + (currentRight ? ` text-green-500` : " text-red-500")}>{answer}</span>
+            </p>
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <p className="text-gray-600 dark:text-gray-400">
-            Score: <span className="font-bold">5/10</span>
+            Score:{" "}
+            <span className="font-bold">
+              {numCorrect}/{TOTAL}
+            </span>
           </p>
-          <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700">
+          <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700" onClick={nextQuestion}>
             Next Question
           </button>
         </div>
@@ -261,7 +409,7 @@ function MainGame() {
   );
 }
 
-function EndGame() {
+function EndGame({ setType }: any) {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -291,12 +439,12 @@ function EndGame() {
           <p className="text-gray-900 dark:text-gray-100 font-bold">50%</p>
         </div>
         <div className="flex items-center justify-between">
-          <a
+          <button
             className="inline-flex h-10 items-center justify-center rounded-md bg-blue-500 px-4 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700"
-            href="#"
+            onClick={() => setType(1)}
           >
             Try Again
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -305,15 +453,18 @@ function EndGame() {
 
 function Game() {
   const [type, setType] = useState(1);
+  const [settings, setSettings] = useState({});
 
   const main = () => {
     switch (type) {
       case 1:
-        return <NumberSystemConverter />;
+        return (
+          <NumberSystemConverter setType={setType} setSettings={setSettings} />
+        );
       case 2:
-        return <MainGame />;
+        return <MainGame setType={setType} settings={settings} />;
       case 3:
-        return <EndGame />;
+        return <EndGame setType={setType} />;
     }
   };
 
