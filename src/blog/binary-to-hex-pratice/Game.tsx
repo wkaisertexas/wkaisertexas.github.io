@@ -47,7 +47,7 @@ function NumberSystemConverter({
               id="binary-to-hex"
               onClick={() => setBinaryToHex(!binaryToHex)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
@@ -63,7 +63,7 @@ function NumberSystemConverter({
               id="hex-to-binary"
               onClick={() => setHexToBinary(!hexToBinary)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
@@ -79,7 +79,7 @@ function NumberSystemConverter({
               id="binary-to-octal"
               onClick={() => setBinaryToOctal(!binaryToOctal)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
@@ -95,7 +95,7 @@ function NumberSystemConverter({
               id="octal-to-binary"
               onClick={() => setOctalToBinary(!octalToBinary)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
@@ -111,7 +111,7 @@ function NumberSystemConverter({
               id="decimal-to-binary"
               onClick={() => setDecimalToBinary(!decimalToBinary)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
@@ -127,7 +127,7 @@ function NumberSystemConverter({
               id="binary-to-decimal"
               onClick={() => setBinaryToDecimal(!binaryToDecimal)}
               type="checkbox"
-              className="peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+              className="peer h-4 w-4 shrink-0 rounded-none border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
             />
             <label
               className="text-gray-900 dark:text-gray-100 font-medium"
