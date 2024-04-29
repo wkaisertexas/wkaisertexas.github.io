@@ -30,6 +30,11 @@ const thumbnail = await getImage({
   src: fetchImg(slug, heroImage),
   format: "avif",
 });
+
+const og = await getImage({
+  src: fetchImg(slug, heroImage),
+  format: "png",
+});
 ---
 
 <html lang="en">
@@ -37,7 +42,7 @@ const thumbnail = await getImage({
     <BaseHead
       title={title}
       description={description}
-      image={thumbnail.src}
+      image={og.src}
       type="article"
     />
     <GoogleAnalytics />
