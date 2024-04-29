@@ -1,5 +1,5 @@
 ---
-title: "Automate TikTok posting with a single Command"
+title: "Automate TikTok posting with a single command"
 description: "TikTok is one of the most popular social media platforms, with millions of users. Posting content regularly is key to growing your following and increasing engagement. However, constantly uploading videos can be time-consuming. Use tiktok-uploader's simple API to upload videos automatically."
 pubDate: "Feb 24 2023"
 heroImage: "hero.png"

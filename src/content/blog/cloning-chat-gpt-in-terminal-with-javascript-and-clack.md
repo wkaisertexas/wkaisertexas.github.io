@@ -1,5 +1,5 @@
 ---
-title: "Clone ChatGPT in your Terminal with JavaScript and Clack"
+title: "Clone ChatGPT in your terminal with JavaScript and Clack"
 description: "Make a nicely formatted ChatBot in your terminal with JavaScript and Clack. A great introduction to using APIs to build command line applications."
 pubDate: "Feb 6 2024"
 heroImage: "hero.png"

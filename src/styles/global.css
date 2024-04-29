@@ -28,6 +28,6 @@
 
 @layer base {
   html {
-    @apply text-gray-900 bg-slate-50;
+    @apply text-gray-900 bg-slate-50 antialiased;
   }
 }

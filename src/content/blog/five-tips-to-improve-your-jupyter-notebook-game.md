@@ -1,5 +1,5 @@
 ---
-title: "5 ways to level up your Jupyter Notebook game"
+title: "5 ways to level up your Jupyter notebook game"
 description: "Get speedy analysis, visualizations and debugging to avoid pulling your hair out"
 pubDate: "Dec 11 2023"
 heroImage: "hero.png"

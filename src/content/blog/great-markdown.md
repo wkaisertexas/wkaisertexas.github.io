@@ -1,5 +1,5 @@
 ---
-title: "Take 15 Minutes to Learn GitHub-Flavored Markdown"
+title: "Take 15 minutes to learn GitHub-flavored markdown"
 description: "On a effort versus payoff matrix, getting good at Markdown is the greatest investment you can make as someone interested in development. I decided to read through the entire Markdown specification and here are the essentials."
 pubDate: "May 7 2023"
 heroImage: "hero.png"
