@@ -150,17 +150,40 @@ function NumberSystemConverter({
   );
 }
 
-function MainGame({ setType, settings }: { setType: any; settings: any }) {
+function MainGame({
+  setType,
+  settings,
+  setResults,
+}: {
+  setType: any;
+  settings: any;
+  setResults: any;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answerFormat, setAnswerFormat] = useState("");
   const [questionFormat, setQuestionFormat] = useState("");
-  const [guess, setGuess] = useState<null | string>(null);
+  const [guess, setGuess] = useState<string>("");
   const [question, setQuestion] = useState<null | string>(null);
   const [answering, setAnswering] = useState(true);
   const [currentRight, setCurrentRight] = useState(false);
   const [number, setNumber] = useState<null | number>(null);
+  const [startTime, setStartTime] = useState(new Date());
 
+  // ts-ignore
+  let sawTrue = false;
+  for(const key in settings) {
+    console.log(key);
+    if(settings[key] === true) {
+      sawTrue = true;
+      break;
+    }
+  }
+  if(!sawTrue) {
+    for(const key in settings) { // enable all by default
+      settings[key] = true;
+    }
+  }
   const {
     binaryToHex,
     hexToBinary,
@@ -172,12 +195,16 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
 
   const [numCorrect, setNumCorrect] = useState(0);
   const [numAttempted, setNumAttempted] = useState(0);
-  const TOTAL = 10; // total number of questions
+  const TOTAL = 3; // total number of questions
 
-  const toggleDropdown = () => {
-    console.log(isOpen);
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    setResults({
+      numCorrect,
+      numAttempted,
+      startTime,
+      TOTAL,
+    });
+  }, [numCorrect, numAttempted]);
 
   function addSpaces(str: string, n: number) {
     var result = "";
@@ -188,6 +215,11 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
   }
 
   const generateQuestion = () => {
+    if (numAttempted >= TOTAL) {
+      setType(3);
+      return;
+    }
+
     setAnswering(true);
     // generate a random number between 0 and 255
     const num = Math.floor(Math.random() * 256);
@@ -335,18 +367,23 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
   const correct = () => {
     setCurrentRight(true);
     setNumCorrect(numCorrect + 1);
-  }
+  };
 
   const nextQuestion = () => {
     setGuess("");
     setAnswering(true);
     setCurrentRight(false);
     generateQuestion();
-  }
+  };
 
   const submitAnswer = (event: any) => {
     event.preventDefault();
-    checkCorrect();
+
+    if (!answering) {
+      nextQuestion();
+    } else {
+      checkCorrect();
+    }
   };
 
   const prefix =
@@ -361,13 +398,15 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
         Hex to Binary to Decimal to Octal Quiz
       </h1>
       <p className="text-gray-600 dark:text-gray-400">
-        Test your skills in converting between number formats common in computer science
+        Test your skills in converting between number formats common in computer
+        science
       </p>
       <div className="space-y-4">
         <form className="flex items-center space-x-4" onSubmit={submitAnswer}>
           <input
             id="guess"
             onChange={(e) => setGuess(e.target.value)}
+            value={guess}
             className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
             placeholder="Enter a hex or decimal number"
             type="text"
@@ -389,7 +428,15 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
         {!answering && (
           <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center">
             <p className="text-gray-900 dark:text-gray-100">
-              Answer: <span className={`font-bold ` + (currentRight ? ` text-green-500` : " text-red-500")}>{answer}</span>
+              Answer:{" "}
+              <span
+                className={
+                  `font-bold ` +
+                  (currentRight ? ` text-green-500` : " text-red-500")
+                }
+              >
+                {answer}
+              </span>
             </p>
           </div>
         )}
@@ -398,9 +445,13 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
             Score:{" "}
             <span className="font-bold">
               {numCorrect}/{TOTAL}
-            </span>
+            </span>{" "}
+            {numAttempted > 0 && numAttempted}
           </p>
-          <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700" onClick={nextQuestion}>
+          <button
+            className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700"
+            onClick={nextQuestion}
+          >
             Next Question
           </button>
         </div>
@@ -409,34 +460,52 @@ function MainGame({ setType, settings }: { setType: any; settings: any }) {
   );
 }
 
-function EndGame({ setType }: any) {
+function EndGame({ setType, results }: any) {
+  const [endTime, setEndTime] = useState(new Date());
+
+    console.log(results);
+  const timeTaken = (() => {
+    const diff = endTime.getTime() - results.startTime.getTime();
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    return minutes === 0 ? `${seconds % 60} seconds`: `${minutes} minutes ${seconds % 60} seconds`;
+  })();
+
+  const { numCorrect, numAttempted, TOTAL } = results;
+
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-        Hex to Decimal Quiz Summary
+        Binary to Hex to Decimal Quiz Summary
       </h1>
       <p className="text-gray-600 dark:text-gray-400">
-        You've completed the hex to decimal quiz. Here's a summary of your
+        You've completed your hex to binary to decimal quiz. Here's a summary of your
         performance.
       </p>
       <div className="space-y-4">
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
+            Time Taken
+          </p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">{timeTaken}</p>
+        </div>
+        <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
+          <p className="text-gray-900 dark:text-gray-100 font-bold">
             Correct Answers
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">5</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">{numCorrect}</p>
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
             Total Questions
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">10</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">{TOTAL}</p>
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
             Percentage Correct
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">50%</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">{`${(numCorrect / TOTAL * 100).toFixed(0)}%`}</p>
         </div>
         <div className="flex items-center justify-between">
           <button
@@ -454,6 +523,7 @@ function EndGame({ setType }: any) {
 function Game() {
   const [type, setType] = useState(1);
   const [settings, setSettings] = useState({});
+  const [results, setResults] = useState({});
 
   const main = () => {
     switch (type) {
@@ -462,9 +532,14 @@ function Game() {
           <NumberSystemConverter setType={setType} setSettings={setSettings} />
         );
       case 2:
-        return <MainGame setType={setType} settings={settings} />;
+        return <MainGame setType={setType} settings={settings} setResults={setResults} />;
       case 3:
-        return <EndGame setType={setType} />;
+        return (
+          <EndGame
+            setType={setType}
+            results={results}
+          />
+        );
     }
   };
 
