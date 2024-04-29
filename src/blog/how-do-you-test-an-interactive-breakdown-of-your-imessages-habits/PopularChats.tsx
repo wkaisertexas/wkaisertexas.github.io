@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { DatabaseContext } from "./database";
 import { format_phone_number } from "./PopularGroupChats";
@@ -18,7 +18,7 @@ const get_chats = (db) => {
     chat_identifier: format_phone_number(row[0]),
     num_messages_received: row[1],
   }));
-}
+};
 
 export const PopularChats = () => {
   const db = useContext(DatabaseContext);
@@ -37,24 +37,25 @@ export const PopularChats = () => {
         <p> Where do you spent most of your time discussing drama? </p>
       </div>
       <div>
-
-      { data && <table>
-        <thead>
-          <tr>
-            <th>Chat</th>
-            <th># of Messages</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((chat, i) => (
-            <tr key={`chat-${i}`}>
-              <td>{chat.chat_identifier}</td>
-              <td>{chat.num_messages_received}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table> }
+        {data && (
+          <table>
+            <thead>
+              <tr>
+                <th>Chat</th>
+                <th># of Messages</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((chat, i) => (
+                <tr key={`chat-${i}`}>
+                  <td>{chat.chat_identifier}</td>
+                  <td>{chat.num_messages_received}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
-}
+};

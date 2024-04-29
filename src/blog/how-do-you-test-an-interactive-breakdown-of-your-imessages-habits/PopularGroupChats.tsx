@@ -24,7 +24,7 @@ export const format_phone_number = (phone_number: string): string => {
   if (phone_number.length === 12) {
     return `(${phone_number.substring(2, 5)}) ${phone_number.substring(
       5,
-      8
+      8,
     )}-${phone_number.substring(8, 12)}`;
   }
   return phone_number;

@@ -22,18 +22,22 @@ type Club = {
   uri: string;
 };
 
-const toPhoto = (photoUri: string) : string => (`https://virginia-cdn.presence.io/organization-photos/cea28f2b-baa9-4c47-8879-da8d675e4471/${photoUri}`);
-const toURL = (uri: string) : string => (`https://virginia.presence.io/organization/${uri}`);
+const toPhoto = (photoUri: string): string =>
+  `https://virginia-cdn.presence.io/organization-photos/cea28f2b-baa9-4c47-8879-da8d675e4471/${photoUri}`;
+const toURL = (uri: string): string =>
+  `https://virginia.presence.io/organization/${uri}`;
 
-const ClubResult = (props: { club: Club }) => <p>
-  <a href={toURL(props.club.uri)}>{props.club.name}</a>
-  <img src={toPhoto(props.club.photoUri)} alt={props.club.name} />
-  <p>{props.club.description}</p>
-  <p>{props.club.categories.join(", ")}</p>
-  <p>{props.club.memberCount} members</p>
-  <p>{props.club.regularMeetingLocation}</p>
-  <p>{props.club.regularMeetingTime}</p>
-</p>;
+const ClubResult = (props: { club: Club }) => (
+  <p>
+    <a href={toURL(props.club.uri)}>{props.club.name}</a>
+    <img src={toPhoto(props.club.photoUri)} alt={props.club.name} />
+    <p>{props.club.description}</p>
+    <p>{props.club.categories.join(", ")}</p>
+    <p>{props.club.memberCount} members</p>
+    <p>{props.club.regularMeetingLocation}</p>
+    <p>{props.club.regularMeetingTime}</p>
+  </p>
+);
 
 const SearchClubs = () => {
   const [clubs, setClubs] = useState<Club[]>([]);
@@ -46,7 +50,7 @@ const SearchClubs = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ query: query }),

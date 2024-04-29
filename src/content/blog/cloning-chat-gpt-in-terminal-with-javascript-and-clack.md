@@ -11,13 +11,14 @@ display: true
 In this tutorial, we are going to make a command line application which clones **OpenAI's ChatGPT** using the official API to give the same chat functionality in your terminal.
 
 This take-home lab is designed to give you a bit of experience with:
+
 - Creating command line applications
 - Creating a `npm` packages and `node` projects
 - Creating accounts with software vendors
 - Using Application Programming Interfaces (APIs)
 - Dealing with API keys
 
-## Steps 
+## Steps
 
 ### Install Node
 
@@ -46,7 +47,7 @@ Writing your own code is hard. However, node has a huge ecosystem of packages wh
   - input blocks
   - spinners
   - more
-- **OpenAI:** OpenAI's JavaScript wrapper[^1]. 
+- **OpenAI:** OpenAI's JavaScript wrapper[^1].
 
 ```bash
 npm install -D cleye @clack/prompts openai
@@ -54,21 +55,19 @@ npm install -D cleye @clack/prompts openai
 
 ## Create a file for your entrypoint
 
-`index.js` is the entrypoint for your `node` program. However, `index.js` by default is not set up to parse command-line arguments. Handling these arguments requires `cleye`.[^2] 
+`index.js` is the entrypoint for your `node` program. However, `index.js` by default is not set up to parse command-line arguments. Handling these arguments requires `cleye`.[^2]
 
 ```javascript
-import { cli } from 'cleye';
-import { outro, text, spinner } from '@clack/prompts';
-import OpenAI from 'openai';
+import { cli } from "cleye";
+import { outro, text, spinner } from "@clack/prompts";
+import OpenAI from "openai";
 
 const argv = cli({
-  name: 'index.js',
-  parameters: [
-    '[arguments...]', 
-  ],
-})
+  name: "index.js",
+  parameters: ["[arguments...]"],
+});
 
-let initial_prompt = argv._.arguments.join(' ');
+let initial_prompt = argv._.arguments.join(" ");
 ```
 
 <details>
@@ -91,14 +90,15 @@ Node does not like to use `import` statements unless you tell it to. To do this,
 We are going to do this a little bit backwards and explain how to get API keys into your program securely. To do this, we need to leverage **environment variables**. While scary-sounding, your environment variables look something like this:
 
 **Example Code:**
+
 ```bash
 export USERNAME=johndoe
 export GITHUBAPIKEY=n83ncxz9m39a012
 ```
 
-> In my opinion, using upper case for environment variables is less readable when compared to `snake_case` or `camelCase`. Using all caps is merely **convention** through. 
+> In my opinion, using upper case for environment variables is less readable when compared to `snake_case` or `camelCase`. Using all caps is merely **convention** through.
 
-These are effectively "common variables" which other programs can access. Reading an environment variable is easy and something which is accessible to **all programs**. 
+These are effectively "common variables" which other programs can access. Reading an environment variable is easy and something which is accessible to **all programs**.
 
 ```bash
 echo $GITHUBAPIKEY
@@ -110,7 +110,7 @@ const github_api_key = process.env.GITHUBAPIKEY;
 
 ### Why not just store it in your code?
 
-Why not just put the key in your code? First, having keys in your code can made updating them kind of cumbersome (changing environment variables remotely can be really quick). Second, security. You could accidentally commit your code to a public repository. One of your team members could go rouge and post it online. You could accidentally use the production api key in testing and accidentally delete your user's data. 
+Why not just put the key in your code? First, having keys in your code can made updating them kind of cumbersome (changing environment variables remotely can be really quick). Second, security. You could accidentally commit your code to a public repository. One of your team members could go rouge and post it online. You could accidentally use the production api key in testing and accidentally delete your user's data.
 
 > Committing your API key accidentally is such a large problem on sites like **GitHub** that automated companies will search your code for "high entropy strings" and automatically notify you if detected.
 
@@ -153,11 +153,11 @@ Set your API key to a local variable when the user runs your command. This is wh
 
 ```javascript
 const openai = new OpenAI({
-  apiKey: process.env["OPENAI_API_KEY"]
+  apiKey: process.env["OPENAI_API_KEY"],
 });
 ```
 
-One of ChatGPT's killer features is the ability to answer new questions with the context of older ones.  When we call the API, we not only provide a single question, but also a list of prior ones.
+One of ChatGPT's killer features is the ability to answer new questions with the context of older ones. When we call the API, we not only provide a single question, but also a list of prior ones.
 
 ```javascript
 const chatHistory = []; // when the conversation starts, no history is present
@@ -165,19 +165,19 @@ const chatHistory = []; // when the conversation starts, no history is present
 
 # Code architecture
 
-ChatGPT is &mdash; essentially &mdash; a series of prompts and responses. Therefore, instead of having a large `for` loop which handles each prompt, we could alternatively make a `prompt` function which handles this behavior for us. 
+ChatGPT is &mdash; essentially &mdash; a series of prompts and responses. Therefore, instead of having a large `for` loop which handles each prompt, we could alternatively make a `prompt` function which handles this behavior for us.
 
 The prompt should first ask the user for some text. This is where `clack` can make both our output and code look much nicer.
 
 ```javascript
-async function prompt(){
+async function prompt() {
   const userPromptText = await text({
     message: "What do you want to say?",
     placeholder: `send a message (type 'exit' to quit)`,
     validate: (value) => {
-        if(!value) return "please enter a valid prompt"
-      }
-    });
+      if (!value) return "please enter a valid prompt";
+    },
+  });
 
   // more code to come
 }
@@ -201,36 +201,36 @@ const waitSpinner = spinner();
 waitSpinner.start("Thinking...");
 
 chatHistory.push({
-    role: 'user',
-    content: userPromptText
-  })
+  role: "user",
+  content: userPromptText,
+});
 
 const generatedText = await getResponse({
-    prompt: chatHistory, // the history is the prompt
-    openAIKEY
-  })
+  prompt: chatHistory, // the history is the prompt
+  openAIKEY,
+});
 ```
 
- Because ChatGPT takes a few seconds to generate a response, the API gives a stream of data which is shown to the user incrementally (think about how [ChatGPT](https://chat.openai.com) gives you a word-by-word response). However, dealing with streams in this context is more complicated than necessary, so you are encourage this pre-provided snippet of code.[^4]
+Because ChatGPT takes a few seconds to generate a response, the API gives a stream of data which is shown to the user incrementally (think about how [ChatGPT](https://chat.openai.com) gives you a word-by-word response). However, dealing with streams in this context is more complicated than necessary, so you are encourage this pre-provided snippet of code.[^4]
 
 ```javascript
-async function getResponse(chatHistory){
+async function getResponse(chatHistory) {
   const completion = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: chatHistory
-  })
-  return res.data.choices[0].message.content
+    model: "gpt-3.5-turbo",
+    messages: chatHistory,
+  });
+  return res.data.choices[0].message.content;
 }
 ```
 
 In your process code, you want to first stop your spinner with a message. Then write the text you received as a string to standard output. Then, use a recursive call &mdash; a function which calls itself &mdash; to continue the chat loop.
 
 ```javascript
-waitSpinner.stop("text completed")
+waitSpinner.stop("text completed");
 
 console.log(generatedText);
 
-console.log('\n\n'); // adding a few new lines
+console.log("\n\n"); // adding a few new lines
 
 prompt(); // recursive call
 
@@ -242,68 +242,66 @@ prompt(); // recursive call
 In case I lost you there, here is the full code for `index.js`. Alternatively, you are able to see [the full project on Github](https://github.com/wkaisertexas/chatgpt).
 
 ```javascript
-import { cli } from 'cleye';
-import { outro, text, spinner } from '@clack/prompts';
-import OpenAI from 'openai';
+import { cli } from "cleye";
+import { outro, text, spinner } from "@clack/prompts";
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env["OPENAI_API_KEY"]
+  apiKey: process.env["OPENAI_API_KEY"],
 });
 
 const argv = cli({
-  name: 'index.js',
-  parameters: [
-    '[arguments...]',
-  ],
-})
+  name: "index.js",
+  parameters: ["[arguments...]"],
+});
 
 const chatHistory = [];
 
-let initialPrompt = argv._.arguments.join(' ');
+let initialPrompt = argv._.arguments.join(" ");
 
 // TODO: Maybe you could find something to do with the initial prompt
 
-async function getResponse(chatHistory){
+async function getResponse(chatHistory) {
   const completion = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: "gpt-3.5-turbo",
     messages: chatHistory,
-  })
+  });
 
-  return completion.choices[0].message.content
+  return completion.choices[0].message.content;
 }
 
-async function promise(){
+async function promise() {
   const userPromptText = await text({
     message: "What do you want to say?",
     placeholder: `send a message (type 'exit' to quit)`,
     validate: (value) => {
-      if(!value) return "please enter a valid prompt"
-    }
-  })
+      if (!value) return "please enter a valid prompt";
+    },
+  });
 
-  if(userPromptText === 'exit'){
-    outro("By, thanks for chatting with us")
-    process.exit(0)
+  if (userPromptText === "exit") {
+    outro("By, thanks for chatting with us");
+    process.exit(0);
   }
   const waitSpinner = spinner();
   waitSpinner.start("Thinking...");
 
   chatHistory.push({
-    role: 'user',
-    content: userPromptText
-  })
+    role: "user",
+    content: userPromptText,
+  });
 
-  const generatedText = await getResponse(chatHistory)
+  const generatedText = await getResponse(chatHistory);
 
-  waitSpinner.stop("Generation finished")
+  waitSpinner.stop("Generation finished");
 
-  console.log(generatedText)
-  console.log("\n\n")
+  console.log(generatedText);
+  console.log("\n\n");
 
   chatHistory.push({
-    role: 'system',
-    content: generatedText
-  })
+    role: "system",
+    content: generatedText,
+  });
 
   promise();
 }
@@ -325,23 +323,24 @@ However, this is not a complete program as there are some **UI / UX** steps we c
 
 1. Using `clack` to display the results of the model
 2. Rendering code block which have `\`\`\` code \`\`\`` surrounding to be drawn separately. This behavior comes from the [Markdown Syntax Guide](https://www.markdownguide.org/basic-syntax/)
-  <!-- - Implementing all of Markdown highlighting is feasible for this project, but code highlighting can be a good first step. -->
+<!-- - Implementing all of Markdown highlighting is feasible for this project, but code highlighting can be a good first step. -->
 3. Saving `chatHistory` to a file using the `JSON` file format and adding the ability to save and load previous conversations.
-  a. `require('fs')` and then using `fs.writeFileSync(location, text)`
-  b. `fs.readDir(folder, (err, files) => {/* Process them */})` will give you a list of files in a directory as a list
-  c. `JSON.stringify(object)` will turn an `object` into a `string`
-  d. `JSON.loads(object)` will turn a `string` into an `object`
-  e. `clack` has a `multiselect` option which takes a list of objects with `labels` and `values` and allows you to accept an option from them. You could use multiselect to select an old conversation to load.
-  f. `console.clear()` will clear the console and can help clean things up after a conversation is loaded.
+   a. `require('fs')` and then using `fs.writeFileSync(location, text)`
+   b. `fs.readDir(folder, (err, files) => {/* Process them */})` will give you a list of files in a directory as a list
+   c. `JSON.stringify(object)` will turn an `object` into a `string`
+   d. `JSON.loads(object)` will turn a `string` into an `object`
+   e. `clack` has a `multiselect` option which takes a list of objects with `labels` and `values` and allows you to accept an option from them. You could use multiselect to select an old conversation to load.
+   f. `console.clear()` will clear the console and can help clean things up after a conversation is loaded.
 
 ## References
 
-1. This tutorial was made for my [Machine-Learning with TensorFlow JS course](https://wkaisertexas.github.io/ml-with-tfjs) originally. I'm republishing it here for greater accessibility. 
+1. This tutorial was made for my [Machine-Learning with TensorFlow JS course](https://wkaisertexas.github.io/ml-with-tfjs) originally. I'm republishing it here for greater accessibility.
 2. The inspiration for this tutorial came from [BuilderIO's AI Shell](https://github.com/BuilderIO/ai-shell) which is a great project and open-source alternative to [GitHub Copilot X](https://github.com/features/copilot/).
 3. If you want to see a completed version of this project, check out the [GitHub Repo](https://github.com/wkaisertexas/chatgpt).
 
 ---
+
 [^1]: **OpenAI** has a **REST API** which is a series of endpoints for starting chats, creating accounts and more. However, **OpenAI** also has a `node` module which wraps the API into a nice set of functions for you and automatically handles the minor processing which you would have to otherwise implement. It is quite common for popular APIs to have wrappers in sometimes multiple languages (`python`, `javascript`, `java` are common). Reusing their pre-built wrapper code can be a great way to save time.
-[^2]: **Cleye** is a pun as is phonetically similar to the acronym for command line interface, *CLI*.
+[^2]: **Cleye** is a pun as is phonetically similar to the acronym for command line interface, _CLI_.
 [^3]: The hero image image presented is from [Google's Gemini (formerly Bard)](https://gemini.google.com/)
 [^4]: If you are up for the challenge, you can learn more about streaming from the guide [How To Stream Completions](https://cookbook.openai.com/examples/how_to_stream_completions)

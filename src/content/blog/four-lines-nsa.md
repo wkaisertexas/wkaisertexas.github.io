@@ -8,7 +8,7 @@ display: false
 
 ## Introduction
 
-In 2013, Edward Snowden leaked classified documents about the National Security Agency’s surveillance activities. These documents contained sensitive information about the US government’s spying programs. However, access is not limited to journalists; you can download the files from [Archive.org](https://archive.org/details/nsadocssnowden). The leak is a folder of PDFs containing these documents. This blog post will discuss how I used a simple bash script with _ImageMagick_’s to convert the PDFs into images to create an awesome screensaver. 
+In 2013, Edward Snowden leaked classified documents about the National Security Agency’s surveillance activities. These documents contained sensitive information about the US government’s spying programs. However, access is not limited to journalists; you can download the files from [Archive.org](https://archive.org/details/nsadocssnowden). The leak is a folder of PDFs containing these documents. This blog post will discuss how I used a simple bash script with _ImageMagick_’s to convert the PDFs into images to create an awesome screensaver.
 
 ![A screenshot of the leaked NSA files on Archive.org](../../blog/four-lines-nsa/download.png)
 

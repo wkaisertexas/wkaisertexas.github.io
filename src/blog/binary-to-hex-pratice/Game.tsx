@@ -172,15 +172,16 @@ function MainGame({
 
   // ts-ignore
   let sawTrue = false;
-  for(const key in settings) {
+  for (const key in settings) {
     console.log(key);
-    if(settings[key] === true) {
+    if (settings[key] === true) {
       sawTrue = true;
       break;
     }
   }
-  if(!sawTrue) {
-    for(const key in settings) { // enable all by default
+  if (!sawTrue) {
+    for (const key in settings) {
+      // enable all by default
       settings[key] = true;
     }
   }
@@ -294,7 +295,7 @@ function MainGame({
 
   const formatNumber = (
     number: number,
-    base: "binary" | "hex" | "octal" | "decimal"
+    base: "binary" | "hex" | "octal" | "decimal",
   ) => {
     switch (base) {
       case "binary":
@@ -463,12 +464,14 @@ function MainGame({
 function EndGame({ setType, results }: any) {
   const [endTime, setEndTime] = useState(new Date());
 
-    console.log(results);
+  console.log(results);
   const timeTaken = (() => {
     const diff = endTime.getTime() - results.startTime.getTime();
     const seconds = Math.floor(diff / 1000);
     const minutes = Math.floor(seconds / 60);
-    return minutes === 0 ? `${seconds % 60} seconds`: `${minutes} minutes ${seconds % 60} seconds`;
+    return minutes === 0
+      ? `${seconds % 60} seconds`
+      : `${minutes} minutes ${seconds % 60} seconds`;
   })();
 
   const { numCorrect, numAttempted, TOTAL } = results;
@@ -479,21 +482,25 @@ function EndGame({ setType, results }: any) {
         Binary to Hex to Decimal Quiz Summary
       </h1>
       <p className="text-gray-600 dark:text-gray-400">
-        You've completed your hex to binary to decimal quiz. Here's a summary of your
-        performance.
+        You've completed your hex to binary to decimal quiz. Here's a summary of
+        your performance.
       </p>
       <div className="space-y-4">
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
             Time Taken
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">{timeTaken}</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">
+            {timeTaken}
+          </p>
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
             Correct Answers
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">{numCorrect}</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">
+            {numCorrect}
+          </p>
         </div>
         <div className="bg-gray-100 p-4 rounded-md dark:bg-gray-700 h-16 flex items-center justify-between">
           <p className="text-gray-900 dark:text-gray-100 font-bold">
@@ -505,7 +512,7 @@ function EndGame({ setType, results }: any) {
           <p className="text-gray-900 dark:text-gray-100 font-bold">
             Percentage Correct
           </p>
-          <p className="text-gray-900 dark:text-gray-100 font-bold">{`${(numCorrect / TOTAL * 100).toFixed(0)}%`}</p>
+          <p className="text-gray-900 dark:text-gray-100 font-bold">{`${((numCorrect / TOTAL) * 100).toFixed(0)}%`}</p>
         </div>
         <div className="flex items-center justify-between">
           <button
@@ -532,14 +539,15 @@ function Game() {
           <NumberSystemConverter setType={setType} setSettings={setSettings} />
         );
       case 2:
-        return <MainGame setType={setType} settings={settings} setResults={setResults} />;
-      case 3:
         return (
-          <EndGame
+          <MainGame
             setType={setType}
-            results={results}
+            settings={settings}
+            setResults={setResults}
           />
         );
+      case 3:
+        return <EndGame setType={setType} results={results} />;
     }
   };
 

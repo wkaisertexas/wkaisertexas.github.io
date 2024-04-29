@@ -51,7 +51,7 @@ const FileUpload = () => {
 
     console.log(
       "Tables:",
-      db_tmp.exec('SELECT name FROM sqlite_master WHERE type="table";')
+      db_tmp.exec('SELECT name FROM sqlite_master WHERE type="table";'),
     );
 
     setDB(db_tmp);

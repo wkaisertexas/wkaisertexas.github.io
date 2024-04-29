@@ -40,7 +40,6 @@ with profile(
 
 ## Hollistic Trace Analysis (HTA)
 
-
 ```bash
 pip install HolisticTraceAnalysis
 ```
@@ -76,7 +75,9 @@ kernel_info_df # displays a graph in matplotlibs
 
 <figure>
   <Image src={chakra_central} alt="Chakra execution traces being central" />
-  <figcaption>Chakra Execution Traes Providing a Centralized Data Format</figcaption>
+  <figcaption>
+    Chakra Execution Traes Providing a Centralized Data Format
+  </figcaption>
 </figure>
 
 Using Charka consists of converting PyTorch Execution Traces produced earlier into Chakra using Chakra's execution trace converter.
@@ -106,6 +107,7 @@ for rank, file in files.items():
 git clone --recurse-submodules git@github.com:astra-sim/astra-sim.git
 cd astra-sim
 ```
+
 > Note: this uses a rsa key, rather than https. This is far faster (>10x) than HTTPS. Alternatively, you may use `git clone --recurse-submodules https://github.com/astra-sim/astra-sim.git` which will take longer.
 
 ```bash
@@ -140,9 +142,4 @@ docker exec astra-sim ${BINARY} \
 
 In this, we build a Astra Sim an
 
-
 If you want to play around with this yourself, you may use [Google Collab to view this entire process as a notebook](https://colab.research.google.com/drive/1t0IgZ8eZ5N7zwZci-jOMXycv78isUWS2).
-
-
-
-

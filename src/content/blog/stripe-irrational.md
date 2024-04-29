@@ -26,7 +26,7 @@ A common error when people become confused by product’s poor quality is a fund
 
 > A lot of **Meta** criticism also stems from lack of understanding the advertiser is the true customer.
 
-While design is only a part of Stripe’s success and other, larger sites are often far more optimized than their design would initial suggest, Stripe does make a midwit out of all of us, showing the value of the naive design path. 
+While design is only a part of Stripe’s success and other, larger sites are often far more optimized than their design would initial suggest, Stripe does make a midwit out of all of us, showing the value of the naive design path.
 
 ![midwit meme comparing design philosophies](../../blog/stripe-irrational/midwit.png)
 
@@ -34,6 +34,6 @@ Stripe makes us the midwit — Making good products is most often the best path 
 
 ---
 
-update: Feb 2024 - Stripe's founder Patrick Collison spoke about Stripe's commitment to the design and beauty of it's projects on the [Dwarkesh Podcast.](https://www.youtube.com/watch?v=WU-lBOAS1VQ&t=1493s). 
+update: Feb 2024 - Stripe's founder Patrick Collison spoke about Stripe's commitment to the design and beauty of it's projects on the [Dwarkesh Podcast.](https://www.youtube.com/watch?v=WU-lBOAS1VQ&t=1493s).
 
 Also, the point was raised that people want to work at companies that make beautiful products. In this way, Stripe's design is also a recruiting and culture-building tool. A great insight.

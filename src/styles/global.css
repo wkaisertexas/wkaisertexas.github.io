@@ -21,7 +21,7 @@
 }
 
 .std-body {
- @apply grid lg:grid-cols-5 md:grid-cols-3; 
+  @apply grid lg:grid-cols-5 md:grid-cols-3;
 }
 
 @tailwind base;

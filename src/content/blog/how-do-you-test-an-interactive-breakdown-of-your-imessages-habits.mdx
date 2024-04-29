@@ -7,12 +7,13 @@ display: false
 no_hero: true
 unlisted: true
 ---
-import { Image } from 'astro:assets';
 
-import Visualizer from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/Visualizer.tsx'
-import PlatformWarning from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/PlatformWarning.tsx'
+import { Image } from "astro:assets";
 
-import { createContext } from 'react';
+import Visualizer from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/Visualizer.tsx";
+import PlatformWarning from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/PlatformWarning.tsx";
+
+import { createContext } from "react";
 
 export const DBContext = createContext();
 
@@ -26,7 +27,7 @@ If you are **on a Mac**, all of your iMessage data is stored on a local database
 
 1. Open Finder. You should see the toolbar at the top of the screen.
 
-import finder from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/finder.png';
+import finder from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/finder.png";
 
 <figure>
   <Image src={finder} alt="Finder" />
@@ -35,7 +36,7 @@ import finder from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-
 
 2. Click on `Go` in the toolbar.
 
-import finder_toolbar from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/finder_toolbar.png';
+import finder_toolbar from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/finder_toolbar.png";
 
 <figure>
   <Image src={finder_toolbar} alt="Finder Toolbar" />
@@ -44,24 +45,23 @@ import finder_toolbar from '../../blog/how-do-you-test-an-interactive-breakdown-
 
 3. Navigate down to the bottom of the dropdown and click on `Go to Folder...`
 
-import goto_folder from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/goto_folder.png';
+import goto_folder from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/goto_folder.png";
 
 <figure>
-  <Image src={goto_folder}
-  alt="Go to Folder" />
+  <Image src={goto_folder} alt="Go to Folder" />
   <figcaption>Go to Folder</figcaption>
 </figure>
 
 4. Go to the search bar and type `~/Library/Messages` into the search bar.
 
-import file_selected from '../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/file_selected.png';
+import file_selected from "../../blog/how-do-you-test-an-interactive-breakdown-of-your-imessages-habits/screenshots/file_selected.png";
 
 <figure>
   <Image src={file_selected} alt="Go to Folder" />
   <figcaption>Go to Folder</figcaption>
 </figure>
 
-This navigates to the special folder where you iMessage data is stored. 
+This navigates to the special folder where you iMessage data is stored.
 
 5. Find the `chat.db` file and copy it to your Desktop[^1]
 6. Click on the upload file button below and select the `chat.db` file you just copied.
@@ -72,13 +72,18 @@ This navigates to the special folder where you iMessage data is stored.
 # Frequently Asked Questions
 
 <details>
-<summary>Will your data get stolen?</summary>
-Your data never leaves your device. It is stored locally in your browser. You can even validate this by **turning off your interenet connection** before submitting your data.
+  <summary>Will your data get stolen?</summary>
+  Your data never leaves your device. It is stored locally in your browser. You can
+  even validate this by **turning off your interenet connection** before submitting
+  your data.
 </details>
 
 <details>
-<summary>Why is it taking so long to load?</summary>
-An average user has over 1,000,000 messages &mdash; that is **a lot** of data to process. Executing opperations on your data to find your most active contacts, group chats, favorite times of day to text, etc. takes a lot of searching. Depending on the speed of your computer, this could take a bit of time.
+  <summary>Why is it taking so long to load?</summary>
+  An average user has over 1,000,000 messages &mdash; that is **a lot** of data to
+  process. Executing opperations on your data to find your most active contacts,
+  group chats, favorite times of day to text, etc. takes a lot of searching. Depending
+  on the speed of your computer, this could take a bit of time.
 </details>
 
 <details>
@@ -92,4 +97,4 @@ I'm sorry, I can't help you with that. However, here are some resources to get y
 </ul>
 </details>
 
-[^1]: Where you copy the folder is not important. However you have to copy your `chat.db` somewhere as Apple forbids direct uploads from the `Library` folder. 
+[^1]: Where you copy the folder is not important. However you have to copy your `chat.db` somewhere as Apple forbids direct uploads from the `Library` folder.

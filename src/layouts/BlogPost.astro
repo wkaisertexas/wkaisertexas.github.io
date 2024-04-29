@@ -64,9 +64,8 @@ const og = await getImage({
     </div>
 
     <main
-      class={`relative overflow-hidden py-16` + (no_hero !== true)
-        ? ` w-screen`
-        : ``}
+      class={`relative overflow-hidden py-16 px-4` +
+        (no_hero !== true ? ` w-screen` : ``)}
     >
       <div
         class={`mx-auto max-w-prose text-lg` +
@@ -82,7 +81,9 @@ const og = await getImage({
         >
           {title}
         </h1>
-        <p class="mt-2 text-center text-lg font-medium tracing-tighter text-gray-700">
+        <p
+          class="mt-2 text-center text-lg font-medium tracing-tighter text-gray-700"
+        >
           Published <FormattedDate date={pubDate} />
         </p>
         {
@@ -93,7 +94,6 @@ const og = await getImage({
           )
         }
         <p class="mt-8 text-xl leading-8 text-gray-700">{description}</p>
-        
       </div>
 
       {
@@ -113,7 +113,7 @@ const og = await getImage({
         )
       }
       <div
-        class="prose prose-lg prose-orange mx-auto mt-12 text-gray-700 prose-a:text-orange hover:prose-a:text-orange-500 prose-figcaption:italic prose-figcaption:-mt-1 prose-figcaption:text-sm prose-figcaption:font-serif prose-img:drop-shadow-xl"
+        class="prose prose-lg prose-orange prose-pre:text-md mx-auto mt-12 text-gray-700 prose-a:text-orange hover:prose-a:text-orange-500 prose-figcaption:italic prose-figcaption:-mt-1 prose-figcaption:text-sm prose-figcaption:font-serif prose-img:drop-shadow-xl"
       >
         <slot />
       </div>

@@ -25,7 +25,10 @@ export const LoadingBar = (props: LoadingBarProps) => {
     <div>
       <h1>Loading...</h1>
       <div className="w-full border-black border-2 p-1">
-        <div className="bg-black h-10 border" style={{ width: `${(state / STATES.length) * 100 + 5}%` }}></div>
+        <div
+          className="bg-black h-10 border"
+          style={{ width: `${(state / STATES.length) * 100 + 5}%` }}
+        ></div>
       </div>
       <p> {STATES[state]} </p>
     </div>

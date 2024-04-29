@@ -6,11 +6,11 @@ heroImage: "hero.png"
 display: true
 ---
 
-This piece was inspired by _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._  Despite **both** the initial and final solution being linear in time-complexity (`O(n)`). One is over a million percent faster. This is a fascinating example of how performance is not necessarily equal to time-complexity &mdash; seemingly contradicting commonly taught knowledge about algorithms in computer science education.
+This piece was inspired by _ThePrimeagen_’s YouTube Video _This Algorithm is_ [_1,606,240% FASTER_](https://www.youtube.com/watch?v=U16RnpV48KQ)_._ Despite **both** the initial and final solution being linear in time-complexity (`O(n)`). One is over a million percent faster. This is a fascinating example of how performance is not necessarily equal to time-complexity &mdash; seemingly contradicting commonly taught knowledge about algorithms in computer science education.
 
 ## Problem
 
-This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6). Advent of Code Day 6 part 2 gives a simple problem: find 14 distinct (or non-repeating cahracters) characters in a row from an input string. 
+This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6). Advent of Code Day 6 part 2 gives a simple problem: find 14 distinct (or non-repeating cahracters) characters in a row from an input string.
 
 > Your device’s communication system is correctly detecting packets, but still isn’t working. It looks like it also needs to look for messages. A start-of-message marker is just like a start-of-packet marker, except it consists of 14 distinct characters rather than 4.
 

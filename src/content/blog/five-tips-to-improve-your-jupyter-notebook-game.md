@@ -25,48 +25,48 @@ Markdown is a simple language for text formatting. If you would like a formal gu
 <details>
   <summary>You will be amazed what you can do with Markdown</summary>
 
-  ### 1.1. Embed Images
+### 1.1. Embed Images
 
-  Embedding images is a great way to add context to your analysis. Images can be embedded using the following syntax:
+Embedding images is a great way to add context to your analysis. Images can be embedded using the following syntax:
 
-  ```markdown
-  ![alt text](path/to/image.png)
-  ```
+```markdown
+![alt text](path/to/image.png)
+```
 
-  ### 1.2. Embed Videos
+### 1.2. Embed Videos
 
-  Videos can be embedded using the following syntax:
+Videos can be embedded using the following syntax:
 
-  ```markdown
-  [![alt text](path/to/image.png)](path/to/video.mp4)
-  ```
+```markdown
+[![alt text](path/to/image.png)](path/to/video.mp4)
+```
 
-  ### 1.3. Embed Tables
+### 1.3. Embed Tables
 
-  Tables can be embedded using the following syntax:
+Tables can be embedded using the following syntax:
 
-  ```markdown
+```markdown
+| Column 1 | Column 2 |
+| -------- | -------- |
+| Row 1    | Row 1    |
+| Row 2    | Row 2    |
+```
 
-  | Column 1 | Column 2 |
-  | -------- | -------- |
-  | Row 1    | Row 1    |
-  | Row 2    | Row 2    |
-  ```
+### 1.4 Reference Local Files
 
-  ### 1.4 Reference Local Files
+Markdown can also reference local files. So, for instance, you can hide a cell which makes a graph and reference the graph with a relative image tag.
 
-  Markdown can also reference local files. So, for instance, you can hide a cell which makes a graph and reference the graph with a relative image tag.
+```markdown
+![Graph I made earlier](./graph.png)
+```
 
-  ```markdown
-  ![Graph I made earlier](./graph.png)
-  ```
+That is the beginning of what markdown can do. For more, check out [Take 15 minutes to become a Markdown great](../great-markdown). Though you may not need to be the best documentarian, adding context to your code is a great way to share your work with others and your future self.
 
-  That is the beginning of what markdown can do. For more, check out [Take 15 minutes to become a Markdown great](../great-markdown). Though you may not need to be the best documentarian, adding context to your code is a great way to share your work with others and your future self.
 </details>
 
 ## 2. Use Type Hints
 
-Type hints are a general python tip but are especially useful in notebooks. Type hints are a way to keep your functions organized when writing your code. Though some may argue that type hints are ugly and unnecessary for data science project, using type hints is a habit which will pay dividends in the long run. 
+Type hints are a general python tip but are especially useful in notebooks. Type hints are a way to keep your functions organized when writing your code. Though some may argue that type hints are ugly and unnecessary for data science project, using type hints is a habit which will pay dividends in the long run.
 
 ```python
 def convert_string_to_date(string: str) -> pd.datetime:
@@ -89,7 +89,7 @@ df = df.sample(frac=0.01) # sample 1% of the rows
 
 ## 4. Don't Do Shit Twice
 
-Expensive operations such as data loading should only be run once. While you may *try* to not re-run the expensive loading operations &mdash; you probably will. A several gigabyte comma separated values (CSV) file can take tens of seconds to minutes depending on the size. 
+Expensive operations such as data loading should only be run once. While you may _try_ to not re-run the expensive loading operations &mdash; you probably will. A several gigabyte comma separated values (CSV) file can take tens of seconds to minutes depending on the size.
 
 ```python
 df = pd.read_csv("imdb_movie_reviews.csv")
@@ -132,6 +132,6 @@ This is a simple fix, but it is a good example of how to avoid errors when re-ru
 
 A Jupyter Notebook is a great tool, but it should be thought of as having two modes: interactive and compiled. When crafting your analysis interactively, speed is king. Learning simple tricks like sampling your data, not re-running code and using the right data types can make a huge difference in your productivity.
 
-When performing analysis, you generally write code, run it, write code, run it. If you are not careful and your code has to re-run every time and is generally slow, you will be waiting a lot. In fact, a first-year computer science student may suggest that you are debugging in `O(n^2)` time. Try and avoid that. Simple tips, applied consistently, can make a huge difference in your productivity. 
+When performing analysis, you generally write code, run it, write code, run it. If you are not careful and your code has to re-run every time and is generally slow, you will be waiting a lot. In fact, a first-year computer science student may suggest that you are debugging in `O(n^2)` time. Try and avoid that. Simple tips, applied consistently, can make a huge difference in your productivity.
 
 > You've got to go slow to go fast

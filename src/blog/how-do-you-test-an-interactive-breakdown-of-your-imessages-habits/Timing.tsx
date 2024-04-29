@@ -33,22 +33,22 @@ const get_data = (db, cmd) => {
   }));
 };
 
-const int_to_month = (month: int) : string => {
-return {
-  1: 'January',
-  2: 'February',
-  3: 'March',
-  4: 'April',
-  5: 'May',
-  6: 'June',
-  7: 'July',
-  8: 'August',
-  9: 'September',
-  10: 'October',
-  11: 'November',
-  12: 'December',
-}[month];
-}
+const int_to_month = (month: int): string => {
+  return {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  }[month];
+};
 
 const fix_time_zone = (hour: number) => {
   let offset_in_hours = new Date().getTimezoneOffset() / 60;

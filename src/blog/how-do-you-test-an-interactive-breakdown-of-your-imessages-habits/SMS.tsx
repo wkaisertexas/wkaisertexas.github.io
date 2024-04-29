@@ -7,12 +7,12 @@ import { Cell, Legend, Pie, PieChart } from "recharts";
 const sms_dist = (db: Database): Object => {
   console.log("DB:", db);
   const sms = db.exec(
-    'select count(*) as total, h.service from message m join handle h where h.service = "SMS";'
+    'select count(*) as total, h.service from message m join handle h where h.service = "SMS";',
   );
   console.log("SMS:", sms);
 
   const total = db.exec(
-    "select count(*) as total from message m join handle h;"
+    "select count(*) as total from message m join handle h;",
   );
 
   const sms_percent = sms[0].values[0][0] / total[0].values[0][0]; // should be right
