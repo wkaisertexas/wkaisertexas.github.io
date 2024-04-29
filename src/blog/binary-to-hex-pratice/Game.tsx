@@ -195,7 +195,7 @@ function MainGame({
 
   const [numCorrect, setNumCorrect] = useState(0);
   const [numAttempted, setNumAttempted] = useState(0);
-  const TOTAL = 3; // total number of questions
+  const TOTAL = 10; // total number of questions
 
   useEffect(() => {
     setResults({
