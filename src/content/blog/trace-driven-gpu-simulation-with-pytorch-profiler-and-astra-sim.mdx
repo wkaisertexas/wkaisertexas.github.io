@@ -10,14 +10,231 @@ unlisted: true
 
 import { Image } from "astro:assets";
 import chakra_central from "../../blog/trace-driven-gpu-simulation-with-pytorch-profiler-and-astra-sim/chakra_central.png";
+import tpu_correlation from "../../blog/trace-driven-gpu-simulation-with-pytorch-profiler-and-astra-sim/tpu_correlation.png";
 
 {/* Talk about what simulation is and why it is important to hardware design */}
 
+In this tutorial, we will be:
+
+- Loading a PyTorch model ([Microsoft's Phi](https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/)) from Hugging Face
+- Running inference on the model using a Shakespeare dataset
+- Collecting traces using PyTorch Profiler
+- Converting PyTorch profiler's execution traces to Chakra Execution Traces
+- Analyzing the traces using Holistic Trace Analysis
+- Building Astra-Sim
+- Running an Astra-Sim simulation
+
 {/* Talk about simulation moving from hardware to network design */}
 
-{/* Need for native simulation */}
+## Hardware and Network Simulators
 
-## Trace Collection
+Simulators are well-established, good proxies for real-world systems. Hardware and network simulators provide timings and output characteristics very similar to real-world systems. This is useful because new hardware and network designs may be tested in simulation and have real-world impact.
+
+<figure>
+  <Image src={tpu_correlation} alt="Correlation in performance between Astra-Sim and a real-world environment" />
+  <figcaption>
+    Correlating performance between Astra-Sim and a real-world experiment on a Tensor Processing Unit (TPU)
+  </figcaption>
+</figure>
+
+
+
+## Getting Started
+
+To get started with simulation, we will begin by creating a contrived example of measuring performance on a standard Hugging-Face model. From this model, fine-tuning will take place and traces will be collected using PyTorch Profiler, analyzed using Holistic Trace Analysis, converted to Chakra Execution Traces and simulated using Astra-Sim.
+
+## Loading Microsoft Phi
+
+First, install [Hugging Face's transformer's library](https://huggingface.co/docs/transformers/en/index). Transofmers is a library that provides a simple interface to load and use pre-trained models hosted on Hugging Face or elsewhere.
+
+```bash
+pip install transformers
+```
+
+Then, load the model and the tokeinzer. This will place the model in the HuggingFace cache and download the model if it is not already present.
+
+```python
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+torch.set_default_device("cuda")
+
+model = AutoModelForCausalLM.from_pretrained("microsoft/phi-2", torch_dtype="auto", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
+```
+
+At this point, we have loaded the model and the tokenizer. We can now load a dataset and fine-tune the model on the dataset.
+
+### Loading the dataset
+
+For a commonly used fine-tuning example, we will load the [Shakespeare dataset](https://huggingface.co/datasets/Trelis/tiny-shakespeare) also hosted on HuggingFace. This dataset is a text file containing 91.6 kb of text from Shakespeare's plays.
+
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("Trelis/tiny-shakespeare")
+```
+
+{/* https://medium.com/thedeephub/optimizing-phi-2-a-deep-dive-into-fine-tuning-small-language-models-9d545ac90a99 */}
+
+```python
+def collate_and_tokenize(examples):
+    """
+    Collates and tokenizes the examples to read prompts in a format understood by phi-2
+    """
+
+    question = examples["question"][0].replace('"', r'\"')
+    answer = examples["answer"][0].replace('"', r'\"')
+    #unpacking the list of references and creating one string for reference
+    references = '\n'.join([f"[{index + 1}] {string}" for index, string in enumerate(examples["references"][0])])
+
+    #Merging into one prompt for tokenization and training
+    prompt = f"""###System:
+Read the references provided and answer the corresponding question.
+###References:
+{references}
+###Question:
+{question}
+###Answer:
+{answer}"""
+
+    #Tokenize the prompt
+    encoded = tokenizer(
+        prompt,
+        return_tensors="np",
+        padding="max_length",
+        truncation=True,
+        ## Very critical to keep max_length at 1024 on T4
+        ## Anything more will lead to OOM on T4
+        max_length=2048,
+    )
+
+    encoded["labels"] = encoded["input_ids"]
+    return encoded
+```
+From here, we can remove the columns we do not need for training:
+
+```
+columns_to_remove = ["question","answer", "references"]
+
+#tokenize the training and test datasets
+tokenized_dataset_train = train_dataset.map(collate_and_tokenize,
+                                            batched=True,
+                                            batch_size=1,
+                                            remove_columns=columns_to_remove)
+```
+
+Then, we can setup the training parameters, optimizer and scheduler:
+
+```python
+from peft import prepare_model_for_kbit_training
+
+#gradient checkpointing to save memory
+model.gradient_checkpointing_enable()
+
+# Freeze base model layers and cast layernorm in fp32
+model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
+print(model)
+```
+
+Then, we can configure LORA and update the model.
+
+```python
+from peft import LoraConfig, get_peft_model
+
+config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    target_modules=[
+    'q_proj',
+    'k_proj',
+    'v_proj',
+    'dense',
+    'fc1',
+    'fc2',
+    ], #print(model) will show the modules to use
+    bias="none",
+    lora_dropout=0.05,
+    task_type="CAUSAL_LM",
+)
+
+lora_model = get_peft_model(model, config)
+
+lora_model = accelerator.prepare_model(lora_model)
+```
+
+## Setting Up Model training
+
+<details>
+
+<summary>Click here to see all of the required code</summary>
+
+```python
+import time
+from transformers import TrainingArguments, Trainer
+
+training_args = TrainingArguments(
+    output_dir='./results',  # Output directory for checkpoints and predictions
+    overwrite_output_dir=True, # Overwrite the content of the output directory
+    per_device_train_batch_size=2,  # Batch size for training
+    per_device_eval_batch_size=2,  # Batch size for evaluation
+    gradient_accumulation_steps=5, # number of steps before optimizing
+    gradient_checkpointing=True,   # Enable gradient checkpointing
+    gradient_checkpointing_kwargs={"use_reentrant": False},
+    warmup_steps=50,  # Number of warmup steps
+    #max_steps=1000,  # Total number of training steps
+    num_train_epochs=2,  # Number of training epochs
+    learning_rate=5e-5,  # Learning rate
+    weight_decay=0.01,  # Weight decay
+    optim="paged_adamw_8bit", #Keep the optimizer state and quantize it
+    fp16=True, #Use mixed precision training
+    #For logging and saving
+    logging_dir='./logs',
+    logging_strategy="steps",
+    logging_steps=100,
+    save_strategy="steps",
+    save_steps=100,
+    save_total_limit=2,  # Limit the total number of checkpoints
+    evaluation_strategy="steps",
+    eval_steps=100,
+    load_best_model_at_end=True, # Load the best model at the end of training
+)
+
+trainer = Trainer(
+    model=lora_model,
+    train_dataset=tokenized_dataset_train,
+    eval_dataset=tokenized_dataset_test,
+    args=training_args,
+)
+
+#Disable cache to prevent warning, renable for inference
+#model.config.use_cache = False
+
+start_time = time.time()  # Record the start time
+trainer.train()  # Start training
+end_time = time.time()  # Record the end time
+
+training_time = end_time - start_time  # Calculate total training time
+
+print(f"Training completed in {training_time} seconds.")
+
+#Save model to hub to ensure we save our work.
+lora_model.push_to_hub("phi2-webglm-qlora",
+                  use_auth_token=True,
+                  commit_message="Training Phi-2",
+                  private=True)
+
+
+#Terminate the session so we do not incur cost
+from google.colab import runtime
+runtime.unassign()
+```
+
+</details>
+
+### Trace Collection
+
+After setting up the model, we can collect traces with PyTorch Profiler. The PyTorch Profiler is a context manager that allows you to collect traces within your model's training loop. For use in trace analysis, you must use a `tensorboard_trace_handler` to save the traces to disk with both CPU and GPU activity.
 
 ```python
 from torch.profiler import profile, schedule, tensorboard_trace_handler
@@ -38,7 +255,9 @@ with profile(
         prof.step()
 ```
 
-## Hollistic Trace Analysis (HTA)
+Following this, a `traces` directory will be created which contains compressed json files of CPU and GPU activity. Theses traces are the input to both: Holistic Trace Analysis and Astra-Sim.
+
+### Hollistic Trace Analysis (HTA)
 
 ```bash
 pip install HolisticTraceAnalysis
@@ -47,17 +266,21 @@ pip install HolisticTraceAnalysis
 HTA supports multiple objects for analysis. Consequently, each file must contain a `rank` key such that HTA can know the location of a device. Without a rank, you recieve the following (rather cyptic error):
 
 ```console
-
+2024-02-23 20:37:50,287 - hta - trace.py:L389 - INFO - traces
+2024-02-23 20:37:50,290 - hta - trace_file.py:L61 - ERROR - If the trace file does not have the rank specified in it, then add the following snippet key to the json files to use HTA; "distributedInfo": {"rank": 0}. If there are multiple traces files, then each file should have a unique rank value.
+2024-02-23 20:37:50,291 - hta - trace_file.py:L92 - WARNING - There is no item in the rank to trace file map.
+2024-02-23 20:37:50,291 - hta - trace.py:L535 - INFO - ranks=[]
+2024-02-23 20:37:50,292 - hta - trace.py:L541 - ERROR - The list of ranks to be parsed is empty.
 ```
 
-Create a visualizer object:
+Not to be detered, we may createa a `TraceAnalysis` object with the following to represent traces collected:
 
 ```python
 from hta.trace_analysis import TraceAnalysis
 from glob import glob
 
 files = glob("traces/*.json")
-files = { i: file for i, file in enumerate(files)}
+files = { i: file for i, file in enumerate(files) }
 
 analyzer = TraceAnalysis(trace_files=files) # this should be different
 ```
@@ -69,7 +292,14 @@ kernel_info_df = analyzer.get_cuda_kernel_launch_stats()
 kernel_info_df # displays a graph in matplotlibs
 ```
 
-## Converting to Chakra Execution Traces (ET)
+<figure>
+  <Image src={chakra_central} alt="Kernel launches in a trace" />
+  <figcaption>
+    Kernel Launches in a Trace
+  </figcaption>
+</figure>
+
+### Converting to Chakra Execution Traces (ET)
 
 [Charka](https://engineering.fb.com/2023/09/07/networking-traffic/chakra-execution-traces-benchmarking-network-performance-optimization/) is a library produced by Meta AI research with the goal of providing a standardized format for simulators, analyzers and collectors to use for traces.
 
@@ -84,7 +314,7 @@ Using Charka consists of converting PyTorch Execution Traces produced earlier in
 
 First, begin by installing Chakra:
 
-```
+```bash
 git clone https://github.com/mlcommons/chakra/
 cd chakra
 pip install -e .
@@ -96,47 +326,78 @@ Then, use a python script for converting the scripts:
 from chakra.et_converter.pytorch2chakra_converter import PyTorch2ChakraConverter
 import logging
 
-for rank, file in files.items():
-  converter = PyTorch2ChakraConverter(file, file, logging.getLogger(__file__))
-  converter.convert()
+for rank, trace in files.items():
+  converter = PyTorch2ChakraConverter(trace, trace, logging.getLogger(__file__))
+  converter.convert() # not too sure about this, it makes the simulation more often
 ```
 
-## Setting Up Astra-Sim
+### Setting Up Astra-Sim
+
+Astra Sim is a trace driven simulator designed for both hardware and network simulation. To get started, we will build Astra-Sim from source in a Docker container.
 
 ```bash
 git clone --recurse-submodules git@github.com:astra-sim/astra-sim.git
 cd astra-sim
 ```
 
-> Note: this uses a rsa key, rather than https. This is far faster (>10x) than HTTPS. Alternatively, you may use `git clone --recurse-submodules https://github.com/astra-sim/astra-sim.git` which will take longer.
+> Note: this uses a rsa key, rather than https which is required because each submodule also has submodules which use RSA keys
+
+After cloning, we can build the Docker container used to build and run the simulation. If you do not have Docker installed, please see the [Get Docker](https://docs.docker.com/get-docker/).
 
 ```bash
-docker build -t astra-sim .
-# docker run -it astra-sim
-docker exec astra-sim ./build/astra_analytical/build.sh
+# sudo docker run -it astra-sim # (interactive mode)
+sudo docker build -t astra-sim .
+sudo docker run -dt --name astra-sim astra-sim
+sudo docker exec astra-sim ./build/astra_analytical/build.sh
 ```
 
-From here, we can verify the build of the analytical backend by inspecting the logs:
-
-```bash
-docker logs -f astra-sim
-```
-
-Here, you should see the following:
+After buiding the container, you should see the following output indicating a successful build:
 
 ```console
-Astra sim build sucessfully
+[ 98%] Building CXX object AstraSim_Analytical/CMakeFiles/AstraSim_Analytical_Congestion_Aware.dir/congestion_aware/main.cc.o
+[ 99%] Linking CXX executable ../bin/AstraSim_Analytical_Congestion_Unaware
+[100%] Linking CXX executable ../bin/AstraSim_Analytical_Congestion_Aware
+[100%] Built target AstraSim_Analytical_Congestion_Unaware
+[100%] Built target AstraSim_Analytical_Congestion_Aware
 ```
 
-## Running AstraSim
+### Loading Astra-Sim Execution Traces
+
+After Astra-Sim has been built, we can load the execution traces in Astra-Sim with a basic docker copy.
 
 ```bash
-docker exec astra-sim ${BINARY} \
+sudo docker cp traces astra-sim:/app/astra-sim
+```
+
+### Running Astra-Sim
+
+After the binary is built, you can run a simulation in Astra-Sim using the following command:
+
+```bash
+BINARY=./build/astra_analytical/build/bin/AstraSim_Analytical_Congestion_Unaware
+WORKLOAD_CONFIG=./inputs/workload/ASTRA-sim-2.0/traces # chakra et traces
+SYSTEM_CONFIG=./inputs/system/Switch.json
+NETWORK_CONFIG=./inputs/network/analytical/Switch.yml
+REMOTE_MEMORY_CONFIG=./inputs/remote_memory/analytical/no_memory_expansion.json
+
+sudo docker exec astra-sim ${BINARY} \
   --workload-configuration=${WORKLOAD_CONFIG} \
   --system-configuration=${SYSTEM_CONFIG} \
   --network-configuration=${NETWORK_CONFIG} \
   --remote-memory-configuration=${REMOTE_MEMORY_CONFIG}
 ```
+
+Finally, you will get an output like the following indicating the simulation has terminated.
+
+```console
+sys[62] finished, 6749042 cycles
+sys[61] finished, 6749042 cycles
+...
+sys[0] finished, 6749042 cycles
+sys[63] finished, 6749042 cycles
+```
+
+For more details about configuring Astra-Sim, please see the [Run Astra-Sim Documenation](https://astra-sim.github.io/astra-sim-docs/getting-started/running-astra-sim.html).
 
 ## Summary
 
