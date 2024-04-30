@@ -58,7 +58,6 @@ Next, we may import torch and setup cuda as a default device.
 ```python
 import torch
 import torch.nn as nn
-from matplotlib import pyplot as plt
 
 torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ```
@@ -73,7 +72,7 @@ from torchvision.transforms import ToTensor
 from torch.utils.data import DataLoader
 
 # Loading the MNIST dataset
-train_data = datasets.MNIST(root = 'data', train = True, transform = ToTensor())
+train_data = datasets.MNIST(root = 'data', train = True, transform = ToTensor(), download=True)
 
 # Creating data loade
 train_data = DataLoader(train_data, batch_size=64, num_workers=4, pin_memory=True)
@@ -132,7 +131,7 @@ def train(batch_data):
     """
     # data movement
     images, labels = batch_data
-    images.cuda(), labels.cuda() = images.cuda(), labels.cuda()
+    images, labels = images.cuda(), labels.cuda()
 
     # Forward pass
     output = cnn(images)[0]
@@ -155,7 +154,7 @@ Now, all we have to do is run the training loop with the profiler setup to cllec
 After setting up the model, we can collect traces with PyTorch Profiler. The PyTorch Profiler is a context manager that allows you to collect traces within your model's training loop. For use in trace analysis, you must use a `tensorboard_trace_handler` to save the traces to disk with both CPU and GPU activity.
 
 ```python
-from torch.profiler import profile, schedule, tensorboard_trace_handler
+from torch.profiler import profile, schedule, tensorboard_trace_handler, ProfilerActivity
 
 tracing_schedule = schedule(skip_first=5, wait=5, warmup=2, active=2, repeat=1)
 trace_handler = tensorboard_trace_handler(dir_name="traces", use_gzip=True)
@@ -171,7 +170,7 @@ with profile(
   with_stack = True
 ) as prof:
   for epoch in range(EPOCHS):
-    for step, batch_data in enumerate(data_loader):
+    for step, batch_data in enumerate(train_data):
         train(batch_data)
         prof.step()
 ```
@@ -201,11 +200,17 @@ Not to be detered, we may createa a `TraceAnalysis` object with the following to
 ```python
 from hta.trace_analysis import TraceAnalysis
 from glob import glob
+import json
 
-files = glob("traces/*.json")
-files = { i: file for i, file in enumerate(files) }
+for trace in glob("traces/*.json"):
+  with open(trace, 'r') as f:
+    trace_obj = json.load(f)
+    trace_obj['rank'] = 0
 
-analyzer = TraceAnalysis(trace_files=files) # this should be different
+  with open(trace, 'w') as f:
+    json.dump(trace_obj, f)
+
+analyzer = TraceAnalysis(trace_dir="traces") # this should be different
 ```
 
 After setting up your analyzer object, you are then able to use HTA exactly as described by the [HTA documenation](https://hta.readthedocs.io/en/latest/). For instance, you could get statistics about CUDA kernel launches using the following:
@@ -239,6 +244,7 @@ First, begin by installing Chakra:
 git clone https://github.com/mlcommons/chakra/
 cd chakra
 pip install -e .
+cd -
 ```
 
 Then, use a python script for converting the scripts:
