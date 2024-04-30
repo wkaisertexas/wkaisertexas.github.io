@@ -4,13 +4,13 @@ description: Analying performance traces with Astra-Sim in a trace-driven manner
 heroImage: hero.png
 pubDate: April 28 2024
 display: false
-no_hero: true
 unlisted: true
 ---
 
 import { Image } from "astro:assets";
 import chakra_central from "../../blog/trace-driven-gpu-simulation-with-pytorch-profiler-and-astra-sim/chakra_central.png";
 import tpu_correlation from "../../blog/trace-driven-gpu-simulation-with-pytorch-profiler-and-astra-sim/tpu_correlation.png";
+import cuda_launch from "../../blog/trace-driven-gpu-simulation-with-pytorch-profiler-and-astra-sim/cuda_launch.webp";
 
 {/* Talk about what simulation is and why it is important to hardware design */}
 
@@ -31,206 +31,124 @@ In this tutorial, we will be:
 Simulators are well-established, good proxies for real-world systems. Hardware and network simulators provide timings and output characteristics very similar to real-world systems. This is useful because new hardware and network designs may be tested in simulation and have real-world impact.
 
 <figure>
-  <Image src={tpu_correlation} alt="Correlation in performance between Astra-Sim and a real-world environment" />
+  <Image
+    src={tpu_correlation}
+    alt="Correlation in performance between Astra-Sim and a real-world environment"
+  />
   <figcaption>
-    Correlating performance between Astra-Sim and a real-world experiment on a Tensor Processing Unit (TPU)
+    Correlating performance between Astra-Sim and a real-world experiment on a
+    Tensor Processing Unit (TPU)
   </figcaption>
 </figure>
-
-
 
 ## Getting Started
 
 To get started with simulation, we will begin by creating a contrived example of measuring performance on a standard Hugging-Face model. From this model, fine-tuning will take place and traces will be collected using PyTorch Profiler, analyzed using Holistic Trace Analysis, converted to Chakra Execution Traces and simulated using Astra-Sim.
 
-## Loading Microsoft Phi
+### Getting PyTorch Setup
 
-First, install [Hugging Face's transformer's library](https://huggingface.co/docs/transformers/en/index). Transofmers is a library that provides a simple interface to load and use pre-trained models hosted on Hugging Face or elsewhere.
+First, install [PyTorch](https://pytorch.org/get-started/locally/) and [TorchVision](https://pytorch.org/vision/stable/index.html) using pip.
 
 ```bash
-pip install transformers
+pip install torch torchvision
 ```
 
-Then, load the model and the tokeinzer. This will place the model in the HuggingFace cache and download the model if it is not already present.
+Next, we may import torch and setup cuda as a default device.
 
 ```python
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch.nn as nn
+from matplotlib import pyplot as plt
 
-torch.set_default_device("cuda")
-
-model = AutoModelForCausalLM.from_pretrained("microsoft/phi-2", torch_dtype="auto", trust_remote_code=True)
-tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
+torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ```
 
-At this point, we have loaded the model and the tokenizer. We can now load a dataset and fine-tune the model on the dataset.
+### Data Loading
 
-### Loading the dataset
-
-For a commonly used fine-tuning example, we will load the [Shakespeare dataset](https://huggingface.co/datasets/Trelis/tiny-shakespeare) also hosted on HuggingFace. This dataset is a text file containing 91.6 kb of text from Shakespeare's plays.
+To load the MNIST data, we will use a DataLoader from PyTorch. This will allow us to load the data in batches and shuffle the data for training and testing.
 
 ```python
-from datasets import load_dataset
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+from torch.utils.data import DataLoader
 
-dataset = load_dataset("Trelis/tiny-shakespeare")
+# Loading the MNIST dataset
+train_data = datasets.MNIST(root = 'data', train = True, transform = ToTensor())
+
+# Creating data loade
+train_data = DataLoader(train_data, batch_size=64, num_workers=4, pin_memory=True)
 ```
 
-{/* https://medium.com/thedeephub/optimizing-phi-2-a-deep-dive-into-fine-tuning-small-language-models-9d545ac90a99 */}
+### Defining a Model
+
+We will define a simple CNN model for classifying the MNIST dataset. For this contrived example, the modle used will only be for demonstration purposes.
 
 ```python
-def collate_and_tokenize(examples):
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(
+                in_channels=1,
+                out_channels=40,
+                kernel_size=5,
+                stride=1,
+                padding=2,
+            ),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2),
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(40, 32, 5, 1, 2),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+        )
+        # fully connected layer, output 10 classes
+        self.out = nn.Linear(32 * 7 * 7, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.conv2(x)
+        # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
+        x = x.view(x.size(0), -1)
+        output = self.out(x)
+        return output, x    # return x for visualization
+
+cnn = CNN()
+cnn.cuda()
+```
+
+## Defining an Epoch Training Function
+
+To train the mode, we will first define a basic function which takes a batch of data from the data loader and uses it to train the model.
+
+```python
+loss_func = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(cnn.parameters(), lr=0.001)
+
+def train(batch_data):
     """
-    Collates and tokenizes the examples to read prompts in a format understood by phi-2
+    Very basic training loop for a CNN model
     """
+    # data movement
+    images, labels = batch_data
+    images.cuda(), labels.cuda() = images.cuda(), labels.cuda()
 
-    question = examples["question"][0].replace('"', r'\"')
-    answer = examples["answer"][0].replace('"', r'\"')
-    #unpacking the list of references and creating one string for reference
-    references = '\n'.join([f"[{index + 1}] {string}" for index, string in enumerate(examples["references"][0])])
+    # Forward pass
+    output = cnn(images)[0]
+    loss = loss_func(output, labels)
 
-    #Merging into one prompt for tokenization and training
-    prompt = f"""###System:
-Read the references provided and answer the corresponding question.
-###References:
-{references}
-###Question:
-{question}
-###Answer:
-{answer}"""
+    # clear gradients for this training step
+    optimizer.zero_grad()
 
-    #Tokenize the prompt
-    encoded = tokenizer(
-        prompt,
-        return_tensors="np",
-        padding="max_length",
-        truncation=True,
-        ## Very critical to keep max_length at 1024 on T4
-        ## Anything more will lead to OOM on T4
-        max_length=2048,
-    )
+    # backgpropagation, compute gradients
+    loss.backward()
 
-    encoded["labels"] = encoded["input_ids"]
-    return encoded
-```
-From here, we can remove the columns we do not need for training:
-
-```
-columns_to_remove = ["question","answer", "references"]
-
-#tokenize the training and test datasets
-tokenized_dataset_train = train_dataset.map(collate_and_tokenize,
-                                            batched=True,
-                                            batch_size=1,
-                                            remove_columns=columns_to_remove)
+    # apply gradients
+    optimizer.step()
 ```
 
-Then, we can setup the training parameters, optimizer and scheduler:
-
-```python
-from peft import prepare_model_for_kbit_training
-
-#gradient checkpointing to save memory
-model.gradient_checkpointing_enable()
-
-# Freeze base model layers and cast layernorm in fp32
-model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
-print(model)
-```
-
-Then, we can configure LORA and update the model.
-
-```python
-from peft import LoraConfig, get_peft_model
-
-config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    target_modules=[
-    'q_proj',
-    'k_proj',
-    'v_proj',
-    'dense',
-    'fc1',
-    'fc2',
-    ], #print(model) will show the modules to use
-    bias="none",
-    lora_dropout=0.05,
-    task_type="CAUSAL_LM",
-)
-
-lora_model = get_peft_model(model, config)
-
-lora_model = accelerator.prepare_model(lora_model)
-```
-
-## Setting Up Model training
-
-<details>
-
-<summary>Click here to see all of the required code</summary>
-
-```python
-import time
-from transformers import TrainingArguments, Trainer
-
-training_args = TrainingArguments(
-    output_dir='./results',  # Output directory for checkpoints and predictions
-    overwrite_output_dir=True, # Overwrite the content of the output directory
-    per_device_train_batch_size=2,  # Batch size for training
-    per_device_eval_batch_size=2,  # Batch size for evaluation
-    gradient_accumulation_steps=5, # number of steps before optimizing
-    gradient_checkpointing=True,   # Enable gradient checkpointing
-    gradient_checkpointing_kwargs={"use_reentrant": False},
-    warmup_steps=50,  # Number of warmup steps
-    #max_steps=1000,  # Total number of training steps
-    num_train_epochs=2,  # Number of training epochs
-    learning_rate=5e-5,  # Learning rate
-    weight_decay=0.01,  # Weight decay
-    optim="paged_adamw_8bit", #Keep the optimizer state and quantize it
-    fp16=True, #Use mixed precision training
-    #For logging and saving
-    logging_dir='./logs',
-    logging_strategy="steps",
-    logging_steps=100,
-    save_strategy="steps",
-    save_steps=100,
-    save_total_limit=2,  # Limit the total number of checkpoints
-    evaluation_strategy="steps",
-    eval_steps=100,
-    load_best_model_at_end=True, # Load the best model at the end of training
-)
-
-trainer = Trainer(
-    model=lora_model,
-    train_dataset=tokenized_dataset_train,
-    eval_dataset=tokenized_dataset_test,
-    args=training_args,
-)
-
-#Disable cache to prevent warning, renable for inference
-#model.config.use_cache = False
-
-start_time = time.time()  # Record the start time
-trainer.train()  # Start training
-end_time = time.time()  # Record the end time
-
-training_time = end_time - start_time  # Calculate total training time
-
-print(f"Training completed in {training_time} seconds.")
-
-#Save model to hub to ensure we save our work.
-lora_model.push_to_hub("phi2-webglm-qlora",
-                  use_auth_token=True,
-                  commit_message="Training Phi-2",
-                  private=True)
-
-
-#Terminate the session so we do not incur cost
-from google.colab import runtime
-runtime.unassign()
-```
-
-</details>
+Now, all we have to do is run the training loop with the profiler setup to cllect our traces.
 
 ### Trace Collection
 
@@ -242,6 +160,8 @@ from torch.profiler import profile, schedule, tensorboard_trace_handler
 tracing_schedule = schedule(skip_first=5, wait=5, warmup=2, active=2, repeat=1)
 trace_handler = tensorboard_trace_handler(dir_name="traces", use_gzip=True)
 
+EPOCHS = 1 # number of epochs to train 
+
 with profile(
   activities = [ProfilerActivity.CPU, ProfilerActivity.CUDA],
   schedule = tracing_schedule,
@@ -250,6 +170,7 @@ with profile(
   record_shapes = True,
   with_stack = True
 ) as prof:
+  for epoch in range(EPOCHS):
     for step, batch_data in enumerate(data_loader):
         train(batch_data)
         prof.step()
@@ -258,6 +179,8 @@ with profile(
 Following this, a `traces` directory will be created which contains compressed json files of CPU and GPU activity. Theses traces are the input to both: Holistic Trace Analysis and Astra-Sim.
 
 ### Hollistic Trace Analysis (HTA)
+
+[HollisticTraceAnalysis (HTA)](https://github.com/facebookresearch/HolisticTraceAnalysis) is a library which provides a set of tools for analyzing PyTorch traces. It is designed to be a "pythonic" was of analyzing traces without the need for closed source tools such as [NVIDIA NSIGHT Compute](https://developer.nvidia.com/nsight-compute).
 
 ```bash
 pip install HolisticTraceAnalysis
@@ -293,10 +216,8 @@ kernel_info_df # displays a graph in matplotlibs
 ```
 
 <figure>
-  <Image src={chakra_central} alt="Kernel launches in a trace" />
-  <figcaption>
-    Kernel Launches in a Trace
-  </figcaption>
+  <Image src={cuda_launch} alt="Kernel launches in a trace" />
+  <figcaption>CUDA Kernel Launches made by PyTorch</figcaption>
 </figure>
 
 ### Converting to Chakra Execution Traces (ET)
@@ -366,8 +287,10 @@ After buiding the container, you should see the following output indicating a su
 After Astra-Sim has been built, we can load the execution traces in Astra-Sim with a basic docker copy.
 
 ```bash
-sudo docker cp traces astra-sim:/app/astra-sim
+sudo docker cp traces astra-sim:/app/astra-sim/inputs/workload/ASTRA-sim-2.0
 ```
+
+Now, we have all our data in place to run Astra-Sim.
 
 ### Running Astra-Sim
 
@@ -401,6 +324,6 @@ For more details about configuring Astra-Sim, please see the [Run Astra-Sim Docu
 
 ## Summary
 
-In this, we build a Astra Sim an
+In this tutorial, we have defined a simple CNN model for classifying the MNIST dataset. Model training was analyized with PyTorch Profiler and traces were collected. Traces were then able to be: analyzed and converted into Chakra executions traces. Finally, Astra-Sim was then used to simulate how these traces would execute on a network.
 
 If you want to play around with this yourself, you may use [Google Collab to view this entire process as a notebook](https://colab.research.google.com/drive/1t0IgZ8eZ5N7zwZci-jOMXycv78isUWS2).
