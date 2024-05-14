@@ -1,0 +1,177 @@
+---
+title: Rewrite Your Resume in HTML and CSS
+description: How HTML and CSS can form the best of both worlds between typeset languages like LaTeX and machine-parsable formats like Microsoft Word.
+heroImage: hero.png
+pubDate: May 11 2024
+display: true
+---
+
+My **ex-meta** now **quant** friend game me some advice on resume formatting after going **deep** on applicant tracking systems. Their advice? Use **HTML** and **CSS** to make your resume.
+
+To emphasize how deep the aforementioned individual went down the **ATS rabbit hole**, they left the following advice:
+
+```html
+<style>
+  /* we set text-rendering to optimizeSpeed not
+ * save speed, but rather to disable ligatures
+ * or multi-character groups which some parsers
+ * are unable to handle
+ */
+  body {
+    text-rendering: optimizeSpeed;
+  }
+</style>
+```
+
+Ligatures are features of some fonts where two or more characters (like `fi` or `fl`) are combined into a single glyph. Setting `text-rendering` to `optimizeSpeed`, has the rather useful side-effect of disabling these.
+
+## Your Resume: a Machine-Parsable Document in the 21st Century
+
+Conflicting advice is everywhere about resume formatting. Job-hunting on "gurus" on the internet love to mention how _ATS parsability_ is a requirement of all good resume templates. **Applicant Tracking Systems** or **ATSs** are the systems institutions use to keep track of applicants from submitting a resume, automatically filtering out candidates and spam, conducting interviews and submitting offers.
+
+There are **two main concerns** with Applicant Tracking Systems as a job candidate:
+
+- Many recruiters will **opt-out of reading the PDF** of your resume. Instead, reading the machine-parsed version through the ATS system.[^1]
+- You may be **automatically filtered out** by a Applicant Tracking System. The ATS will parse your resume, extract the sections and use natural language processing to give companies a **shortlist** of candidates. In fact, some report will indicate that **up to 75% of resumes** get auto-rejected by ATS systems[^2]
+
+Both use cases require **accurate resume parsing** by computer vision models to extract the key sections of your resume. This is why ATS parsability is **important**. But first, some resume formatting ground rules.
+
+## Resume Basics: The Undisputed Rules
+
+The debate on which resume template is best is **out of scope** for this post. However, there are a few **unequivocal** rules will be treated as assumptions going forward. This is general advice which applies to most fields (note: advice can be ignored &mdash; however, you are _not_ the exception).
+
+- Use `.pdf` as your resume format. PDFs ensure _visual consistency_ and _ease-of-access_.
+- Use a **boring** resume template. Your resume should be **black** and **white**. Showcase yourself through your **skills** and **experience**, not your styling.
+
+With these out of the way, let's dive into the two current modalities for technology-focused resumes: **LaTeX** and **Microsoft Word**.
+
+## LaTeX vs Microsoft Word
+
+Many programmers will make a LaTeX resume. **LaTeX** is a **typeset** language or code which describes your document's style and structure. When the resume is written, it is *"compiled"* into a PDF or any export format required. Typesetting is **in contrast** to software like Microsoft Word where you **preview a document while editing.** Ease-of-use means typesetting is avoided for most people.
+
+```latex
+\resumeSubItem{
+Menu Bar TimeLapse
+}{
+Programmed a Mac OS app to take screen timelapses using Python and OpenCV.
+Rebuilt in Swift to increase portability and fix color-space compression issues.
+}
+```
+
+Both LaTeX and Microsoft Word can produce great resumes. Some popular templates (especially the LaTeX one) are shown.
+
+import latexAndWord from "../../blog/create-your-resume-in-html-and-css/latex-and-microsoft-word.png";
+
+<figure>
+  <img
+    src={latexAndWord.src}
+    alt="Popular resume formats: LaTeX and Microsoft Word"
+  />
+  <figcaption>Two common resume formats in LaTeX and Microsoft Word</figcaption>
+</figure>
+
+Despite being visually appealing, LaTeX and Microsoft Word can **create problems** with ATS parsers. Both programs **sacrafice parsability** for **visual appeal.**
+
+## Mangled PDFs - Problems with Both Approaches
+
+Both LaTeX and Microsoft Word will **mangle** documents when **converting** to a PDF file format. **LaTeX** is the **worst** offender, often placing line breaks, page breaks and other formatting issues in the wrong place. **Microsoft Word** is **better**, but **still have issues** with text rendering and spacing.
+
+For an **intuition** on why this is a problem, let's look a bit closer at a PDF file. In effect, a **PDF** is a **XML-based** file format which describes both the document's structure and style. When a PDF is created, both LaTeX and Microsoft Word require a conversion process between **fundamentally** different file formats. While both LaTeX and Word are good, the conversion process is optimized for **visual appeal** and not **ATS parsability**. 
+
+However, there is a **third way** &mdash; one far closer to PDFs than LaTeX or Microsoft Word allowing for near-perfect ATS parsability.
+
+## HTML + CSS: A new challenger approaches
+
+Hyper-Text Markup Language (**HTML**) and Cascading Style Sheets (**CSS**) power the web. These provide the **structure** and **styling** of pages, respectively. In effect, HTML describes a page's contents and CSS makes it look nice.
+
+However, HTML can provide **both** the benefits of typeset languages and be **more ATS parsable** thanks to the close file structure and **limited managing** performed by **Google Chrome's Print to PDF** feature. In fact, the transformation is so simple that it is explicitly considered in design documents.
+
+import htmlToPDF from "../../blog/create-your-resume-in-html-and-css/html-to-pdf.png";
+
+<figure>
+  <img src={htmlToPDF.src} alt="HTML to PDF transformation" />
+  <figcaption>
+    HTML to PDF transformation is a well-documented process
+  </figcaption>
+</figure>
+
+For more information on the tranasformation between **HTML** and **PDF** documents, see [Mapping and Displaying Structural Transformations Between XML and PDF](https://www.cs.nott.ac.uk/~psadb1/Publications/Download/2002/Hardy02.pdf).
+
+## Why is a typeset language so nice?
+
+As a practical example, a common criticism I will get of my resume is that it reads too **data-sciency**. Because I havea built a couple of data-science projects over the years. Specifically, a lengthly post I wrote on [the International Science and Engineering Fair (ISEF)](https://www.linkedin.com/pulse/behind-innovation-insights-from-international-science-william-kaiser/).
+
+For my ISEF analysis, I wrote the following **blurb** on my resume:
+
+```html
+<div id="isef-analysis">
+  <div class="flex flex-row justify-between items-end">
+    <div>
+      <h3>
+        <strong>International Science and Engineering Fair Analysis</strong>
+      </h3>
+      <p class="italic">Data Visualization Project</p>
+    </div>
+    <div>
+      <p class="italic">February 2023 &mdash; May 2023</p>
+    </div>
+  </div>
+
+  <ul class="list-disc list-inside px-4">
+    <li>
+      Scraped >13,000 top science fair projects using Python and BeautifulSoup.
+    </li>
+    <li>
+      Analyzed data on 20 project categories utilizing Pandas and Matplotlib.
+    </li>
+    <li>
+      Created an interactive in-browser dashboard leveraging Bokeh, JavaScript
+      and WebGL.
+    </li>
+    <li>
+      Published findings in a 5,000-word post that has >4,500 reads on LinkedIn.
+    </li>
+  </ul>
+</div>
+```
+
+If I want to hide this section and show another block, I can open my resume in Visual Studio Code, select the range I want and press `⌘` + `k`, I can **comment** or **uncomment** this section with ease. 
+
+import beforeAndAfterResume from "../../blog/create-your-resume-in-html-and-css/before-and-after-resume.png";
+
+<figure>
+  <img
+    src={beforeAndAfterResume.src}
+    alt="Commenting out a resume section in Visual Studio Code"
+  />
+  <figcaption>
+    Commenting out a section in VS Code Makes Editing Easier
+  </figcaption>
+</figure>
+
+With typesetting, tailoring a resume for the role I am applying is **easy**. Moving around sections, adding new projects and changing the order of my experience **does not** require a complete rewriter. 
+
+As a programmer, I like the fact that I can use **git** to keep track of changes to my resume. No more `resume_v1.docx`, `resume_v2.docx`, `resume_v3.docx` files! Having a **version control system** for my resume is a **game-changer**.
+
+All in all, this approach gives me flexability in my resume. I can make it **data-sciency** or **quant**-y or **whatever** I want. 
+
+## Are the benefits to a HTML resume worth it?
+
+Despite the benefits of HTML and CSS for resume parsability, it likely **will not move** the needle on your job search.
+
+Using HTML and CSS to create your resume **can** improve ATS performance. However, it is not a **silver bullet**. Dialing in your resume's ATS performance takes **time** and **testing**. I would recommend resources like [Jobscan](https://www.jobscan.co/) to **validate** your template.
+
+Because of the work creating your own resume in HTML takes, it **probably** will not be worth the time. **Getting better** skills, experience, projects, networking and applying to more jobs **will be more** effective than minor ATS optimizations. I made my resume in HTML and CSS because I was **stuck on a train** from New York for **8 hours** and wanted a project.
+
+Overall, this method is a good **antidote** to **LaTeX** for those who enjoy a typeset resume &mdash; without the ATS penality.
+
+---
+
+If you want **my** HTML resume template, you may checkout out [the webpage I made for it](/blog/resume-template). It is very **simple** and **boring**, but **that is the point**.
+
+Have a great day! And I wish you the **best of luck** in your job search. 🤞
+
+---
+
+[^1]: Recruiters will often prefer the standardized interface the ATS software gives over PDFs.
+[^2]: As a caveat, some recruiters have called into question this statistic. The claims being made about applicant tracking systems stem from research done in 2012-2014. Without a doubt, applicant tracking systems have evolved. However, recruiters are correct in their main claim that optimizing ATS parsability should be one of the last things done.

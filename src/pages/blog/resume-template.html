@@ -1,0 +1,213 @@
+<html lang="en">
+  <style>
+    body {
+      text-rendering: optimizeSpeed;
+    }
+
+    /* Styles for screen only */
+    @media screen {
+      .print-mimic {
+          width: 210mm; /* A4 paper width in mm */
+          margin: 20mm auto; /* Center the content with padding */
+          padding: 20mm;
+          border: 1px solid #000;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+      }
+    }
+
+    /* Styles for print only */
+    @media print {
+      .print-mimic {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .print-hide {
+        display: none;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <head>
+    <title>Your name - Resume</title>
+    <meta
+      name="description"
+      content="Your name is a student at the Your UNIVERSITY name studying Your MAJOR interested in Your INTERESTS."
+    />
+  </head>
+  <body class="leading-snug font-serif print-mimic">
+    <div behavior="scroll" direction="left" class="print-hide p-10 border-black border-4">
+      <h1 class="text-2xl font-bold tracking-tight">Make your own resume with this template </h1>
+      <p>All it takes it just four easy steps!</p>
+      <ol class="list-decimal list-inside">
+        <li>Copy this code</li>
+        <li>Replace the placeholder text with your information</li>
+        <li>Print the page</li>
+        <li>Save as PDF</li>
+      </ol>
+    </div>
+    <header class="grid grid-cols-3">
+      <div class="col-span-1 col-start-2 flex flex-col text-center">
+        <h1 class="text-xl font-bold">Your name</h1>
+        <a href="mailto:Your email@gmail.com class="font-bold"
+          >Your email@gmail.com</a
+        >
+        <a href="tel:Your PHONE #">Your phone #</a>
+      </div>
+
+      <div class="my-auto text-right flex flex-col">
+        <a href="Your GitHub account">github.com/Your GitHub</a>
+        <a href="Your LinkedIn account"
+          >linkedin.com/in/Your LinkedIn</a
+        >
+      </div>
+    </header>
+    <main>
+      <section id="education">
+        <h2 class="text-2xl font-semibold -mb-1">Education</h2>
+        <hr class="border-black border-t-[3px]" />
+        <div id="edu-college">
+          <div class="flex flex-row justify-between items-end">
+            <div>
+              <h3>
+                <strong>University of Virginia,</strong> School of Engineering and
+                Applied Science
+              </h3>
+              <p class="italic">
+                B.S. in Engineering Computer Science
+              </p>
+            </div>
+            <div class="text-right">
+              <div>GPA: Your GPA</div>
+              <div class="italic">Your graduation year</div>
+            </div>
+          </div>
+          <ul class="list-inside list-disc px-4 pr-24">
+            <li>
+              <strong>Coursework:</strong> Your coursework 
+            </li>
+            <li>
+              <strong>Clubs:</strong> Your clubs
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="experience">
+        <h2 class="text-2xl font-semibold -mb-1">Experience</h2>
+        <hr class="border-black border-t-[3px]" />
+
+        <div id="exp-gpu-research">
+          <div class="flex flex-row justify-between items-end">
+            <div>
+              <h3>
+                <strong>School of Engineering and Applied Science,</strong> University
+                of Virginia
+              </h3>
+              <p class="italic">Researcher</p>
+            </div>
+            <div>
+              <p class="italic">December 1989 &mdash; Present</p>
+            </div>
+          </div>
+
+          <ul class="list-disc list-inside px-4">
+            <li>
+              Bullet point 1
+            </li>
+            <li>
+              Bullet point 2
+            </li>
+            <li>
+              Bullet point 3
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section id="leadership">
+        <h2 class="text-2xl font-semibold -mb-1">Leadershipf</h2>
+        <hr class="border-black border-t-[3px]" />
+
+      <div id="veo">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3>
+              <strong>Virginia Entrepreneurship Organization, </strong> University
+              of Virginia
+            </h3>
+            <p class="italic">Vice President of Events</p>
+          </div>
+          <div>
+            <p class="italic">November 2023 &mdash; Present</p>
+          </div>
+        </div>
+
+        <ul class="list-disc list-inside px-4">
+          <li>
+            Organized a pitch competition with 10 teams and $1,000 in prizes.
+          </li>
+          <li>
+            Coordinated speaker events with local entrepreneurs with over 50
+            attendees.
+          </li>
+        </ul>
+      </div>
+
+      <section id="projects">
+        <h2 class="text-2xl font-semibold -mb-1">Projects</h2>
+        <hr class="border-black border-t-[3px]" />
+
+        <div id="timelapse">
+          <div class="flex flex-row justify-between items-end">
+            <div>
+              <h3><strong>Your project name</strong></h3>
+              <p class="italic">Screen Recorder</p>
+            </div>
+            <div>
+              <p class="italic">May 2023 &mdash; January 2024</p>
+            </div>
+          </div>
+
+          <ul class="list-disc list-inside px-4">
+            <li>
+              Your project description here.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="text-2xl font-semibold -mb-1">Skills</h2>
+        <hr class="border-black border-t-[3px]" />
+
+        <ul class="px-4 pt-2">
+          <li>
+            <strong>Languages:</strong> Your languages
+          </li>
+          <li>
+            <strong>Libraries:</strong> Your libraries
+          </li>
+          <li>
+            <strong>Certifications:</strong> Your certifications
+          </li>
+        </ul>
+      </section>
+
+      <section id="honors">
+        <h2 class="text-2xl font-semibold -mb-1">Honors and Awards</h2>
+        <hr class="border-black border-t-[3px]" />
+        <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
+          <li>Your award 1</li>
+          <li>Your award 2</li>
+          <li>Your award 3</li>
+          <li>Your award 4</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
