@@ -1,9 +1,9 @@
 ---
 title: Trace-Driven Simulation in Astra w/ PyTorch Profiler + Hollistic Trace Analysis
-description: Analying performance traces with Astra-Sim in a trace-driven manner.
+description: Collecting traces from PyTorch, converting them to Chakra Execution Traces, and simulating them in Astra-Sim for hardware design in an end-to-end tutorial.
 heroImage: hero.png
-pubDate: April 28 2024
-display: false
+pubDate: May 30 2024
+display: true
 unlisted: true
 ---
 
@@ -15,12 +15,12 @@ import tpu_correlation from "../../blog/trace-driven-gpu-simulation-with-pytorch
 
 In this tutorial, we will be:
 
-- Loading a PyTorch model ([Microsoft's Phi](https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/)) from Hugging Face
-- Running inference on the model using a Shakespeare dataset
-- Collecting traces using PyTorch Profiler
-- Converting PyTorch profiler's execution traces to Chakra Execution Traces
-- Building Astra-Sim
-- Running an Astra-Sim simulation
+- Creating a "Hello World" MNIST classifier in PyTorch
+- Training the model for a single epoch
+- Collecting traces using PyTorch Profiler + Execution Trace Observer
+- Merging traces and converting them to Chakra Execution Traces
+- Building Astra-Sim in docker
+- Running an Astra-Sim simulation with the Chakra Execution Traces
 
 {/* Talk about simulation moving from hardware to network design */}
 
@@ -41,7 +41,7 @@ Simulators are well-established, good proxies for real-world systems. Hardware a
 
 ## Getting Started
 
-To get started with simulation, we will begin by creating a contrived example of measuring performance on a standard Hugging-Face model. From this model, fine-tuning will take place and traces will be collected using PyTorch Profiler, analyzed using Holistic Trace Analysis, converted to Chakra Execution Traces and simulated using Astra-Sim.
+To get started with simulation, we will begin by with the [classical example of classifying handwritten digits using the MNIST dataset](https://en.wikipedia.org/wiki/MNIST_database). From this model, a single training epoch will be measured and traces will be collected using PyTorch Profiler and PyTorch Execution Trace Observer. These traces will then be merged and converted to Chakra Execution Traces and simulated using Astra-Sim.
 
 ### Getting PyTorch Setup
 
@@ -70,15 +70,17 @@ from torchvision.transforms import ToTensor
 from torch.utils.data import DataLoader
 
 # Loading the MNIST dataset
-train_data = datasets.MNIST(root = 'data', train = True, transform = ToTensor(), download=True)
+train_data = datasets.MNIST(root='data', train=True, transform=ToTensor(), download=True)
 
-# Creating data loade
+# Creating data loader
 train_data = DataLoader(train_data, batch_size=64, num_workers=4, pin_memory=True)
 ```
 
+Now, we have our data loaders configured to provide training examples to our model.
+
 ### Defining a Model
 
-We will define a simple CNN model for classifying the MNIST dataset. For this contrived example, the modle used will only be for demonstration purposes.
+We will define a simple [Convolutional Neural Network (CNN)](https://en.wikipedia.org/wiki/Convolutional_neural_network) for classifying the MNIST dataset. For this contrived example, the model used will only be for demonstration purposes.
 
 ```python
 class CNN(nn.Module):
@@ -112,8 +114,10 @@ class CNN(nn.Module):
         return output, x    # return x for visualization
 
 cnn = CNN()
-cnn.cuda()
+cnn.cuda() # move model to GPU
 ```
+
+Now, with the structure of the model defined, we can move on to model training.
 
 ## Defining an Epoch Training Function
 
@@ -152,28 +156,32 @@ Now, all we have to do is run the training loop with the profiler setup to cllec
 After setting up the model, we can collect traces with PyTorch Profiler. The PyTorch Profiler is a context manager that allows you to collect traces within your model's training loop. For use in trace analysis, you must use a `tensorboard_trace_handler` to save the traces to disk with both CPU and GPU activity.
 
 ```python
-from torch.profiler import profile, schedule, tensorboard_trace_handler, ProfilerActivity
+from torch.profiler import profile, schedule, tensorboard_trace_handler, ProfilerActivity, ExecutionTraceObserver
 
+# the tracing schedule helps control for startup costs and warmup in PyTorch
 tracing_schedule = schedule(skip_first=5, wait=5, warmup=2, active=2, repeat=1)
-trace_handler = tensorboard_trace_handler(dir_name="traces", use_gzip=True)
 
-EPOCHS = 1 # number of epochs to train 
-
+et = ExecutionTraceObserver()
+et.register_callback("pytorch_et.json")
+et.start()
 with profile(
   activities = [ProfilerActivity.CPU, ProfilerActivity.CUDA],
   schedule = tracing_schedule,
-  on_trace_ready = trace_handler,
+  on_trace_ready=lambda x: x.export_chrome_trace("kineto_trace.json"),
   profile_memory = True,
   record_shapes = True,
   with_stack = True
 ) as prof:
-  for epoch in range(EPOCHS):
-    for step, batch_data in enumerate(train_data):
+  for epoch in range(1): # number of epochs
+    for step, batch_data in list(enumerate(train_data))[:1]:
         train(batch_data)
         prof.step()
+
+et.stop()
+et.unregister_callback()
 ```
 
-Following this, a `traces` directory will be created which contains compressed json files of CPU and GPU activity. Theses traces are the input to both: Holistic Trace Analysis and Astra-Sim.
+Following this, two files will be created: `kineto_trace.json` and `pytorch_et.json`. The `kineto_trace.json` file contains the traces for the CPU and GPU, while the `pytorch_et.json` file contains the PyTorch Execution Traces. Both files will be merged to create a single trace file.
 
 ### Converting to Chakra Execution Traces (ET)
 
@@ -194,19 +202,30 @@ First, begin by installing Chakra:
 git clone https://github.com/mlcommons/chakra/
 cd chakra
 pip install -e .
-cd -
+cd ..
 ```
 
-Then, use a python script for converting the scripts:
+Then, use the trace linker to merge the PyTorch Execution Traces and the Kineto traces:
 
-```python
-from chakra.et_converter.pytorch2chakra_converter import PyTorch2ChakraConverter
-import logging
-
-for rank, trace in files.items():
-  converter = PyTorch2ChakraConverter(trace, trace, logging.getLogger(__file__))
-  converter.convert() # not too sure about this, it makes the simulation more often
+```bash
+python -m chakra.trace_link.trace_link \
+  --pytorch-et-file pytorch_et.json \
+  --kineto-trace-file kineto_trace.json \
+  --exact-match \
+  --output-file merged_trace.json
 ```
+
+This will produce a `merged_trace.json` file. However, this file is **not** in the Chakra format. To convert it to Chakra, use the following command:
+
+```bash
+python -m chakra.et_converter.et_converter \
+  --input_type pytorch \
+  --input_filename merged_trace.json \
+  --output_filename chakra_traces \
+  --num_dims 1
+```
+
+Finally, we have produced the file `chakra_traces` which is in the MLCommons Chakra format using both: PyTorch Execution Traces and Kineto traces. This file may now be used as input to Astra-Sim.
 
 ### Setting Up Astra-Sim
 
@@ -228,7 +247,7 @@ sudo docker run -dt --name astra-sim astra-sim
 sudo docker exec astra-sim ./build/astra_analytical/build.sh
 ```
 
-After buiding the container, you should see the following output indicating a successful build:
+After buiding the container, you should see the following output indicating a successful build of Astra-Sim using CMake.
 
 ```console
 [ 98%] Building CXX object AstraSim_Analytical/CMakeFiles/AstraSim_Analytical_Congestion_Aware.dir/congestion_aware/main.cc.o
@@ -240,13 +259,13 @@ After buiding the container, you should see the following output indicating a su
 
 ### Loading Astra-Sim Execution Traces
 
-After Astra-Sim has been built, we can load the execution traces in Astra-Sim with a basic docker copy.
+After Astra-Sim has been built, we can load the execution traces into the Astra-Sim container with a basic docker copy.
 
 ```bash
-sudo docker cp traces astra-sim:/app/astra-sim/inputs/workload/ASTRA-sim-2.0
+sudo docker cp chakra_traces astra-sim:/app/astra-sim/inputs/workload/ASTRA-sim-2.0
 ```
 
-Now, we have all our data in place to run Astra-Sim.
+Now, we have all our data inside the container to run Astra-Sim.
 
 ### Running Astra-Sim
 
@@ -254,16 +273,18 @@ After the binary is built, you can run a simulation in Astra-Sim using the follo
 
 ```bash
 BINARY=./build/astra_analytical/build/bin/AstraSim_Analytical_Congestion_Unaware
-WORKLOAD_CONFIG=./inputs/workload/ASTRA-sim-2.0/traces # chakra et traces
+WORKLOAD_CONFIG=./inputs/workload/ASTRA-sim-2.0/chakra_traces
 SYSTEM_CONFIG=./inputs/system/Switch.json
 NETWORK_CONFIG=./inputs/network/analytical/Switch.yml
 REMOTE_MEMORY_CONFIG=./inputs/remote_memory/analytical/no_memory_expansion.json
+STATS=/results/run_initial_stats/
 
 sudo docker exec astra-sim ${BINARY} \
   --workload-configuration=${WORKLOAD_CONFIG} \
   --system-configuration=${SYSTEM_CONFIG} \
   --network-configuration=${NETWORK_CONFIG} \
-  --remote-memory-configuration=${REMOTE_MEMORY_CONFIG}
+  --remote-memory-configuration=${REMOTE_MEMORY_CONFIG} \
+  --path=${STATS}
 ```
 
 Finally, you will get an output like the following indicating the simulation has terminated.
@@ -276,7 +297,7 @@ sys[0] finished, 6749042 cycles
 sys[63] finished, 6749042 cycles
 ```
 
-For more details about configuring Astra-Sim, please see the [Run Astra-Sim Documenation](https://astra-sim.github.io/astra-sim-docs/getting-started/running-astra-sim.html).
+For more details about configuring Astra-Sim, please see the [Run Astra-Sim Documenation](https://astra-sim.github.io/astra-sim-docs/getting-started/running-astra-sim.html). For more information about configuring Astra-Sim, check out the [Astra-Sim Tutorial from ASPLOS](https://www.youtube.com/playlist?list=PL_-MhI2LIpUur0QO3NLLQmEIEk9jSGjnT) which provides a comprehensive overview of the simulator.
 
 ## Summary
 
