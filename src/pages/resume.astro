@@ -3,15 +3,42 @@
     body {
       text-rendering: optimizeSpeed;
     }
+
+    /* Styles for screen only */
+    @media screen {
+      .print-mimic {
+        width: 210mm; /* A4 paper width in mm */
+        margin: 20mm auto; /* Center the content with padding */
+        padding: 20mm;
+        border: 1px solid #000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+    }
+
+    /* Styles for print only */
+    @media print {
+      .print-mimic {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .print-hide {
+        display: none;
+      }
+    }
   </style>
-  <head>
+
     <title>William Kaiser - Resume</title>
     <meta
       name="description"
       content="William Kaiser is a student at the University of Virginia studying Computer Science in the School of Engineering interested in software development."
     />
-  </head>
-  <body class="leading-snug font-serif">
+
+  <body class="print-mimic leading-snug font-serif">
     <header class="grid grid-cols-3">
       <div class="col-span-1 col-start-2 flex flex-col text-center">
         <h1 class="text-xl font-bold">William David Kaiser</h1>
