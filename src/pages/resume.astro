@@ -39,7 +39,7 @@
     content="William Kaiser is a student at the University of Virginia studying Computer Science in the School of Engineering interested in software development."
   />
 
-  <body class="print-mimic leading-snug font-serif">
+  <body class="print-mimic leading-snug font-inter">
     <header class="grid grid-cols-3">
       <div class="col-span-1 col-start-2 flex flex-col text-center">
         <h1 class="text-xl font-bold">William David Kaiser</h1>
@@ -57,13 +57,16 @@
       </div>
     </header>
     <main>
-      <section id="education">
-        <h2 class="text-xl font-semibold -mb-1">Education</h2>
-        <hr class="mb-1 border-black border-t-[2px]" />
+      <section id="education" class="space-y-2">
+        <div>
+          <h2 class="text-xl font-semibold -mb-1s">Education</h2>
+          <hr class="mb-1 border-black border-t-[1px]" />
+        </div>
+
         <div id="edu-college">
           <div class="flex flex-row justify-between items-end">
             <div>
-              <h3>
+              <h3 class="-mb-1">
                 <strong>University of Virginia,</strong> School of Engineering and
                 Applied Science
               </h3>
@@ -79,26 +82,28 @@
           </div>
           <ul class="list-inside list-disc px-4 pr-24">
             <li>
-              <strong>Coursework:</strong> Data Structures and Algorithms, Computer
+              <strong>Coursework</strong> Data Structures and Algorithms, Computer
               Systems and Organizations, Linear Algebra, Cryptography, Software Development
               Essentials, Advanced Software Development
             </li>
             <li>
-              <strong>Clubs:</strong> Forge, Virginia Entrepreneurship Organization,
+              <strong>Clubs</strong> Forge, Virginia Entrepreneurship Organization,
               theCourseForum, Poker Club, Phi Eta Sigma Honor Society, Cavalier Autonomous
               Racing
             </li>
           </ul>
         </div>
       </section>
-      <section id="experience">
-        <h2 class="text-xl font-semibold -mb-1">Experience</h2>
-        <hr class="mb-1 border-black border-t-[2px]" />
+      <section id="experience" class="space-y-2">
+        <div>
+          <h2 class="text-xl font-semibold -mb-1">Experience</h2>
+          <hr class="mb-1 border-black border-t-[1px]" />
+        </div>
 
         <div id="cav-auto-racing">
           <div class="flex flex-row justify-between items-end">
             <div>
-              <h3>
+              <h3 class="-mb-1">
                 <strong>Cavalier Autonomous Racing,</strong> University of Virginia
               </h3>
               <p class="italic">Perception Subteam</p>
@@ -124,7 +129,7 @@
 
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3>
+            <h3 class="-mb-1">
               <strong>SitScape,</strong> Washington, D.C.
             </h3>
             <p class="italic">Software Engineering Intern</p>
@@ -136,21 +141,22 @@
 
         <ul class="list-disc list-inside px-4 mr-12">
           <li>
-            Built a user-interface and logic copilot for a web-based enterprise
-            low-code development platform able to complete 3-5 minute tasks for
-            humans.
+            Built a UI and logic generator chatbot for a web-based enterprise
+            low-code development platform.
           </li>
           <li>
-            Developed a custom intermediate representation for UI and logic
-            which was able to enhance large language model parsing.
+            Saved development time by reliable completing intermediate length tasks (~3-5 minutes in length).
           </li>
+          <!-- <li>
+            Developed an intermediate representation for UI and logic
+            which was able to enhance large language model parsing.
+          </li> -->
         </ul>
-      </section>
 
       <div id="exp-gpu-research">
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3>
+            <h3 class="-mb-1">
               <strong>School of Engineering and Applied Science,</strong> University
               of Virginia
             </h3>
@@ -180,7 +186,7 @@
       <div id="exp-ds-research">
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3>
+            <h3 class="-mb-1">
               <strong>School of Data Science,</strong> University of Virginia
             </h3>
             <p class="italic">Research Intern</p>
@@ -193,7 +199,7 @@
         <ul class="list-disc list-inside px-4 mr-12">
           <li>
             Built a platform to share material science data utilizing a Next.js
-            frontend and an AWS OpenSearch cluster.
+            frontend and an OpenSearch cluster.
           </li>
           <!-- <li>
               Collected experimental and simulation data for 5 main energetic
@@ -212,7 +218,7 @@
       <div id="exp-val-partners">
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3><strong>Valedor Partners,</strong> Houston, TX</h3>
+            <h3 class="-mb-1"><strong>Valedor Partners,</strong> Houston, TX</h3>
             <p class="italic">Data Science Intern</p>
           </div>
           <div>
@@ -226,7 +232,7 @@
             reading pipeline leveraging OpenCV.
           </li>
           <li>
-            Statistically analyzed and presented results to stakeholders on
+            Analyzed
             >13,000 mortgage applications using Microsoft Excel and R.
           </li>
           <!-- <li>
@@ -235,16 +241,16 @@
             </li> -->
         </ul>
       </div>
-    </main>
+    </section>
 
     <section id="leadership">
       <h2 class="text-xl font-semibold -mb-1">Leadership</h2>
-      <hr class="mb-1 border-black border-t-[2px]" />
+      <hr class="mb-1 border-black border-t-[1px]" />
 
       <div id="course-director">
-        <div class="flex flex-row justify-between items-end mr-12">
+        <div class="flex flex-row justify-between items-end">
           <div>
-            <h3>
+            <h3 class="-mb-1">
               <strong>Forge,</strong> University of Virginia
             </h3>
             <p class="italic">Course Director</p>
@@ -274,7 +280,7 @@
     <div id="veo">
       <div class="flex flex-row justify-between items-end">
         <div>
-          <h3>
+          <h3 class="-mb-1">
             <strong>Virginia Entrepreneurship Organization, </strong> University
             of Virginia
           </h3>
@@ -298,12 +304,12 @@
 
     <section id="projects">
       <h2 class="text-xl font-semibold -mb-1">Projects</h2>
-      <hr class="mb-1 border-black border-t-[2px]" />
+      <hr class="mb-1 border-black border-t-[1px]" />
 
       <div id="timelapse">
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3><strong>TimeLapze</strong></h3>
+            <h3 class="-mb-1"><strong>TimeLapze</strong></h3>
             <p class="italic">Screen Recorder</p>
           </div>
           <div>
@@ -331,10 +337,10 @@
         </ul>
       </div>
 
-      <div id="isef-analysis">
+      <!-- <div id="isef-analysis">
         <div class="flex flex-row justify-between items-end">
           <div>
-            <h3>
+            <h3 class="-mb-1">
               <strong
                 >International Science and Engineering Fair Analysis</strong
               >
@@ -347,14 +353,14 @@
         </div>
 
         <ul class="list-disc list-inside px-4 mr-12">
-          <!-- <li>
+          <li>
               Scraped >13,000 top science fair projects using Python and
               BeautifulSoup.
-            </li> -->
-          <!-- <li>
+            </li>
+          <li>
               Analyzed data on 20 project categories utilizing Pandas and
               Matplotlib.
-            </li> -->
+            </li>
           <li>
             Scraped over 13,000 top science fair projects using Python and
             BeautifulSoup, and created an interactive in-browser dashboard with
@@ -365,12 +371,12 @@
             reads.
           </li>
         </ul>
-      </div>
+      </div> 
 
-      <!-- <div id="media-impact-analysis">
+      <div id="media-impact-analysis">
           <div class="flex flex-row justify-between items-end">
             <div>
-              <h3><strong>Media Impact Analysis</strong></h3>
+              <h3 class="-mb-1"><strong>Media Impact Analysis</strong></h3>
               <p class="italic">Research Project</p>
             </div>
             <div>
@@ -393,24 +399,23 @@
             </li>
             <li>Wrote, presented, and defended research conducted.</li>
           </ul>
-        </div> -->
-    </section>
+        </div>
+    </section> -->
 
     <section id="skills">
       <h2 class="text-xl font-semibold -mb-1">Skills</h2>
-      <hr class="mb-1 border-black border-t-[2px]" />
+      <hr class="mb-1 border-black border-t-[1px]" />
 
       <ul class="px-4 pt-2">
         <li>
-          <strong>Languages:</strong> Python, C++, Java, Swift, HTML, CSS, JavaScript,
-          R, SQL
+          <strong>Languages</strong> Python, C++, Java, Swift, HTML, CSS, JavaScript, SQL
         </li>
         <li>
-          <strong>Libraries:</strong> Django, React (Next.js), TensorFlow, OpenCV,
-          GGPlot2, Bokeh, Matplotlib, Pandas, NumPy, ROS 2
+          <strong>Libraries</strong> Django, ROS 2, React (Next.js), TensorFlow, OpenCV,
+          GGPlot2, Bokeh, Matplotlib, Pandas, NumPy
         </li>
         <li>
-          <strong>Certifications:</strong> TensorFlow Developer Certified, AWS Certified
+          <strong>Certifications</strong> TensorFlow Developer Certified, AWS Certified
           Cloud Practitioner
         </li>
       </ul>
@@ -418,14 +423,15 @@
 
     <section id="honors">
       <h2 class="text-xl font-semibold -mb-1">Honors and Awards</h2>
-      <hr class="mb-1 border-black border-t-[2px]" />
+      <hr class="mb-1 border-black border-t-[1px]" />
       <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
         <li>Hoo Hacks Patient Safety Challenge Award Winner</li>
         <li>Dean's List</li>
         <li>Eagle Scout Award</li>
         <li>The Congressional Award Gold Medal</li>
-        <li>National Merit Finalist</li>
+        <!-- <li>National Merit Finalist</li> -->
       </ul>
     </section>
+  </main>
   </body>
 </html>
