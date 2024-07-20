@@ -22,7 +22,7 @@
       .print-mimic {
         width: auto;
         margin: 0;
-        padding: 0;
+        padding: 5mm;
         border: none;
         box-shadow: none;
       }
@@ -58,8 +58,8 @@
     </header>
     <main>
       <section id="education">
-        <h2 class="text-2xl font-semibold -mb-1">Education</h2>
-        <hr class="border-black border-t-[3px]" />
+        <h2 class="text-xl font-semibold -mb-1">Education</h2>
+        <hr class="mb-1 border-black border-t-[2px]" />
         <div id="edu-college">
           <div class="flex flex-row justify-between items-end">
             <div>
@@ -84,16 +84,16 @@
               Essentials, Advanced Software Development
             </li>
             <li>
-              <strong>Clubs:</strong> Forge (formerly HackC'Ville), Virginia Entrepreneurship
-              Organization, theCourseForum, Student Council Treasurer, Poker Club,
-              Phi Eta Sigma Honor Society
+              <strong>Clubs:</strong> Forge, Virginia Entrepreneurship Organization,
+              theCourseForum, Poker Club, Phi Eta Sigma Honor Society, Cavalier Autonomous
+              Racing
             </li>
           </ul>
         </div>
       </section>
       <section id="experience">
-        <h2 class="text-2xl font-semibold -mb-1">Experience</h2>
-        <hr class="border-black border-t-[3px]" />
+        <h2 class="text-xl font-semibold -mb-1">Experience</h2>
+        <hr class="mb-1 border-black border-t-[2px]" />
 
         <div id="cav-auto-racing">
           <div class="flex flex-row justify-between items-end">
@@ -108,14 +108,16 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4">
+          <ul class="list-disc list-inside px-4 mr-12">
             <li>
-              Developed a monocular depth estimation pipeline using Torch, ATen
-              and TensorRT.
+              <!-- Developed a monocular depth estimation pipeline using Torch, ATen
+              and TensorRT. -->
+              Integrated cameras into software stack using a machine-learning model
+              trained with PyTorch and TensorRT.
             </li>
             <li>
-              Reduced perception's CPU utilization by 50% through implementing
-              network optimizations and zero-copy.
+              Reduced subteam's CPU utilization by 50% through implementing
+              network optimizations and zero-copy data-transfer.
             </li>
           </ul>
         </div>
@@ -132,155 +134,158 @@
           </div>
         </div>
 
-        <ul class="list-disc list-inside px-4">
+        <ul class="list-disc list-inside px-4 mr-12">
           <li>
-            Built a user-interface and logic copilot for a web-based enterprise low-code development platform able to complete 3-5 minute tasks for humans.
+            Built a user-interface and logic copilot for a web-based enterprise
+            low-code development platform able to complete 3-5 minute tasks for
+            humans.
           </li>
           <li>
-            Developed a custom intermediate representation for UI and logic which was able to enhance large language model parsing.
+            Developed a custom intermediate representation for UI and logic
+            which was able to enhance large language model parsing.
+          </li>
+        </ul>
+      </section>
+
+      <div id="exp-gpu-research">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3>
+              <strong>School of Engineering and Applied Science,</strong> University
+              of Virginia
+            </h3>
+            <p class="italic">Graphical Processing Unit (GPU) Researcher</p>
+          </div>
+          <div>
+            <p class="italic">December 2023 &mdash; Present</p>
+          </div>
+        </div>
+
+        <ul class="list-disc list-inside px-4 mr-12">
+          <li>
+            Researching how to make Large Language Models (LLMs) faster through
+            more efficient memory access.
+          </li>
+          <li>
+            Profiling machine learning memory use in GPUs with CUDA, NVIDIA
+            NSight Systems, and GPGPU-Sim.
+          </li>
+          <li>
+            Paid National Science Foundation research position with Professor of
+            Computer Science Adwait Jog.
           </li>
         </ul>
       </div>
 
-        <div id="exp-gpu-research">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3>
-                <strong>School of Engineering and Applied Science,</strong> University
-                of Virginia
-              </h3>
-              <p class="italic">Graphical Processing Unit (GPU) Researcher</p>
-            </div>
-            <div>
-              <p class="italic">December 2023 &mdash; Present</p>
-            </div>
-          </div>
-
-          <ul class="list-disc list-inside px-4">
-            <li>
-              Researching how to make Large Language Models (LLMs) faster
-              through more efficient memory access.
-            </li>
-            <li>
-              Profiling machine learning memory use in GPUs with CUDA, NVIDIA
-              NSight Systems, and GPGPU-Sim.
-            </li>
-            <li>
-              Paid National Science Foundation research position with Professor
-              of Computer Science Adwait Jog.
-            </li>
-          </ul>
-        </div>
-
-        <div id="exp-ds-research">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3>
-                <strong>School of Data Science,</strong> University of Virginia
-              </h3>
-              <p class="italic">Research Intern</p>
-            </div>
-            <div>
-              <p class="italic">September 2022 &mdash; May 2023</p>
-            </div>
-          </div>
-
-          <ul class="list-disc list-inside px-4">
-            <li>
-              Built a platform to share material science data utilizing a
-              Next.js frontend and an AWS OpenSearch cluster.
-            </li>
-            <!-- <li>
-              Collected experimental and simulation data for 5 main energetic
-              material categories.
-            </li> -->
-            <li>
-              Created a data ingestion pipeline for >1 terabyte data imports
-              using AWS S3 and AWS API Gateway.
-            </li>
-            <!-- <li>
-              Mocked and refined a search and import user interface in Figma.
-            </li> -->
-          </ul>
-        </div>
-
-        <div id="exp-val-partners">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3><strong>Valedor Partners,</strong> Houston, TX</h3>
-              <p class="italic">Data Science Intern</p>
-            </div>
-            <div>
-              <p class="italic">May 2021 &mdash; August 2021</p>
-            </div>
-          </div>
-
-          <ul class="list-inside list-disc px-4">
-            <li>
-              Achieved >90% validation accuracy with an optical pressure gauge
-              reading pipeline leveraging OpenCV.
-            </li>
-            <li>
-              Statistically analyzed and presented results to stakeholders on >13,000 mortgage applications using
-              Microsoft Excel and R.
-            </li>
-            <!-- <li>
-              Presented results of mortgage pipeline examination to client
-              stakeholders.
-            </li> -->
-          </ul>
-        </div>
-      </section>
-
-      <section id="leadership">
-        <h2 class="text-2xl font-semibold -mb-1">Leadership Positions</h2>
-        <hr class="border-black border-t-[3px]" />
-
-        <div id="course-director">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3>
-                <strong>Forge (formerly HackC'ville),</strong> University of Virginia
-              </h3>
-              <p class="italic">Course Director</p>
-            </div>
-            <div>
-              <p class="italic">August 2023 &mdash; Present</p>
-            </div>
-          </div>
-
-          <ul class="list-disc list-inside px-4">
-            <li>
-              Taught 20+ students and introduction to machine learning in a
-              10-week course with TensorFlow.
-            </li>
-            <li>
-              Developed a 10-week curriculum and course pack from scratch which
-              included: readings, lectures, workshops and projects.
-            </li>
-            <!-- <li>
-              Culminated in a student-directed final project showcasing an
-              interactive machine learning model.
-            </li> -->
-          </ul>
-        </div>
-      </section>
-
-      <div id="veo">
+      <div id="exp-ds-research">
         <div class="flex flex-row justify-between items-end">
           <div>
             <h3>
-              <strong>Virginia Entrepreneurship Organization, </strong> University
-              of Virginia
+              <strong>School of Data Science,</strong> University of Virginia
             </h3>
-            <p class="italic">Vice President of Events</p>
+            <p class="italic">Research Intern</p>
           </div>
           <div>
-            <p class="italic">November 2023 &mdash; Present</p>
+            <p class="italic">September 2022 &mdash; May 2023</p>
           </div>
         </div>
 
-        <!-- <ul class="list-disc list-inside px-4">
+        <ul class="list-disc list-inside px-4 mr-12">
+          <li>
+            Built a platform to share material science data utilizing a Next.js
+            frontend and an AWS OpenSearch cluster.
+          </li>
+          <!-- <li>
+              Collected experimental and simulation data for 5 main energetic
+              material categories.
+            </li> -->
+          <li>
+            Created a data ingestion pipeline for >1 terabyte data imports using
+            AWS S3 and AWS API Gateway.
+          </li>
+          <!-- <li>
+              Mocked and refined a search and import user interface in Figma.
+            </li> -->
+        </ul>
+      </div>
+
+      <div id="exp-val-partners">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3><strong>Valedor Partners,</strong> Houston, TX</h3>
+            <p class="italic">Data Science Intern</p>
+          </div>
+          <div>
+            <p class="italic">May 2021 &mdash; August 2021</p>
+          </div>
+        </div>
+
+        <ul class="list-inside list-disc px-4 mr-12">
+          <li>
+            Achieved >90% validation accuracy with an optical pressure gauge
+            reading pipeline leveraging OpenCV.
+          </li>
+          <li>
+            Statistically analyzed and presented results to stakeholders on
+            >13,000 mortgage applications using Microsoft Excel and R.
+          </li>
+          <!-- <li>
+              Presented results of mortgage pipeline examination to client
+              stakeholders.
+            </li> -->
+        </ul>
+      </div>
+    </main>
+
+    <section id="leadership">
+      <h2 class="text-xl font-semibold -mb-1">Leadership</h2>
+      <hr class="mb-1 border-black border-t-[2px]" />
+
+      <div id="course-director">
+        <div class="flex flex-row justify-between items-end mr-12">
+          <div>
+            <h3>
+              <strong>Forge,</strong> University of Virginia
+            </h3>
+            <p class="italic">Course Director</p>
+          </div>
+          <div>
+            <p class="italic">August 2023 &mdash; Present</p>
+          </div>
+        </div>
+
+        <ul class="list-disc list-inside px-4 mr-12">
+          <li>
+            Taught 20+ students and introduction to machine learning in a
+            10-week course with TensorFlow.
+          </li>
+          <li>
+            Developed a 10-week curriculum and course pack from scratch which
+            included: readings, lectures, workshops and projects.
+          </li>
+          <!-- <li>
+              Culminated in a student-directed final project showcasing an
+              interactive machine learning model.
+            </li> -->
+        </ul>
+      </div>
+    </section>
+
+    <div id="veo">
+      <div class="flex flex-row justify-between items-end">
+        <div>
+          <h3>
+            <strong>Virginia Entrepreneurship Organization, </strong> University
+            of Virginia
+          </h3>
+          <p class="italic">Vice President of Events</p>
+        </div>
+        <div>
+          <p class="italic">November 2023 &mdash; Present</p>
+        </div>
+      </div>
+
+      <!-- <ul class="list-disc list-inside px-4">
           <li>
             Organized a pitch competition with 10 teams and $1,000 in prizes.
           </li>
@@ -289,60 +294,60 @@
             attendees.
           </li>
         </ul> -->
-      </div>
+    </div>
 
-      <section id="projects">
-        <h2 class="text-2xl font-semibold -mb-1">Projects</h2>
-        <hr class="border-black border-t-[3px]" />
+    <section id="projects">
+      <h2 class="text-xl font-semibold -mb-1">Projects</h2>
+      <hr class="mb-1 border-black border-t-[2px]" />
 
-        <div id="timelapse">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3><strong>TimeLapze</strong></h3>
-              <p class="italic">Screen Recorder</p>
-            </div>
-            <div>
-              <p class="italic">May 2023 &mdash; January 2024</p>
-            </div>
+      <div id="timelapse">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3><strong>TimeLapze</strong></h3>
+            <p class="italic">Screen Recorder</p>
           </div>
+          <div>
+            <p class="italic">May 2023 &mdash; January 2024</p>
+          </div>
+        </div>
 
-          <ul class="list-disc list-inside px-4">
-            <li>
-              Built and published a open-source screen and camera recorder to
-              make time-lapses for MacOS.
-            </li>
-            <!-- <li>
+        <ul class="list-disc list-inside px-4 mr-12">
+          <li>
+            Built and published a open-source screen and camera recorder to make
+            time-lapses for MacOS.
+          </li>
+          <!-- <li>
               Prototyped this project to reduce screen recording sizes using
               Python and OpenCV.
             </li> -->
-            <li>
-              Reduced build size from 500 MB to 2 MB after a native in Swift,
-              SwiftUI, and ScreenCaptureKit.
-            </li>
-            <li>
-              Ranked #1 on Hacker News and gained >700 Stars on GitHub after
-              launch.
-            </li>
-          </ul>
+          <li>
+            Reduced build size from 500 MB to 2 MB after rewriting a Python
+            proof of concept in Swift.
+          </li>
+          <li>
+            Ranked #1 on Hacker News and gained >700 Stars on GitHub after
+            launch.
+          </li>
+        </ul>
+      </div>
+
+      <div id="isef-analysis">
+        <div class="flex flex-row justify-between items-end">
+          <div>
+            <h3>
+              <strong
+                >International Science and Engineering Fair Analysis</strong
+              >
+            </h3>
+            <p class="italic">Data Visualization Project</p>
+          </div>
+          <div>
+            <p class="italic">February 2023 &mdash; May 2023</p>
+          </div>
         </div>
 
-        <div id="isef-analysis">
-          <div class="flex flex-row justify-between items-end">
-            <div>
-              <h3>
-                <strong
-                  >International Science and Engineering Fair Analysis</strong
-                >
-              </h3>
-              <p class="italic">Data Visualization Project</p>
-            </div>
-            <div>
-              <p class="italic">February 2023 &mdash; May 2023</p>
-            </div>
-          </div>
-
-          <ul class="list-disc list-inside px-4">
-            <!-- <li>
+        <ul class="list-disc list-inside px-4 mr-12">
+          <!-- <li>
               Scraped >13,000 top science fair projects using Python and
               BeautifulSoup.
             </li> -->
@@ -350,16 +355,19 @@
               Analyzed data on 20 project categories utilizing Pandas and
               Matplotlib.
             </li> -->
-            <li>
-              Scraped over 13,000 top science fair projects using Python and BeautifulSoup, and created an interactive in-browser dashboard with Bokeh, JavaScript, and WebGL.
-            </li>
-            <li>
-              Published findings in a 5,000-word LinkedIn post with over 4,500 reads.
-            </li>
-          </ul>
-        </div>
+          <li>
+            Scraped over 13,000 top science fair projects using Python and
+            BeautifulSoup, and created an interactive in-browser dashboard with
+            Bokeh, JavaScript, and WebGL.
+          </li>
+          <li>
+            Published findings in a 5,000-word LinkedIn post with over 5,000
+            reads.
+          </li>
+        </ul>
+      </div>
 
-        <!-- <div id="media-impact-analysis">
+      <!-- <div id="media-impact-analysis">
           <div class="flex flex-row justify-between items-end">
             <div>
               <h3><strong>Media Impact Analysis</strong></h3>
@@ -386,39 +394,38 @@
             <li>Wrote, presented, and defended research conducted.</li>
           </ul>
         </div> -->
-      </section>
+    </section>
 
-      <section id="skills">
-        <h2 class="text-2xl font-semibold -mb-1">Skills</h2>
-        <hr class="border-black border-t-[3px]" />
+    <section id="skills">
+      <h2 class="text-xl font-semibold -mb-1">Skills</h2>
+      <hr class="mb-1 border-black border-t-[2px]" />
 
-        <ul class="px-4 pt-2">
-          <li>
-            <strong>Languages:</strong> Python, C++, Java, Swift, HTML, CSS, JavaScript,
-            R, SQL
-          </li>
-          <li>
-            <strong>Libraries:</strong> Django, React (Next.js), TensorFlow, OpenCV,
-            GGPlot2, Bokeh, Matplotlib, Pandas, NumPy, ROS 2
-          </li>
-          <li>
-            <strong>Certifications:</strong> TensorFlow Developer Certified, AWS
-            Certified Cloud Practitioner
-          </li>
-        </ul>
-      </section>
+      <ul class="px-4 pt-2">
+        <li>
+          <strong>Languages:</strong> Python, C++, Java, Swift, HTML, CSS, JavaScript,
+          R, SQL
+        </li>
+        <li>
+          <strong>Libraries:</strong> Django, React (Next.js), TensorFlow, OpenCV,
+          GGPlot2, Bokeh, Matplotlib, Pandas, NumPy, ROS 2
+        </li>
+        <li>
+          <strong>Certifications:</strong> TensorFlow Developer Certified, AWS Certified
+          Cloud Practitioner
+        </li>
+      </ul>
+    </section>
 
-      <section id="honors">
-        <h2 class="text-2xl font-semibold -mb-1">Honors and Awards</h2>
-        <hr class="border-black border-t-[3px]" />
-        <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
-          <li>Hoo Hacks Patient Safety Challenge Award Winner</li>
-          <li>Dean's List</li>
-          <li>Eagle Scout Award</li>
-          <li>The Congressional Award Gold Medal</li>
-          <li>National Merit Finalist</li>
-        </ul>
-      </section>
-    </main>
+    <section id="honors">
+      <h2 class="text-xl font-semibold -mb-1">Honors and Awards</h2>
+      <hr class="mb-1 border-black border-t-[2px]" />
+      <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
+        <li>Hoo Hacks Patient Safety Challenge Award Winner</li>
+        <li>Dean's List</li>
+        <li>Eagle Scout Award</li>
+        <li>The Congressional Award Gold Medal</li>
+        <li>National Merit Finalist</li>
+      </ul>
+    </section>
   </body>
 </html>
