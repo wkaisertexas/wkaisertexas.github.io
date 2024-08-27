@@ -31,6 +31,12 @@
         display: none;
       }
     }
+
+    /* big thank you to http://www.csstothepoint.com/hangingindent.html for the guide */
+    .hangingIndent {
+      text-indent: -1.5rem;
+      padding-left: 1.5rem;
+    }
   </style>
 
   <title>William Kaiser - Resume</title>
@@ -80,13 +86,13 @@
               <div class="italic">May 2026</div>
             </div>
           </div>
-          <ul class="list-inside list-decimal px-4 pr-20">
-            <li>
+          <ul class="list-inside px-4 pr-20">
+            <li class="hangingIndent">
               <strong>Relevant Coursework</strong> Data Structures and Algorithms, Computer
               Systems and Organizations, Linear Algebra, Cryptography, Software Development
               Essentials, Advanced Software Development
             </li>
-            <li>
+            <li class="hangingIndent">
               <strong>Clubs</strong> Phi Eta Sigma Honor Society, Cavalier Autonomous
               Racing, Forge, theCourseForum, Virginia Entrepreneurship Organization,
                Virginia Poker Club
@@ -113,12 +119,12 @@
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4 mr-8 inset-4">
+          <ul class="list-disc list-inside px-4 mr-8 inset-4">
             <!-- <li>
               Responsible for detecting cars and environmental obstacles which is used to plan the car's raceline.
             </li> -->
             <li>
-              Responsible for real-time detection of opponent race cars and obstacles at speeds up to 200 miles per hour.
+              Responsible for real-time detection of opponent race cars and obstacles at speeds up to 190 miles per hour.
             </li>
             <!-- <li>
               Developed a monocular depth estimation pipeline using Torch, ATen
@@ -126,21 +132,25 @@
               Integrated cameras into the perception stack with a PyTorch machine-learning model.
             </li> -->
             <li>
-              Mitigated rear-radar blind spots by integrating cameras into the detection pipeline.
+              Mitigated rear-radar blind spots by fusing cameras into the detection pipeline.
             </li>
             <!-- <li>
               Used cameras to reduce radar blindspots 
             </li> -->
+            <!-- <li>
+              Implemented an Extended Kalman Filter (EKF) to fuse opponent camera, lidar and radar position and velocity estimations.
+            </li> -->
             <li>
-              Implemented an Extended Kalman Filter (EKF) to fuse camera, lidar and radar pose estimation.
+              Decreased detection time over 50% by implementing
+              networking optimizations and zero-copy data-transfer.
             </li>
             <li>
-              Decreased detection time by 50% by implementing
-              network optimizations and zero-copy data-transfer.
+            Created a custom profiling tool to record a ROS node's memory, CPU, and GPU usage.
             </li>
           </ul>
         </div>
 
+      <div id="sitscape">
         <div class="flex flex-row justify-between items-end">
           <div>
             <h3 class="-mb-1">
@@ -153,20 +163,40 @@
           </div>
         </div>
 
-        <ul class="list-decimal list-inside px-4 mr-8">
-          <li>
-            Built a UI and logic generator chatbot for a web-based enterprise
+        <ul class="list-disc list-inside px-4 mr-8">
+          <!-- <li>
+            Built a user-interface and logic generator chatbot for a web-based enterprise
             low-code development platform.
+          </li> -->
+          <li>
+            Built a user-interface and logic generator for application developers for a no-code platform.
+          </li>
+          <!-- <li>
+            Built a copilot for application developers in web-based no-code platform. 
+          </li> -->
+          <!-- <li>
+            Built a Gen-UI and Gen-Logic chatbot for application developers in a web-based no-code platform.
+          </li> -->
+          <!-- <li>
+            Used generative ai to build a chatbot for application developers in a web-based no-code platform.
           </li>
           <li>
-            Saved development time by reliable completing intermediate length
+          </li> -->
+          <!-- <li>
+            Saved development time by reliably completing intermediate length
             tasks (~3-5 minutes in length).
+          </li> -->
+
+          <li>
+            Reduced development time by generating a first-pass user interface and logic for application developers.
           </li>
+    
           <!-- <li>
             Developed an intermediate representation for UI and logic
             which was able to enhance large language model parsing.
           </li> -->
         </ul>
+        </div>
 
         <div id="exp-gpu-research">
           <div class="flex flex-row justify-between items-end">
@@ -182,7 +212,7 @@
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4 mr-8">
+          <ul class="list-disc list-inside px-4 mr-8">
             <li>
               Researching how to make Large Language Models (LLMs) faster
               through more efficient memory access.
@@ -211,7 +241,7 @@
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4 mr-8">
+          <ul class="list-disc list-inside px-4 mr-8">
             <li>
               Built a platform to share material science data utilizing a
               Next.js frontend and an OpenSearch cluster.
@@ -221,8 +251,8 @@
               material categories.
             </li> -->
             <li>
-              Created a data ingestion pipeline for >1 terabyte data imports
-              using AWS S3 and AWS API Gateway.
+              Created a data ingestion pipeline for larger than 1 terabyte data imports
+              using AWS S3 and API Gateway.
             </li>
             <!-- <li>
               Mocked and refined a search and import user interface in Figma.
@@ -243,7 +273,7 @@
             </div>
           </div>
 
-          <ul class="list-inside list-decimal px-4 mr-8">
+          <ul class="list-inside list-disc px-4 mr-8">
             <li>
               Achieved 90% validation accuracy with an optical pressure gauge
               reading pipeline leveraging OpenCV.
@@ -261,8 +291,10 @@
       </section>
 
       <section id="leadership">
-        <h2 class="text-xl font-medium -mb-1">Leadership</h2>
-        <hr class="mb-1 border-black border-t-[1px]" />
+        <div>
+          <h2 class="text-xl font-medium -mb-1">Leadership</h2>
+          <hr class="mb-1 border-black border-t-[1px]" />
+        </div>
 
         <div id="course-director">
           <div class="flex flex-row justify-between items-end">
@@ -277,15 +309,17 @@
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4 mr-8">
+          <ul class="list-disc list-inside px-4 mr-8">
             <li>
-              Taught 20+ students and introduction to machine learning in a
-              10-week course with TensorFlow.
+              Taught an Introduction to Machine Learning with TensorFlow Course to 20 students.
             </li>
-            <li>
+            <li class="parents">
+            Developed a 10-week curriculum to prepare students for the TensorFlow Developer Certification Test.
+            </li>
+            <!-- <li>
               Developed a 10-week curriculum from scratch which
               included readings, lectures and take-home projects.
-            </li>
+            </li> -->
             <!-- <li>
               Culminated in a student-directed final project showcasing an
               interactive machine learning model.
@@ -308,7 +342,7 @@
           </div>
         </div>
 
-        <!-- <ul class="list-decimal list-inside px-4">
+        <!-- <ul class="list-disc list-inside px-4">
           <li>
             Organized a pitch competition with 10 teams and $1,000 in prizes.
           </li>
@@ -327,17 +361,17 @@
           <div class="flex flex-row justify-between items-end">
             <div>
               <h3 class="-mb-1"><strong>TimeLapze</strong></h3>
-              <p class="italic">Screen Recorder</p>
+              <p class="italic">Screen and Camera Recorder</p>
             </div>
             <div>
               <p class="italic">May 2023 &mdash; January 2024</p>
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4 mr-8">
+          <ul class="list-disc list-inside px-4 mr-8">
             <li>
-              Built and published a open-source screen and camera recorder to
-              make time-lapses for MacOS.
+              Built and published an open-source screen and camera recorder to
+              make time-lapse videos on MacOS.
             </li>
             <!-- <li>
               Prototyped this project to reduce screen recording sizes using
@@ -369,7 +403,7 @@
           </div>
         </div>
 
-        <ul class="list-decimal list-inside px-4 mr-8">
+        <ul class="list-disc list-inside px-4 mr-8">
           <li>
               Scraped >13,000 top science fair projects using Python and
               BeautifulSoup.
@@ -401,7 +435,7 @@
             </div>
           </div>
 
-          <ul class="list-decimal list-inside px-4">
+          <ul class="list-disc list-inside px-4">
             <li>
               Analyzed >400,000 coronavirus research papers in the Open Research
               Dataset using Python and R.
@@ -420,8 +454,10 @@
     </section> -->
 
         <section id="skills">
-          <h2 class="text-xl font-medium -mb-1">Skills</h2>
-          <hr class="mb-1 border-black border-t-[1px]" />
+          <div>
+            <h2 class="text-xl font-medium -mb-1">Skills</h2>
+            <hr class="mb-1 border-black border-t-[1px]" />
+          </div>
 
           <ul class="px-4 pt-2">
             <li>
@@ -440,14 +476,17 @@
         </section>
 
         <section id="honors">
-          <h2 class="text-xl font-medium -mb-1">Honors and Awards</h2>
-          <hr class="mb-1 border-black border-t-[1px]" />
-          <ul class="w-full grid grid-cols-2 list-inside list-decimal px-4">
+          <div>
+            <h2 class="text-xl font-medium -mb-1">Honors and Awards</h2>
+            <hr class="mb-1 border-black border-t-[1px]" />
+          </div>
+
+          <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
             <li>Hoo Hacks Patient Safety Challenge Award Winner</li>
             <li>Dean's List</li>
-            <li>Eagle Scout Award</li>
-            <li>The Congressional Award Gold Medal</li>
-            <!-- <li>National Merit Finalist</li> -->
+            <li>Eagle Scout</li>
+            <!-- <li>The Congressional Award Gold Medal</li> -->
+            <li>National Merit Finalist</li>
           </ul>
         </section>
       </section>
