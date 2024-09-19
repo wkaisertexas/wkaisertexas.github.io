@@ -40,11 +40,16 @@ const getImage = (post: any) : any => {
 		<main class="std-main relative">
       <Header />
 
-      <div id="gridlines" class="absolute max-h-full inset-0 z-[-1] grid md:grid-cols-4">
-        <div class="border-x-2 border-dashed border-grey-800"></div>
-        <div class="border-r-2 border-dashed border-grey-800"></div>
-        <div class="border-r-2 border-dashed border-grey-800"></div>
-        <div class="border-r-2 border-dashed border-grey-800"></div>
+      <div
+        id="gridlines"
+        class="fixed inset-0 z-[-1] grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3"
+      >
+        <!-- Dashed lines -->
+        <div class="border-r border-dashed"></div>
+        <div class="border-r border-dashed"></div>
+        <div class="border-r border-dashed"></div>
+        <div class="border-r border-dashed"></div>
+        <div><!--blank div takes up space on the side --></div>
       </div>
 
       <section class="grid md:grid-cols-4">
