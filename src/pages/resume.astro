@@ -20,6 +20,10 @@
 
     /* Styles for print only */
     @media print {
+      main {
+        contenteditable: false;
+      }
+
       .print-mimic {
         width: auto;
         margin: 0;
@@ -68,7 +72,7 @@
         >
       </div>
     </header>
-    <main>
+    <main contenteditable="true">
       <section id="education" class="space-y-2">
         <div>
           <h2 class="text-xl font-medium -mb-1">Education</h2>
@@ -88,7 +92,7 @@
               </p>
             </div>
             <div class="text-right">
-              <div>GPA 3.9</div>
+              <div>GPA 3.91</div>
               <div class="italic">May 2026</div>
             </div>
           </div>
@@ -154,7 +158,7 @@
             <li>
               Led a remote development initiative enabling new members to onboard in &lt;30 minutes.</li>
             <li>
-              Created and integrated a parallel GitLab CI/CD pipeline on the University of Virginia&apos;s SLURM cluster, decreasing test execution time by 94%.
+              Created and integrated a end-to-end GitLab CI/CD pipeline on the University of Virginia&apos;s SLURM cluster, decreasing test execution time by 94%.
             </li>
           </ul>
         </div>
@@ -503,7 +507,7 @@
           </div>
 
           <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
-            <li>Hoo Hacks 1st Place</li>
+            <li>Hoo Hacks 1st Place Award</li>
             <li>Dean's List</li>
             <li>Eagle Scout</li>
             <!-- <li>The Congressional Award Gold Medal</li> -->
