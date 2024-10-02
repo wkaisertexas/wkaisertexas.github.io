@@ -40,4 +40,4 @@ Creating a diverse set of model sizes and functions was the primary selection cr
 | [LLama 3 70b](https://huggingface.co/meta-llama/Meta-Llama-3-70B) | Transformer | General purpose chat model | April 18th, 2024 | 70b |
 
 
-![alt text](image.png)
+<!-- ![alt text](image.png) -->
