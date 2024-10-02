@@ -1,6 +1,6 @@
 ---
-title: "5 ways to level up your Jupyter notebook game"
-description: "Get speedy analysis, visualizations and debugging to avoid pulling your hair out"
+title: "Five Tips I Use to Keep My Jupyter Notebooks Efficient"
+description: "The flexability which Jupyter Notebooks bring is an incredible asset. However, the lack of structure can often lead larger notebooks to become disorganized over time. Following a few principles helps keep your analysis on track."
 pubDate: "Dec 11 2023"
 heroImage: "hero.png"
 display: true
@@ -60,7 +60,7 @@ Markdown can also reference local files. So, for instance, you can hide a cell w
 ![Graph I made earlier](./graph.png)
 ```
 
-That is the beginning of what markdown can do. For more, check out [Take 15 minutes to become a Markdown great](../great-markdown). Though you may not need to be the best documentarian, adding context to your code is a great way to share your work with others and your future self.
+That is the beginning of what markdown can do. For more, check out [the full guide I wrote on everything markdown can do](../great-markdown). Though you may not need to be the best documentarian, adding context to your code is a great way to share your work with others and your future self.
 
 </details>
 
@@ -87,7 +87,7 @@ df = df.sample(frac=1_000) # sample 1,000 rows
 df = df.sample(frac=0.01) # sample 1% of the rows
 ```
 
-## 4. Don't Do Shit Twice
+## 4. Avoid Redundant Computation and data loading
 
 Expensive operations such as data loading should only be run once. While you may _try_ to not re-run the expensive loading operations &mdash; you probably will. A several gigabyte comma separated values (CSV) file can take tens of seconds to minutes depending on the size.
 
@@ -98,8 +98,7 @@ df = pd.read_csv("imdb_movie_reviews.csv")
 Instead of blindly calling `pd.read_csv`, redundancy protection can be as simple as checking if the variable, `df` is in `locals()`, a dictionary of all local variables.
 
 ```python
-if 'df' not in locals():
-  df = pdf.read_csv("imdb_movie_reviews.csv")
+df = df if 'df' in locals() or pdf.read_csv("imdb_movie_reviews.csv")
 ```
 
 > Try and use a more modern data format like [Parquet](https://parquet.apache.org/) if possible which can be [87% smaller and 34x faster](https://www.databricks.com/glossary/what-is-parquet) than CSVs.

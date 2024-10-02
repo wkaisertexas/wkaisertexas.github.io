@@ -12,7 +12,7 @@ const { title, description, src, href } = Astro.props;
 ---
 { href ?
 <a href={href} class="flex flex-row space-x-6">
-  <Image class="w-24 h-auto" src={src} alt={title} width={256} height={256} format="avif" />
+  <Image class="w-auto h-24" src={src} alt={title} width={256} height={256} format="avif" />
   <div>
     <h3 class="font-bold text-lg tracking-tight">{title}</h3>
     <p class="tracking-wide">{description}</p>
@@ -20,7 +20,7 @@ const { title, description, src, href } = Astro.props;
 </a>
 :
 <li class="flex flex-row space-x-6">
-  <Image class="w-24 h-auto"  src={src} alt={title} width={256} height={256} format="avif" />
+  <Image class="w-auto h-24"  src={src} alt={title} width={256} height={256} format="avif" />
   <div>
     <h3 class="font-bold text-lg tracking-tight">{title}</h3>
     <p class="tracking-wide">{description}</p>

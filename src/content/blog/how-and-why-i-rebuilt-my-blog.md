@@ -1,5 +1,5 @@
 ---
-title: "10 reasons I rebuilt my blog in Astro"
+title: "Ten reasons I rebuilt my blog as an Astro Static Site"
 description: "Recently, I rebuilt my blog in Astro and deployed to GitHub pages. Reflecting on this process, I wanted to share some of the reasons why I think this setup is a great combination for me."
 pubDate: "July 11 2023"
 heroImage: "hero.png"
