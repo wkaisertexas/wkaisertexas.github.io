@@ -25,7 +25,13 @@ const posts = (await getCollection('blog'))
 const images = import.meta.glob('../../blog/**/*.{jpeg,jpg,png,svg,webp,avif,gif}');
 
 const getImage = (post: any) : any => {
-  return images[`../../blog/${post.slug}/${post.data.heroImage}`]()
+  let img = images[`../../blog/${post.slug}/${post.data.heroImage}`]
+
+  if (img) {
+    return img();
+  } else {
+    return images[`../../blog/zettlenote/hero.png`]();
+  }
 }
 
 ---

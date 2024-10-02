@@ -35,6 +35,10 @@
       .print-hide {
         display: none;
       }
+
+      .greyed-out {
+        display: none;
+      }
     }
 
     /* big thank you to http://www.csstothepoint.com/hangingindent.html for the guide */
@@ -42,7 +46,44 @@
       text-indent: -1.5rem;
       padding-left: 1.5rem;
     }
+
+    .greyed-out {
+      opacity: 0.5;
+      color: grey;
+    }
   </style>
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+          checkbox.addEventListener('change', function() {
+            const type = this.id;
+            const elements = document.querySelectorAll('.' + type);
+            elements.forEach(function(el) {
+              if (checkbox.checked) {
+                el.classList.remove('greyed-out');
+              } else {
+                el.classList.add('greyed-out');
+              }
+            });
+          });
+        });
+
+        // Initialize the visibility based on default checkbox states
+        checkboxes.forEach(function(checkbox) {
+          const type = checkbox.id;
+          const elements = document.querySelectorAll('.' + type);
+          elements.forEach(function(el) {
+            if (checkbox.checked) {
+              el.classList.remove('greyed-out');
+            } else {
+              el.classList.add('greyed-out');
+            }
+          });
+        });
+      });
+  </script>
 
   <title>William Kaiser - Resume</title>
   <meta
@@ -50,10 +91,17 @@
     content="William Kaiser is a student at the University of Virginia studying Computer Science in the School of Engineering interested in software development."
   />
 
- 
 </head>
 
-  <body class="print-mimic leading-snug font-inter"> <address hidden>
+  <body class="print-mimic leading-snug font-inter">
+
+  <div id="checkboxes" class="print-hide">
+    <label><input type="checkbox" id="type-testing">Testing</label>
+    <label><input type="checkbox" id="type-data-engineering">Data Engineering</label>
+    <label><input type="checkbox" id="type-develops">Development</label>
+  </div>
+    
+  <address hidden>
     23 Villa Canyon Place, The Woodlands, TX 77382
   </address>
     <header class="grid grid-cols-3">
@@ -92,7 +140,7 @@
               </p>
             </div>
             <div class="text-right">
-              <div>GPA 3.91</div>
+              <div>GPA 3.80</div>
               <div class="italic">May 2026</div>
             </div>
           </div>
@@ -133,7 +181,9 @@
               Responsible for detecting cars and environmental obstacles which is used to plan the car's raceline.
             </li> -->
             <li>
-              Engineered real-time C++ algorithms for detecting opponent race cars at speeds up to 184.1 mph.</li>
+              Engineered real-time C++ algorithms for detecting opponent race cars at speeds up to 184.1 mph.
+            </li>
+
             <!-- <li>
               Developed a monocular depth estimation pipeline using Torch, ATen
               and TensorRT.
@@ -181,8 +231,11 @@
             Built a user-interface and logic generator chatbot for a web-based enterprise
             low-code development platform.
           </li> -->
-          <li>
+          <!-- <li>
             Built a user-interface and logic generator for application developers for a no-code platform.
+          </li> -->
+          <li class="type-testing">
+            Built a user-interface and logic generator using Python and JavaScript for a no-code platform, enhancing product design.
           </li>
     
           <!-- <li>
@@ -226,23 +279,34 @@
               <p class="italic">Graphical Processing Unit Researcher</p>
             </div>
             <div>
-              <p class="italic">December 2023 &mdash; Present</p>
+              <p class="italic">September 2022 &mdash; Present</p>
             </div>
           </div>
 
           <ul class="list-disc list-inside px-4 mr-8">
-            <li>
+            <!-- <li>
               Researching how to make Large Language Models (LLMs) faster
               through more efficient memory access.
-            </li>
+            </li> -->
             <li>
-              Profiling machine learning memory use in GPUs with CUDA, NVIDIA
+              Profiling memory access in distributed training with CUDA, NVIDIA
               NSight Systems, and GPGPU-Sim.
             </li>
             <li>
+              Collaborated with a research team to perform trace-driven simulations using MGPUSim and Accel-Sim, evaluating the performance impact of proposed hardware modifications.
+            </li>
+            <!-- <li>
+              Profiling machine learning memory use in GPUs with CUDA, NVIDIA
+              NSight Systems, and GPGPU-Sim.
+            </li> -->
+            <li>
+              Paid National Science Foundation researcher with Professor of
+              Computer Science Adwait Jog.
+            </li>
+            <!-- <li>
               Paid National Science Foundation research position with Professor
               of Computer Science Adwait Jog.
-            </li>
+            </li> -->
           </ul>
         </div>
 
@@ -259,7 +323,7 @@
 
           <ul class="list-disc list-inside px-4 mr-8">
             <li>
-              Built and published an open-source screen and camera recorder to
+              Built and published an open source screen and camera recorder to
               make time-lapse videos on MacOS.
             </li>
             <!-- <li>
@@ -267,17 +331,19 @@
               Python and OpenCV.
             </li> -->
             <li>
-              Ranked <strong>#1 on Hacker News</strong> and gained >750 Stars on GitHub after
-              launch.
+              Ranked <strong>#1 on Hacker News</strong> with more than 750 Stars on GitHub and over >10,000 users.
             </li>
             <li>
+                Leveraged AVFoundation and Metal for hardware acceleration, reducing CPU usage by 70% and enabling simultaneous 4K recording.
+            </li>
+            <!-- <li>
               Reduced build size from 500 MB to 2 MB after rewriting a Python
               proof of concept in native Swift.
-            </li>
+            </li> -->
           </ul>
         </div>
 
-        <div id="exp-ds-research">
+        <!-- <div id="exp-ds-research">
           <div class="flex flex-row justify-between items-end">
             <div>
               <h3 class="-mb-1">
@@ -295,19 +361,19 @@
               Built a platform to share material science data utilizing a
               Next.js frontend and an OpenSearch cluster.
             </li>
-            <!-- <li>
+            <li>
               Collected experimental and simulation data for 5 main energetic
               material categories.
-            </li> -->
+            </li>
             <li>
               Created a data ingestion pipeline for larger than 1 terabyte data imports
               using AWS S3 and API Gateway.
             </li>
-            <!-- <li>
+            <li>
               Mocked and refined a search and import user interface in Figma.
-            </li> -->
+            </li
           </ul>
-        </div>
+        </div> -->
 
         <div id="exp-val-partners">
           <div class="flex flex-row justify-between items-end">
@@ -324,13 +390,17 @@
 
           <ul class="list-inside list-disc px-4 mr-8">
             <li>
-              Achieved 90% validation accuracy with an optical pressure gauge
-              reading pipeline leveraging OpenCV.
+              Reached 90% validation accuracy for an optical gauge reading pipeline developed with OpenCV on embedded Linux designed to be ran on Boston Dynamics&apos; Spot.
             </li>
+            <!-- <li>
+              Achieved 90% validation accuracy on an optical gauge reading pipeline using OpenCV on embedded Linux.
+            </li> -->
             <li>
-              Analyzed over 13,000 mortgage applications using Microsoft Excel and
-              R.
+              Built a machine-learning model to predict the likelihood of a loan officer approving a loan using data from mortgage broker with 1.4 billion dollars of annual loan approvals.
             </li>
+            <!-- <li>
+              Was part of a team analyzing a which wrote 1.4 billion dollars of loans annually.
+            </li> -->
             <!-- <li>
               Presented results of mortgage pipeline examination to client
               stakeholders.
@@ -486,12 +556,20 @@
 
           <ul class="px-4 pt-2">
             <li>
-              <strong>Languages</strong> Python, C++, Java, Swift, HTML, CSS, JavaScript,
-              SQL
+              <strong>Languages (Proficient)</strong>
+              <item>C++</item>, <item>Python,</item> <item class="type-testing">Matlab,</item> <item class="type-data-engineering">Go, </item><item>Java</item>, <item>Swift</item>
             </li>
             <li>
-              <strong>Tools</strong> Linux, Git, Django, ROS 2, React, TensorFlow,
-              OpenCV, Matplotlib, Pandas, NumPy, Jira, Visual Studio
+              <strong>Languages (Familiar)</strong>
+              <item>HTML</item>, <item>CSS</item>, <item>JavaScript</item>, <item>SQL</item>, <item class="type-data-engineering">Rust</item>
+            </li>
+
+            <!-- <li>
+              <strong>Languages</strong>
+              <item>C++</item>, <item>Python</item>, <item>Java</item>, <item>Swift</item>, <item>HTML (familiar)</item>, <item>CSS</item>, <item>JavaScript</item>, <item>SQL</item>
+            </li> -->
+            <li>
+              <strong>Tools</strong> <item>Docker</item>, <item>Linux</item>, <item>Git</item>, <item>Django</item>, <item>ROS 2</item>, <item class="type-data-engineering">Apache Spark,</item><item class="type-data-engineering">Cassandra,</item><item class="type-data-engineering">Kafka,</item> <item>React</item>, <item>TensorFlow</item>, <item>OpenCV</item>, <item>Matplotlib</item>, <item>Pandas</item>, <item>NumPy</item>, <item>Jira</item>, <item>Visual Studio</item>
             </li>
             <li>
               <strong>Certifications</strong> TensorFlow Developer Certified, AWS
