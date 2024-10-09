@@ -1,109 +1,114 @@
 <html lang="en">
   <head>
-  <style>
-    body {
-      /* disables ligatures */
-      /* text-rendering: optimizeSpeed; */
-    }
-
-    /* Styles for screen only */
-    @media screen {
-      .print-mimic {
-        width: 210mm; /* A4 paper width in mm */
-        margin: 20mm auto; /* Center the content with padding */
-        padding: 20mm;
-        border: 1px solid #000;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-      }
-    }
-
-    /* Styles for print only */
-    @media print {
-      main {
-        contenteditable: false;
+    <style>
+      body {
+        /* disables ligatures */
+        /* text-rendering: optimizeSpeed; */
       }
 
-      .print-mimic {
-        width: auto;
-        margin: 0;
-        padding: 6mm 12mm 5mm 12mm;
-        border: none;
-        box-shadow: none;
+      /* Styles for screen only */
+      @media screen {
+        .print-mimic {
+          width: 210mm; /* A4 paper width in mm */
+          margin: 20mm auto; /* Center the content with padding */
+          padding: 20mm;
+          border: 1px solid #000;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+        }
       }
 
-      .print-hide {
-        display: none;
+      /* Styles for print only */
+      @media print {
+        main {
+          contenteditable: false;
+        }
+
+        .print-mimic {
+          width: auto;
+          margin: 0;
+          padding: 6mm 12mm 5mm 12mm;
+          border: none;
+          box-shadow: none;
+        }
+
+        .print-hide {
+          display: none;
+        }
+
+        .greyed-out {
+          display: none;
+        }
       }
+
+      /* big thank you to http://www.csstothepoint.com/hangingindent.html for the guide */
+      .hangingIndent {
+        text-indent: -1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .resumeSection > li {
+        text-indent: -2.5rem;
+        padding-left: 2.5rem;
+      } 
 
       .greyed-out {
-        display: none;
+        opacity: 0.5;
+        color: grey;
       }
-    }
+    </style>
 
-    /* big thank you to http://www.csstothepoint.com/hangingindent.html for the guide */
-    .hangingIndent {
-      text-indent: -1.5rem;
-      padding-left: 1.5rem;
-    }
-
-    .greyed-out {
-      opacity: 0.5;
-      color: grey;
-    }
-  </style>
-
-  <script>
-     document.addEventListener('DOMContentLoaded', function() {
-        const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
-        checkboxes.forEach(function(checkbox) {
-          checkbox.addEventListener('change', function() {
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(
+          '#checkboxes input[type="checkbox"]'
+        );
+        checkboxes.forEach(function (checkbox) {
+          checkbox.addEventListener("change", function () {
             const type = this.id;
-            const elements = document.querySelectorAll('.' + type);
-            elements.forEach(function(el) {
+            const elements = document.querySelectorAll("." + type);
+            elements.forEach(function (el) {
               if (checkbox.checked) {
-                el.classList.remove('greyed-out');
+                el.classList.remove("greyed-out");
               } else {
-                el.classList.add('greyed-out');
+                el.classList.add("greyed-out");
               }
             });
           });
         });
 
         // Initialize the visibility based on default checkbox states
-        checkboxes.forEach(function(checkbox) {
+        checkboxes.forEach(function (checkbox) {
           const type = checkbox.id;
-          const elements = document.querySelectorAll('.' + type);
-          elements.forEach(function(el) {
+          const elements = document.querySelectorAll("." + type);
+          elements.forEach(function (el) {
             if (checkbox.checked) {
-              el.classList.remove('greyed-out');
+              el.classList.remove("greyed-out");
             } else {
-              el.classList.add('greyed-out');
+              el.classList.add("greyed-out");
             }
           });
         });
       });
-  </script>
+    </script>
 
-  <title>William Kaiser - Resume</title>
-  <meta
-    name="description"
-    content="William Kaiser is a student at the University of Virginia studying Computer Science in the School of Engineering interested in software development."
-  />
-
-</head>
+    <title>William Kaiser - Resume</title>
+    <meta
+      name="description"
+      content="William Kaiser is a student at the University of Virginia studying Computer Science in the School of Engineering interested in software development."
+    />
+  </head>
 
   <body class="print-mimic leading-snug font-inter">
+    <div id="checkboxes" class="print-hide">
+      <label><input type="checkbox" id="type-testing" />Testing</label>
+      <label
+        ><input type="checkbox" id="type-data-engineering" />Data Engineering</label
+      >
+      <label><input type="checkbox" id="type-develops" />Development</label>
+    </div>
 
-  <div id="checkboxes" class="print-hide">
-    <label><input type="checkbox" id="type-testing">Testing</label>
-    <label><input type="checkbox" id="type-data-engineering">Data Engineering</label>
-    <label><input type="checkbox" id="type-develops">Development</label>
-  </div>
-    
-  <address hidden>
-    23 Villa Canyon Place, The Woodlands, TX 77382
-  </address>
+    <address hidden>23 Villa Canyon Place, The Woodlands, TX 77382</address>
     <header class="grid grid-cols-3">
       <div class="col-span-1 col-start-2 flex flex-col text-center">
         <h1 class="text-xl font-bold">William David Kaiser</h1>
@@ -135,24 +140,25 @@
                 Applied Science
               </h3>
               <p class="italic">
-                B.S. in Computer Science | Minor in Data Science |
-                Minor in Engineering Business
+                B.S. in Computer Science | Minor in Data Science | Minor in
+                Engineering Business
               </p>
             </div>
             <div class="text-right">
-              <div>GPA 3.80</div>
+              <div>GPA 3.9</div>
               <div class="italic">May 2026</div>
             </div>
           </div>
           <ul class="list-inside px-4 pr-20">
-              <!-- <li class="hangingIndent">
-                <strong>Relevant Coursework</strong> Data Structures and Algorithms, Computer
-                Systems and Organizations, Linear Algebra, Cryptography, Compilers, Cybersecurity, Artificial Intelligence
-              </li> -->
+            <li class="hangingIndent">
+              <strong>Relevant Coursework</strong> Compilers,
+              Opperating Systems, Linear Algebra, Cryptography,
+              Cybersecurity, Artificial Intelligence, Data Structures and Algorithms
+            </li>
             <li class="hangingIndent">
               <strong>Clubs</strong> Phi Eta Sigma Honor Society, Cavalier Autonomous
               Racing, Forge, theCourseForum, Virginia Entrepreneurship Organization,
-               Virginia Poker Club
+              Virginia Poker Club
             </li>
           </ul>
         </div>
@@ -165,7 +171,7 @@
 
         <div id="cav-auto-racing">
           <div class="flex flex-row justify-between items-end">
-          <div>
+            <div>
               <h3 class="-mb-1">
                 <strong>Cavalier Autonomous Racing,</strong> University of Virginia
               </h3>
@@ -176,12 +182,10 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4 mr-8 inset-4">
-            <!-- <li>
-              Responsible for detecting cars and environmental obstacles which is used to plan the car's raceline.
-            </li> -->
+          <ul class="list-disc resumeSection list-inside px-4 mr-2 inset-4">
             <li>
-              Engineered real-time C++ algorithms for detecting opponent race cars at speeds up to 184.1 mph.
+              Engineered real-time C++ algorithms for detecting opponent race
+              cars at speeds up to 184.1 mph.
             </li>
 
             <!-- <li>
@@ -189,84 +193,57 @@
               and TensorRT.
               Integrated cameras into the perception stack with a PyTorch machine-learning model.
             </li> -->
-            <li>
-              Mitigated rear-LiDAR blind spots by fusing 4D radars into the Kalman Filter detection pipeline.
-            </li>
-            <!-- <li>
-              Used cameras to reduce radar blindspots 
-            </li> -->
-            <!-- <li>
-              Implemented an Extended Kalman Filter (EKF) to fuse opponent camera, lidar and radar position and velocity estimations.
-            </li> -->
             <!-- <li>
               Decreased detection time over 50% by implementing
               networking optimizations and zero-copy data-transfer.
             </li> -->
             <li>
-              Created a custom profiling tool to record a ROS node&apos;s CPU and GPU usage to reduce detection time.
+              Built a CPU usage logger to identify performance bottlenecks and reducing P95 detection latency by 75%.
             </li>
             <li>
-              Led a remote development initiative enabling new members to onboard in &lt;30 minutes.</li>
+              Led a remote development initiative to containerize the stack in Docker, reducing new member onboarding time to under 30 minutes.
+            </li>
             <li>
-              Created and integrated a end-to-end GitLab CI/CD pipeline on the University of Virginia&apos;s SLURM cluster, decreasing test execution time by 94%.
+              Created an end-to-end test suite for perception on the
+              university's SLURM cluster, integrated into GitLab CI/CD.
             </li>
           </ul>
         </div>
 
-      <div id="sitscape">
-        <div class="flex flex-row justify-between items-end">
-          <div>
-            <h3 class="-mb-1">
-              <strong>SitScape,</strong> Washington D.C.
-            </h3>
-            <p class="italic">Software Engineering Intern</p>
+        <div id="sitscape">
+          <div class="flex flex-row justify-between items-end">
+            <div>
+              <h3 class="-mb-1">
+                <strong>SitScape,</strong> Washington D.C.
+              </h3>
+              <p class="italic">Software Engineering Intern</p>
+            </div>
+            <div>
+              <p class="italic">May 2024 &mdash; August 2024</p>
+            </div>
           </div>
-          <div>
-            <p class="italic">May 2024 &mdash; August 2024</p>
-          </div>
-        </div>
 
-        <ul class="list-disc list-inside px-4 mr-8">
-          <!-- <li>
-            Built a user-interface and logic generator chatbot for a web-based enterprise
-            low-code development platform.
-          </li> -->
-          <!-- <li>
-            Built a user-interface and logic generator for application developers for a no-code platform.
-          </li> -->
-          <li class="type-testing">
-            Built a user-interface and logic generator using Python and JavaScript for a no-code platform, enhancing product design.
-          </li>
-    
-          <!-- <li>
-            Built a copilot for application developers in web-based no-code platform. 
-          </li> -->
-          <!-- <li>
-            Built a Gen-UI and Gen-Logic chatbot for application developers in a web-based no-code platform.
-          </li> -->
-          <!-- <li>
-            Used generative ai to build a chatbot for application developers in a web-based no-code platform.
-          </li>
-          <li>
-          </li> -->
-          <!-- <li>
-            Saved development time by reliably completing intermediate length
-            tasks (~3-5 minutes in length).
-          </li> -->
+          <ul class="list-disc resumeSection list-inside px-4 mr-2">
+            <li class="type-testing">
+              Built a user-interface and logic generator using Python and
+              JavaScript for a no-code platform, enhancing product design.
+            </li>
 
-          <li>
-            Reduced development time by generating a first-pass user interface and logic for application developers.
-          </li>
+            <li>
+              Reduced development time by generating a first-pass user interface
+              and logic for application developers.
+            </li>
 
-          <li>
-            Worked with JavaScript, HTML, CSS and Python in an Agile development environment.
-          </li>
-    
-          <!-- <li>
+            <li>
+              Worked with JavaScript, HTML, CSS and Python in an Agile
+              development environment.
+            </li>
+
+            <!-- <li>
             Developed an intermediate representation for UI and logic
             which was able to enhance large language model parsing.
           </li> -->
-        </ul>
+          </ul>
         </div>
 
         <div id="exp-gpu-research">
@@ -283,37 +260,30 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4 mr-8">
-            <!-- <li>
-              Researching how to make Large Language Models (LLMs) faster
-              through more efficient memory access.
-            </li> -->
+          <ul class="list-disc resumeSection list-inside px-4 mr-2">
             <li>
               Profiling memory access in distributed training with CUDA, NVIDIA
               NSight Systems, and GPGPU-Sim.
             </li>
             <li>
-              Collaborated with a research team to perform trace-driven simulations using MGPUSim and Accel-Sim, evaluating the performance impact of proposed hardware modifications.
+              Collaborated with a research team to perform trace-driven
+              simulations using MGPUSim and Accel-Sim, evaluating the
+              performance impact of proposed hardware modifications.
             </li>
-            <!-- <li>
-              Profiling machine learning memory use in GPUs with CUDA, NVIDIA
-              NSight Systems, and GPGPU-Sim.
-            </li> -->
             <li>
               Paid National Science Foundation researcher with Professor of
               Computer Science Adwait Jog.
             </li>
-            <!-- <li>
-              Paid National Science Foundation research position with Professor
-              of Computer Science Adwait Jog.
-            </li> -->
           </ul>
         </div>
 
         <div id="timelapse">
           <div class="flex flex-row justify-between items-end">
             <div>
-              <h3 class="-mb-1"><a href="https://github.com/wkaisertexas"><strong>TimeLapze</strong>, Personal Project</a></h3>
+              <h3 class="-mb-1">
+                <a href="https://github.com/wkaisertexas/screentimelapse"
+                  ><strong>TimeLapze</strong>, Personal Project</a>
+              </h3>
               <p class="italic">Screen and Camera Recorder</p>
             </div>
             <div>
@@ -321,20 +291,18 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4 mr-8">
+          <ul class="list-disc resumeSection list-inside px-4 mr-2">
             <li>
               Built and published an open source screen and camera recorder to
               make time-lapse videos on MacOS.
             </li>
-            <!-- <li>
-              Prototyped this project to reduce screen recording sizes using
-              Python and OpenCV.
-            </li> -->
             <li>
-              Ranked <strong>#1 on Hacker News</strong> with more than 750 Stars on GitHub and over >10,000 users.
+              Ranked #1 on Hacker News and has over 10,000 users and 750 Stars
+              on GitHub.
             </li>
             <li>
-                Leveraged AVFoundation and Metal for hardware acceleration, reducing CPU usage by 70% and enabling simultaneous 4K recording.
+              Leveraged Apple's Metal hardware acceleration, reducing CPU usage
+              by 87% and enabling simultaneous 4K recording.
             </li>
             <!-- <li>
               Reduced build size from 500 MB to 2 MB after rewriting a Python
@@ -356,7 +324,7 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4 mr-8">
+          <ul class="list-disc resumeSection list-inside px-4 mr-2">
             <li>
               Built a platform to share material science data utilizing a
               Next.js frontend and an OpenSearch cluster.
@@ -388,23 +356,17 @@
             </div>
           </div>
 
-          <ul class="list-inside list-disc px-4 mr-8">
+          <ul class="list-inside resumeSection list-disc px-4 mr-2">
             <li>
-              Reached 90% validation accuracy for an optical gauge reading pipeline developed with OpenCV on embedded Linux designed to be ran on Boston Dynamics&apos; Spot.
+              Achieved 90% validation accuracy for an optical gauge reading
+              pipeline using OpenCV on embedded Linux for Boston Dynamics&apos;
+              Spot robot.
             </li>
-            <!-- <li>
-              Achieved 90% validation accuracy on an optical gauge reading pipeline using OpenCV on embedded Linux.
-            </li> -->
             <li>
-              Built a machine-learning model to predict the likelihood of a loan officer approving a loan using data from mortgage broker with 1.4 billion dollars of annual loan approvals.
+              Developed a machine learning model predicting loan approval
+              likelihood using data from a mortgage broker with $1.4 billion in
+              annual loan volume.
             </li>
-            <!-- <li>
-              Was part of a team analyzing a which wrote 1.4 billion dollars of loans annually.
-            </li> -->
-            <!-- <li>
-              Presented results of mortgage pipeline examination to client
-              stakeholders.
-            </li> -->
           </ul>
         </div>
       </section>
@@ -428,8 +390,7 @@
               <p class="italic">November 2023 &mdash; Present</p>
             </div>
           </div>
-  
-          <!-- <ul class="list-disc list-inside px-4">
+          <!-- <ul class="list-disc resumeSection list-inside px-4">
             <li>
               Organized a pitch competition with 10 teams and $1,000 in prizes.
             </li>
@@ -438,7 +399,7 @@
               attendees.
             </li>
           </ul> -->
-        </div>  
+        </div>
 
         <div id="course-director">
           <div class="flex flex-row justify-between items-end">
@@ -453,7 +414,7 @@
             </div>
           </div>
 
-          <!-- <ul class="list-disc list-inside px-4 mr-8">
+          <!-- <ul class="list-disc resumeSection list-inside px-4 mr-2">
               <li>
                 Taught a 10-week Introduction to Machine Learning course to 20 students in TensorFlow.
               </li>
@@ -473,10 +434,8 @@
               </li>
             </ul> -->
         </div>
-
-      
       </section>
-     
+
       <!-- <section id="projects">
         <h2 class="text-xl font-medium -mb-1">Projects</h2>
         <hr class="mb-1 border-black border-t-[1px]" />
@@ -497,7 +456,7 @@
           </div>
         </div>
 
-        <ul class="list-disc list-inside px-4 mr-8">
+        <ul class="list-disc resumeSection list-inside px-4 mr-2">
           <li>
               Scraped >13,000 top science fair projects using Python and
               BeautifulSoup.
@@ -529,7 +488,7 @@
             </div>
           </div>
 
-          <ul class="list-disc list-inside px-4">
+          <ul class="list-disc resumeSection list-inside px-4">
             <li>
               Analyzed >400,000 coronavirus research papers in the Open Research
               Dataset using Python and R.
@@ -548,50 +507,64 @@
     </section>
       </section> -->
 
-        <section id="skills">
-          <div>
-            <h2 class="text-xl font-medium -mb-1">Skills</h2>
-            <hr class="mb-1 border-black border-t-[1px]" />
-          </div>
+      <section id="skills">
+        <div>
+          <h2 class="text-xl font-medium -mb-1">Skills</h2>
+          <hr class="mb-1 border-black border-t-[1px]" />
+        </div>
 
-          <ul class="px-4 pt-2">
-            <li>
-              <strong>Languages (Proficient)</strong>
-              <item>C++</item>, <item>Python,</item> <item class="type-testing">Matlab,</item> <item class="type-data-engineering">Go, </item><item>Java</item>, <item>Swift</item>
-            </li>
-            <li>
-              <strong>Languages (Familiar)</strong>
-              <item>HTML</item>, <item>CSS</item>, <item>JavaScript</item>, <item>SQL</item>, <item class="type-data-engineering">Rust</item>
-            </li>
-
-            <!-- <li>
+        <ul class="px-4 pt-2">
+          <li>
+            <strong>Languages (Proficient)</strong>
+            <item>C++</item>, <item>Python,</item>
+            <item class="type-testing">Matlab,</item>
+            <item class="type-data-engineering">Go, </item><item>Java</item>, <item
+              >Swift</item
+            >, <item>HTML</item>, <item>CSS</item>, <item>JavaScript</item>, <item
+              >SQL</item
+            >, <item class="type-data-engineering">Rust</item>
+          </li>
+          <!-- <li>
               <strong>Languages</strong>
               <item>C++</item>, <item>Python</item>, <item>Java</item>, <item>Swift</item>, <item>HTML (familiar)</item>, <item>CSS</item>, <item>JavaScript</item>, <item>SQL</item>
             </li> -->
-            <li>
-              <strong>Tools</strong> <item>Docker</item>, <item>Linux</item>, <item>Git</item>, <item>Django</item>, <item>ROS 2</item>, <item class="type-data-engineering">Apache Spark,</item><item class="type-data-engineering">Cassandra,</item><item class="type-data-engineering">Kafka,</item> <item>React</item>, <item>TensorFlow</item>, <item>OpenCV</item>, <item>Matplotlib</item>, <item>Pandas</item>, <item>NumPy</item>, <item>Jira</item>, <item>Visual Studio</item>
-            </li>
-            <li>
-              <strong>Certifications</strong> TensorFlow Developer Certified, AWS
-              Certified Cloud Practitioner
-            </li>
-          </ul>
-        </section>
+          <li>
+            <strong>Tools</strong>
+            <item>Docker</item>, <item>Linux</item>, <item>Git</item>, <item
+              >Django</item
+            >, <item>ROS 2</item>, <item class="type-data-engineering"
+              >Apache Spark,</item
+            ><item class="type-data-engineering">Cassandra,</item><item
+              class="type-data-engineering">Kafka,</item
+            >
+            <item>React</item>, <item>TensorFlow</item>, <item>OpenCV</item>, <item
+              >Matplotlib</item
+            >, <item>Pandas</item>, <item>NumPy</item>, <item>Jira</item>, <item
+              >Visual Studio</item
+            >
+          </li>
+          <li>
+            <strong>Certifications</strong> TensorFlow Developer Certified, AWS Certified
+            Cloud Practitioner
+          </li>
+        </ul>
+      </section>
 
-        <section id="honors">
-          <div>
-            <h2 class="text-xl font-medium -mb-1">Honors and Awards</h2>
-            <hr class="mb-1 border-black border-t-[1px]" />
-          </div>
+      <section id="honors">
+        <div>
+          <h2 class="text-xl font-medium -mb-1">Honors and Awards</h2>
+          <hr class="mb-1 border-black border-t-[1px]" />
+        </div>
 
-          <ul class="w-full grid grid-cols-2 list-inside list-disc px-4">
-            <li>Hoo Hacks 1st Place Award</li>
-            <li>Dean's List</li>
-            <li>Eagle Scout</li>
-            <!-- <li>The Congressional Award Gold Medal</li> -->
-            <li>National Merit Finalist</li>
-          </ul>
-        </section>
+        <ul class="w-full grid grid-cols-2 list-inside list-disc ml-4">
+          <li>1st Place Speed Trial Indy Autonomous Challenge 2024</li>
+          <li>Dean's List</li>
+          <li>1st Place Award Hoo Hacks 2024</li>
+          <li>Eagle Scout</li>
+          <!-- <li>The Congressional Award Gold Medal</li> -->
+          <!-- <li>National Merit Finalist</li> -->
+        </ul>
+      </section>
     </main>
   </body>
 </html>
