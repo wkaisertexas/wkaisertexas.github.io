@@ -24,3 +24,12 @@ This is an ongoing post which represents resources I enjoyed using to learn abou
 
 - [Dwarkesh Patel Podcast](https://www.dwarkeshpatel.com/podcast) is a "highly, but still underrated" podcast in with the interviewer Dwarkesh, spends an enormous amount of time preparing for interviews as [The future belongs to those who prepare like Dwarkesh Patel](https://meridian.mercury.com/dwarkesh-patel/).
 
+## YouTube Channels
+
+This is broken out because these are chanels which are specifically interesting to me. If I miss any obvious ones, like 3Blue1Brown, that is okay, because my goal here is to feature lesser known channels which have differentiated content.
+
+- [Breaking Taps](https://www.youtube.com/@BreakingTaps) is a channel that introduced me to the idea that there are some people out there who build hobby silicon projects.
+- [Mutual Information](https://www.youtube.com/@Mutual_Information) has some good videos which I liked. Two in particular were:
+  - [Why Do Neural Networks Love the Softmax?](https://www.youtube.com/watch?v=p-6wUOXaVqs)
+  - [The Boundary of Computation](https://www.youtube.com/watch?v=kmAc1nDizu0&t=101s) which is on the Busy Beaver numbers
+- [Stuff Made Here](https://www.youtube.com/c/StuffMadeHere) is a channel who slowed down a bit in recent years. I remember when they published a video every two weeks of a high-quality project which would have taken hundreds of hours. Insane work ethic and this kind of paints an aspirational picture of what an engineer can be and accomplish in my mind.
