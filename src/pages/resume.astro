@@ -51,10 +51,17 @@
         text-indent: -2.25rem;
         padding-left: 2.25rem;
       }
+      main > * {
+        letter-spacing: 0.01em; 
+      }
 
       .greyed-out {
         opacity: 0.5;
         color: grey;
+      }
+
+      body {
+        font-size: 12.5px; /* Adjust this value as needed */
       }
     </style>
 
@@ -151,9 +158,8 @@
           </div>
           <ul class="list-inside px-4 pr-20">
             <li class="hangingIndent">
-              <strong>Relevant Coursework</strong> Compilers, Operating Systems,
-              Linear Algebra, Cryptography, Cybersecurity, Artificial Intelligence,
-              Data Structures and Algorithms
+              <strong>Coursework</strong> Compilers, Operating Systems,
+              Cryptography, Artificial Intelligence, Algorithms
             </li>
             <li class="hangingIndent">
               <strong>Clubs</strong> Phi Eta Sigma Honor Society, Cavalier Autonomous
@@ -183,9 +189,12 @@
           </div>
 
           <ul class="list-disc resumeSection list-inside px-4 mr-2 inset-4">
-            <li>
+            <!-- <li>
               Engineered real-time C++ algorithms for detecting opponent race
               cars at speeds up to 184.1 mph
+            </li> -->
+            <li>
+              Engineered real-time C++ algorithms to detect opponent race cars at speeds up to 184.1 mph, integrating new radar sensors and refining perception during six weeks of on-track testing at the Kentucky Speedway and the Indianapolis Motor Speedway
             </li>
 
             <!-- <li>
@@ -198,17 +207,20 @@
               networking optimizations and zero-copy data-transfer.
             </li> -->
             <li>
-              Built a CPU usage logger to identify performance bottlenecks and
-              reducing P95 detection latency by 75%
+              Built a CPU usage logger to identify system bottlenecks and
+              reduce P95 detection latency by 75%
             </li>
             <li>
               Led a remote development initiative to containerize the stack in
-              Docker, reducing new member onboarding time to under 30 minutes
+              Docker, allowing members to use thin development environments and get running in less than 15 minutes
             </li>
             <li>
-              Created an end-to-end test suite for perception on the
-              university's SLURM cluster, integrated into GitLab CI/CD
+              Created an end-to-end test suite of perception benchmarks and automated execution with GitLab CI / CD and the 
+              university's SLURM cluster for parallel execution
             </li>
+            <!-- <li>
+              Spent six weeks on-track testing at Indianapolis Motor Speedway and Kentucky Speedway, integrating new radar sensors and refining perception algorithms
+              </li> -->
           </ul>
         </div>
 
@@ -226,20 +238,18 @@
           </div>
 
           <ul class="list-disc resumeSection list-inside px-4 mr-2">
-            <li class="type-testing">
-              Built a user-interface and logic generator using Python and
-              JavaScript for a no-code platform, enhancing product design
+            <li>
+              Leveraged a large language model to design and implement a user-interface and logic builder using Python and JavaScript for a Full-Stack no-code platform
             </li>
 
             <li>
-              Reduced development time by generating a first-pass user interface
-              and logic for application developers
-            </li>
+              Designed a domain-specific language for representing user interfaces and logic, optimized for interpretability by large language models
+            </li> 
 
-            <li>
-              Worked with JavaScript, HTML, CSS and Python in an Agile
-              development environment
-            </li>
+            <!-- <li>
+                Integrated features with JavaScript, HTML, CSS and Python while working in an Agile
+                development environment
+            </li> -->
 
             <!-- <li>
             Developed an intermediate representation for UI and logic
@@ -264,17 +274,15 @@
 
           <ul class="list-disc resumeSection list-inside px-4 mr-2">
             <li>
-              Wrote compute-efficient kernels in CUDA and OpenCL for neural networks
+              Developed compute-optimized CUDA C++ kernels to serve as a reference implementation to benchmark novel hardware designs
             </li>
             <li>
-              Profiling memory access in distributed training with CUDA, NVIDIA
-              NSight Systems, and GPGPU-Sim
+              Profiled memory access in distributed training with
+              NSight Systems and GPGPU-Sim
             </li>
-            <li>
-              Collaborated with a research team to perform trace-driven
-              simulations using MGPUSim and Accel-Sim, evaluating the
-              performance impact of proposed hardware modifications
-            </li>
+            <!-- <li>
+              Performed trace-driven simulations with MGPUSim and Accel-Sim to evaluate the performance impact of proposed hardware modifications
+            </li> -->
           </ul>
         </div>
 
@@ -286,7 +294,7 @@
                   ><strong>TimeLapze</strong>, Personal Project</a
                 >
               </h3>
-              <p class="italic">Screen and Camera Recorder</p>
+              <p class="italic">macOS Screen Recorder</p>
             </div>
             <div>
               <p class="italic">May 2023 &mdash; January 2024</p>
@@ -294,17 +302,17 @@
           </div>
 
           <ul class="list-disc resumeSection list-inside px-4 mr-2">
+            <!-- <li>
+              Built and published an open-source screen recorder to
+              make time-lapse videos on macOS
+            </li> -->
             <li>
-              Built and published an open-source screen and camera recorder to
-              make time-lapse videos on MacOS
-            </li>
-            <li>
-              Ranked #1 on Hacker News and has over 10,000 users and 750 Stars
+              Launch reached #1 on Hacker News and currently has over 8,000 users and 750 Stars
               on GitHub
             </li>
             <li>
-              Leveraged Swift and Apple's Metal API for hardware acceleration, reducing CPU usage
-              by 87% and enabling simultaneous 4K recording
+              Leveraged Swift and Apple's Metal API for hardware acceleration,
+              reducing CPU usage by 87% and enabling simultaneous 4K recording
             </li>
             <!-- <li>
               Reduced build size from 500 MB to 2 MB after rewriting a Python
@@ -359,14 +367,12 @@
           </div>
 
           <ul class="list-inside resumeSection list-disc px-4 mr-2">
-            <li>
+            <!-- <li>
               Achieved 90% validation accuracy for an optical gauge reading
               pipeline designed for industrial sites using OpenCV
-            </li>
+            </li> -->
             <li>
-              Developed a machine learning model predicting loan approval
-              likelihood using data from a mortgage broker with $1.4 billion in
-              annual loan volume
+              Developed a machine learning model to predict loan approval likelihood using data from a mortgage broker with $1.4 billion in annual loan volume
             </li>
           </ul>
         </div>
@@ -513,32 +519,40 @@
           <h2 class="text-xl font-medium -mb-1">Skills</h2>
           <hr class="mb-1 border-black border-t-[1px]" />
         </div>
-      
+
         <ul>
           <li class="flex items-start gap-4">
             <div class="text-left pr-2 font-bold w-32">Languages</div>
             <div class="flex-1 hangingIndent">
-              <item>C++, </item><item>Python, </item><item>Matlab, </item
-              ><item class="type-data-engineering">Go, </item><item>Java, </item
-              ><item>Swift, </item><item>HTML, </item><item>CSS, </item
-              ><item>JavaScript, </item><item>SQL, </item><item class="type-data-engineering"
-                >Rust</item
-              >
+              <item>C++, </item><item>Python, </item><item>Matlab, </item><item
+                class="type-data-engineering"
+                >Go,
+              </item><item>Java, </item><item>Swift, </item><item
+                >HTML,
+              </item><item>CSS, </item><item>JavaScript, </item><item
+                >SQL,
+              </item><item class="type-data-engineering">Rust</item>
             </div>
           </li>
-      
+
           <li class="flex items-start gap-4">
             <div class="text-left pr-2 font-bold w-32">Tools</div>
             <div class="flex-1 hangingIndent">
-              <item>Docker, </item><item>Linux, </item><item>Git, </item
-              ><item>Django, </item><item>ROS 2, </item><item class="type-data-engineering"
-                >Apache Spark, </item><item class="type-data-engineering">Cassandra, </item
-              ><item class="type-data-engineering">Kafka, </item><item>React, </item
-              ><item>TensorFlow, </item><item>OpenCV, </item><item>Pandas, </item><item>Jira, </item
-              ><item>Visual Studio</item>
+              <item>Docker, </item><item>Linux, </item><item>Git, </item><item
+                >Django,
+              </item><item>ROS 2, </item><item class="type-data-engineering"
+                >Apache Spark,
+              </item><item class="type-data-engineering">Cassandra, </item><item
+                class="type-data-engineering"
+                >Kafka,
+              </item><item>React, </item><item>TensorFlow, </item><item
+                >OpenCV,
+              </item><item>Pandas, </item><item>Jira, </item><item
+                >Visual Studio</item
+              >
             </div>
           </li>
-      
+
           <li class="flex items-start gap-4">
             <div class="text-left pr-2 font-bold w-32">Certifications</div>
             <div class="flex-1 hangingIndent">
@@ -555,9 +569,9 @@
         </div>
 
         <ul class="w-full grid grid-cols-2 list-inside list-disc ml-4">
-          <li>1st Place Speed Trial Indy Autonomous Challenge 2024</li>
+          <li>1st Speed Trial Indy Autonomous Challenge 2024</li>
           <li>Dean's List</li>
-          <li>1st Place Award Hoo Hacks 2024</li>
+          <li>1st Award Hoo Hacks 2024</li>
           <li>Eagle Scout</li>
           <!-- <li>The Congressional Award Gold Medal</li> -->
           <!-- <li>National Merit Finalist</li> -->
