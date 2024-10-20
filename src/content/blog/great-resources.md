@@ -11,6 +11,7 @@ This is an ongoing post which represents resources I enjoyed using to learn abou
 ## Blogs
 
 - [How to Optimize a CUDA Matmul Kernel for cuBLAS-like Performance: a Worklog](https://siboehm.com/articles/22/CUDA-MMM) covers how to optimize matrix multiplication kernels to perform like CuBlas
+- [How to write good prompts: using spaced repetition to create understanding](https://andymatuschak.org/prompts/) goes into techniques for learning. The author actually argues in some of his other posts that tasks which a lay-person may assume are more intellectual in nature are actually highly memory bound tasks, exemplifying the importance of memory. 
 
 ## Books
 
