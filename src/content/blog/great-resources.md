@@ -11,11 +11,13 @@ This is an ongoing post which represents resources I enjoyed using to learn abou
 ## Blogs
 
 - [How to Optimize a CUDA Matmul Kernel for cuBLAS-like Performance: a Worklog](https://siboehm.com/articles/22/CUDA-MMM) covers how to optimize matrix multiplication kernels to perform like CuBlas
-- [How to write good prompts: using spaced repetition to create understanding](https://andymatuschak.org/prompts/) goes into techniques for learning. The author actually argues in some of his other posts that tasks which a lay-person may assume are more intellectual in nature are actually highly memory bound tasks, exemplifying the importance of memory. 
+- [How to write good prompts: using spaced repetition to create understanding](https://andymatuschak.org/prompts/) goes into techniques for learning. The author actually argues in some of his other posts that tasks which a lay-person may assume are more intellectual in nature are actually highly memory bound tasks, exemplifying the importance of memory.
+- [Entropy from First Principles](https://www.nathom.dev/blog/entropy/) finally gave me an intuitive explanation for entropy (a tall order).
 
 ## Books
 
 - [Reinforcement Learning by Sutton and Barto](https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf) is a classic for machine learning
+- [Elements of Statistical Learning](https://www.google.com/search?q=elements+of+statistical+learning&oq=Elements+of+Statistical+Learning) is another classic
 
 ## Videos
 
@@ -27,7 +29,7 @@ This is an ongoing post which represents resources I enjoyed using to learn abou
 
 ## YouTube Channels
 
-This is broken out because these are chanels which are specifically interesting to me. If I miss any obvious ones, like 3Blue1Brown, that is okay, because my goal here is to feature lesser known channels which have differentiated content.
+This is broken out because these are channels which are specifically interesting to me. If I miss any obvious ones, like 3Blue1Brown, that is okay, because my goal here is to feature lesser known channels which have differentiated content.
 
 - [Breaking Taps](https://www.youtube.com/@BreakingTaps) is a channel that introduced me to the idea that there are some people out there who build hobby silicon projects.
 - [Mutual Information](https://www.youtube.com/@Mutual_Information) has some good videos which I liked. Two in particular were:
