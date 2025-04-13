@@ -39,6 +39,7 @@ This is broken out because these are channels which are specifically interesting
   - [Why Do Neural Networks Love the Softmax?](https://www.youtube.com/watch?v=p-6wUOXaVqs)
   - [The Boundary of Computation](https://www.youtube.com/watch?v=kmAc1nDizu0&t=101s) which is on the Busy Beaver numbers
 - [Stuff Made Here](https://www.youtube.com/c/StuffMadeHere) is a channel who slowed down a bit in recent years. I remember when they published a video every two weeks of a high-quality project which would have taken hundreds of hours. Insane work ethic and this kind of paints an aspirational picture of what an engineer can be and accomplish in my mind.
+- [Inigo Quilez](https://www.youtube.com/@InigoQuilez) and his corresponding blog is the best resource I have found to learn more about ray marching and shaders.
 
 ## Tools
 
