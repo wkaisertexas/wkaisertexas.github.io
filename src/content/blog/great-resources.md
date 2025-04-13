@@ -18,6 +18,9 @@ This is an ongoing post which represents resources I enjoyed using to learn abou
 
 - [Reinforcement Learning by Sutton and Barto](https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf) is a classic for machine learning
 - [Elements of Statistical Learning](https://www.google.com/search?q=elements+of+statistical+learning&oq=Elements+of+Statistical+Learning) is another classic
+- [Any Stripe Press Book](https://press.stripe.com/). I have read a few of these, overall all fantastic reads. Also, everything about these books from the site to the cover to the pages themselves are beautiful.
+  - [Working in Public](https://press.stripe.com/working-in-public) helped me articulate open-source, and the complicated incentives at play, to people unfamiliar with the subject
+  - [Poor Charlie's Almanack](https://press.stripe.com/poor-charlies-almanack)
 
 ## Videos
 
@@ -36,3 +39,16 @@ This is broken out because these are channels which are specifically interesting
   - [Why Do Neural Networks Love the Softmax?](https://www.youtube.com/watch?v=p-6wUOXaVqs)
   - [The Boundary of Computation](https://www.youtube.com/watch?v=kmAc1nDizu0&t=101s) which is on the Busy Beaver numbers
 - [Stuff Made Here](https://www.youtube.com/c/StuffMadeHere) is a channel who slowed down a bit in recent years. I remember when they published a video every two weeks of a high-quality project which would have taken hundreds of hours. Insane work ethic and this kind of paints an aspirational picture of what an engineer can be and accomplish in my mind.
+
+## Tools
+
+Well-tested tools often overlooked in the LLM-powered ai code generator madness.
+
+- [GitHub Code Search](https://github.com/features/code-search), cleverly used, can be used to find code examples for niche problems. Often, I have found `".method_name("` to search for method invocations, then language filtering, plus adding some keyword loosely associated with the project is enough to filter down to a couple of relevant results. This works because there are orders of magnitude more uploaded code than articles or Stack Overflow issues. In my experience, if a relevant snippet can found, trying it yourself works 90%+ of the time. Code search is the first thing I turn to break through a plateau in a software project.
+  - Finding out how to [collect LTTNG traces in Docker](https://github.com/wkaisertexas/ros2_tracing_cpp?tab=readme-ov-file#collecting-traces-in-docker) was a recent example where code-search (specifically one-result) saved me and let me figure out how to make tracing working in out Docker-based testing environment as part of [Cavalier Autonomous Racing](https://autonomousracing.dev/)
+- [LLVM Toolchain](https://llvm.org/) is the closest thing I have found to a free lunch for C / C++ development I have found in a while.
+  - [clang](https://clang.llvm.org/) is faster than GCC and produces faster binaries. Unless you have a legacy project or some very special use cases, there is no reason to *not* use it.
+  - [clangd](https://clangd.llvm.org/) is the best LSP for C / C++ projects
+  - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) is useful for cleaning up large-scale software projects so you do not see so many issues in clangd (lol).
+  - [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+  - [lld](https://lld.llvm.org/) is just a faster-linker and support thin lto which is a godsend for maintaining build speed which still enabling [Link time optimization](https://www.llvm.org/docs/LinkTimeOptimization.html)
