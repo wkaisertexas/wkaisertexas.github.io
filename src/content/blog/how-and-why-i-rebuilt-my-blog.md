@@ -100,7 +100,7 @@ Astro is fundamentally built on top of the `node` ecosystem. The most important 
 
 Building this blog, two tools in particular:
 
-- [Three.js](https:/threejs.org) to simplify displaying a stylized version of my desk setup
+- [Three.js](https://threejs.org) to simplify displaying a stylized version of my desk setup
 - [TailwindCSS](https://tailwindcss.com) to avoid having to touch raw CSS
 
 ```console
