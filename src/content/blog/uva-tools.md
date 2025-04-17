@@ -28,5 +28,5 @@ However, I broke down the components of the Custom GPT into 4 tools:
 # Course Registration
 
 1. [**Lou's List**](https://louslist.org/): A tool to find courses and their reviews.
-2. [**SIS**](https://sis.virginia.edu): The Student Information System to register for courses.
+2. [**SIS**](https://sisuva.admin.virginia.edu): The Student Information System to register for courses.
 3. [**theCourseForum**](https://thecourseforum.com): A forum to discuss courses and professors.

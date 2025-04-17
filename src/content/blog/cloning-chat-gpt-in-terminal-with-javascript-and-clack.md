@@ -116,7 +116,7 @@ Why not just put the key in your code? First, having keys in your code can made 
 
 ## Creating a OpenAI account
 
-Third-party service setup can be a bit tedious, but actually going through the motions is good practice. Got to [playground.openai.com](http://playground.openai.com) and setup an account if you have not made one already.
+Third-party service setup can be a bit tedious, but actually going through the motions is good practice. Got to [playground.openai.com](https://playground.openai.com) and setup an account if you have not made one already.
 
 ![Cost to use chat gpt in browser](../../blog/cloning-chat-gpt-in-terminal-with-javascript-and-clack/usage.png)
 

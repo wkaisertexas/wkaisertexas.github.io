@@ -44,7 +44,7 @@ This analysis explores ISEF in two parts: Exploration and Visualization. The Exp
 
 ## Data Analyzed
 
-_Society for Science,_ ISEF's organizing body, keeps publicly accessible records on ISEF projects through the search portal [abstracts.societyforscience.org](http://abstracts.societyforscience.org/). The portal contains 13,543 science fair project titles, categories, countries, provinces, schools, contestants and abstracts from 2014 through 2023.
+_Society for Science,_ ISEF's organizing body, keeps publicly accessible records on ISEF projects through the search portal [abstracts.societyforscience.org](https://abstracts.societyforscience.org/). The portal contains 13,543 science fair project titles, categories, countries, provinces, schools, contestants and abstracts from 2014 through 2023.
 
 ## Dataset Primers
 

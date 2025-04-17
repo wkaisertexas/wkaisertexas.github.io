@@ -83,7 +83,7 @@ TikTok does have [Share Video API](https://developers.tiktok.com/doc/web-video-k
 
 > Share Video API allows users to share videos from your Web or Desktop app into TikTok. Videos will be sent into users’ inboxes where they can then be edited and published through the TikTok app.
 
-TikTok clearly intended the Share Video API to be more for apps such as [CapCut](http://capcut.com/), rather than scheduled uploads.
+TikTok clearly intended the Share Video API to be more for apps such as [CapCut](https://capcut.com/), rather than scheduled uploads.
 
 ## Conclusion
 
