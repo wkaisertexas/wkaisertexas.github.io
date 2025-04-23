@@ -1,9 +1,9 @@
 ---
 title: "Great Resources"
-description: "A collection of good resources I have found and enjoy on the internet. An ongoing project"
-pubDate: "April 19 2024"
+description: "A collection of good resources I have found and enjoy on the internet. You find a few good ones when going through the library of babel. However, you miss many more... to wit, this is not an exhaustive list"
+pubDate: "August 19 2024"
 heroImage: "hero.png"
-display: false
+display: true
 ---
 
 This is an ongoing post which represents resources I enjoyed using to learn about new things. I have broken it down by category. Any ordering is unintentional.
