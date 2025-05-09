@@ -20,7 +20,7 @@ const { Content } = await post.render();
 const posts = (await getCollection("blog"))
   .filter(
     (post) =>
-      post.data.unlisted || post.data.display !== false
+      !post.data.unlisted && post.data.display !== false
   )
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
