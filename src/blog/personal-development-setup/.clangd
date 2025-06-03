@@ -1,0 +1,37 @@
+CompileFlags:
+  Add: [ -xc++, -Wall, -Wextra, -xcuda, --no-cuda-version-check, -ferror-limit=0 ]
+  Compiler: clang++
+  CompilationDatabase: build
+
+Index:
+  Background: Build
+
+Diagnostics:
+  Suppress: [
+    -Wunused-result 
+  ]
+  ClangTidy:
+    Add: [ 'modernize-*', 'bugprone-*', 'readability-*', 'performance-*', 'clang-analyzer-*', 'misc-*' ]
+    Remove: [ 'modernize-use-trailing-return-type', 'modernize-avoid-bind', 'bugprone-easily-swappable-parameters', 'bugprone-implicit-widening-of-multiplication-result', 'readability-identifier-length', 'readability-function-cognitive-complexity', 'bugprone-narrowing-conversions', 'readability-math-missing-parentheses' ]
+    CheckOptions:
+      readability-magic-numbers.IgnoredFloatingPointValues: 0.0;0.01;0.1;1.0;2.0;3.0;4.0;5.0;6.0;7.0;8.0;9.0;10.0;180.0;1e9;1e-9
+      readability-magic-numbers.IgnoredIntegerValues: 1;2;3;4;5;6;7;8;9;10;36
+      readability-identifier-length.IgnoredVariableNames: dt
+      misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
+      modernize-avoid-c-arrays.AllowStringArrays: true
+  UnusedIncludes: Strict
+
+Completion:
+  AllScopes: Yes
+
+InlayHints:
+  Enabled: No
+  ParameterNames: No
+  DeducedTypes: No
+
+Hover:
+  ShowAKA: Yes
+
+If:
+  PathMatch: [ .*\.h, .*\.cpp, .*\.cu, .*\.cuh, .*\.hpp ]
+  PathExclude: [ build/.*, log/.*, install/.*, .*_test.cpp, .*_test.h, .*_test.cuh, .*_test.hpp, .*_test.cu,  .*.*/test/.* ]
