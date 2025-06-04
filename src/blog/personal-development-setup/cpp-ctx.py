@@ -396,7 +396,19 @@ def main():
             relative_path_str = str(path_obj.as_posix())
         base_name = path_obj.stem.lower()
 
-        return (priority, base_name, header_rank, relative_path_str)
+        is_source_like = suffix in HEADER_EXTS or suffix in IMPL_EXTS
+        is_test_file = (
+            is_source_like
+            and (
+                "/test/" in relative_path_str
+                or path_obj.stem.lower().startswith("test_")
+                or path_obj.stem.lower().endswith("_test")
+            )
+        )
+
+        test_rank = 1 if is_test_file else 0
+
+        return (priority, test_rank, base_name, header_rank, relative_path_str)
  
     sorted_files = sorted(files_to_process, key=sort_key)
     logging.info(f"Found {len(sorted_files)} relevant files across all scanned subdirectories.")
