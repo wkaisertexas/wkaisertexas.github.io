@@ -12,9 +12,9 @@ A good example of this tradeoff is implicit conversions between `float` <-> `dou
 
 With that framing here are my configurations:
 
-- `.clangd` or `~/.config/clangd/config.yml` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/content/blog/personal-development-setup/.clangd))
-- `.clang-format` or `~/.config/clang-format` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/content/blog/personal-development-setup/.clang-format))
-- `.clang-tidy` or `~/.config/clang-tidy` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/content/blog/personal-development-setup/.clang-tidy))
+- `.clangd` or `~/.config/clangd/config.yml` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/blog/personal-development-setup/.clangd))
+- `.clang-format` or `~/.config/clang-format` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/blog/personal-development-setup/.clang-format))
+- `.clang-tidy` or `~/.config/clang-tidy` ([link](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/blog/personal-development-setup/.clang-tidy))
 
 ## Aliases
 
