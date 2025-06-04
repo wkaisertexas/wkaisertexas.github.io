@@ -3,7 +3,8 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "nbconvert>=7.0",  # For converting .ipynb files
-#     "pyperclip>=1.8", # For cross-platform clipboard access
+#     "pyperclip>=1.8",  # For cross-platform clipboard access
+#     "tiktoken>=0.7",   # For tokenization
 # ]
 # ///
 
@@ -18,6 +19,7 @@ import argparse # Import argparse
 
 # --- Configuration ---
 MAX_CSV_LINES = 10  # Max number of lines to show from CSV files
+MAX_TOKENS = 24_000 # max amount of context. Need to give a bit of a buffer for reasoning
 EXCLUDED_DIRS = { # Set of lowercase directory names to exclude
     'build',
     'install',
@@ -96,6 +98,13 @@ HEAD_LINES = 10
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
+try:
+    import tiktoken
+    tiktoken_encoder = tiktoken.get_encoding("cl100k_base")
+except ModuleNotFoundError:
+    tiktoken_encoder = None
+    logging.warning("tiktoken not installed; per-file token counts will be skipped.")
+
 # --- Helper Functions ---
 
 def get_file_priority(path: Path) -> int:
@@ -138,7 +147,6 @@ def convert_notebook_to_script(notebook_path: Path) -> str | None:
 
 def read_file_content(path: Path) -> str | None:
     """Reads content based on file type."""
-    logging.info(f"Reading file: {path}")
     content = None
     try:
         if path.suffix.lower() == ".ipynb":
@@ -176,7 +184,10 @@ def read_file_content(path: Path) -> str | None:
         logging.error(f"Error reading file {path}: {e}")
         return None
 
-    return content
+    token_count = (len(tiktoken_encoder.encode_ordinary(content)) if content else None) if tiktoken_encoder else 0
+    logging.info(f"Reading file ({token_count:7,}): {path}")
+
+    return content, token_count
 
 def get_git_submodule_dirs(repo_root: Path) -> set[Path]:
     """
@@ -377,6 +388,7 @@ def main():
     output = io.StringIO()
     output.write(f"# Context for Folder: {target_dir} (Recursive Scan)\n\n")
 
+    total_tokens = 0
     for file_path in sorted_files:
         try:
             # Use POSIX paths for consistency in the output markdown
@@ -387,10 +399,16 @@ def main():
 
         logging.debug(f"Processing: {relative_path} (Priority: {get_file_priority(file_path)})")
 
-        content = read_file_content(file_path)
+        content, num_tokens = read_file_content(file_path)
         if content is None:
             logging.warning(f"Skipping file due to read/conversion error or incompatible encoding: {relative_path}")
             continue
+
+        if num_tokens + total_tokens > MAX_TOKENS:
+            logging.warning(f"Out of tokens, skipping file: {relative_path}")
+            continue
+
+        total_tokens += num_tokens
 
         lang = get_markdown_language(file_path)
 
@@ -409,6 +427,8 @@ When adding to the codebase, do your best to use the existing codebase for inspi
 """
     final_output = prefix.strip() + output.getvalue()
     output.close()
+
+    logging.info(f"Total of {total_tokens:7,} tokens")
 
     # --- Copy to clipboard ---
     if final_output.strip(): # Check if there's non-whitespace content
