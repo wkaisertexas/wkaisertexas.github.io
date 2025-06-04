@@ -42,4 +42,4 @@ alias ge="grep -Hrn --include"
 
 ## Tools
 
-- [cpp-ctx](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/content/blog/personal-development-setup/cpp-ctx.py) is a uv self-installing script for passing context into large language models about your local development setup. This properly formats everything into markdown block quotes, gives the file's source location and more to give llms more information about your local workspace.
+- [cpp-ctx](https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/blog/personal-development-setup/cpp-ctx.py) is a uv self-installing script for passing context into large language models about your local development setup. This properly formats everything into markdown block quotes, gives the file's source location and more to give llms more information about your local workspace.
