@@ -21,8 +21,24 @@ With that framing here are my configurations:
 My helpful aliases for Linux.
 
 ```bash
+export CMAKE_GENERATOR=Ninja
+
 alias pbcopy="xclip -sel clip"
+alias ge="grep -Hrn --include"
 ```
+
+My helpful aliases for MacOS
+
+```bash
+export CMAKE_GENERATOR=Ninja
+
+alias ge="grep -Hrn --include"
+```
+
+## VSCode Extensions
+
+- `plibither8.remove-comments`
+- `llvm-vs-code-extensions.vscode-clangd`
 
 ## Tools
 
