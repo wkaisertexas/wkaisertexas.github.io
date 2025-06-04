@@ -174,6 +174,24 @@ def read_file_content(path: Path) -> str | None:
 
     return content
 
+def get_git_submodule_dirs(repo_root: Path) -> set[Path]:
+    """
+    Return the absolute paths of every Git sub-module declared in .gitmodules.
+    Cost: O(lines in .gitmodules) – run once.
+    """
+    gm = repo_root / ".gitmodules"
+    if not gm.exists():
+        return set()
+
+    sub_dirs: set[Path] = set()
+    with gm.open("r", encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("path"):
+                # line:  path = some/dir
+                _, path_str = line.split("=", 1)
+                sub_dirs.add((repo_root / path_str.strip()).resolve())
+    return sub_dirs
 
 def copy_to_clipboard(text: str):
     """Copies text to the system clipboard."""
@@ -237,6 +255,11 @@ def parse_arguments():
         action="store_true",
         help="Enable debug logging."
     )
+    parser.add_argument(
+        "--submodules",
+        action="store_true",
+        help="Include files that live inside Git sub-modules."
+    )
     # Example for future extension: allow adding exclusions
     # parser.add_argument(
     #     "--exclude-dir",
@@ -262,6 +285,7 @@ def main():
         sys.exit(1)
 
     target_dir = target_dir_path.resolve() # Use absolute path
+    submodule_roots = get_git_submodule_dirs(target_dir)
 
     # --- File Scanning (Recursive BFS with Exclusions) ---
     files_to_process = []
@@ -293,6 +317,10 @@ def main():
                     if dir_name_lower in EXCLUDED_DIRS:
                         logging.debug(f"Skipping excluded directory: {item}")
                         continue # Skip this directory and its contents
+
+                    if (not args.submodules) and resolved_item in submodule_roots:
+                        logging.debug(f"Skipping sub-module: {item} (use --submodules to include)")
+                        continue
 
                     if resolved_item not in visited_dirs:
                         visited_dirs.add(resolved_item)
