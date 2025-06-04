@@ -62,6 +62,10 @@ FILE_PRIORITIES = {
     # Add other build system files if needed
 }
 
+# Whether or something contains a header or an implementation
+HEADER_EXTS = {'.h', '.hpp', '.hh', '.cuh'}
+IMPL_EXTS = {'.c', '.cpp', '.cc', '.cu'}
+
 # Mapping file extensions to markdown language identifiers
 LANG_MAP = {
     ".md": "md",
@@ -347,14 +351,25 @@ def main():
     # Sort collected files: Priority first, then alphabetically by full relative path
     def sort_key(path_obj):
         priority = get_file_priority(path_obj)
+
+        header_rank = 3
+
+        suffix = path_obj.suffix.lower()
+        if suffix in HEADER_EXTS:
+            header_rank = 1
+        if suffix in IMPL_EXTS:
+            header_rank = 2
+
         try:
             # Ensure consistent sorting using POSIX-style relative paths
             relative_path_str = str(path_obj.relative_to(target_dir).as_posix())
         except ValueError:
              # Fallback if somehow not relative (shouldn't happen with current logic but safe)
             relative_path_str = str(path_obj.as_posix())
-        return (priority, relative_path_str)
+        base_name = path_obj.stem.lower()
 
+        return (priority, base_name, header_rank, relative_path_str)
+ 
     sorted_files = sorted(files_to_process, key=sort_key)
     logging.info(f"Found {len(sorted_files)} relevant files across all scanned subdirectories.")
 
