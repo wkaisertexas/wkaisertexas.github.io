@@ -389,6 +389,8 @@ def main():
 
     prefix = """
 When adding to the codebase, do your best to use the existing codebase for inspiration and avoid commenting every single line. Avoid dependencies as duplicated code can often be better than non-duplicated code in instances such as these.
+
+---
 """
     final_output = prefix.strip() + output.getvalue()
     output.close()
