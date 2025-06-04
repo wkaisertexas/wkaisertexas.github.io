@@ -15,7 +15,8 @@ import platform
 from pathlib import Path
 import io
 import logging
-import argparse # Import argparse
+import argparse
+import re
 
 # --- Configuration ---
 MAX_CSV_LINES = 10  # Max number of lines to show from CSV files
@@ -145,6 +146,19 @@ def convert_notebook_to_script(notebook_path: Path) -> str | None:
         logging.error(f"An unexpected error occurred during notebook conversion {notebook_path}: {e}")
         return None
 
+
+strip_content_single = re.compile(r"//[^\n]*\bTODO\b[^\n]*\n?", flags=re.IGNORECASE)
+strip_content_block  = re.compile(r"/\*[^*]*?\bTODO\b[\s\S]*?\*/", flags=re.IGNORECASE | re.DOTALL)
+def strip_content(content: str) -> str:
+    """
+    Strips all comments using a regex
+    """
+
+    content = strip_content_single.sub("", content)
+    content = strip_content_block.sub("", content)
+
+    return content
+
 def read_file_content(path: Path) -> str | None:
     """Reads content based on file type."""
     content = None
@@ -183,6 +197,9 @@ def read_file_content(path: Path) -> str | None:
     except Exception as e:
         logging.error(f"Error reading file {path}: {e}")
         return None
+
+    if path.suffix.lower() in {'.c', '.cpp', '.cc', '.cu', '.h', '.hpp', '.hh', '.cuh'}:
+        content = strip_content(content)
 
     token_count = (len(tiktoken_encoder.encode_ordinary(content)) if content else None) if tiktoken_encoder else 0
     logging.info(f"Reading file ({token_count:7,}): {path}")
