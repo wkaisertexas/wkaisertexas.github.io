@@ -1,7 +1,7 @@
 ---
 title: Optimization Passes for Your Repo
 description: In the age of LLMs, standardized repos for your codebases can really affect performance. Luckily, ChatGPT can one-shot generating these which is why the code is not provided.
-pubDate: Jun 26 2024
+pubDate: Jun 26 2025
 heroImage: hero.png
 display: true
 ---
