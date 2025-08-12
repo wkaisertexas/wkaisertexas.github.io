@@ -25,6 +25,7 @@ export CMAKE_GENERATOR=Ninja
 
 alias pbcopy="xclip -sel clip"
 alias ge="grep -Hrn --include"
+alias notify=notify-send Terminal "Long running task ended"
 ```
 
 My helpful aliases for MacOS
@@ -33,6 +34,7 @@ My helpful aliases for MacOS
 export CMAKE_GENERATOR=Ninja
 
 alias ge="grep -Hrn --include"
+alias notify=osascript -e 'display notification "long running task finished" with title "From Terminal"'
 ```
 
 ## VSCode Extensions

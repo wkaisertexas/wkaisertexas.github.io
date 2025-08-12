@@ -23,6 +23,10 @@ If you think something **should** be on this list, please submit a PR to add it!
 - `ruff check --fix` to run a linter over your python code
 - use [pyupgrade](https://github.com/asottile/pyupgrade) to modernize python definitions. This is something I would personally run manually, though
 
+## Python
+
+- Replacing `os.path.join(os.path.dirname(__file__), "../param/State_Machine.yaml")` with pathlib (need to ask ChatGPT to make a custom script for this one)
+
 ## C++
 
 - Replacing `#ifndef` with `#pragma once` in all header file (yes, I know `#pragma once` is non-standard)
