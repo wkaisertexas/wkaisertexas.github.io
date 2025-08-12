@@ -15,12 +15,15 @@ If you think something **should** be on this list, please submit a PR to add it!
 > "You can not pay people enough to accurately review verbose code, and believe me we have tried"
 > - Some due who worked at Jane Street
 
+## Linters
+
 - `clang-tidy` to lint your repos and automatically fix them
 - `clang-format` to ensure code is formatted properly
 - `ruff format` to format python code
 - `ruff check --fix` to run a linter over your python code
+- use [pyupgrade](https://github.com/asottile/pyupgrade) to modernize python definitions. This is something I would personally run manually, though
 
-## C++ Advice
+## C++
 
 - Replacing `#ifndef` with `#pragma once` in all header file (yes, I know `#pragma once` is non-standard)
 
@@ -45,6 +48,7 @@ If you think something **should** be on this list, please submit a PR to add it!
 ## Bash
 
 - Use `set -euo pipefail` in all your bash scripts
+- Run `find . -name '*.sh' -exec chmod +x {} +` to ensure all bash scripts are executable in your git repo. Asking Chat to ensure they have a shebang before running the find command would also work
 
 ## Docker
 
