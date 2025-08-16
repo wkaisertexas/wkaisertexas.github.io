@@ -26,6 +26,7 @@ If you think something **should** be on this list, please submit a PR to add it!
 ## Python
 
 - Replacing `os.path.join(os.path.dirname(__file__), "../param/State_Machine.yaml")` with pathlib (need to ask ChatGPT to make a custom script for this one)
+- Use `vermin` to determine if the minimum python version listed makes sense
 
 ## C++
 
