@@ -8,7 +8,6 @@
 # ]
 # ///
 
-import os
 import sys
 import subprocess
 import platform
@@ -17,6 +16,7 @@ import io
 import logging
 import argparse
 import re
+from typing import NoReturn
 
 # --- Configuration ---
 MAX_CSV_LINES = 10  # Max number of lines to show from CSV files
@@ -58,6 +58,7 @@ FILE_PRIORITIES = {
     ".hh": 20,
     ".cu": 20,
     ".cuh": 20,
+    ".rs": 21,
     ".csv": 30,
     ".action": 40,
     ".msg": 40,
@@ -85,6 +86,7 @@ LANG_MAP = {
     ".cu": "cuda",
     ".cuh": "cuda",
     ".cmake": "cmake",
+    ".rs": "rust",
     "CMakeLists.txt": "cmake",
     ".csv": "csv",
     ".action": "console",
@@ -302,9 +304,7 @@ def parse_arguments():
 
     return parser.parse_args()
 
-# --- Main Logic ---
-
-def main():
+def main() -> NoReturn:
     args = parse_arguments()
 
     if args.verbose:

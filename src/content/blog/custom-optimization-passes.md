@@ -20,8 +20,9 @@ If you think something **should** be on this list, please submit a PR to add it!
 - `clang-tidy` to lint your repos and automatically fix them
 - `clang-format` to ensure code is formatted properly
 - `ruff format` to format python code
-- `ruff check --fix` to run a linter over your python code
+- `ruff check --fix` to run a linter over your python code (add `I` to enable `isort` which is not enabled by default)
 - use [pyupgrade](https://github.com/asottile/pyupgrade) to modernize python definitions. This is something I would personally run manually, though
+- Ensure consistency in your repo between `.yaml` and `.yml`
 
 ## Python
 
@@ -57,10 +58,11 @@ If you think something **should** be on this list, please submit a PR to add it!
 
 ## Docker
 
-- Use a builder Dockerfile to minimize package size runtimes
+- Use a builder Dockerfile to minimize runtimes size
 - Use read-only services when using Dockerfiles
+- Add a `.dockerignore` since docker first creates a tar ball of the current directory before building your image (including `.git` folder by default)
 
 ## General Code Cleanliness
 
-- Make sure it is `README.md` instead of `readme.md` or something derivative
+- Make sure it is `README.md` instead of `readme.md`, `README` or something derivative
 - Specify the language ```python` in markdown code blocks

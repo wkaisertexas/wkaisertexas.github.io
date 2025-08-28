@@ -41,6 +41,19 @@ alias notify=osascript -e 'display notification "long running task finished" wit
 
 - `plibither8.remove-comments`
 - `llvm-vs-code-extensions.vscode-clangd`
+- `johnpapa.vscode-peacock` - makes working in polyrepos much easier
+
+## VSCode Configuration
+
+```json
+{
+  /* Display type hints in python (note: I like this in Python, but think it is distracting in clangd) */
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.parameterNames.enabled": "all",
+  "python.analysis.inlayHints.parameterTypes": true,
+}
+```
 
 ## Tools
 
