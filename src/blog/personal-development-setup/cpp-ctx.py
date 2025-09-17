@@ -157,7 +157,11 @@ def self_update() -> None:
 
     os.chmod(tmp, me.stat().st_mode)
     os.replace(tmp, me)
-    os.execv(sys.argv[0], sys.argv)
+
+    env = os.environ.copy()
+    env["CPP_CTX_NO_UPDATE"] = "1"
+    os.execve(sys.executable, [sys.executable, str(me), *sys.argv[1:]], env)
+    sys.exit(0)
 
 try:
     import tiktoken
