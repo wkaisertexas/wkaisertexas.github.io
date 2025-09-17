@@ -5,6 +5,7 @@
 #     "nbconvert>=7.0",  # For converting .ipynb files
 #     "pyperclip>=1.8",  # For cross-platform clipboard access
 #     "tiktoken>=0.7",   # For tokenization
+#     "requests",        # requests
 # ]
 # ///
 
@@ -17,8 +18,15 @@ import logging
 import argparse
 import re
 from typing import NoReturn
+import os
+import requests
+import tempfile
 
 # --- Configuration ---
+DEFAULT_UPDATE_URL = (
+    "https://raw.githubusercontent.com/wkaisertexas/wkaisertexas.github.io/refs/heads/main/src/blog/personal-development-setup/cpp-ctx.py"
+)
+
 MAX_CSV_LINES = 10  # Max number of lines to show from CSV files
 MAX_TOKENS = 24_000 # max amount of context. Need to give a bit of a buffer for reasoning
 EXCLUDED_DIRS = { # Set of lowercase directory names to exclude
@@ -100,6 +108,38 @@ HEAD_LINES = 10
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+def self_update() -> None:
+    if os.environ.get("CPP_CTX_NO_UPDATE"):
+      logging.debug("Self-update: disabled by environment.")
+      return
+    
+    me = Path(__file__).resolve()
+    if not me.exists() or not me.is_file() or "wkaisertexas.github.io" in str(me):
+        logging.debug("Self-update: current path is not a regular file; skipping.")
+        return
+    
+    try:
+        r = requests.get(
+            DEFAULT_UPDATE_URL,
+            timeout=10.0,
+        )
+        r.raise_for_status()
+
+        new_bytes = r.content
+    except requests.RequestException as e:
+        logging.warning(f"Self update fetch failed with error {e}")
+        return None
+    
+    with tempfile.NamedTemporaryFile("wb", delete=False, dir=me.parent) as tf:
+        tf.write(new_bytes)
+        tf.flush()
+        os.fsync(tf.fileno())
+        tmp = Path(tf.name)
+
+    os.chmod(tmp, me.stat().st_mode)
+    os.replace(tmp, me)
+    os.execv(sys.argv[0], sys.argv)
 
 try:
     import tiktoken
@@ -305,6 +345,7 @@ def parse_arguments():
     return parser.parse_args()
 
 def main() -> NoReturn:
+    self_update()
     args = parse_arguments()
 
     if args.verbose:
