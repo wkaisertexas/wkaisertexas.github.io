@@ -139,6 +139,16 @@ def self_update() -> None:
         logging.warning(f"Self update fetch failed with error {e}")
         return None
     
+    try:
+         current_bytes = me.read_bytes()
+    except Exception as e:
+        logging.debug(f"Self-update: couldn't read current script for comparison: {e}")
+        current_bytes = None
+
+    if current_bytes is not None and current_bytes == new_bytes:
+        logging.debug("Self-update: already up to date; no replacement needed.")
+        return
+    
     with tempfile.NamedTemporaryFile("wb", delete=False, dir=me.parent) as tf:
         tf.write(new_bytes)
         tf.flush()
