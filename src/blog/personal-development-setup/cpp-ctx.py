@@ -71,6 +71,10 @@ FILE_PRIORITIES = {
     ".action": 40,
     ".msg": 40,
     ".srv": 40,
+    ".tsx": 50,
+    ".ts": 50,
+    ".jsx": 51,
+    ".js": 51,
     # Add other build system files if needed
 }
 
@@ -100,6 +104,10 @@ LANG_MAP = {
     ".action": "console",
     ".msg": "console",
     ".srv": "console",
+    ".tsx": "tsx",
+    ".ts": "typescript",
+    ".jsx": "tsx",
+    ".js": "javascript",
     # Add other mappings as needed
 }
 
