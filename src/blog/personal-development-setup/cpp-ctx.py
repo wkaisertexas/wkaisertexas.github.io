@@ -266,7 +266,10 @@ def read_file_content(path: Path) -> str | None:
         content = strip_content(content)
 
     token_count = (len(tiktoken_encoder.encode_ordinary(content)) if content else None) if tiktoken_encoder else 0
-    logging.info(f"Reading file ({token_count:7,}): {path}")
+    if token_count is not None:
+        logging.info(f"Reading file ({token_count:7,}): {path}")
+    else:
+        logging.info(f"Reading file (): {path}")
 
     return content, token_count
 
