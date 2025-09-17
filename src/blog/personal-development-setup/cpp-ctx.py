@@ -265,11 +265,8 @@ def read_file_content(path: Path) -> str | None:
     if path.suffix.lower() in {'.c', '.cpp', '.cc', '.cu', '.h', '.hpp', '.hh', '.cuh'}:
         content = strip_content(content)
 
-    token_count = (len(tiktoken_encoder.encode_ordinary(content)) if content else None) if tiktoken_encoder else 0
-    if token_count is not None:
-        logging.info(f"Reading file ({token_count:7,}): {path}")
-    else:
-        logging.info(f"Reading file (): {path}")
+    token_count = (len(tiktoken_encoder.encode_ordinary(content)) if content else 0) if tiktoken_encoder else 0
+    logging.info(f"Reading file ({token_count:7,}): {path}")
 
     return content, token_count
 
