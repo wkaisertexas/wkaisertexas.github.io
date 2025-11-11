@@ -12,7 +12,7 @@ Recently, I rebuilt my blog in [Astro](https://astro.build) and deployed it to [
 
 Writing is a deceptively egalitarian pursuit. Anyone can do it. Few do it well, yet good writing and the power in it is undeniable -- a great skill for life.
 
-There is an extent to which school has failed writers. When grading the immense amounts of papers, the heuristic that longer tends to be better generally holds. The SAT Essay section found this when [MIT's Dr. Les Perelman found longer essays predictive of higher scores](https://www.nytimes.com/2005/05/04/education/sat-essay-test-rewards-length-and-ignores-errors.html). As a result, brevity is not emphasized. Formal education has little alternative, so rather than being a critique, becoming a better conveyer of information is something of which we should all be cognizant.
+There is an extent to which school has failed writers. When grading the immense amounts of papers, the heuristic that longer tends to be better generally holds. The SAT Essay section found this when [MIT's Dr. Les Perelman found longer essays predictive of higher scores](https://www.nytimes.com/2005/05/04/education/sat-essay-test-rewards-length-and-ignores-errors.html). As a result, brevity is not emphasized. Formal education has little alternative, so rather than being a critique, becoming a better conveyor of information is something of which we should all be cognizant.
 
 > If I had more time, I would have written a shorter letter
 >

@@ -1,6 +1,6 @@
 /*
 * One takeaway from this is to not be "scared" of nested for loops
-* this algorithim is still linear time, do not panic, but it makes the logic much clearer and the code much more readable
+* this algorithm is still linear time, do not panic, but it makes the logic much clearer and the code much more readable
 */
 class Solution {
 public:

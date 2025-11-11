@@ -1,7 +1,7 @@
 /*
  * Beats 100% has to be one of the best feelings
  *
- * This solution could be improved by completing the forwards pass at the same time as the pass which calculates the size. This would have some slight locality imporvements which should theoretically make it much faster.
+ * This solution could be improved by completing the forwards pass at the same time as the pass which calculates the size. This would have some slight locality improvements which should theoretically make it much faster.
  */
 class Solution {
 public:

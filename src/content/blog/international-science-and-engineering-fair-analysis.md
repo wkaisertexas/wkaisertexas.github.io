@@ -117,7 +117,7 @@ Despite the sentiment held by some science fair community members, a two-segment
 
 <figure>
 <img alt="" src="https://media.licdn.com/dms/image/D5612AQFdG9ObAXofRQ/article-inline_image-shrink_1500_2232/0/1695520548707?e=1707955200&v=beta&t=C-Qy8d_EF2bgSD-XJqxx4wemsMkCqOLm4VHKxA2X_i4" />
-<figcaption>In 2023, projects using a two-pronged colon format represented 23% of entires and won 21% more awards than average.</figcaption>
+<figcaption>In 2023, projects using a two-pronged colon format represented 23% of entries and won 21% more awards than average.</figcaption>
 </figure>
 
 Using a two-pronged title, may be seen as improving a project's competitive success without requiring an underlying change in topic or methodology.

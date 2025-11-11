@@ -1,5 +1,5 @@
 /*
- * When finding the pivot, the total sum becomes a valueable piece of information to know
+ * When finding the pivot, the total sum becomes a valuable piece of information to know
  *
  * The algorithm is still linear, but not the decision boundary is a bit easier to wrap your head around
  */

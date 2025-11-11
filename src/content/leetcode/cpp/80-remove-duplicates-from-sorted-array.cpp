@@ -1,5 +1,5 @@
 /*
- * The key thing here was to compare against the bottom pointer, rather than the ith pointer which has some issues with overwritting
+ * The key thing here was to compare against the bottom pointer, rather than the ith pointer which has some issues with overwriting
  */
 class Solution {
 public:

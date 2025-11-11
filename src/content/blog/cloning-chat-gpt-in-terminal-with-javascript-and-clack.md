@@ -124,7 +124,7 @@ Third-party service setup can be a bit tedious, but actually going through the m
 
 ## Set a limit
 
-**Do this**. No one talks about the accidentally leaving a web service running to poverty pipeline. I though that $5 was reasonably fo me and adjusting this is easy in the future. If immediately losing access is a problem, setting a **soft limit** will give you an email when you are about to reach it.
+**Do this**. No one talks about the accidentally leaving a web service running to poverty pipeline. I though that $5 was reasonably of me and adjusting this is easy in the future. If immediately losing access is a problem, setting a **soft limit** will give you an email when you are about to reach it.
 
 ![Setting a limit](../../blog/cloning-chat-gpt-in-terminal-with-javascript-and-clack/billingLimit.png)
 

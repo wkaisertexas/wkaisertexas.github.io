@@ -27,7 +27,7 @@ The python module is designed with two entry points:
 - `upload_video` for uploading single videos (also called by the command line interface)
 - `upload_videos` is called and has multiple uploads
 
-To manage browser configurations, `browsers.py` allows a `selenium.webdriver` object ot be created with custom:
+To manage browser configurations, `browsers.py` allows a `selenium.webdriver` object to be created with custom:
 
 - driver
 - options
@@ -61,7 +61,7 @@ click_upload_button()
 
 # Degree of Constraints
 
-A direct-posting REST API would eliminate teh need for `tiktok-uploader` all-together. Furthermore, the now-available schedule post feature would have probably never even lead me to create a library at all.
+A direct-posting REST API would eliminate the need for `tiktok-uploader` all-together. Furthermore, the now-available schedule post feature would have probably never even lead me to create a library at all.
 
 # Alternatives Considered
 

@@ -1,5 +1,5 @@
 ---
-title: "GitHub Copilot best quality is making programmers langauge agnostic"
+title: "GitHub Copilot best quality is making programmers language agnostic"
 description: "Allowing programmers to become language agnostic is perhaps the lowest-hanging use case to Large Language models"
 pubDate: "Oct 10 2022"
 heroImage: "hero.png"

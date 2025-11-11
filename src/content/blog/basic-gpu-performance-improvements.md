@@ -17,7 +17,7 @@ NVIDIA has experienced a prolific rise in recent years. While booms from crypto 
 
 Despite being an engineering-heavy organization, NVIDIA's public statements often overeggarderate and fail to properly contextualize the claims made.
 
-For example, NVENC makes speed claims about how parallel encoding of H.264 video is ___x faster than CPU based encoding. What is often left out is the approximations used to parallize video encoding and how NVENC encoded video can potentially be twice the size of CPU-encoded video. The tradeoffs present are not always properly contextualized
+For example, NVENC makes speed claims about how parallel encoding of H.264 video is ___x faster than CPU based encoding. What is often left out is the approximations used to parallelize video encoding and how NVENC encoded video can potentially be twice the size of CPU-encoded video. The tradeoffs present are not always properly contextualized
 
 Another fun example is the recent blackwell launch, where massive claims like [4x faster than Hopper were made](https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100). What really happened is NVIDIA added support for 4-bit computation instead of 8-bit so it could go twice as fast and then they glued two hopper chips together for another double to 4x. This is still and incredibly impressive feat, and a big improvement for those looking to **train** ai models, the improvement is not necessarily contextualized in the way that someone may think.
 
@@ -25,7 +25,7 @@ Because of the conflation between marketing and benchmarking, I wanted to run so
 
 ## What to Run?
 
-Modern GPUs are compilicated that to even adequately test them requires a knoweledge of their limitations. Hardware designers and academics have constructed benchmarks for these tasks with open-source benchmark suites such as [Rodninia](https://github.com/yuhc/gpu-rodinia) to serve as reference implemenations. 
+Modern GPUs are complicated that to even adequately test them requires a knoweledge of their limitations. Hardware designers and academics have constructed benchmarks for these tasks with open-source benchmark suites such as [Rodninia](https://github.com/yuhc/gpu-rodinia) to serve as reference implementations. 
 
 I wanted to take a more simplistic approach and work my way forward through the basics of GPU programming up-to more complex topics. 
 
@@ -40,6 +40,6 @@ I wanted to take a more simplistic approach and work my way forward through the 
 
 ## Resources to look at when writing this
 
-- [Hugging-Face Benchmarks](https://huggingface.co/docs/transformers/en/benchmarks) which is now depricated but looks at benchmarking models
+- [Hugging-Face Benchmarks](https://huggingface.co/docs/transformers/en/benchmarks) which is now deprecated but looks at benchmarking models
 
 Ideas, I could use TensorRT in an apptainer image to run these models faster. 

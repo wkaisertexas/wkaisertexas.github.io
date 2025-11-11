@@ -1,6 +1,6 @@
 ---
 title: "Five Tips I Use to Keep My Jupyter Notebooks Efficient"
-description: "The flexability which Jupyter Notebooks bring is an incredible asset. However, the lack of structure can often lead larger notebooks to become disorganized over time. Following a few principles helps keep your analysis on track."
+description: "The flexibility which Jupyter Notebooks bring is an incredible asset. However, the lack of structure can often lead larger notebooks to become disorganized over time. Following a few principles helps keep your analysis on track."
 pubDate: "Dec 11 2023"
 heroImage: "hero.png"
 display: true

@@ -6,7 +6,7 @@ heroImage: "hero.png"
 display: false
 ---
 
-[Measure What Matters](https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221/ref=sr_1_1?keywords=measure+what+matters+by+john+doerr&qid=1692124836&sr=8-1) was 9th grade me's choice at a Berkley half-priced books was stopped on in a family trip. I have inadvertently selection a seminal piece on metrics by the legend: John Doerr.
+[Measure What Matters](https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221/ref=sr_1_1?keywords=measure+what+matters+by+john+doerr&qid=1692124836&sr=8-1) was 9th grade me's choice at a Berkeley half-priced books was stopped on in a family trip. I have inadvertently selection a seminal piece on metrics by the legend: John Doerr.
 
 While I like metrics, I hate black-boxes. Creating internet content, especially on multiple platforms can be a great black-box indeed.
 

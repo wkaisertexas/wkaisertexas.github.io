@@ -10,7 +10,7 @@ This piece was inspired by _ThePrimeagen_’s YouTube Video _This Algorithm is_ 
 
 ## Problem
 
-This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6). Advent of Code Day 6 part 2 gives a simple problem: find 14 distinct (or non-repeating cahracters) characters in a row from an input string.
+This video covers optimizing [2022 Advent of Code Day 6 Part 2](https://adventofcode.com/2022/day/6). Advent of Code Day 6 part 2 gives a simple problem: find 14 distinct (or non-repeating characters) characters in a row from an input string.
 
 > Your device’s communication system is correctly detecting packets, but still isn’t working. It looks like it also needs to look for messages. A start-of-message marker is just like a start-of-packet marker, except it consists of 14 distinct characters rather than 4.
 

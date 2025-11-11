@@ -1,5 +1,5 @@
 /*
- * I did this backwards I think, but n - 1 - dfs(0, 0, seen, connections_map); was a suitable inverse. This was moreso something I tried.
+ * I did this backwards I think, but n - 1 - dfs(0, 0, seen, connections_map); was a suitable inverse. This was more so something I tried.
  */
 class Solution {
 public:

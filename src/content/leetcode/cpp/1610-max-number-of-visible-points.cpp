@@ -1,5 +1,5 @@
 /*
- * This was just a windowing algorithim. I did this to prepare for my Anduril interview and it was not bad. I was surprised.
+ * This was just a windowing algorithm. I did this to prepare for my Anduril interview and it was not bad. I was surprised.
  */
 class Solution {
 public:

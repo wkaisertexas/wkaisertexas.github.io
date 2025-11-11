@@ -36,7 +36,7 @@ The number of people sent to each destination will be recorded.
 
 # Data Storage
 
-Data is stored on a _Postgress_ instance which the Python server interfaces with through Django's ORM.
+Data is stored on a _Postgres_ instance which the Python server interfaces with through Django's ORM.
 
 # Code / Pseudo Code
 
@@ -58,7 +58,7 @@ def get_destination(self):
 
 # Degree of Constraints
 
-Use of a _Postgress_ database and a python Heroku dyno can create cold starts which can lead to 5 + second initial load times.
+Use of a _Postgres_ database and a python Heroku dyno can create cold starts which can lead to 5 + second initial load times.
 
 # Alternatives Considered
 

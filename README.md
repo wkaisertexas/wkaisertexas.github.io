@@ -6,7 +6,7 @@ After the unmaintainable train wreck which was my past blog and portfolio websit
 
 **Astro** forms the near-perfect minimalist framework from which to build a blog. Enough customizability exists in `.astro` files through leveraging the `.md` and `npm` ecosystems to create a great blog. Through **GitHub** pages, the site was able to be deployed so easily and assets be managed with a breeze.
 
-Additionally, for blogs like [Binary to Hex Pratice](https://wkaisertexas.github.io/blog/binary-to-hex-pratice/), I was able to use React with the client load directive to get this game to work. 
+Additionally, for blogs like [Binary to Hex Practice](https://wkaisertexas.github.io/blog/binary-to-hex-pratice/), I was able to use React with the client load directive to get this game to work. 
 
 Common libraries like **TailWindCSS** were instrumental in getting a common and consistent styling.
 

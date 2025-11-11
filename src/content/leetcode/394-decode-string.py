@@ -1,7 +1,7 @@
 class Solution:
     def decodeString(self, s: str) -> str:
         string_stack = ""
-        bracket_indicies = []
+        bracket_indices = []
         for c in s:
             if c == '[':
                 i = -1
@@ -13,15 +13,15 @@ class Solution:
 
                 count = int(string_stack[i:])
                 string_stack = string_stack[:i]
-                bracket_indicies += [(len(string_stack), count)]
+                bracket_indices += [(len(string_stack), count)]
                 continue
 
             if c != ']':
                 string_stack += c
                 continue
 
-            index, count = bracket_indicies[-1]
-            bracket_indicies = bracket_indicies[:-1]
+            index, count = bracket_indices[-1]
+            bracket_indices = bracket_indices[:-1]
 
             string_stack = string_stack[:index] + (string_stack[index:] * count)
   

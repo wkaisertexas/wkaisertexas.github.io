@@ -1,5 +1,5 @@
 /**
- * Classic binary search you just need to know how the modulo opperator works
+ * Classic binary search you just need to know how the modulo operator works
  */
 class Solution {
 public:
