@@ -320,7 +320,7 @@ import {Tabs, TabItem} from "@astrojs/starlight/components";
           <ul id="projects" class="grid md:grid-cols-2 col-span-2">{
               projects.map((project) => (
                 <li
-                  class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1"
+                  class="group p-2 border-2 border-transparent hover:border-current hover:shadow-md rounded-md mr-4 -ml-2 m-1"
                   data-technologies={
                     project.data.builtWith && project.data.builtWith.join(",")
                   }
@@ -354,7 +354,7 @@ import {Tabs, TabItem} from "@astrojs/starlight/components";
           <ul class="md:col-span-2 grid md:grid-cols-2">
             {
               blog.map((post) => (
-                <li class="group p-2 hover:border-2 hover:shadow-md rounded-md mr-4 -ml-2 m-1">
+                <li class="group p-2 border-2 border-transparent hover:border-current hover:shadow-md rounded-md mr-4 -ml-2 m-1">
                   <a href={`/blog/${post.slug}`}>
                     <h3 class="text-xl font-bold tracking-tight">
                       {post.data.title}
