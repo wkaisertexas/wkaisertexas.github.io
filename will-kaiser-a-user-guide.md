@@ -4,22 +4,22 @@ A guide which summarizes my working style and provides suggestions to work effec
 
 ## Where I usually add value
 
-- *Uncorrelated thinking* - I am comfortable speaking out and having different opinions about policies
-- *Technical Communication* - Through experiencing managing open-source projects and training newer team members at Cavalier Autonomous Racing, I write a lot of documentation. I put effort into the documentation that I do write and think it is important.
-- *Diagramming* - A knee-jerk reaction I have is to hop into *Excalidraw* and make a diagram about what is being discussed and my belief about a system. Even if my initial conceptions are incorrect about a system, I find an initial diagram a more productive way to structure conversations about how something works than unstructured conversations. Furthermore, the work product produced is often value-able to external parties as a form of documentation.
+- *Uncorrelated thinking* - I am comfortable voicing my uncertanties and asking potentially "stupid" questions to help myself and others think more clearly about problems.
+- *Technical Communication* - Managing open-source projects and mentoring younger members at Cavalier Autonomous Racing taught me the value of unambigious documentation. The iterative process of writing, revising and seeking feedback is a core requirement, rather than an afterthought.
+- *Diagramming* - When trying to understand a new system, my first thought is to open an *Excalidraw* document and build a diagram of my interpertations of a system. Even if my initial conceptions are incorrect, an initial diagram is more productive way to structure future conversations about how a system works. The sketch usually ends up being documentation to help things develop more in the future.
 - *Understanding what is comparatively expensive* - If a control system runs slowly, knowing that it can be improved given sufficient effort. Technical limitations given by other often have different implicit assumptions about the effort required to make such changes.
 
 ## What I need the most support
 
-- *Developer Experience and Workflows* - Learning how to use internal tools and reduce work flow cycle times is key. The advice to use mypy as often as you can or set up a direnv with your editor and ensure clangd works can be invaluable. Configuration is a rabbit hole and being able to add marginal productivity without the perfect setup is a real skill. However, quick pointers on how you work in a repository is something which I find valuable.
+- *Developer Experience and Workflows* - Small, pragmatic tips about how to be productive in a codebase often have an outsized impact. Comments like "use direnv", "run mypy before test runs", or only run these *two* tests to validate your changes in a couple minutes instead of hours produce real time savings for development.
 - *Government Buying Processes* - From strategy to requirements to the creation of program offices and the incentives and actors in each layer is something that I need to learn more about and lean of others for.
-- *Feedback, especially on matters of taste* - I am generally a fan of immediate criticism. I often struggle with gradations between this is bad and this is *really* bad when people giving feedback are trying to be polite. I am dating my girlfriend because I had a bad first date, I asked for honest feedback and took notes. To wit, I believe in the power of feedback and will do things to facilitate productive feedback.
+- *Feedback, especially on matters of taste* - I value clear, unfiltered feedback, especially when it helps refine the *how* rather than the *what*. I respond best to direct and actionable feedback, even if it is presented bluntly. Honest critique is a key ingredient for growth.
 
 ## What impresses me the most in my manager
 
-- *Pricing work* - putting dollar values on PRs and ensuring that, in some ways, you are paying the "right" price for work is a tough problem. Sticking your neck out for projects which may be marginally useful now, but vastly more useful in the future is amazing. Going beyond, X feature means saving some amount of future engineer's time, and therefore it is worth it is difficult. Especially in government work where metrics are lagging.
+- *Pricing work* - understanding if a change is a net-positive is not that difficult. Saying this *particular* change is worth the associated amount of engeering hours is far ore difficult. Ensuring that you are paying the "right" price for work is a tough problems. Justifiyng work, especially when benefits may not show up immediately is very difficult. This is even harder given the lagging nature of feedback from government.
 - *Performance management* - 
-- *Strategy* - Building confidence in your opinions on direction. You could either be uncertain on the future and more often right or have a clear picture of the future, which can be more useful to build towards, even if imperfect. What strategy to express, how to cultivate that strategy is a hard problem.
+- *Strategy* - Building confidence in your opinions on direction. You could either be uncertain on the future and more often right or have a clear picture of the future, which can be more useful to build towards, even if imperfect. What strategy to express, how to cultivate that strategy is a hard problem. Doing it well is impressive.
 
 ## What impresses me in peers
 
@@ -50,7 +50,7 @@ I have many open-source projects. TimeLapze is a MacOS utility for creating time
 
 In college, I primarily spend time on Cavalier Autonomous Racing, where I work on perception on-track, integrating a new radar detection pipeline and cameras while on track. Outside of track, I have set up all of the ci / cd process, ensuring no memory leaks occur on track, keeping build times manageable, creating open-loop validation pipelines for our vehicle models, visualization libraries for overlaying data on social media. Drivers for our cameras to collect pcaps on track. Setting up our sphinx documentation site. Performance improvements through swapping our allocator for jemalloc. Toolchain optimization, address sanitizers, code coverage, etc.. All of this represents legwork required to ensure reliable software operation and pull forward necessary work.
 
-I am currently a software engineer and Anduril, joining after an internship the summer of my junior year. 
+I am currently a software engineer and Anduril, joining after an internship the summer of my junior year. During my internship, I worked on a validation suite for the Platform in a Box (PIAB) representation of Anduril and other group 5 autonomous vehicles. Beyond this initial project, I built a command line interface for the easy manipulation of trajectory specifications which helped augment motion-planning test case generation workloads. Finally, I stayed on for a few months after the summer to work on the software verification and validation (V&V) team in preparation for Fury's first flight.
 
 
 ## References
