@@ -1,0 +1,103 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.3.0/index.css" />
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XKDGVM797T"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XKDGVM797T");
+    </script>
+  </head>
+
+  <body class="min-h-screen bg-stone-50 font-geist text-stone-800 antialiased">
+    <main class="max-w-3xl px-6 py-8 sm:px-12 sm:py-12">
+      <header class="mb-10 text-sm text-stone-600">
+        <a href="/" class="hover:underline">william kaiser</a>
+        <span aria-hidden="true"> / </span>
+        <span>user guide</span>
+      </header>
+
+      <article class="user-guide">
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(.user-guide) {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  :global(.user-guide h1) {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.3;
+  }
+
+  :global(.user-guide h2) {
+    margin: 2.5rem 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  :global(.user-guide p) {
+    margin: 0 0 1rem;
+  }
+
+  :global(.user-guide ul) {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+  }
+
+  :global(.user-guide li) {
+    margin: 0.5rem 0;
+    padding-left: 0.1rem;
+  }
+
+  :global(.user-guide a) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #a8a29e;
+    text-underline-offset: 0.18em;
+  }
+
+  :global(.user-guide a:hover) {
+    text-decoration-color: currentcolor;
+  }
+
+  :global(.user-guide em) {
+    font-style: italic;
+  }
+
+  :global(.user-guide code) {
+    font: inherit;
+  }
+
+  :global(.user-guide .footnotes) {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  :global(.user-guide .footnotes h2) {
+    margin-top: 0;
+  }
+</style>
