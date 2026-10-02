@@ -1,0 +1,45 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="background" cx="0" cy="0" r="1" gradientTransform="translate(76 38) rotate(126) scale(105)">
+      <stop stop-color="#26173A"/>
+      <stop offset="0.58" stop-color="#0C0912"/>
+      <stop offset="1" stop-color="#050507"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="42" y1="35" x2="91" y2="91" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0B5"/>
+      <stop offset="0.45" stop-color="#E5B455"/>
+      <stop offset="1" stop-color="#9B6721"/>
+    </linearGradient>
+    <filter id="glow" x="31" y="25" width="72" height="72" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <rect width="128" height="128" rx="27" fill="url(#background)"/>
+  <rect x="5" y="5" width="118" height="118" rx="23" stroke="#E2B65C" stroke-opacity="0.35" stroke-width="2"/>
+
+  <rect x="26" y="18" width="76" height="92" rx="8" fill="#09090A" stroke="url(#gold)" stroke-width="3"/>
+  <path d="M37 20V108" stroke="#C89037" stroke-width="2"/>
+  <path d="M96 28V101C96 104.314 93.3137 107 90 107H45" stroke="#F5D88B" stroke-opacity="0.62" stroke-width="2"/>
+  <path d="M46 101H91" stroke="#F7E8BB" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round"/>
+
+  <g opacity="0.45" filter="url(#glow)" fill="#E7AD43">
+    <circle cx="67" cy="61" r="19"/>
+  </g>
+  <g transform="translate(67 61)" fill="url(#gold)">
+    <ellipse cy="-16" rx="4.5" ry="13"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(45)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(90)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(135)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(180)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(225)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(270)"/>
+    <ellipse cy="-16" rx="4.5" ry="13" transform="rotate(315)"/>
+    <circle r="8" fill="#25143A" stroke="#F3D98B" stroke-width="2"/>
+    <circle r="3" fill="#FFF2C2"/>
+  </g>
+
+  <path d="M53 88C61 83 72 83 81 88" stroke="#DCAA4A" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="86" cy="31" r="2.5" fill="#FFF1B7"/>
+  <path d="M86 25V37M80 31H92" stroke="#E8BA5A" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
